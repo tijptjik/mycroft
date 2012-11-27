@@ -5,6 +5,7 @@
 Django>=1.4
 
 # Templates
+coffin
 jingo
 jingo-minify
 Markdown

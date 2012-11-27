@@ -1,3 +1,5 @@
+from utils import unique_slugify
+
 from django.db import models
 from django.utils.timezone import now
 from django.contrib.auth.models import User
@@ -29,6 +31,7 @@ class Video(models.Model):
         verbose_name = ('Video')
         verbose_name_plural = ('Videos')
 
+
 class Preview(models.Model):
     video = models.URLField(blank=True)
     title = models.CharField(max_length=100)
@@ -39,7 +42,7 @@ class Preview(models.Model):
 
     def __unicode__(self):
         return self.title
-    
+
 
 class Lecturer(models.Model):
     user = models.ForeignKey(User, unique=True)
@@ -103,10 +106,17 @@ class Lecture(models.Model):
     series = models.ForeignKey(Series)
     synopsis = models.TextField()
     transcript = models.TextField()
+    slug = models.SlugField(max_length=40, unique=True, default="")
 
     class Meta:
         verbose_name = u'Lecture'
         verbose_name_plural = u'Lectures'
+
+    def save(self, *args, **kwargs):
+        if not self.id:
+            unique_slugify(self, self.poem__title)
+
+        super(Lecture, self).save(*args, **kwargs)
 
     def __unicode__(self):
         return self.poem.title

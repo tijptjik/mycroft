@@ -1,10 +1,21 @@
 """ Views for the base application """
 
-from django.shortcuts import render_to_response
-from django.template import RequestContext
+from coffin.shortcuts import render
+
+from models import *
 
 
-def home(request):
-    """ Default view for the root """
-    return render_to_response('base/home.html',
-        context_instance=RequestContext(request))
+def index(request):
+    return render(request,'base/index.html')
+
+def lecture(request, poet_last_name=None, poem_title=None):
+    return render(request, 'base/lecture.html')
+
+def order(request):
+    return render(request, 'base/order.html')
+
+def contact(request):
+    return render(request, 'base/contact.html')
+
+def about(request):
+    return render(request, 'base/about.html')
