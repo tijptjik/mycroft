@@ -22,8 +22,8 @@ class Product(models.Model):
 
 class Video(models.Model):
     video = models.FileField(upload_to='lectures')
-    duration = models.IntegerField('duration in seconds', blank=True)
-    format = models.CharField('file format', max_length=20, default='MKV')
+    duration = models.IntegerField('duration in seconds', default=3600)
+    # format = models.CharField('file format', max_length=20, default='MKV')
     subtitle = models.FileField(upload_to='subtitles', blank=True)
     subtitle_language = models.CharField(max_length=20, default='English')
 
@@ -33,7 +33,7 @@ class Video(models.Model):
 
 
 class Preview(models.Model):
-    video = models.URLField(blank=True)
+    vimeo_id = models.IntegerField()
     title = models.CharField(max_length=100)
 
     class Meta:
@@ -56,7 +56,7 @@ class Lecturer(models.Model):
 
 
 class Series(models.Model):
-    name = models.CharField(max_length=100)
+    name = models.CharField('lecture series', max_length=100, default='Mycroft Online Lectures')
 
     class Meta:
         verbose_name = ('Series')
@@ -69,10 +69,10 @@ class Series(models.Model):
 class Poet(models.Model):
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
-    date_of_birth = models.DateTimeField()
-    date_of_death = models.DateTimeField()
-    birthplace = models.CharField(max_length=100)
-    nationality = models.CharField(max_length=50)
+    year_of_birth = models.IntegerField(default=0)
+    year_of_death = models.IntegerField(default=0)
+    nationality = models.CharField(max_length=50, default='English')
+    description = models.TextField(default="This is the story of this particular poet")
 
     class Meta:
         verbose_name = ('Poet')
@@ -85,9 +85,9 @@ class Poet(models.Model):
 class Poem(models.Model):
     poet = models.ForeignKey(Poet)
     title = models.CharField(max_length=200)
-    pub_date = models.DateTimeField('data of publishing', blank=True)
+    pub_year = models.IntegerField('data of publishing', default=1900)
     text = models.TextField(blank=True)
-    copyright = models.BooleanField(default=True, blank=True)
+    copyright = models.BooleanField(default=True)
 
     class Meta:
         verbose_name = ('Poem')
@@ -104,8 +104,9 @@ class Lecture(models.Model):
     preview = models.ForeignKey(Preview)
     product = models.ForeignKey(Product)
     series = models.ForeignKey(Series)
-    synopsis = models.TextField()
-    transcript = models.TextField()
+    synopsis = models.TextField(blank=True)
+    transcript = models.TextField(blank=True)
+    title = models.CharField(max_length=100, unique=True)
     slug = models.SlugField(max_length=40, unique=True, default="")
 
     class Meta:
@@ -114,12 +115,12 @@ class Lecture(models.Model):
 
     def save(self, *args, **kwargs):
         if not self.id:
-            unique_slugify(self, self.poem__title)
+            unique_slugify(self, self.title)
 
         super(Lecture, self).save(*args, **kwargs)
 
     def __unicode__(self):
-        return self.poem.title
+        return self.title
 
 
 class Testimonial(models.Model):
