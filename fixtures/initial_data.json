@@ -643,7 +643,7 @@
         "pk": 1,
         "model": "base.lecture",
         "fields": {
-            "lecturer": 1,
+            "lecturer": 2,
             "poem": 1,
             "product": 1,
             "series": 1,
@@ -659,7 +659,7 @@
         "pk": 2,
         "model": "base.lecture",
         "fields": {
-            "lecturer": 1,
+            "lecturer": 2,
             "poem": 2,
             "product": 2,
             "series": 1,
@@ -675,7 +675,7 @@
         "pk": 3,
         "model": "base.lecture",
         "fields": {
-            "lecturer": 1,
+            "lecturer": 2,
             "poem": 3,
             "product": 3,
             "series": 1,
@@ -691,7 +691,7 @@
         "pk": 4,
         "model": "base.lecture",
         "fields": {
-            "lecturer": 1,
+            "lecturer": 2,
             "poem": 4,
             "product": 4,
             "series": 1,
@@ -707,7 +707,7 @@
         "pk": 5,
         "model": "base.lecture",
         "fields": {
-            "lecturer": 1,
+            "lecturer": 2,
             "poem": 5,
             "product": 5,
             "series": 1,
@@ -723,7 +723,7 @@
         "pk": 6,
         "model": "base.lecture",
         "fields": {
-            "lecturer": 1,
+            "lecturer": 2,
             "poem": 6,
             "product": 6,
             "series": 1,
@@ -739,7 +739,7 @@
         "pk": 7,
         "model": "base.lecture",
         "fields": {
-            "lecturer": 1,
+            "lecturer": 2,
             "poem": 7,
             "product": 7,
             "series": 1,
@@ -755,7 +755,7 @@
         "pk": 8,
         "model": "base.lecture",
         "fields": {
-            "lecturer": 1,
+            "lecturer": 2,
             "poem": 8,
             "product": 8,
             "series": 1,
@@ -771,7 +771,7 @@
         "pk": 9,
         "model": "base.lecture",
         "fields": {
-            "lecturer": 1,
+            "lecturer": 2,
             "poem": 9,
             "product": 9,
             "series": 1,
@@ -787,7 +787,7 @@
         "pk": 10,
         "model": "base.lecture",
         "fields": {
-            "lecturer": 1,
+            "lecturer": 2,
             "poem": 10,
             "product": 10,
             "series": 1,
@@ -803,7 +803,7 @@
         "pk": 11,
         "model": "base.lecture",
         "fields": {
-            "lecturer": 1,
+            "lecturer": 2,
             "poem": 11,
             "product": 11,
             "series": 1,
@@ -819,7 +819,7 @@
         "pk": 12,
         "model": "base.lecture",
         "fields": {
-            "lecturer": 1,
+            "lecturer": 2,
             "poem": 12,
             "product": 12,
             "series": 1,
@@ -835,7 +835,7 @@
         "pk": 13,
         "model": "base.lecture",
         "fields": {
-            "lecturer": 1,
+            "lecturer": 2,
             "poem": 13,
             "product": 13,
             "series": 1,
