@@ -132,8 +132,8 @@ class Testimonial(models.Model):
     profession = models.CharField(max_length=1, choices=PROFESSIONS, default=TEACHER)
     text = models.TextField()
     name = models.CharField(max_length=75)
-    published_work = models.CharField(max_length=100)
-    published_worl_url = models.URLField()
+    published_work = models.CharField(max_length=100, blank=True)
+    published_work_url = models.URLField(blank=True)
     credentials = models.TextField()
 
     class Meta:

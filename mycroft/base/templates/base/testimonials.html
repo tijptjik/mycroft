@@ -3,4 +3,34 @@
 {% block page_class %}home-page{% endblock %}
 {% block content %}
 <h1>TESTIMONIALS</h1>
+    <h2>From Teachers</h2>
+    {% for testimonial in testimonials%}
+        {% if testimonial.profession == 'T'%}
+            <blockquote>
+            {{ testimonial.text }}
+            <small>
+            {{ testimonial.name }}<br>
+            {% if testimonial.published_work %}<br>
+                Author of <a href="{{ testimonial.published_work_url }}">{{ testimonial.published_work }}</a><br>
+            {% endif %}
+            {{ testimonial.credentials|urlize }}
+            </small>
+            </blockquote>
+        {% endif %}
+    {% endfor %}
+    <h2>From Poets</h2>
+    {% for testimonial in testimonials%}
+        {% if testimonial.profession == 'P'%}
+            <blockquote>
+            {{ testimonial.text }}
+            <small>
+            {{ testimonial.name }}<br>
+            {% if testimonial.published_work %}
+                Author of <a href="{{ testimonial.published_work_url }}">{{ testimonial.published_work }}</a><br>
+            {% endif %}
+            {{ testimonial.credentials|urlize }}<br>
+            </small>
+            </blockquote>
+        {% endif %}
+    {% endfor %}
 {% endblock %}

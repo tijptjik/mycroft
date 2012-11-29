@@ -846,5 +846,101 @@
             "title": "Upon Westminster Bridge",
             "slug": "upon-westminster-bridge"
         }
+    },
+  {
+    "pk": 1, 
+    "model": "base.testimonial", 
+    "fields": {
+      "name": "Dr. Mike Ingham", 
+      "text": "This is a wonderful resource for students who wish to access English language poetry and understand both form and function, that is the structural elements and also the feelings and ideas that are conveyed in the poem. Dr Barker\u2019s subject expertise and enthusiasm for poetry shines through in these informative, insightful and original lecturettes. The beauty of this site is that students can glean greater understanding and appreciation of great anglophone poetry at both secondary school and university undergraduate level. Such a combination of range and depth is rare and valuable for people who care about literature pedagogy and also for those who seek to enter the world of the poetic imagination. Highly recommended!", 
+      "published_work_url": "", 
+      "profession": "T", 
+      "published_work": "", 
+      "credentials": "Lecturer Lingam University"
     }
+  }, 
+  {
+    "pk": 2, 
+    "model": "base.testimonial", 
+    "fields": {
+      "name": "Dr. Jessica Yeung", 
+      "text": "Mycroft is, as we all know from the Sherlock Holmes stories, Sherlock\u2019s even smarter brother. However, it doesn\u2019t take a genius to see that the Mycroft online lectures really can benefit my second-language students. They find English language poetry extremely challenging, and for my MA and undergraduate students it is essential for them to have some exposure to the cultural experience of poetry in English as well as in Chinese, if they are to appreciate poetry translation in both language directions. The Mycroft lectures have really succeeded in opening up the world of English language poetry to my students. Thanks to the happy blend of clarity and analytical rigour evident in the structure and execution of the lectures, we now have a valuable self-study aid as well as a dynamic teaching tool in class. For Translation students this is an ideal study aid because the lectures draw them into the world of the poem, clearly explicating the cultural background, the metaphors and layers of meaning, the language devices and subtext, as well as offering insights into the personality of the poet and the wider context of the poem. I recommend the Mycroft lectures on poetry very strongly for fellow teachers of literature both to whet the appetite for and stimulate the interest in poetry among their students and, at the same time, provide a practical resource for those who find English language poetry rather forbidding. A valuable addition to the world of online resources, Mycroft\u2019s excellence lies in its attention to every detail of the student\u2019s fundamental needs in the understanding and appreciation of an impressive range of famous English poems. Thoroughly recommended for my Hong Kong as well as for international students in general!", 
+      "published_work_url": "", 
+      "profession": "T", 
+      "published_work": "", 
+      "credentials": "Associate Professor Dept of English, Translation Programme, Hong Kong Baptist University."
+    }
+  }, 
+  {
+    "pk": 3, 
+    "model": "base.testimonial", 
+    "fields": {
+      "name": "Martin Alexander", 
+      "text": "Students of poetry in English will enjoy and be stimulated by Dr Barker\u2019s close readings of this series of poems. The selection features poems regularly included on exam syllabuses and often taught in senior secondary school classes. His analysis and exploration of the poetry leads the viewer to a close understanding of how each poet has arrived at a distinctive, memorable and striking articulation of the human condition. Barker has won recognition for his teaching style, and it shows.", 
+      "published_work_url": "http://www.amazon.com/Clearing-Ground-Martin-Alexander/dp/9889706091", 
+      "profession": "T", 
+      "published_work": "Clearing Ground", 
+      "credentials": "Editor. Asia Literary Review.\r\nFormer Head of English at Island School.\r\n"
+    }
+  }, 
+  {
+    "pk": 4, 
+    "model": "base.testimonial", 
+    "fields": {
+      "name": "Dilip Barad, Ph.D.", 
+      "text": "Dear Dr. Andrew Barker,\r\n\r\nI saw sample lectures on poetry on www.mycroft-online-lectures.com\r\nI am impressed by your work. It is indeed, very helpful resource for the students as well as teachers of English literature. Most of the poems you have dealt are in curriculum of Indian universities.\r\n\r\nWhat I liked:\r\n\r\n- Slow and steady pace of your speech \u2013helpful to students and grasping the ideas\u2026\r\n- Some lines of poems written on the screen \u2013this is very good\u2026 and I hope the entire poem must be visible to the viewers in full video.\r\n- Analysis is quite up to the mark of university level.\r\n\r\nA valuable resource and an excellent work by Dr. Andrew Barker", 
+      "published_work_url": "", 
+      "profession": "T", 
+      "published_work": "", 
+      "credentials": "Professor & Head, Dept. of English, Maharaja Krishnakumarsinhji Bhavnagar University,\r\nwww.dilipbarad.com\r\nwww.facebook.com/dilipbarad"
+    }
+  }, 
+  {
+    "pk": 5, 
+    "model": "base.testimonial", 
+    "fields": {
+      "name": "Reid Mitchell", 
+      "text": "A splendid series of lectures, delivered with intelligence, vigor, and rare humor. I recommend Dr. Barker\u2019s material highly to both students, teachers, and all lovers of literature. Besides the joy of appreciating some of the greatest poems in the English languages, viewers will learn the principles of analysis necessary both for the enjoyment of poetry and academic success. Therefore I particularly recommend these lectures to all of you preparing for such examinations as the IB.", 
+      "published_work_url": "http://www.amazon.com/Man-Under-Authority-Reid-Mitchell/dp/1885983115", 
+      "profession": "T", 
+      "published_work": "A Man Under Authority", 
+      "credentials": "Fulbright Lecturer in American Studies, Hong Kong University, 2005-2006\r\nEnglish Language Teacher, Tsinghua University, Beijing."
+    }
+  }, 
+  {
+    "pk": 6, 
+    "model": "base.testimonial", 
+    "fields": {
+      "name": "Jenny Wong", 
+      "text": "An innovative and user-friendly resource for literary studies on contemporary poets, and a source of inspiration for both teachers and students.", 
+      "published_work_url": "http://www.amazon.com/gp/product/9889902117", 
+      "profession": "P", 
+      "published_work": "Summer Cicadas", 
+      "credentials": "Poetry Parnassus 2012 poet Hong Kong."
+    }
+  }, 
+  {
+    "pk": 7, 
+    "model": "base.testimonial", 
+    "fields": {
+      "name": "Akin Jeje", 
+      "text": "I think that this online lecture series is an invaluable tool for any student of English poetry. Students are able to visualize the poem through Dr. Barker\u2019s lecture, rather than just attempt to grasp potentially arcane meaning and symbolism by themselves. Definitely recommended!", 
+      "published_work_url": "http://www.amazon.com/Smoked-Pearl-Poems-Hong-Beyond/dp/9881932114", 
+      "profession": "P", 
+      "published_work": "Smoked Pearl", 
+      "credentials": "Canada."
+    }
+  }, 
+  {
+    "pk": 8, 
+    "model": "base.testimonial", 
+    "fields": {
+      "name": "Meena Kandasamy", 
+      "text": "Reminiscent of John Keating in Dead Poets Society, Dr Andrew Barker approaches poetry with a passion that draws the student/viewer to engage with the poem not just as a text to be understood with the aid of annotations but as an experience. He blends the seriousness of the literary critic with the intimate exuberance of a poet; so, it is a delight to watch him explain a love poem by hauling John Donne from the seventeenth century to a contemporary milieu, or, hear him shrewdly unwrap the layers of meaning in Seamus Heaney\u2019s Digging.\r\n\r\nMycroft lectures include a comprehensive selection of poems many of which are on the English literature syllabi of several Indian universities. Apart from understanding the contexts, nuances, metaphors and poetic devices incorporated in the poems, students will also immensely benefit from observing the language and method employed to discuss poetry.\r\n\r\nThese poetry lectures can also be incorporated in ESL classrooms to wean away students from the preconceived notion that language learning is merely gaining command over a set of communication skills, and to give these students a taste of English literature, to allow them to partake of its beauty and its brilliance. I recommend these lectures strongly and I believe that they will be amazing teaching resources in English language classrooms.", 
+      "published_work_url": "http://www.amazon.com/Ms-Militancy-Meena-Kandasamy/dp/8189059343", 
+      "profession": "P", 
+      "published_work": "Ms. Militancy", 
+      "credentials": "India"
+    }
+  }
 ]
