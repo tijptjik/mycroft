@@ -2,5 +2,24 @@
 
 {% block page_class %}home-page{% endblock %}
 {% block content %}
-	<h1>Hello! It works!</h1>
+
+
+<ul class="nav nav-pills">
+  <li class="active"><a href="#">Poet Name</a></li>
+  <li><a href="#">Poem Title</a></li>
+  <li><a href="#">Year of Publication</a></li>
+</ul>
+
+<ul class="thumbnails">
+    {% for lecture in lectures %}
+      <li class="span12">
+        <div class="thumbnail">
+          <a href="/lecture/{{ lecture.poem.poet.slug }}/{{ lecture.slug }}">
+          <img src="http://placehold.it/1170x250&text={{lecture.poem.title}}" alt="{{lecture.title}}"></a>
+{#           <h3>{{ lecture.poem.title }}</h3>
+          <p>{{ lecture.poem.poet }}</p>#}        
+      </div>
+      </li>
+    {% endfor %}
+</ul>
 {% endblock %}

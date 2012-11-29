@@ -1,21 +1,34 @@
 """ Views for the base application """
-
-from coffin.shortcuts import render
+from coffin.shortcuts import render, get_object_or_404
 
 from models import *
 
 
 def index(request):
-    return render(request,'base/index.html')
+    lectures = Lecture.objects.all()
+    for lecture in lectures:
+        lecture.poem.poet.slug = lecture.poem.poet.last_name.lower()
+        print lecture.poem.poet.year_of_death
+    return render(request,'base/index.html', {'lectures': lectures})
 
 def lecture(request, poet_last_name=None, poem_title=None):
-    return render(request, 'base/lecture.html')
+    lecture = get_object_or_404(Lecture, slug=poem_title)
+    if not lecture.poem.poet.year_of_death:
+        lecture.poem.poet.year_of_death = 'Current'
+    return render(request, 'base/lecture.html', {'lecture': lecture})
+
+def store(request):
+    return render(request, 'base/store.html')
 
 def order(request):
     return render(request, 'base/order.html')
 
+def story(request):
+    return render(request, 'base/story.html')
+
+def testimonials(request):
+    return render(request, 'base/testimonials.html')
+
 def contact(request):
     return render(request, 'base/contact.html')
 
-def about(request):
-    return render(request, 'base/about.html')
