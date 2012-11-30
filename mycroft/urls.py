@@ -1,7 +1,7 @@
 """ Default urlconf for mycroft """
 
 from django.conf import settings
-from django.conf.urls.defaults import include, patterns
+from django.conf.urls.defaults import url, patterns, include
 from session_csrf import anonymous_csrf
 from django.contrib import admin
 admin.autodiscover()
@@ -22,6 +22,14 @@ urlpatterns = patterns('',
     (r'^admin/', include(admin.site.urls)),
     #url(r'^', include('debug_toolbar_user_panel.urls')),
     (r'^bad/$', bad),
+)
+
+urlpatterns += patterns('',
+    (r'^mamona/', include('mamona.urls')),
+    url(r'^single/$', 'sales.views.order_singleitem', name='sales-order-singleitem'),
+    url(r'^multiitem/$', 'sales.views.order_multiitem', name='sales-order-multiitem'),
+    url(r'^singlescreen/$', 'sales.views.order_singlescreen', name='sales-order-singlescreen'),
+    url(r'^details/(?P<order_id>[0-9]+)/$', 'order.views.show_order', name='show-order'),
 )
 
 ## In DEBUG mode, serve media files through Django.

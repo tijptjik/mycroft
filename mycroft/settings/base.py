@@ -65,6 +65,10 @@ INSTALLED_APPS = [
     # Database migrations
     'south',
 
+    # Transactions
+    'order',
+    'sales',
+    
     # Application base, containing global templates.
     'mycroft.base',
 
@@ -212,8 +216,8 @@ DEBUG_TOOLBAR_PANELS = (
 
 FILE_UPLOAD_PERMISSIONS = 0664
 
-# Because Jinja2 is the default template loader, add any non-Jinja templated
-# apps here:
+INTERNAL_IPS = ('127.0.0.1',)
+
 JINGO_EXCLUDE_APPS = [
     'admin',
     'registration',
@@ -222,15 +226,12 @@ JINGO_EXCLUDE_APPS = [
     'memcache_toolbar',
 ]
 
-COMPRESS_PRECOMPILERS = (
-   ('text/less', 'lesscpy {infile} {outfile}'),
-)
-
 JINJA2_EXTENSIONS = [
     'compressor.contrib.jinja2ext.CompressorExtension',
 ]
 
-INTERNAL_IPS = ('127.0.0.1',)
-
+COMPRESS_PRECOMPILERS = (
+   ('text/less', 'lesscpy {infile} {outfile}'),
+)
 # The WSGI Application to use for runserver
 WSGI_APPLICATION = 'mycroft.wsgi.application'
