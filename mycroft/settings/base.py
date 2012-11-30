@@ -222,5 +222,15 @@ JINGO_EXCLUDE_APPS = [
     'memcache_toolbar',
 ]
 
+COMPRESS_PRECOMPILERS = (
+   ('text/less', 'lesscpy {infile} {outfile}'),
+)
+
+JINJA2_EXTENSIONS = [
+    'compressor.contrib.jinja2ext.CompressorExtension',
+]
+
+INTERNAL_IPS = ('127.0.0.1',)
+
 # The WSGI Application to use for runserver
 WSGI_APPLICATION = 'mycroft.wsgi.application'
