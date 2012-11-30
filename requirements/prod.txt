@@ -5,10 +5,12 @@
 Django>=1.4
 
 # Templates
+lesscpy
 coffin
 jingo
 jingo-minify
 Markdown
+django-compressor
 
 # Security
 bleach
