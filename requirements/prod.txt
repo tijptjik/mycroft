@@ -40,6 +40,9 @@ django-debug-toolbar
 # Migrations
 South
 
+# Transactions
+-e git://github.com/emesik/mamona.git#egg=mamona
+
 # Various tidbits
 commonware
 -e git://github.com/mozilla/nuggets.git#egg=nuggets
