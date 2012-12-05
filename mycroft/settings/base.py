@@ -44,7 +44,7 @@ INSTALLED_APPS = [
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
-    'django.contrib.sites',
+    # 'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.admin',
     'django.contrib.admindocs',
@@ -55,10 +55,10 @@ INSTALLED_APPS = [
 
     # Third-party apps, patches, fixes
     'commonware.response.cookies',
-    'djcelery',
     'django_nose',
     'session_csrf',
     'debug_toolbar',
+    #'djcelery',
     #'debug_toolbar_user_panel',
     #'memcache_toolbar',
 
@@ -66,9 +66,8 @@ INSTALLED_APPS = [
     'south',
 
     # Transactions
-    'order',
-    'sales',
-    
+    'paypal.standard.ipn',
+
     # Application base, containing global templates.
     'mycroft.base',
 
@@ -139,6 +138,7 @@ USE_TZ = True
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'compressor.finders.CompressorFinder',
 )
 
 MIDDLEWARE_CLASSES = [
@@ -220,6 +220,8 @@ INTERNAL_IPS = ('127.0.0.1',)
 
 JINGO_EXCLUDE_APPS = [
     'admin',
+    # 'billing',
+    'paypal',
     'registration',
     'debug_toolbar',
     'debug_toolbar_user_panel',
@@ -230,8 +232,17 @@ JINJA2_EXTENSIONS = [
     'compressor.contrib.jinja2ext.CompressorExtension',
 ]
 
+JINJA2_ENVIRONMENT_OPTIONS = {
+    'autoescape': False,
+ }
+
 COMPRESS_PRECOMPILERS = (
    ('text/less', 'lesscpy {infile} {outfile}'),
 )
+
+SITE_NAME = 'http://mycroftlectures.dyndns-free.com'
+
+PAYPAL_RECEIVER_EMAIL = "andy_1354358238_biz@type.hk"
+
 # The WSGI Application to use for runserver
 WSGI_APPLICATION = 'mycroft.wsgi.application'
