@@ -10,4 +10,5 @@ urlpatterns = patterns('mycroft.base.views',
     url(r'^story/$', 'story', name='story'),
     url(r'^testimonials/$', 'testimonials', name='testimonials'),
     url(r'^contact/$', 'contact', name='contact'),
+    url(r'^thanks/$', 'thanks', name='thanks'),
 )
