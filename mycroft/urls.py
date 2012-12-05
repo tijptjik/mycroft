@@ -25,11 +25,7 @@ urlpatterns = patterns('',
 )
 
 urlpatterns += patterns('',
-    (r'^mamona/', include('mamona.urls')),
-    url(r'^single/$', 'sales.views.order_singleitem', name='sales-order-singleitem'),
-    url(r'^multiitem/$', 'sales.views.order_multiitem', name='sales-order-multiitem'),
-    url(r'^singlescreen/$', 'sales.views.order_singlescreen', name='sales-order-singlescreen'),
-    url(r'^details/(?P<order_id>[0-9]+)/$', 'order.views.show_order', name='show-order'),
+    (r'^naughtynuthouse/', include('paypal.standard.ipn.urls')),
 )
 
 ## In DEBUG mode, serve media files through Django.

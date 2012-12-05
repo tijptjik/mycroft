@@ -41,7 +41,8 @@ django-debug-toolbar
 South
 
 # Transactions
--e git://github.com/emesik/mamona.git#egg=mamona
+#-e git://github.com/agiliq/merchant.git#egg=django-merchant
+django-paypal
 
 # Various tidbits
 commonware

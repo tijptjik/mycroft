@@ -5,7 +5,7 @@ from django.utils.timezone import now
 from django.contrib.auth.models import User
 
 from datetime import datetime
-
+from paypal.standard.ipn.signals import payment_was_successful
 
 class Product(models.Model):
     reference = models.CharField(max_length=10)
@@ -142,3 +142,12 @@ class Testimonial(models.Model):
 
     def __unicode__(self):
         return self.name
+
+def show_me_the_money(sender, **kwargs):
+    ipn_obj = sender
+    # Undertake some action depending upon `ipn_obj`.
+    if ipn_obj.custom == "Upgrade all users!":
+        Users.objects.update(paid=True)
+    print __file__,1, 'Payment Received!'        
+
+payment_was_successful.connect(show_me_the_money)
