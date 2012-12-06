@@ -4,7 +4,7 @@
 # Django stuff
 Django>=1.4
 
-# Templates
+# Templates 
 lesscpy
 coffin
 jingo
@@ -43,8 +43,8 @@ South
 # Transactions
 #-e git://github.com/agiliq/merchant.git#egg=django-merchant
 django-paypal
+-e git://github.com/tijptjik/django-paypal-subscription.git#egg=django-paypal-subscription
 
 # Various tidbits
 commonware
 -e git://github.com/mozilla/nuggets.git#egg=nuggets
-
