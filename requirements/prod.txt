@@ -6,9 +6,6 @@ Django>=1.4
 
 # Templates 
 lesscpy
-coffin
-jingo
-jingo-minify
 Markdown
 django-compressor
 
@@ -42,7 +39,7 @@ South
 
 # Transactions
 #-e git://github.com/agiliq/merchant.git#egg=django-merchant
-django-paypal
+-e git://github.com/eos87/django-paypal.git#egg=django-paypal
 -e git://github.com/tijptjik/django-paypal-subscription.git#egg=django-paypal-subscription
 
 # Various tidbits
