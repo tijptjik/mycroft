@@ -1,945 +1,952 @@
 [
-    {
-        "pk": 1,
-        "model": "base.product",
-        "fields": {
-            "sold": 0,
-            "price_in_dollars": "4.99",
-            "reference": "MOL0001"
-        }
-    },
-    {
-        "pk": 2,
-        "model": "base.product",
-        "fields": {
-            "sold": 0,
-            "price_in_dollars": "4.99",
-            "reference": "MOL0002"
-        }
-    },
-    {
-        "pk": 3,
-        "model": "base.product",
-        "fields": {
-            "sold": 0,
-            "price_in_dollars": "4.99",
-            "reference": "MOL0003"
-        }
-    },
-    {
-        "pk": 4,
-        "model": "base.product",
-        "fields": {
-            "sold": 0,
-            "price_in_dollars": "4.99",
-            "reference": "MOL0004"
-        }
-    },
-    {
-        "pk": 5,
-        "model": "base.product",
-        "fields": {
-            "sold": 0,
-            "price_in_dollars": "4.99",
-            "reference": "MOL0005"
-        }
-    },
-    {
-        "pk": 6,
-        "model": "base.product",
-        "fields": {
-            "sold": 0,
-            "price_in_dollars": "4.99",
-            "reference": "MOL0006"
-        }
-    },
-    {
-        "pk": 7,
-        "model": "base.product",
-        "fields": {
-            "sold": 0,
-            "price_in_dollars": "4.99",
-            "reference": "MOL0007"
-        }
-    },
-    {
-        "pk": 8,
-        "model": "base.product",
-        "fields": {
-            "sold": 0,
-            "price_in_dollars": "4.99",
-            "reference": "MOL0008"
-        }
-    },
-    {
-        "pk": 9,
-        "model": "base.product",
-        "fields": {
-            "sold": 0,
-            "price_in_dollars": "4.99",
-            "reference": "MOL0009"
-        }
-    },
-    {
-        "pk": 10,
-        "model": "base.product",
-        "fields": {
-            "sold": 0,
-            "price_in_dollars": "4.99",
-            "reference": "MOL0010"
-        }
-    },
-    {
-        "pk": 11,
-        "model": "base.product",
-        "fields": {
-            "sold": 0,
-            "price_in_dollars": "4.99",
-            "reference": "MOL0011"
-        }
-    },
-    {
-        "pk": 12,
-        "model": "base.product",
-        "fields": {
-            "sold": 0,
-            "price_in_dollars": "4.99",
-            "reference": "MOL0012"
-        }
-    },
-    {
-        "pk": 13,
-        "model": "base.product",
-        "fields": {
-            "sold": 0,
-            "price_in_dollars": "4.99",
-            "reference": "MOL0013"
-        }
-    },
-    {
-        "pk": 1,
-        "model": "base.video",
-        "fields": {
-            "duration": 1560,
-            "subtitle": "subtitles/digging.srt",
-            "video": "lectures/2ZHNf7b7NMyyyh3qzKzB/digging.mp4",
-            "subtitle_language": "English"
-        }
-    },
-    {
-        "pk": 2,
-        "model": "base.video",
-        "fields": {
-            "duration": 1560,
-            "subtitle": "subtitles/do_not_go.srt",
-            "video": "lectures/2ZHNf7b7NMyyyh3qzKzB/do_not_go.mp4",
-            "subtitle_language": "English"
-        }
-    },
-    {
-        "pk": 3,
-        "model": "base.video",
-        "fields": {
-            "duration": 1560,
-            "subtitle": "subtitles/dulce_et_decorum.srt",
-            "video": "lectures/2ZHNf7b7NMyyyh3qzKzB/dulce_et_decorum.mp4",
-            "subtitle_language": "English"
-        }
-    },
-    {
-        "pk": 4,
-        "model": "base.video",
-        "fields": {
-            "duration": 1560,
-            "subtitle": "subtitles/mid_term_break.srt",
-            "video": "lectures/2ZHNf7b7NMyyyh3qzKzB/mid_term_break.mp4",
-            "subtitle_language": "English"
-        }
-    },
-    {
-        "pk": 5,
-        "model": "base.video",
-        "fields": {
-            "duration": 1560,
-            "subtitle": "subtitles/my_last_duchess.srt",
-            "video": "lectures/2ZHNf7b7NMyyyh3qzKzB/my_last_duchess.mp4",
-            "subtitle_language": "English"
-        }
-    },
-    {
-        "pk": 6,
-        "model": "base.video",
-        "fields": {
-            "duration": 1560,
-            "subtitle": "subtitles/no_second_troy.srt",
-            "video": "lectures/2ZHNf7b7NMyyyh3qzKzB/no_second_troy.mp4",
-            "subtitle_language": "English"
-        }
-    },
-    {
-        "pk": 7,
-        "model": "base.video",
-        "fields": {
-            "duration": 1560,
-            "subtitle": "subtitles/refugee_mother_and_her_child.srt",
-            "video": "lectures/2ZHNf7b7NMyyyh3qzKzB/refugee_mother_and_her_child.mp4",
-            "subtitle_language": "English"
-        }
-    },
-    {
-        "pk": 8,
-        "model": "base.video",
-        "fields": {
-            "duration": 1560,
-            "subtitle": "subtitles/the_good_morrow.srt",
-            "video": "lectures/2ZHNf7b7NMyyyh3qzKzB/the_good_morrow.mp4",
-            "subtitle_language": "English"
-        }
-    },
-    {
-        "pk": 9,
-        "model": "base.video",
-        "fields": {
-            "duration": 1560,
-            "subtitle": "subtitles/the_soldier.srt",
-            "video": "lectures/2ZHNf7b7NMyyyh3qzKzB/the_soldier.mp4",
-            "subtitle_language": "English"
-        }
-    },
-    {
-        "pk": 10,
-        "model": "base.video",
-        "fields": {
-            "duration": 1560,
-            "subtitle": "subtitles/toads.srt",
-            "video": "lectures/2ZHNf7b7NMyyyh3qzKzB/toads.mp4",
-            "subtitle_language": "English"
-        }
-    },
-    {
-        "pk": 11,
-        "model": "base.video",
-        "fields": {
-            "duration": 1560,
-            "subtitle": "subtitles/toads_revisited.srt",
-            "video": "lectures/2ZHNf7b7NMyyyh3qzKzB/toads_revisited.mp4",
-            "subtitle_language": "English"
-        }
-    },
-    {
-        "pk": 12,
-        "model": "base.video",
-        "fields": {
-            "duration": 1560,
-            "subtitle": "subtitles/to_his_coy_mistress.srt",
-            "video": "lectures/2ZHNf7b7NMyyyh3qzKzB/to_his_coy_mistress.mp4",
-            "subtitle_language": "English"
-        }
-    },
-    {
-        "pk": 13,
-        "model": "base.video",
-        "fields": {
-            "duration": 1560,
-            "subtitle": "subtitles/westminster_bridge.srt",
-            "video": "lectures/2ZHNf7b7NMyyyh3qzKzB/westminster_bridge.mp4",
-            "subtitle_language": "English"
-        }
-    },
-    {
-        "pk": 1,
-        "model": "base.preview",
-        "fields": {
-            "vimeo_id": 43015135,
-            "title": "To Dig With a Pen"
-        }
-    },
-    {
-        "pk": 2,
-        "model": "base.preview",
-        "fields": {
-            "vimeo_id": 48745507,
-            "title": "Danced in a Green Bay"
-        }
-    },
-    {
-        "pk": 3,
-        "model": "base.preview",
-        "fields": {
-            "vimeo_id": 44916758,
-            "title": "The Old Lie"
-        }
-    },
-    {
-        "pk": 4,
-        "model": "base.preview",
-        "fields": {
-            "vimeo_id": 43015136,
-            "title": "Angry Tearless Sighs"
-        }
-    },
-    {
-        "pk": 5,
-        "model": "base.preview",
-        "fields": {
-            "vimeo_id": 43015137,
-            "title": "Showing Not Telling"
-        }
-    },
-    {
-        "pk": 6,
-        "model": "base.preview",
-        "fields": {
-            "vimeo_id": 50916656,
-            "title": "Simple as a Fire"
-        }
-    },
-    {
-        "pk": 7,
-        "model": "base.preview",
-        "fields": {
-            "vimeo_id": 50916655,
-            "title": "No Madonna and Child"
-        }
-    },
-    {
-        "pk": 8,
-        "model": "base.preview",
-        "fields": {
-            "vimeo_id": 50872568,
-            "title": "If Our Two Loves Be One"
-        }
-    },
-    {
-        "pk": 9,
-        "model": "base.preview",
-        "fields": {
-            "vimeo_id": 50869714,
-            "title": "Brooke as a Soldier"
-        }
-    },
-    {
-        "pk": 10,
-        "model": "base.preview",
-        "fields": {
-            "vimeo_id": 50872569,
-            "title": "The Two Toads"
-        }
-    },
-    {
-        "pk": 11,
-        "model": "base.preview",
-        "fields": {
-            "vimeo_id": 50872570,
-            "title": "Give Me Your Arm Old Toad"
-        }
-    },
-    {
-        "pk": 12,
-        "model": "base.preview",
-        "fields": {
-            "vimeo_id": 50869715,
-            "title": "The Grave's a Fine and Private Place"
-        }
-    },
-    {
-        "pk": 13,
-        "model": "base.preview",
-        "fields": {
-            "vimeo_id": 48745503,
-            "title": "Wordsworth on the City of London"
-        }
-    },
-    {
-        "pk": 1,
-        "model": "base.lecturer",
-        "fields": {
-            "user": 1
-        }
-    },
-    {
-        "pk": 1,
-        "model": "base.series",
-        "fields": {
-            "name": "Mycroft Online Lectures"
-        }
-    },
-    {
-        "pk": 1,
-        "model": "base.poet",
-        "fields": {
-            "first_name": "Chinua",
-            "last_name": "Achebe",
-            "description": "Chinua Achebe is a Nigerian novelist, poet, professor, and critic. He is best known for his first novel and magnum opus, Things Fall Apart, which is the most widely read book in modern African literature",
-            "year_of_birth": 1930,
-            "nationality": "Nigerian",
-            "year_of_death": 0
-        }
-    },
-    {
-        "pk": 2,
-        "model": "base.poet",
-        "fields": {
-            "first_name": "Rupert",
-            "last_name": "Brooke",
-            "description": "Rupert Chawner Brooke was an English poet known for his idealistic war sonnets written during the First World War, especially \"The Soldier\". He was also known for his boyish good looks...",
-            "year_of_birth": 1887,
-            "nationality": "English",
-            "year_of_death": 1915
-        }
-    },
-    {
-        "pk": 3,
-        "model": "base.poet",
-        "fields": {
-            "first_name": "Robert",
-            "last_name": "Browning",
-            "description": "Robert Browning was an English poet and playwright whose mastery of dramatic verse, especially dramatic monologues, made him one of the foremost Victorian poets.",
-            "year_of_birth": 1812,
-            "nationality": "English",
-            "year_of_death": 1889
-        }
-    },
-    {
-        "pk": 4,
-        "model": "base.poet",
-        "fields": {
-            "first_name": "John",
-            "last_name": "Donne",
-            "description": "John Donne was an English poet, satirist, lawyer and a cleric in the Church of England. He is considered the pre-eminent representative of the metaphysical poets.",
-            "year_of_birth": 1572,
-            "nationality": "English",
-            "year_of_death": 1631
-        }
-    },
-    {
-        "pk": 5,
-        "model": "base.poet",
-        "fields": {
-            "first_name": "Seamus",
-            "last_name": "Heaney",
-            "description": "Seamus Heaney is an Irish poet, playwright, translator, lecturer and recipient of the 1995 Nobel Prize in Literature. Born at Mossbawn farmhouse between Castledawson and Toomebridge, he now resides in Dublin.",
-            "year_of_birth": 1939,
-            "nationality": "Irish",
-            "year_of_death": 0
-        }
-    },
-    {
-        "pk": 6,
-        "model": "base.poet",
-        "fields": {
-            "first_name": "Philip",
-            "last_name": "Larkin",
-            "description": "Philip Arthur Larkin, was an English poet and novelist. His first book of poetry, The North Ship, was published in 1945, followed by two novels, Jill (1946) and A Girl in Winter (1947), but he came to prominence in 1955 with the publication of his second collection of poems, The Less Deceived, followed by The Whitsun Weddings (1964) and High Windows (1974). He contributed to The Daily Telegraph as its jazz critic from 1961 to 1971, articles gathered together in All What Jazz: A Record Diary 1961–71 (1985), and he edited The Oxford Book of Twentieth Century English Verse (1973).[1] He was the recipient of many honours, including the Queen's Gold Medal for Poetry.[2] He was offered, but declined, the position of poet laureate in 1984, following the death of John Betjeman.",
-            "year_of_birth": 1922,
-            "nationality": "English",
-            "year_of_death": 1985
-        }
-    },
-    {
-        "pk": 7,
-        "model": "base.poet",
-        "fields": {
-            "first_name": "Andrew",
-            "last_name": "Marvell",
-            "description": "Andrew Marvell was an English metaphysical poet and politician who sat in the House of Commons at various times between 1659 and 1678. As a metaphysical poet, he is associated with John Donne and George Herbert.",
-            "year_of_birth": 1621,
-            "nationality": "English",
-            "year_of_death": 1678
-        }
-    },
-    {
-        "pk": 8,
-        "model": "base.poet",
-        "fields": {
-            "first_name": "Wilfred",
-            "last_name": "Owen",
-            "description": "Wilfred Edward Salter Owen MC was an English poet and soldier, one of the leading poets of the First World War.",
-            "year_of_birth": 1893,
-            "nationality": "English",
-            "year_of_death": 1918
-        }
-    },
-    {
-        "pk": 9,
-        "model": "base.poet",
-        "fields": {
-            "first_name": "Dylan",
-            "last_name": "Thomas",
-            "description": "Dylan Marlais Thomas was a Welsh poet and writer whose works include poems, stories and radio broadcasts. He became popular in his lifetime, and remained popular after his death; partly due to his larger than life character, and his reputation for drinking to excess.",
-            "year_of_birth": 1914,
-            "nationality": "Welsh",
-            "year_of_death": 1953
-        }
-    },
-    {
-        "pk": 10,
-        "model": "base.poet",
-        "fields": {
-            "first_name": "William",
-            "last_name": "Wordsworth",
-            "description": "William Wordsworth was a major English Romantic poet who, with Samuel Taylor Coleridge, helped to launch the Romantic Age in English literature with the 1798 joint publication Lyrical Ballads.",
-            "year_of_birth": 1770,
-            "nationality": "English",
-            "year_of_death": 1850
-        }
-    },
-    {
-        "pk": 11,
-        "model": "base.poet",
-        "fields": {
-            "first_name": "William Butler",
-            "last_name": "Yeats",
-            "description": "William Butler Yeats was an Irish poet and one of the foremost figures of 20th century literature. A pillar of both the Irish and British literary establishments, in his later years he served as an Irish Senator for two terms.",
-            "year_of_birth": 1865,
-            "nationality": "Irish",
-            "year_of_death": 1939
-        }
-    },
-    {
-        "pk": 1,
-        "model": "base.poem",
-        "fields": {
-            "poet": 5,
-            "text": "Between my finger and my thumb\nThe squat pen rests; as snug as a gun.\n\nUnder my window a clean rasping sound\nWhen the spade sinks into gravelly ground:\nMy father, digging. I look down\n\nTill his straining rump among the flowerbeds\nBends low, comes up twenty years away\nStooping in rhythm through potato drills\nWhere he was digging.\n\nThe coarse boot nestled on the lug, the shaft\nAgainst the inside knee was levered firmly.\nHe rooted out tall tops, buried the bright edge deep\nTo scatter new potatoes that we picked\nLoving their cool hardness in our hands.\n\nBy God, the old man could handle a spade,\nJust like his old man.\n\nMy grandfather could cut more turf in a day\nThan any other man on Toner's bog.\nOnce I carried him milk in a bottle\nCorked sloppily with paper. He straightened up\nTo drink it, then fell to right away\nNicking and slicing neatly, heaving sods\nOver his shoulder, digging down and down\nFor the good turf. Digging.\n\nThe cold smell of potato mold, the squelch and slap\nOf soggy peat, the curt cuts of an edge\nThrough living roots awaken in my head.\nBut I've no spade to follow men like them.\n\nBetween my finger and my thumb\nThe squat pen rests.\nI'll dig with it.",
-            "pub_year": 1966,
-            "copyright": false,
-            "title": "Digging"
-        }
-    },
-    {
-        "pk": 2,
-        "model": "base.poem",
-        "fields": {
-            "poet": 9,
-            "text": "Do not go gentle into that good night,\nOld age should burn and rave at close of day;\nRage, rage against the dying of the light.\n\nThough wise men at their end know dark is right,\nBecause their words had forked no lightning they\nDo not go gentle into that good night.\n\nGood men, the last wave by, crying how bright\nTheir frail deeds might have danced in a green bay,\nRage, rage against the dying of the light.\n\nWild men who caught and sang the sun in flight,\nAnd learn, too late, they grieved it on its way,\nDo not go gentle into that good night.\n\nGrave men, near death, who see with blinding sight\nBlind eyes could blaze like meteors and be gay,\nRage, rage against the dying of the light.\n\nAnd you, my father, there on that sad height,\nCurse, bless, me now with your fierce tears, I pray.\nDo not go gentle into that good night.\nRage, rage against the dying of the light.",
-            "pub_year": 1952,
-            "copyright": false,
-            "title": "Do Not Go Gentle Into That Good Night"
-        }
-    },
-    {
-        "pk": 3,
-        "model": "base.poem",
-        "fields": {
-            "poet": 8,
-            "text": "Bent double, like old beggars under sacks,\nKnock-kneed, coughing like hags, we cursed through sludge,\nTill on the haunting flares we turned our backs\nAnd towards our distant rest began to trudge.\nMen marched asleep. Many had lost their boots\nBut limped on, blood-shod. All went lame; all blind;\nDrunk with fatigue; deaf even to the hoots\nOf disappointed shells that dropped behind.\n\nGAS! Gas! Quick, boys!-- An ecstasy of fumbling,\nFitting the clumsy helmets just in time;\nBut someone still was yelling out and stumbling\nAnd floundering like a man in fire or lime.--\nDim, through the misty panes and thick green light\nAs under a green sea, I saw him drowning.\n\nIn all my dreams, before my helpless sight,\nHe plunges at me, guttering, choking, drowning.\n\nIf in some smothering dreams you too could pace\nBehind the wagon that we flung him in,\nAnd watch the white eyes writhing in his face,\nHis hanging face, like a devil's sick of sin;\nIf you could hear, at every jolt, the blood\nCome gargling from the froth-corrupted lungs,\nObscene as cancer, bitter as the cud\nOf vile, incurable sores on innocent tongues,--\nMy friend, you would not tell with such high zest\nTo children ardent for some desperate glory,\nThe old Lie: Dulce et decorum est\nPro patria mori.",
-            "pub_year": 1917,
-            "copyright": false,
-            "title": "Dulce et Decorum Est"
-        }
-    },
-    {
-        "pk": 4,
-        "model": "base.poem",
-        "fields": {
-            "poet": 5,
-            "text": "I sat all morning in the college sick bay\nCounting bells knelling classes to a close.\nAt two o'clock our neighbors drove me home.\n\nIn the porch I met my father crying--\nHe had always taken funerals in his stride--\nAnd Big Jim Evans saying it was a hard blow.\n\nThe baby cooed and laughed and rocked the pram\nWhen I came in, and I was embarrassed\nBy old men standing up to shake my hand\n\nAnd tell me they were 'sorry for my trouble,'\nWhispers informed strangers I was the eldest,\nAway at school, as my mother held my hand\n\nIn hers and coughed out angry tearless sighs.\nAt ten o'clock the ambulance arrived\nWith the corpse, stanched and bandaged by the nurses.\n\nNext morning I went up into the room. Snowdrops\nAnd candles soothed the bedside; I saw him\nFor the first time in six weeks. Paler now,\n\nWearing a poppy bruise on his left temple,\nHe lay in the four foot box as in his cot.\nNo gaudy scars, the bumper knocked him clear.\n\nA four foot box, a foot for every year. ",
-            "pub_year": 1963,
-            "copyright": false,
-            "title": "Mid-Term Break"
-        }
-    },
-    {
-        "pk": 5,
-        "model": "base.poem",
-        "fields": {
-            "poet": 3,
-            "text": "That’s my last Duchess painted on the wall, \nLooking as if she were alive. I call \nThat piece a wonder, now: Fra Pandolf’s hands \nWorked busily a day, and there she stands. \nWill’t please you sit and look at her? I said \n“Fra Pandolf” by design, for never read \nStrangers like you that pictured countenance, \nThe depth and passion of its earnest glance, \nBut to myself they turned (since none puts by \nThe curtain I have drawn for you, but I) \nAnd seemed as they would ask me, if they durst, \nHow such a glance came there; so, not the first \nAre you to turn and ask thus. Sir, ’twas not \nHer husband’s presence only, called that spot \nOf joy into the Duchess’ cheek: perhaps \nFra Pandolf chanced to say “Her mantle laps \nOver my lady’s wrist too much,” or “Paint \nMust never hope to reproduce the faint \nHalf-flush that dies along her throat”: such stuff \nWas courtesy, she thought, and cause enough \nFor calling up that spot of joy. She had \nA heart—how shall I say?—too soon made glad, \nToo easily impressed; she liked whate’er \nShe looked on, and her looks went everywhere. \nSir, ’twas all one! My favour at her breast, \nThe dropping of the daylight in the West, \nThe bough of cherries some officious fool \nBroke in the orchard for her, the white mule \nShe rode with round the terrace—all and each \nWould draw from her alike the approving speech, \nOr blush, at least. She thanked men,—good! but thanked \nSomehow—I know not how—as if she ranked \nMy gift of a nine-hundred-years-old name \nWith anybody’s gift. Who’d stoop to blame \nThis sort of trifling? Even had you skill \nIn speech—(which I have not)—to make your will \nQuite clear to such an one, and say, “Just this \nOr that in you disgusts me; here you miss, \nOr there exceed the mark”—and if she let \nHerself be lessoned so, nor plainly set \nHer wits to yours, forsooth, and made excuse, \n—E’en then would be some stooping; and I choose \nNever to stoop. Oh sir, she smiled, no doubt, \nWhene’er I passed her; but who passed without \nMuch the same smile? This grew; I gave commands; \nThen all smiles stopped together. There she stands \nAs if alive. Will’t please you rise? We’ll meet \nThe company below, then. I repeat, \nThe Count your master’s known munificence \nIs ample warrant that no just pretence \nOf mine for dowry will be disallowed; \nThough his fair daughter’s self, as I avowed \nAt starting, is my object. Nay, we’ll go \nTogether down, sir. Notice Neptune, though, \nTaming a sea-horse, thought a rarity, \nWhich Claus of Innsbruck cast in bronze for me!",
-            "pub_year": 1842,
-            "copyright": false,
-            "title": "My Last Duchess"
-        }
-    },
-    {
-        "pk": 6,
-        "model": "base.poem",
-        "fields": {
-            "poet": 11,
-            "text": "Why should I blame her that she filled my days\nWith misery, or that she would of late\nHave taught to ignorant men most violent ways,\nOr hurled the little streets upon the great,\nHad they but courage equal to desire?\nWhat could have made her peaceful with a mind\nThat nobleness made simple as a fire,\nWith beauty like a tightened bow, a kind\nThat is not natural in an age like this,\nBeing high and solitary and most stern?\nWhy, what could she have done, being as she is?\nWas there another Troy for her to burn?",
-            "pub_year": 1910,
-            "copyright": false,
-            "title": "No Second Troy"
-        }
-    },
-    {
-        "pk": 7,
-        "model": "base.poem",
-        "fields": {
-            "poet": 1,
-            "text": "No Madonna and Child could touch\nthat picture of a mother's tenderness\nfor a son she soon would have to forget.\nThe air was heavy with odours\nof diarrhoea of unwashed children\nwith washed-out ribs and dried-up\nbottoms struggling in laboured\nsteps behind blown empty bellies. Most\nmothers there had long ceased\nto care but not this one; she held\na ghost smile between her teeth\nand in her eyes the ghost of a mother's\npride as she combed the rust-coloured\nhair left on his skull and then -\nsinging in her eyes - began carefully\nto part it...In another life this\nmust have been a little daily\nact of no consequence before his\nbreakfast and school; now she\ndid it like putting flowers\non a tiny grave.",
-            "pub_year": 1971,
-            "copyright": false,
-            "title": "Refugee Mother and her Child"
-        }
-    },
-    {
-        "pk": 8,
-        "model": "base.poem",
-        "fields": {
-            "poet": 4,
-            "text": "I wonder, by my troth, what thou and I\nDid, till we loved? Were we not weaned till then?\nBut sucked on country pleasures, childishly?\nOr snorted we in the Seven Sleepers’ den?\n’Twas so; but this, all pleasures fancies be.\nIf ever any beauty I did see,\nWhich I desired, and got, ’twas but a dream of thee.\n\nAnd now good-morrow to our waking souls,\nWhich watch not one another out of fear;\nFor love, all love of other sights controls,\nAnd makes one little room an everywhere.\nLet sea-discoverers to new worlds have gone,\nLet maps to other, worlds on worlds have shown,\nLet us possess one world, each hath one, and is one.\n\nMy face in thine eye, thine in mine appears,\nAnd true plain hearts do in the faces rest;\nWhere can we find two better hemispheres,\nWithout sharp north, without declining west?\nWhatever dies, was not mixed equally;\nIf our two loves be one, or, thou and I\nLove so alike, that none do slacken, none can die.",
-            "pub_year": 1633,
-            "copyright": false,
-            "title": "The Good Morrow"
-        }
-    },
-    {
-        "pk": 9,
-        "model": "base.poem",
-        "fields": {
-            "poet": 2,
-            "text": "If I should die, think only this of me:\nThat there's some corner of a foreign field\nThat is for ever England. There shall be\nIn that rich earth a richer dust concealed;\nA dust whom England bore, shaped, made aware,\nGave, once, her flowers to love, her ways to roam,\nA body of England's, breathing English air,\nWashed by the rivers, blest by suns of home.\n\nAnd think, this heart, all evil shed away,\nA pulse in the eternal mind, no less\nGives somewhere back the thoughts by England given;\nHer sights and sounds; dreams happy as her day;\nAnd laughter, learnt of friends; and gentleness,\nIn hearts at peace, under an English heaven.",
-            "pub_year": 1914,
-            "copyright": false,
-            "title": "The Soldier"
-        }
-    },
-    {
-        "pk": 10,
-        "model": "base.poem",
-        "fields": {
-            "poet": 6,
-            "text": "Why should I let the toad work\nSquat on my life?\nCan’t I use my wit as a pitchfork\nAnd drive the brute off?\n\nSix days of the week it soils\nWith its sickening poison -\nJust for paying a few bills!\nThat’s out of proportion.\n\nLots of folk live on their wits:\nLecturers, lispers,\nLosers, loblolly-men, louts-\nThey don’t end as paupers;\n\nLots of folk live up lanes\nWith fires in a bucket,\nEat windfalls and tinned sardines-\nThey seem to like it.\n\nTheir nippers have got bare feet,\nTheir unspeakable wives\nAre skinny as whippets - and yet\nNo one actually _starves_.\n\nAh, were I courageous enough\nTo shout, Stuff your pension!\nBut I know, all too well, that’s the stuff\nThat dreams are made on:\n\nFor something sufficiently toad-like\nSquats in me, too;\nIts hunkers are heavy as hard luck,\nAnd cold as snow,\n\nAnd will never allow me to blarney\nMy way of getting\nThe fame and the girl and the money\nAll at one sitting.\n\nI don’t say, one bodies the other\nOne’s spiritual truth;\nBut I do say it’s hard to lose either,\nWhen you have both.",
-            "pub_year": 1954,
-            "copyright": false,
-            "title": "Toads"
-        }
-    },
-    {
-        "pk": 11,
-        "model": "base.poem",
-        "fields": {
-            "poet": 6,
-            "text": "Walking around in the park\nShould feel better than work:\nThe lake, the sunshine,\nThe grass to lie on,\n\nBlurred playground noises\nBeyond black-stockinged nurses -\nNot a bad place to be.\nYet it doesn't suit me.\n\nBeing one of the men\nYou meet of an afternoon:\nPalsied old step-takers,\nHare-eyed clerks with the jitters,\n\nWaxed-fleshed out-patients\nStill vague from accidents,\nAnd characters in long coats\nDeep in the litter-baskets -\n\nAll dodging the toad work\nBy being stupid or weak.\nThink of being them!\nHearing the hours chime,\n\nWatching the bread delivered,\nThe sun by clouds covered,\nThe children going home;\nThink of being them,\n\nTurning over their failures\nBy some bed of lobelias,\nNowhere to go but indoors,\nNor friends but empty chairs -\n\nNo, give me my in-tray,\nMy loaf-haired secretary,\nMy shall-I-keep-the-call-in-Sir:\nWhat else can I answer,\n\nWhen the lights come on at four\nAt the end of another year?\nGive me your arm, old toad;\nHelp me down Cemetery Road.\n",
-            "pub_year": 1962,
-            "copyright": false,
-            "title": "Toads Revisited"
-        }
-    },
-    {
-        "pk": 12,
-        "model": "base.poem",
-        "fields": {
-            "poet": 7,
-            "text": "Had we but world enough, and time,\nThis coyness, Lady, were no crime.\nWe would sit down and think which way\nTo walk and pass our long love's day.\nThou by the Indian Ganges' side\nShouldst rubies find: I by the tide\nOf Humber would complain. I would\nLove you ten years before the Flood,\nAnd you should, if you please, refuse\nTill the conversion of the Jews.\nMy vegetable love should grow\nVaster than empires, and more slow;\nAn hundred years should go to praise\nThine eyes and on thy forehead gaze;\nTwo hundred to adore each breast;\nBut thirty thousand to the rest;\nAn age at least to every part,\nAnd the last age should show your heart;\nFor, Lady, you deserve this state,\nNor would I love at lower rate.\n\nBut at my back I always hear\nTime's wingèd chariot hurrying near;\nAnd yonder all before us lie\nDeserts of vast eternity.\nThy beauty shall no more be found,\nNor, in thy marble vault, shall sound\nMy echoing song: then worms shall try\nThat long preserved virginity,\nAnd your quaint honour turn to dust,\nAnd into ashes all my lust:\nThe grave's a fine and private place,\nBut none, I think, do there embrace.\n\nNow therefore, while the youthful hue\nSits on thy skin like morning dew,\nAnd while thy willing soul transpires\nAt every pore with instant fires,\nNow let us sport us while we may,\nAnd now, like amorous birds of prey,\nRather at once our time devour\nThan languish in his slow-chapt power.\nLet us roll all our strength and all\nOur sweetness up into one ball,\nAnd tear our pleasures with rough strife\nThorough the iron gates of life:\nThus, though we cannot make our sun\nStand still, yet we will make him run.",
-            "pub_year": 1681,
-            "copyright": false,
-            "title": "To His Coy Mistress"
-        }
-    },
-    {
-        "pk": 13,
-        "model": "base.poem",
-        "fields": {
-            "poet": 10,
-            "text": "Earth has not anything to show more fair:\nDull would he be of soul who could pass by\nA sight so touching in its majesty:\nThis City now doth like a garment wear\n\nThe beauty of the morning: silent, bare,\nShips, towers, domes, theatres, and temples lie\nOpen unto the fields, and to the sky,\nAll bright and glittering in the smokeless air.\n\nNever did sun more beautifully steep\nIn his first splendour valley, rock, or hill;\nNe'er saw I, never felt, a calm so deep!\n\nThe river glideth at his own sweet will:\nDear God! the very houses seem asleep;\nAnd all that mighty heart is lying still!",
-            "pub_year": 1802,
-            "copyright": false,
-            "title": "Upon Westminster Bridge"
-        }
-    },
-    {
-        "pk": 1,
-        "model": "base.lecture",
-        "fields": {
-            "lecturer": 2,
-            "poem": 1,
-            "product": 1,
-            "series": 1,
-            "synopsis": "This amazing piece of poetry exlained in an equally amazing way",
-            "video": 1,
-            "preview": 1,
-            "transcript": "PAYWALL",
-            "title": "Digging",
-            "slug": "digging"
-        }
-    },
-    {
-        "pk": 2,
-        "model": "base.lecture",
-        "fields": {
-            "lecturer": 2,
-            "poem": 2,
-            "product": 2,
-            "series": 1,
-            "synopsis": "This amazing piece of poetry exlained in an equally amazing way",
-            "video": 2,
-            "preview": 2,
-            "transcript": "PAYWALL",
-            "title": "Do Not Go Gentle Into That Good Night",
-            "slug": "do-not-go-gentle-into-that-good-night"
-        }
-    },
-    {
-        "pk": 3,
-        "model": "base.lecture",
-        "fields": {
-            "lecturer": 2,
-            "poem": 3,
-            "product": 3,
-            "series": 1,
-            "synopsis": "This amazing piece of poetry exlained in an equally amazing way",
-            "video": 3,
-            "preview": 3,
-            "transcript": "PAYWALL",
-            "title": "Dulce et Decorum",
-            "slug": "dulce-et-decorum"
-        }
-    },
-    {
-        "pk": 4,
-        "model": "base.lecture",
-        "fields": {
-            "lecturer": 2,
-            "poem": 4,
-            "product": 4,
-            "series": 1,
-            "synopsis": "This amazing piece of poetry exlained in an equally amazing way",
-            "video": 4,
-            "preview": 4,
-            "transcript": "PAYWALL",
-            "title": "Mid-Term Break",
-            "slug": "mid-term-break"
-        }
-    },
-    {
-        "pk": 5,
-        "model": "base.lecture",
-        "fields": {
-            "lecturer": 2,
-            "poem": 5,
-            "product": 5,
-            "series": 1,
-            "synopsis": "This amazing piece of poetry exlained in an equally amazing way",
-            "video": 5,
-            "preview": 5,
-            "transcript": "PAYWALL",
-            "title": "My Last Duchess",
-            "slug": "my-last-duchess"
-        }
-    },
-    {
-        "pk": 6,
-        "model": "base.lecture",
-        "fields": {
-            "lecturer": 2,
-            "poem": 6,
-            "product": 6,
-            "series": 1,
-            "synopsis": "This amazing piece of poetry exlained in an equally amazing way",
-            "video": 6,
-            "preview": 6,
-            "transcript": "PAYWALL",
-            "title": "No Second Troy",
-            "slug": "no-second-troy"
-        }
-    },
-    {
-        "pk": 7,
-        "model": "base.lecture",
-        "fields": {
-            "lecturer": 2,
-            "poem": 7,
-            "product": 7,
-            "series": 1,
-            "synopsis": "This amazing piece of poetry exlained in an equally amazing way",
-            "video": 7,
-            "preview": 7,
-            "transcript": "PAYWALL",
-            "title": "Refugee Mother and her Child",
-            "slug": "refugee-mother-and-her-child"
-        }
-    },
-    {
-        "pk": 8,
-        "model": "base.lecture",
-        "fields": {
-            "lecturer": 2,
-            "poem": 8,
-            "product": 8,
-            "series": 1,
-            "synopsis": "This amazing piece of poetry exlained in an equally amazing way",
-            "video": 8,
-            "preview": 8,
-            "transcript": "PAYWALL",
-            "title": "The Good Morrow",
-            "slug": "the-good-morrow"
-        }
-    },
-    {
-        "pk": 9,
-        "model": "base.lecture",
-        "fields": {
-            "lecturer": 2,
-            "poem": 9,
-            "product": 9,
-            "series": 1,
-            "synopsis": "This amazing piece of poetry exlained in an equally amazing way",
-            "video": 9,
-            "preview": 9,
-            "transcript": "PAYWALL",
-            "title": "The Soldier",
-            "slug": "the-soldier"
-        }
-    },
-    {
-        "pk": 10,
-        "model": "base.lecture",
-        "fields": {
-            "lecturer": 2,
-            "poem": 10,
-            "product": 10,
-            "series": 1,
-            "synopsis": "This amazing piece of poetry exlained in an equally amazing way",
-            "video": 10,
-            "preview": 10,
-            "transcript": "PAYWALL",
-            "title": "Toads",
-            "slug": "toads"
-        }
-    },
-    {
-        "pk": 11,
-        "model": "base.lecture",
-        "fields": {
-            "lecturer": 2,
-            "poem": 11,
-            "product": 11,
-            "series": 1,
-            "synopsis": "This amazing piece of poetry exlained in an equally amazing way",
-            "video": 11,
-            "preview": 11,
-            "transcript": "PAYWALL",
-            "title": "Toads Revisited",
-            "slug": "toads-revisited"
-        }
-    },
-    {
-        "pk": 12,
-        "model": "base.lecture",
-        "fields": {
-            "lecturer": 2,
-            "poem": 12,
-            "product": 12,
-            "series": 1,
-            "synopsis": "This amazing piece of poetry exlained in an equally amazing way",
-            "video": 12,
-            "preview": 12,
-            "transcript": "PAYWALL",
-            "title": "To His Coy Mistress",
-            "slug": "to-his-coy-mistress"
-        }
-    },
-    {
-        "pk": 13,
-        "model": "base.lecture",
-        "fields": {
-            "lecturer": 2,
-            "poem": 13,
-            "product": 13,
-            "series": 1,
-            "synopsis": "This amazing piece of poetry exlained in an equally amazing way",
-            "video": 13,
-            "preview": 13,
-            "transcript": "PAYWALL",
-            "title": "Upon Westminster Bridge",
-            "slug": "upon-westminster-bridge"
-        }
-    },
   {
-    "pk": 1, 
-    "model": "base.testimonial", 
+    "pk": 1,
+    "model": "base.product",
     "fields": {
-      "name": "Dr. Mike Ingham", 
-      "text": "This is a wonderful resource for students who wish to access English language poetry and understand both form and function, that is the structural elements and also the feelings and ideas that are conveyed in the poem. Dr Barker\u2019s subject expertise and enthusiasm for poetry shines through in these informative, insightful and original lecturettes. The beauty of this site is that students can glean greater understanding and appreciation of great anglophone poetry at both secondary school and university undergraduate level. Such a combination of range and depth is rare and valuable for people who care about literature pedagogy and also for those who seek to enter the world of the poetic imagination. Highly recommended!", 
-      "published_work_url": "", 
-      "profession": "T", 
-      "published_work": "", 
+      "sold": 0,
+      "price_in_dollars": "4.99",
+      "reference": "MOL0001"
+    }
+  },
+  {
+    "pk": 2,
+    "model": "base.product",
+    "fields": {
+      "sold": 0,
+      "price_in_dollars": "4.99",
+      "reference": "MOL0002"
+    }
+  },
+  {
+    "pk": 3,
+    "model": "base.product",
+    "fields": {
+      "sold": 0,
+      "price_in_dollars": "4.99",
+      "reference": "MOL0003"
+    }
+  },
+  {
+    "pk": 4,
+    "model": "base.product",
+    "fields": {
+      "sold": 0,
+      "price_in_dollars": "4.99",
+      "reference": "MOL0004"
+    }
+  },
+  {
+    "pk": 5,
+    "model": "base.product",
+    "fields": {
+      "sold": 0,
+      "price_in_dollars": "4.99",
+      "reference": "MOL0005"
+    }
+  },
+  {
+    "pk": 6,
+    "model": "base.product",
+    "fields": {
+      "sold": 0,
+      "price_in_dollars": "4.99",
+      "reference": "MOL0006"
+    }
+  },
+  {
+    "pk": 7,
+    "model": "base.product",
+    "fields": {
+      "sold": 0,
+      "price_in_dollars": "4.99",
+      "reference": "MOL0007"
+    }
+  },
+  {
+    "pk": 8,
+    "model": "base.product",
+    "fields": {
+      "sold": 0,
+      "price_in_dollars": "4.99",
+      "reference": "MOL0008"
+    }
+  },
+  {
+    "pk": 9,
+    "model": "base.product",
+    "fields": {
+      "sold": 0,
+      "price_in_dollars": "4.99",
+      "reference": "MOL0009"
+    }
+  },
+  {
+    "pk": 10,
+    "model": "base.product",
+    "fields": {
+      "sold": 0,
+      "price_in_dollars": "4.99",
+      "reference": "MOL0010"
+    }
+  },
+  {
+    "pk": 11,
+    "model": "base.product",
+    "fields": {
+      "sold": 0,
+      "price_in_dollars": "4.99",
+      "reference": "MOL0011"
+    }
+  },
+  {
+    "pk": 12,
+    "model": "base.product",
+    "fields": {
+      "sold": 0,
+      "price_in_dollars": "4.99",
+      "reference": "MOL0012"
+    }
+  },
+  {
+    "pk": 13,
+    "model": "base.product",
+    "fields": {
+      "sold": 0,
+      "price_in_dollars": "4.99",
+      "reference": "MOL0013"
+    }
+  },
+  {
+    "pk": 1,
+    "model": "base.video",
+    "fields": {
+      "duration": 1560,
+      "subtitle": "subtitles/digging.srt",
+      "video": "lectures/digging.mp4",
+      "subtitle_language": "English"
+    }
+  },
+  {
+    "pk": 2,
+    "model": "base.video",
+    "fields": {
+      "duration": 1560,
+      "subtitle": "subtitles/do_not_go.srt",
+      "video": "lectures/do_not_go.mp4",
+      "subtitle_language": "English"
+    }
+  },
+  {
+    "pk": 3,
+    "model": "base.video",
+    "fields": {
+      "duration": 1560,
+      "subtitle": "subtitles/dulce_et_decorum.srt",
+      "video": "lectures/dulce_et_decorum.mp4",
+      "subtitle_language": "English"
+    }
+  },
+  {
+    "pk": 4,
+    "model": "base.video",
+    "fields": {
+      "duration": 1560,
+      "subtitle": "subtitles/mid_term_break.srt",
+      "video": "lectures/mid_term_break.mp4",
+      "subtitle_language": "English"
+    }
+  },
+  {
+    "pk": 5,
+    "model": "base.video",
+    "fields": {
+      "duration": 1560,
+      "subtitle": "subtitles/my_last_duchess.srt",
+      "video": "lectures/my_last_duchess.mp4",
+      "subtitle_language": "English"
+    }
+  },
+  {
+    "pk": 6,
+    "model": "base.video",
+    "fields": {
+      "duration": 1560,
+      "subtitle": "subtitles/no_second_troy.srt",
+      "video": "lectures/no_second_troy.mp4",
+      "subtitle_language": "English"
+    }
+  },
+  {
+    "pk": 7,
+    "model": "base.video",
+    "fields": {
+      "duration": 1560,
+      "subtitle": "subtitles/refugee_mother_and_her_child.srt",
+      "video": "lectures/refugee_mother_and_her_child.mp4",
+      "subtitle_language": "English"
+    }
+  },
+  {
+    "pk": 8,
+    "model": "base.video",
+    "fields": {
+      "duration": 1560,
+      "subtitle": "subtitles/the_good_morrow.srt",
+      "video": "lectures/the_good_morrow.mp4",
+      "subtitle_language": "English"
+    }
+  },
+  {
+    "pk": 9,
+    "model": "base.video",
+    "fields": {
+      "duration": 1560,
+      "subtitle": "subtitles/the_soldier.srt",
+      "video": "lectures/the_soldier.mp4",
+      "subtitle_language": "English"
+    }
+  },
+  {
+    "pk": 10,
+    "model": "base.video",
+    "fields": {
+      "duration": 1560,
+      "subtitle": "subtitles/toads.srt",
+      "video": "lectures/toads.mkv",
+      "subtitle_language": "English"
+    }
+  },
+  {
+    "pk": 11,
+    "model": "base.video",
+    "fields": {
+      "duration": 1560,
+      "subtitle": "subtitles/toads_revisited.srt",
+      "video": "lectures/toads_revisited.mp4",
+      "subtitle_language": "English"
+    }
+  },
+  {
+    "pk": 12,
+    "model": "base.video",
+    "fields": {
+      "duration": 1560,
+      "subtitle": "subtitles/to_his_coy_mistress.srt",
+      "video": "lectures/to_his_coy_mistress.mp4",
+      "subtitle_language": "English"
+    }
+  },
+  {
+    "pk": 13,
+    "model": "base.video",
+    "fields": {
+      "duration": 1560,
+      "subtitle": "subtitles/westminster_bridge.srt",
+      "video": "lectures/westminster_bridge.mp4",
+      "subtitle_language": "English"
+    }
+  },
+  {
+    "pk": 1,
+    "model": "base.preview",
+    "fields": {
+      "vimeo_id": 43015135,
+      "title": "To Dig With a Pen"
+    }
+  },
+  {
+    "pk": 2,
+    "model": "base.preview",
+    "fields": {
+      "vimeo_id": 48745507,
+      "title": "Danced in a Green Bay"
+    }
+  },
+  {
+    "pk": 3,
+    "model": "base.preview",
+    "fields": {
+      "vimeo_id": 44916758,
+      "title": "The Old Lie"
+    }
+  },
+  {
+    "pk": 4,
+    "model": "base.preview",
+    "fields": {
+      "vimeo_id": 43015136,
+      "title": "Angry Tearless Sighs"
+    }
+  },
+  {
+    "pk": 5,
+    "model": "base.preview",
+    "fields": {
+      "vimeo_id": 43015137,
+      "title": "Showing Not Telling"
+    }
+  },
+  {
+    "pk": 6,
+    "model": "base.preview",
+    "fields": {
+      "vimeo_id": 50916656,
+      "title": "Simple as a Fire"
+    }
+  },
+  {
+    "pk": 7,
+    "model": "base.preview",
+    "fields": {
+      "vimeo_id": 50916655,
+      "title": "No Madonna and Child"
+    }
+  },
+  {
+    "pk": 8,
+    "model": "base.preview",
+    "fields": {
+      "vimeo_id": 50872568,
+      "title": "If Our Two Loves Be One"
+    }
+  },
+  {
+    "pk": 9,
+    "model": "base.preview",
+    "fields": {
+      "vimeo_id": 50869714,
+      "title": "Brooke as a Soldier"
+    }
+  },
+  {
+    "pk": 10,
+    "model": "base.preview",
+    "fields": {
+      "vimeo_id": 50872569,
+      "title": "The Two Toads"
+    }
+  },
+  {
+    "pk": 11,
+    "model": "base.preview",
+    "fields": {
+      "vimeo_id": 50872570,
+      "title": "Give Me Your Arm Old Toad"
+    }
+  },
+  {
+    "pk": 12,
+    "model": "base.preview",
+    "fields": {
+      "vimeo_id": 50869715,
+      "title": "The Grave's a Fine and Private Place"
+    }
+  },
+  {
+    "pk": 13,
+    "model": "base.preview",
+    "fields": {
+      "vimeo_id": 48745503,
+      "title": "Wordsworth on the City of London"
+    }
+  },
+  {
+    "pk": 1,
+    "model": "base.lecturer",
+    "fields": {
+      "user": 1
+    }
+  },
+  {
+    "pk": 2,
+    "model": "base.lecturer",
+    "fields": {
+      "user": 2
+    }
+  },
+  {
+    "pk": 1,
+    "model": "base.series",
+    "fields": {
+      "name": "Mycroft Online Lectures"
+    }
+  },
+  {
+    "pk": 1,
+    "model": "base.poet",
+    "fields": {
+      "first_name": "Chinua",
+      "last_name": "Achebe",
+      "description": "Chinua Achebe is a Nigerian novelist, poet, professor, and critic. He is best known for his first novel and magnum opus, Things Fall Apart, which is the most widely read book in modern African literature",
+      "year_of_birth": 1930,
+      "nationality": "Nigerian",
+      "year_of_death": 0
+    }
+  },
+  {
+    "pk": 2,
+    "model": "base.poet",
+    "fields": {
+      "first_name": "Rupert",
+      "last_name": "Brooke",
+      "description": "Rupert Chawner Brooke was an English poet known for his idealistic war sonnets written during the First World War, especially \"The Soldier\". He was also known for his boyish good looks...",
+      "year_of_birth": 1887,
+      "nationality": "English",
+      "year_of_death": 1915
+    }
+  },
+  {
+    "pk": 3,
+    "model": "base.poet",
+    "fields": {
+      "first_name": "Robert",
+      "last_name": "Browning",
+      "description": "Robert Browning was an English poet and playwright whose mastery of dramatic verse, especially dramatic monologues, made him one of the foremost Victorian poets.",
+      "year_of_birth": 1812,
+      "nationality": "English",
+      "year_of_death": 1889
+    }
+  },
+  {
+    "pk": 4,
+    "model": "base.poet",
+    "fields": {
+      "first_name": "John",
+      "last_name": "Donne",
+      "description": "John Donne was an English poet, satirist, lawyer and a cleric in the Church of England. He is considered the pre-eminent representative of the metaphysical poets.",
+      "year_of_birth": 1572,
+      "nationality": "English",
+      "year_of_death": 1631
+    }
+  },
+  {
+    "pk": 5,
+    "model": "base.poet",
+    "fields": {
+      "first_name": "Seamus",
+      "last_name": "Heaney",
+      "description": "Seamus Heaney is an Irish poet, playwright, translator, lecturer and recipient of the 1995 Nobel Prize in Literature. Born at Mossbawn farmhouse between Castledawson and Toomebridge, he now resides in Dublin.",
+      "year_of_birth": 1939,
+      "nationality": "Irish",
+      "year_of_death": 0
+    }
+  },
+  {
+    "pk": 6,
+    "model": "base.poet",
+    "fields": {
+      "first_name": "Philip",
+      "last_name": "Larkin",
+      "description": "Philip Arthur Larkin, was an English poet and novelist. His first book of poetry, The North Ship, was published in 1945, followed by two novels, Jill (1946) and A Girl in Winter (1947), but he came to prominence in 1955 with the publication of his second collection of poems, The Less Deceived, followed by The Whitsun Weddings (1964) and High Windows (1974). He contributed to The Daily Telegraph as its jazz critic from 1961 to 1971, articles gathered together in All What Jazz: A Record Diary 1961–71 (1985), and he edited The Oxford Book of Twentieth Century English Verse (1973).[1] He was the recipient of many honours, including the Queen's Gold Medal for Poetry.[2] He was offered, but declined, the position of poet laureate in 1984, following the death of John Betjeman.",
+      "year_of_birth": 1922,
+      "nationality": "English",
+      "year_of_death": 1985
+    }
+  },
+  {
+    "pk": 7,
+    "model": "base.poet",
+    "fields": {
+      "first_name": "Andrew",
+      "last_name": "Marvell",
+      "description": "Andrew Marvell was an English metaphysical poet and politician who sat in the House of Commons at various times between 1659 and 1678. As a metaphysical poet, he is associated with John Donne and George Herbert.",
+      "year_of_birth": 1621,
+      "nationality": "English",
+      "year_of_death": 1678
+    }
+  },
+  {
+    "pk": 8,
+    "model": "base.poet",
+    "fields": {
+      "first_name": "Wilfred",
+      "last_name": "Owen",
+      "description": "Wilfred Edward Salter Owen MC was an English poet and soldier, one of the leading poets of the First World War.",
+      "year_of_birth": 1893,
+      "nationality": "English",
+      "year_of_death": 1918
+    }
+  },
+  {
+    "pk": 9,
+    "model": "base.poet",
+    "fields": {
+      "first_name": "Dylan",
+      "last_name": "Thomas",
+      "description": "Dylan Marlais Thomas was a Welsh poet and writer whose works include poems, stories and radio broadcasts. He became popular in his lifetime, and remained popular after his death; partly due to his larger than life character, and his reputation for drinking to excess.",
+      "year_of_birth": 1914,
+      "nationality": "Welsh",
+      "year_of_death": 1953
+    }
+  },
+  {
+    "pk": 10,
+    "model": "base.poet",
+    "fields": {
+      "first_name": "William",
+      "last_name": "Wordsworth",
+      "description": "William Wordsworth was a major English Romantic poet who, with Samuel Taylor Coleridge, helped to launch the Romantic Age in English literature with the 1798 joint publication Lyrical Ballads.",
+      "year_of_birth": 1770,
+      "nationality": "English",
+      "year_of_death": 1850
+    }
+  },
+  {
+    "pk": 11,
+    "model": "base.poet",
+    "fields": {
+      "first_name": "William Butler",
+      "last_name": "Yeats",
+      "description": "William Butler Yeats was an Irish poet and one of the foremost figures of 20th century literature. A pillar of both the Irish and British literary establishments, in his later years he served as an Irish Senator for two terms.",
+      "year_of_birth": 1865,
+      "nationality": "Irish",
+      "year_of_death": 1939
+    }
+  },
+  {
+    "pk": 1,
+    "model": "base.poem",
+    "fields": {
+      "poet": 5,
+      "text": "Between my finger and my thumb\nThe squat pen rests; as snug as a gun.\n\nUnder my window a clean rasping sound\nWhen the spade sinks into gravelly ground:\nMy father, digging. I look down\n\nTill his straining rump among the flowerbeds\nBends low, comes up twenty years away\nStooping in rhythm through potato drills\nWhere he was digging.\n\nThe coarse boot nestled on the lug, the shaft\nAgainst the inside knee was levered firmly.\nHe rooted out tall tops, buried the bright edge deep\nTo scatter new potatoes that we picked\nLoving their cool hardness in our hands.\n\nBy God, the old man could handle a spade,\nJust like his old man.\n\nMy grandfather could cut more turf in a day\nThan any other man on Toner's bog.\nOnce I carried him milk in a bottle\nCorked sloppily with paper. He straightened up\nTo drink it, then fell to right away\nNicking and slicing neatly, heaving sods\nOver his shoulder, digging down and down\nFor the good turf. Digging.\n\nThe cold smell of potato mold, the squelch and slap\nOf soggy peat, the curt cuts of an edge\nThrough living roots awaken in my head.\nBut I've no spade to follow men like them.\n\nBetween my finger and my thumb\nThe squat pen rests.\nI'll dig with it.",
+      "pub_year": 1966,
+      "copyright": false,
+      "title": "Digging"
+    }
+  },
+  {
+    "pk": 2,
+    "model": "base.poem",
+    "fields": {
+      "poet": 9,
+      "text": "Do not go gentle into that good night,\nOld age should burn and rave at close of day;\nRage, rage against the dying of the light.\n\nThough wise men at their end know dark is right,\nBecause their words had forked no lightning they\nDo not go gentle into that good night.\n\nGood men, the last wave by, crying how bright\nTheir frail deeds might have danced in a green bay,\nRage, rage against the dying of the light.\n\nWild men who caught and sang the sun in flight,\nAnd learn, too late, they grieved it on its way,\nDo not go gentle into that good night.\n\nGrave men, near death, who see with blinding sight\nBlind eyes could blaze like meteors and be gay,\nRage, rage against the dying of the light.\n\nAnd you, my father, there on that sad height,\nCurse, bless, me now with your fierce tears, I pray.\nDo not go gentle into that good night.\nRage, rage against the dying of the light.",
+      "pub_year": 1952,
+      "copyright": false,
+      "title": "Do Not Go Gentle Into That Good Night"
+    }
+  },
+  {
+    "pk": 3,
+    "model": "base.poem",
+    "fields": {
+      "poet": 8,
+      "text": "Bent double, like old beggars under sacks,\nKnock-kneed, coughing like hags, we cursed through sludge,\nTill on the haunting flares we turned our backs\nAnd towards our distant rest began to trudge.\nMen marched asleep. Many had lost their boots\nBut limped on, blood-shod. All went lame; all blind;\nDrunk with fatigue; deaf even to the hoots\nOf disappointed shells that dropped behind.\n\nGAS! Gas! Quick, boys!-- An ecstasy of fumbling,\nFitting the clumsy helmets just in time;\nBut someone still was yelling out and stumbling\nAnd floundering like a man in fire or lime.--\nDim, through the misty panes and thick green light\nAs under a green sea, I saw him drowning.\n\nIn all my dreams, before my helpless sight,\nHe plunges at me, guttering, choking, drowning.\n\nIf in some smothering dreams you too could pace\nBehind the wagon that we flung him in,\nAnd watch the white eyes writhing in his face,\nHis hanging face, like a devil's sick of sin;\nIf you could hear, at every jolt, the blood\nCome gargling from the froth-corrupted lungs,\nObscene as cancer, bitter as the cud\nOf vile, incurable sores on innocent tongues,--\nMy friend, you would not tell with such high zest\nTo children ardent for some desperate glory,\nThe old Lie: Dulce et decorum est\nPro patria mori.",
+      "pub_year": 1917,
+      "copyright": false,
+      "title": "Dulce et Decorum Est"
+    }
+  },
+  {
+    "pk": 4,
+    "model": "base.poem",
+    "fields": {
+      "poet": 5,
+      "text": "I sat all morning in the college sick bay\nCounting bells knelling classes to a close.\nAt two o'clock our neighbors drove me home.\n\nIn the porch I met my father crying--\nHe had always taken funerals in his stride--\nAnd Big Jim Evans saying it was a hard blow.\n\nThe baby cooed and laughed and rocked the pram\nWhen I came in, and I was embarrassed\nBy old men standing up to shake my hand\n\nAnd tell me they were 'sorry for my trouble,'\nWhispers informed strangers I was the eldest,\nAway at school, as my mother held my hand\n\nIn hers and coughed out angry tearless sighs.\nAt ten o'clock the ambulance arrived\nWith the corpse, stanched and bandaged by the nurses.\n\nNext morning I went up into the room. Snowdrops\nAnd candles soothed the bedside; I saw him\nFor the first time in six weeks. Paler now,\n\nWearing a poppy bruise on his left temple,\nHe lay in the four foot box as in his cot.\nNo gaudy scars, the bumper knocked him clear.\n\nA four foot box, a foot for every year. ",
+      "pub_year": 1963,
+      "copyright": false,
+      "title": "Mid-Term Break"
+    }
+  },
+  {
+    "pk": 5,
+    "model": "base.poem",
+    "fields": {
+      "poet": 3,
+      "text": "That’s my last Duchess painted on the wall, \nLooking as if she were alive. I call \nThat piece a wonder, now: Fra Pandolf’s hands \nWorked busily a day, and there she stands. \nWill’t please you sit and look at her? I said \n“Fra Pandolf” by design, for never read \nStrangers like you that pictured countenance, \nThe depth and passion of its earnest glance, \nBut to myself they turned (since none puts by \nThe curtain I have drawn for you, but I) \nAnd seemed as they would ask me, if they durst, \nHow such a glance came there; so, not the first \nAre you to turn and ask thus. Sir, ’twas not \nHer husband’s presence only, called that spot \nOf joy into the Duchess’ cheek: perhaps \nFra Pandolf chanced to say “Her mantle laps \nOver my lady’s wrist too much,” or “Paint \nMust never hope to reproduce the faint \nHalf-flush that dies along her throat”: such stuff \nWas courtesy, she thought, and cause enough \nFor calling up that spot of joy. She had \nA heart—how shall I say?—too soon made glad, \nToo easily impressed; she liked whate’er \nShe looked on, and her looks went everywhere. \nSir, ’twas all one! My favour at her breast, \nThe dropping of the daylight in the West, \nThe bough of cherries some officious fool \nBroke in the orchard for her, the white mule \nShe rode with round the terrace—all and each \nWould draw from her alike the approving speech, \nOr blush, at least. She thanked men,—good! but thanked \nSomehow—I know not how—as if she ranked \nMy gift of a nine-hundred-years-old name \nWith anybody’s gift. Who’d stoop to blame \nThis sort of trifling? Even had you skill \nIn speech—(which I have not)—to make your will \nQuite clear to such an one, and say, “Just this \nOr that in you disgusts me; here you miss, \nOr there exceed the mark”—and if she let \nHerself be lessoned so, nor plainly set \nHer wits to yours, forsooth, and made excuse, \n—E’en then would be some stooping; and I choose \nNever to stoop. Oh sir, she smiled, no doubt, \nWhene’er I passed her; but who passed without \nMuch the same smile? This grew; I gave commands; \nThen all smiles stopped together. There she stands \nAs if alive. Will’t please you rise? We’ll meet \nThe company below, then. I repeat, \nThe Count your master’s known munificence \nIs ample warrant that no just pretence \nOf mine for dowry will be disallowed; \nThough his fair daughter’s self, as I avowed \nAt starting, is my object. Nay, we’ll go \nTogether down, sir. Notice Neptune, though, \nTaming a sea-horse, thought a rarity, \nWhich Claus of Innsbruck cast in bronze for me!",
+      "pub_year": 1842,
+      "copyright": false,
+      "title": "My Last Duchess"
+    }
+  },
+  {
+    "pk": 6,
+    "model": "base.poem",
+    "fields": {
+      "poet": 11,
+      "text": "Why should I blame her that she filled my days\nWith misery, or that she would of late\nHave taught to ignorant men most violent ways,\nOr hurled the little streets upon the great,\nHad they but courage equal to desire?\nWhat could have made her peaceful with a mind\nThat nobleness made simple as a fire,\nWith beauty like a tightened bow, a kind\nThat is not natural in an age like this,\nBeing high and solitary and most stern?\nWhy, what could she have done, being as she is?\nWas there another Troy for her to burn?",
+      "pub_year": 1910,
+      "copyright": false,
+      "title": "No Second Troy"
+    }
+  },
+  {
+    "pk": 7,
+    "model": "base.poem",
+    "fields": {
+      "poet": 1,
+      "text": "No Madonna and Child could touch\nthat picture of a mother's tenderness\nfor a son she soon would have to forget.\nThe air was heavy with odours\nof diarrhoea of unwashed children\nwith washed-out ribs and dried-up\nbottoms struggling in laboured\nsteps behind blown empty bellies. Most\nmothers there had long ceased\nto care but not this one; she held\na ghost smile between her teeth\nand in her eyes the ghost of a mother's\npride as she combed the rust-coloured\nhair left on his skull and then -\nsinging in her eyes - began carefully\nto part it...In another life this\nmust have been a little daily\nact of no consequence before his\nbreakfast and school; now she\ndid it like putting flowers\non a tiny grave.",
+      "pub_year": 1971,
+      "copyright": false,
+      "title": "Refugee Mother and her Child"
+    }
+  },
+  {
+    "pk": 8,
+    "model": "base.poem",
+    "fields": {
+      "poet": 4,
+      "text": "I wonder, by my troth, what thou and I\nDid, till we loved? Were we not weaned till then?\nBut sucked on country pleasures, childishly?\nOr snorted we in the Seven Sleepers’ den?\n’Twas so; but this, all pleasures fancies be.\nIf ever any beauty I did see,\nWhich I desired, and got, ’twas but a dream of thee.\n\nAnd now good-morrow to our waking souls,\nWhich watch not one another out of fear;\nFor love, all love of other sights controls,\nAnd makes one little room an everywhere.\nLet sea-discoverers to new worlds have gone,\nLet maps to other, worlds on worlds have shown,\nLet us possess one world, each hath one, and is one.\n\nMy face in thine eye, thine in mine appears,\nAnd true plain hearts do in the faces rest;\nWhere can we find two better hemispheres,\nWithout sharp north, without declining west?\nWhatever dies, was not mixed equally;\nIf our two loves be one, or, thou and I\nLove so alike, that none do slacken, none can die.",
+      "pub_year": 1633,
+      "copyright": false,
+      "title": "The Good Morrow"
+    }
+  },
+  {
+    "pk": 9,
+    "model": "base.poem",
+    "fields": {
+      "poet": 2,
+      "text": "If I should die, think only this of me:\nThat there's some corner of a foreign field\nThat is for ever England. There shall be\nIn that rich earth a richer dust concealed;\nA dust whom England bore, shaped, made aware,\nGave, once, her flowers to love, her ways to roam,\nA body of England's, breathing English air,\nWashed by the rivers, blest by suns of home.\n\nAnd think, this heart, all evil shed away,\nA pulse in the eternal mind, no less\nGives somewhere back the thoughts by England given;\nHer sights and sounds; dreams happy as her day;\nAnd laughter, learnt of friends; and gentleness,\nIn hearts at peace, under an English heaven.",
+      "pub_year": 1914,
+      "copyright": false,
+      "title": "The Soldier"
+    }
+  },
+  {
+    "pk": 10,
+    "model": "base.poem",
+    "fields": {
+      "poet": 6,
+      "text": "Why should I let the toad work\nSquat on my life?\nCan’t I use my wit as a pitchfork\nAnd drive the brute off?\n\nSix days of the week it soils\nWith its sickening poison -\nJust for paying a few bills!\nThat’s out of proportion.\n\nLots of folk live on their wits:\nLecturers, lispers,\nLosers, loblolly-men, louts-\nThey don’t end as paupers;\n\nLots of folk live up lanes\nWith fires in a bucket,\nEat windfalls and tinned sardines-\nThey seem to like it.\n\nTheir nippers have got bare feet,\nTheir unspeakable wives\nAre skinny as whippets - and yet\nNo one actually _starves_.\n\nAh, were I courageous enough\nTo shout, Stuff your pension!\nBut I know, all too well, that’s the stuff\nThat dreams are made on:\n\nFor something sufficiently toad-like\nSquats in me, too;\nIts hunkers are heavy as hard luck,\nAnd cold as snow,\n\nAnd will never allow me to blarney\nMy way of getting\nThe fame and the girl and the money\nAll at one sitting.\n\nI don’t say, one bodies the other\nOne’s spiritual truth;\nBut I do say it’s hard to lose either,\nWhen you have both.",
+      "pub_year": 1954,
+      "copyright": false,
+      "title": "Toads"
+    }
+  },
+  {
+    "pk": 11,
+    "model": "base.poem",
+    "fields": {
+      "poet": 6,
+      "text": "Walking around in the park\nShould feel better than work:\nThe lake, the sunshine,\nThe grass to lie on,\n\nBlurred playground noises\nBeyond black-stockinged nurses -\nNot a bad place to be.\nYet it doesn't suit me.\n\nBeing one of the men\nYou meet of an afternoon:\nPalsied old step-takers,\nHare-eyed clerks with the jitters,\n\nWaxed-fleshed out-patients\nStill vague from accidents,\nAnd characters in long coats\nDeep in the litter-baskets -\n\nAll dodging the toad work\nBy being stupid or weak.\nThink of being them!\nHearing the hours chime,\n\nWatching the bread delivered,\nThe sun by clouds covered,\nThe children going home;\nThink of being them,\n\nTurning over their failures\nBy some bed of lobelias,\nNowhere to go but indoors,\nNor friends but empty chairs -\n\nNo, give me my in-tray,\nMy loaf-haired secretary,\nMy shall-I-keep-the-call-in-Sir:\nWhat else can I answer,\n\nWhen the lights come on at four\nAt the end of another year?\nGive me your arm, old toad;\nHelp me down Cemetery Road.\n",
+      "pub_year": 1962,
+      "copyright": false,
+      "title": "Toads Revisited"
+    }
+  },
+  {
+    "pk": 12,
+    "model": "base.poem",
+    "fields": {
+      "poet": 7,
+      "text": "Had we but world enough, and time,\nThis coyness, Lady, were no crime.\nWe would sit down and think which way\nTo walk and pass our long love's day.\nThou by the Indian Ganges' side\nShouldst rubies find: I by the tide\nOf Humber would complain. I would\nLove you ten years before the Flood,\nAnd you should, if you please, refuse\nTill the conversion of the Jews.\nMy vegetable love should grow\nVaster than empires, and more slow;\nAn hundred years should go to praise\nThine eyes and on thy forehead gaze;\nTwo hundred to adore each breast;\nBut thirty thousand to the rest;\nAn age at least to every part,\nAnd the last age should show your heart;\nFor, Lady, you deserve this state,\nNor would I love at lower rate.\n\nBut at my back I always hear\nTime's wingèd chariot hurrying near;\nAnd yonder all before us lie\nDeserts of vast eternity.\nThy beauty shall no more be found,\nNor, in thy marble vault, shall sound\nMy echoing song: then worms shall try\nThat long preserved virginity,\nAnd your quaint honour turn to dust,\nAnd into ashes all my lust:\nThe grave's a fine and private place,\nBut none, I think, do there embrace.\n\nNow therefore, while the youthful hue\nSits on thy skin like morning dew,\nAnd while thy willing soul transpires\nAt every pore with instant fires,\nNow let us sport us while we may,\nAnd now, like amorous birds of prey,\nRather at once our time devour\nThan languish in his slow-chapt power.\nLet us roll all our strength and all\nOur sweetness up into one ball,\nAnd tear our pleasures with rough strife\nThorough the iron gates of life:\nThus, though we cannot make our sun\nStand still, yet we will make him run.",
+      "pub_year": 1681,
+      "copyright": false,
+      "title": "To His Coy Mistress"
+    }
+  },
+  {
+    "pk": 13,
+    "model": "base.poem",
+    "fields": {
+      "poet": 10,
+      "text": "Earth has not anything to show more fair:\nDull would he be of soul who could pass by\nA sight so touching in its majesty:\nThis City now doth like a garment wear\n\nThe beauty of the morning: silent, bare,\nShips, towers, domes, theatres, and temples lie\nOpen unto the fields, and to the sky,\nAll bright and glittering in the smokeless air.\n\nNever did sun more beautifully steep\nIn his first splendour valley, rock, or hill;\nNe'er saw I, never felt, a calm so deep!\n\nThe river glideth at his own sweet will:\nDear God! the very houses seem asleep;\nAnd all that mighty heart is lying still!",
+      "pub_year": 1802,
+      "copyright": false,
+      "title": "Upon Westminster Bridge"
+    }
+  },
+  {
+    "pk": 1,
+    "model": "base.lecture",
+    "fields": {
+      "lecturer": 2,
+      "poem": 1,
+      "product": 1,
+      "title": "Digging",
+      "series": 1,
+      "synopsis": "This amazing piece of poetry exlained in an equally amazing way",
+      "video": 1,
+      "preview": 1,
+      "transcript": "PAYWALL",
+      "slug": "digging"
+    }
+  },
+  {
+    "pk": 2,
+    "model": "base.lecture",
+    "fields": {
+      "lecturer": 2,
+      "poem": 2,
+      "product": 2,
+      "title": "Do Not Go Gentle Into That Good Night",
+      "series": 1,
+      "synopsis": "This amazing piece of poetry exlained in an equally amazing way",
+      "video": 2,
+      "preview": 2,
+      "transcript": "PAYWALL",
+      "slug": "do-not-go-gentle-into-that-good-night"
+    }
+  },
+  {
+    "pk": 3,
+    "model": "base.lecture",
+    "fields": {
+      "lecturer": 2,
+      "poem": 3,
+      "product": 3,
+      "title": "Dulce et Decorum",
+      "series": 1,
+      "synopsis": "This amazing piece of poetry exlained in an equally amazing way",
+      "video": 3,
+      "preview": 3,
+      "transcript": "PAYWALL",
+      "slug": "dulce-et-decorum"
+    }
+  },
+  {
+    "pk": 4,
+    "model": "base.lecture",
+    "fields": {
+      "lecturer": 2,
+      "poem": 4,
+      "product": 4,
+      "title": "Mid-Term Break",
+      "series": 1,
+      "synopsis": "This amazing piece of poetry exlained in an equally amazing way",
+      "video": 4,
+      "preview": 4,
+      "transcript": "PAYWALL",
+      "slug": "mid-term-break"
+    }
+  },
+  {
+    "pk": 5,
+    "model": "base.lecture",
+    "fields": {
+      "lecturer": 2,
+      "poem": 5,
+      "product": 5,
+      "title": "My Last Duchess",
+      "series": 1,
+      "synopsis": "This amazing piece of poetry exlained in an equally amazing way",
+      "video": 5,
+      "preview": 5,
+      "transcript": "PAYWALL",
+      "slug": "my-last-duchess"
+    }
+  },
+  {
+    "pk": 6,
+    "model": "base.lecture",
+    "fields": {
+      "lecturer": 2,
+      "poem": 6,
+      "product": 6,
+      "title": "No Second Troy",
+      "series": 1,
+      "synopsis": "This amazing piece of poetry exlained in an equally amazing way",
+      "video": 6,
+      "preview": 6,
+      "transcript": "PAYWALL",
+      "slug": "no-second-troy"
+    }
+  },
+  {
+    "pk": 7,
+    "model": "base.lecture",
+    "fields": {
+      "lecturer": 2,
+      "poem": 7,
+      "product": 7,
+      "title": "Refugee Mother and her Child",
+      "series": 1,
+      "synopsis": "This amazing piece of poetry exlained in an equally amazing way",
+      "video": 7,
+      "preview": 7,
+      "transcript": "PAYWALL",
+      "slug": "refugee-mother-and-her-child"
+    }
+  },
+  {
+    "pk": 8,
+    "model": "base.lecture",
+    "fields": {
+      "lecturer": 2,
+      "poem": 8,
+      "product": 8,
+      "title": "The Good Morrow",
+      "series": 1,
+      "synopsis": "This amazing piece of poetry exlained in an equally amazing way",
+      "video": 8,
+      "preview": 8,
+      "transcript": "PAYWALL",
+      "slug": "the-good-morrow"
+    }
+  },
+  {
+    "pk": 9,
+    "model": "base.lecture",
+    "fields": {
+      "lecturer": 2,
+      "poem": 9,
+      "product": 9,
+      "title": "The Soldier",
+      "series": 1,
+      "synopsis": "This amazing piece of poetry exlained in an equally amazing way",
+      "video": 9,
+      "preview": 9,
+      "transcript": "PAYWALL",
+      "slug": "the-soldier"
+    }
+  },
+  {
+    "pk": 10,
+    "model": "base.lecture",
+    "fields": {
+      "lecturer": 2,
+      "poem": 10,
+      "product": 10,
+      "title": "Toads",
+      "series": 1,
+      "synopsis": "This amazing piece of poetry exlained in an equally amazing way",
+      "video": 10,
+      "preview": 10,
+      "transcript": "PAYWALL",
+      "slug": "toads"
+    }
+  },
+  {
+    "pk": 11,
+    "model": "base.lecture",
+    "fields": {
+      "lecturer": 2,
+      "poem": 11,
+      "product": 11,
+      "title": "Toads Revisited",
+      "series": 1,
+      "synopsis": "This amazing piece of poetry exlained in an equally amazing way",
+      "video": 11,
+      "preview": 11,
+      "transcript": "PAYWALL",
+      "slug": "toads-revisited"
+    }
+  },
+  {
+    "pk": 12,
+    "model": "base.lecture",
+    "fields": {
+      "lecturer": 2,
+      "poem": 12,
+      "product": 12,
+      "title": "To His Coy Mistress",
+      "series": 1,
+      "synopsis": "This amazing piece of poetry exlained in an equally amazing way",
+      "video": 12,
+      "preview": 12,
+      "transcript": "PAYWALL",
+      "slug": "to-his-coy-mistress"
+    }
+  },
+  {
+    "pk": 13,
+    "model": "base.lecture",
+    "fields": {
+      "lecturer": 2,
+      "poem": 13,
+      "product": 13,
+      "title": "Upon Westminster Bridge",
+      "series": 1,
+      "synopsis": "This amazing piece of poetry exlained in an equally amazing way",
+      "video": 13,
+      "preview": 13,
+      "transcript": "PAYWALL",
+      "slug": "upon-westminster-bridge"
+    }
+  },
+  {
+    "pk": 1,
+    "model": "base.testimonial",
+    "fields": {
+      "name": "Dr. Mike Ingham",
+      "text": "This is a wonderful resource for students who wish to access English language poetry and understand both form and function, that is the structural elements and also the feelings and ideas that are conveyed in the poem. Dr Barker’s subject expertise and enthusiasm for poetry shines through in these informative, insightful and original lecturettes. The beauty of this site is that students can glean greater understanding and appreciation of great anglophone poetry at both secondary school and university undergraduate level. Such a combination of range and depth is rare and valuable for people who care about literature pedagogy and also for those who seek to enter the world of the poetic imagination. Highly recommended!",
+      "published_work_url": "",
+      "profession": "T",
+      "published_work": "",
       "credentials": "Lecturer Lingam University"
     }
-  }, 
+  },
   {
-    "pk": 2, 
-    "model": "base.testimonial", 
+    "pk": 2,
+    "model": "base.testimonial",
     "fields": {
-      "name": "Dr. Jessica Yeung", 
-      "text": "Mycroft is, as we all know from the Sherlock Holmes stories, Sherlock\u2019s even smarter brother. However, it doesn\u2019t take a genius to see that the Mycroft online lectures really can benefit my second-language students. They find English language poetry extremely challenging, and for my MA and undergraduate students it is essential for them to have some exposure to the cultural experience of poetry in English as well as in Chinese, if they are to appreciate poetry translation in both language directions. The Mycroft lectures have really succeeded in opening up the world of English language poetry to my students. Thanks to the happy blend of clarity and analytical rigour evident in the structure and execution of the lectures, we now have a valuable self-study aid as well as a dynamic teaching tool in class. For Translation students this is an ideal study aid because the lectures draw them into the world of the poem, clearly explicating the cultural background, the metaphors and layers of meaning, the language devices and subtext, as well as offering insights into the personality of the poet and the wider context of the poem. I recommend the Mycroft lectures on poetry very strongly for fellow teachers of literature both to whet the appetite for and stimulate the interest in poetry among their students and, at the same time, provide a practical resource for those who find English language poetry rather forbidding. A valuable addition to the world of online resources, Mycroft\u2019s excellence lies in its attention to every detail of the student\u2019s fundamental needs in the understanding and appreciation of an impressive range of famous English poems. Thoroughly recommended for my Hong Kong as well as for international students in general!", 
-      "published_work_url": "", 
-      "profession": "T", 
-      "published_work": "", 
+      "name": "Dr. Jessica Yeung",
+      "text": "Mycroft is, as we all know from the Sherlock Holmes stories, Sherlock’s even smarter brother. However, it doesn’t take a genius to see that the Mycroft online lectures really can benefit my second-language students. They find English language poetry extremely challenging, and for my MA and undergraduate students it is essential for them to have some exposure to the cultural experience of poetry in English as well as in Chinese, if they are to appreciate poetry translation in both language directions. The Mycroft lectures have really succeeded in opening up the world of English language poetry to my students. Thanks to the happy blend of clarity and analytical rigour evident in the structure and execution of the lectures, we now have a valuable self-study aid as well as a dynamic teaching tool in class. For Translation students this is an ideal study aid because the lectures draw them into the world of the poem, clearly explicating the cultural background, the metaphors and layers of meaning, the language devices and subtext, as well as offering insights into the personality of the poet and the wider context of the poem. I recommend the Mycroft lectures on poetry very strongly for fellow teachers of literature both to whet the appetite for and stimulate the interest in poetry among their students and, at the same time, provide a practical resource for those who find English language poetry rather forbidding. A valuable addition to the world of online resources, Mycroft’s excellence lies in its attention to every detail of the student’s fundamental needs in the understanding and appreciation of an impressive range of famous English poems. Thoroughly recommended for my Hong Kong as well as for international students in general!",
+      "published_work_url": "",
+      "profession": "T",
+      "published_work": "",
       "credentials": "Associate Professor Dept of English, Translation Programme, Hong Kong Baptist University."
     }
-  }, 
+  },
   {
-    "pk": 3, 
-    "model": "base.testimonial", 
+    "pk": 3,
+    "model": "base.testimonial",
     "fields": {
-      "name": "Martin Alexander", 
-      "text": "Students of poetry in English will enjoy and be stimulated by Dr Barker\u2019s close readings of this series of poems. The selection features poems regularly included on exam syllabuses and often taught in senior secondary school classes. His analysis and exploration of the poetry leads the viewer to a close understanding of how each poet has arrived at a distinctive, memorable and striking articulation of the human condition. Barker has won recognition for his teaching style, and it shows.", 
-      "published_work_url": "http://www.amazon.com/Clearing-Ground-Martin-Alexander/dp/9889706091", 
-      "profession": "T", 
-      "published_work": "Clearing Ground", 
+      "name": "Martin Alexander",
+      "text": "Students of poetry in English will enjoy and be stimulated by Dr Barker’s close readings of this series of poems. The selection features poems regularly included on exam syllabuses and often taught in senior secondary school classes. His analysis and exploration of the poetry leads the viewer to a close understanding of how each poet has arrived at a distinctive, memorable and striking articulation of the human condition. Barker has won recognition for his teaching style, and it shows.",
+      "published_work_url": "http://www.amazon.com/Clearing-Ground-Martin-Alexander/dp/9889706091",
+      "profession": "T",
+      "published_work": "Clearing Ground",
       "credentials": "Editor. Asia Literary Review.\r\nFormer Head of English at Island School.\r\n"
     }
-  }, 
+  },
   {
-    "pk": 4, 
-    "model": "base.testimonial", 
+    "pk": 4,
+    "model": "base.testimonial",
     "fields": {
-      "name": "Dilip Barad, Ph.D.", 
-      "text": "Dear Dr. Andrew Barker,\r\n\r\nI saw sample lectures on poetry on www.mycroft-online-lectures.com\r\nI am impressed by your work. It is indeed, very helpful resource for the students as well as teachers of English literature. Most of the poems you have dealt are in curriculum of Indian universities.\r\n\r\nWhat I liked:\r\n\r\n- Slow and steady pace of your speech \u2013helpful to students and grasping the ideas\u2026\r\n- Some lines of poems written on the screen \u2013this is very good\u2026 and I hope the entire poem must be visible to the viewers in full video.\r\n- Analysis is quite up to the mark of university level.\r\n\r\nA valuable resource and an excellent work by Dr. Andrew Barker", 
-      "published_work_url": "", 
-      "profession": "T", 
-      "published_work": "", 
+      "name": "Dilip Barad, Ph.D.",
+      "text": "Dear Dr. Andrew Barker,\r\n\r\nI saw sample lectures on poetry on www.mycroft-online-lectures.com\r\nI am impressed by your work. It is indeed, very helpful resource for the students as well as teachers of English literature. Most of the poems you have dealt are in curriculum of Indian universities.\r\n\r\nWhat I liked:\r\n\r\n- Slow and steady pace of your speech –helpful to students and grasping the ideas…\r\n- Some lines of poems written on the screen –this is very good… and I hope the entire poem must be visible to the viewers in full video.\r\n- Analysis is quite up to the mark of university level.\r\n\r\nA valuable resource and an excellent work by Dr. Andrew Barker",
+      "published_work_url": "",
+      "profession": "T",
+      "published_work": "",
       "credentials": "Professor & Head, Dept. of English, Maharaja Krishnakumarsinhji Bhavnagar University,\r\nwww.dilipbarad.com\r\nwww.facebook.com/dilipbarad"
     }
-  }, 
+  },
   {
-    "pk": 5, 
-    "model": "base.testimonial", 
+    "pk": 5,
+    "model": "base.testimonial",
     "fields": {
-      "name": "Reid Mitchell", 
-      "text": "A splendid series of lectures, delivered with intelligence, vigor, and rare humor. I recommend Dr. Barker\u2019s material highly to both students, teachers, and all lovers of literature. Besides the joy of appreciating some of the greatest poems in the English languages, viewers will learn the principles of analysis necessary both for the enjoyment of poetry and academic success. Therefore I particularly recommend these lectures to all of you preparing for such examinations as the IB.", 
-      "published_work_url": "http://www.amazon.com/Man-Under-Authority-Reid-Mitchell/dp/1885983115", 
-      "profession": "T", 
-      "published_work": "A Man Under Authority", 
+      "name": "Reid Mitchell",
+      "text": "A splendid series of lectures, delivered with intelligence, vigor, and rare humor. I recommend Dr. Barker’s material highly to both students, teachers, and all lovers of literature. Besides the joy of appreciating some of the greatest poems in the English languages, viewers will learn the principles of analysis necessary both for the enjoyment of poetry and academic success. Therefore I particularly recommend these lectures to all of you preparing for such examinations as the IB.",
+      "published_work_url": "http://www.amazon.com/Man-Under-Authority-Reid-Mitchell/dp/1885983115",
+      "profession": "T",
+      "published_work": "A Man Under Authority",
       "credentials": "Fulbright Lecturer in American Studies, Hong Kong University, 2005-2006\r\nEnglish Language Teacher, Tsinghua University, Beijing."
     }
-  }, 
+  },
   {
-    "pk": 6, 
-    "model": "base.testimonial", 
+    "pk": 6,
+    "model": "base.testimonial",
     "fields": {
-      "name": "Jenny Wong", 
-      "text": "An innovative and user-friendly resource for literary studies on contemporary poets, and a source of inspiration for both teachers and students.", 
-      "published_work_url": "http://www.amazon.com/gp/product/9889902117", 
-      "profession": "P", 
-      "published_work": "Summer Cicadas", 
+      "name": "Jenny Wong",
+      "text": "An innovative and user-friendly resource for literary studies on contemporary poets, and a source of inspiration for both teachers and students.",
+      "published_work_url": "http://www.amazon.com/gp/product/9889902117",
+      "profession": "P",
+      "published_work": "Summer Cicadas",
       "credentials": "Poetry Parnassus 2012 poet Hong Kong."
     }
-  }, 
+  },
   {
-    "pk": 7, 
-    "model": "base.testimonial", 
+    "pk": 7,
+    "model": "base.testimonial",
     "fields": {
-      "name": "Akin Jeje", 
-      "text": "I think that this online lecture series is an invaluable tool for any student of English poetry. Students are able to visualize the poem through Dr. Barker\u2019s lecture, rather than just attempt to grasp potentially arcane meaning and symbolism by themselves. Definitely recommended!", 
-      "published_work_url": "http://www.amazon.com/Smoked-Pearl-Poems-Hong-Beyond/dp/9881932114", 
-      "profession": "P", 
-      "published_work": "Smoked Pearl", 
+      "name": "Akin Jeje",
+      "text": "I think that this online lecture series is an invaluable tool for any student of English poetry. Students are able to visualize the poem through Dr. Barker’s lecture, rather than just attempt to grasp potentially arcane meaning and symbolism by themselves. Definitely recommended!",
+      "published_work_url": "http://www.amazon.com/Smoked-Pearl-Poems-Hong-Beyond/dp/9881932114",
+      "profession": "P",
+      "published_work": "Smoked Pearl",
       "credentials": "Canada."
     }
-  }, 
+  },
   {
-    "pk": 8, 
-    "model": "base.testimonial", 
+    "pk": 8,
+    "model": "base.testimonial",
     "fields": {
-      "name": "Meena Kandasamy", 
-      "text": "Reminiscent of John Keating in Dead Poets Society, Dr Andrew Barker approaches poetry with a passion that draws the student/viewer to engage with the poem not just as a text to be understood with the aid of annotations but as an experience. He blends the seriousness of the literary critic with the intimate exuberance of a poet; so, it is a delight to watch him explain a love poem by hauling John Donne from the seventeenth century to a contemporary milieu, or, hear him shrewdly unwrap the layers of meaning in Seamus Heaney\u2019s Digging.\r\n\r\nMycroft lectures include a comprehensive selection of poems many of which are on the English literature syllabi of several Indian universities. Apart from understanding the contexts, nuances, metaphors and poetic devices incorporated in the poems, students will also immensely benefit from observing the language and method employed to discuss poetry.\r\n\r\nThese poetry lectures can also be incorporated in ESL classrooms to wean away students from the preconceived notion that language learning is merely gaining command over a set of communication skills, and to give these students a taste of English literature, to allow them to partake of its beauty and its brilliance. I recommend these lectures strongly and I believe that they will be amazing teaching resources in English language classrooms.", 
-      "published_work_url": "http://www.amazon.com/Ms-Militancy-Meena-Kandasamy/dp/8189059343", 
-      "profession": "P", 
-      "published_work": "Ms. Militancy", 
+      "name": "Meena Kandasamy",
+      "text": "Reminiscent of John Keating in Dead Poets Society, Dr Andrew Barker approaches poetry with a passion that draws the student/viewer to engage with the poem not just as a text to be understood with the aid of annotations but as an experience. He blends the seriousness of the literary critic with the intimate exuberance of a poet; so, it is a delight to watch him explain a love poem by hauling John Donne from the seventeenth century to a contemporary milieu, or, hear him shrewdly unwrap the layers of meaning in Seamus Heaney’s Digging.\r\n\r\nMycroft lectures include a comprehensive selection of poems many of which are on the English literature syllabi of several Indian universities. Apart from understanding the contexts, nuances, metaphors and poetic devices incorporated in the poems, students will also immensely benefit from observing the language and method employed to discuss poetry.\r\n\r\nThese poetry lectures can also be incorporated in ESL classrooms to wean away students from the preconceived notion that language learning is merely gaining command over a set of communication skills, and to give these students a taste of English literature, to allow them to partake of its beauty and its brilliance. I recommend these lectures strongly and I believe that they will be amazing teaching resources in English language classrooms.",
+      "published_work_url": "http://www.amazon.com/Ms-Militancy-Meena-Kandasamy/dp/8189059343",
+      "profession": "P",
+      "published_work": "Ms. Militancy",
       "credentials": "India"
     }
   }
