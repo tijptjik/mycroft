@@ -37,14 +37,12 @@ SITE_ID = 1
 ROOT_URLCONF = 'mycroft.urls'
 
 INSTALLED_APPS = [
-    # Template apps
-    'jingo_minify',
-
+    
     # Django contrib apps
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
-    # 'django.contrib.sites',
+    'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.admin',
     'django.contrib.admindocs',
@@ -54,24 +52,30 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     # Third-party apps, patches, fixes
-    'commonware.response.cookies',
-    'django_nose',
-    'session_csrf',
+    # 'commonware.response.cookies',
+    # 'session_csrf',
     'debug_toolbar',
-    #'djcelery',
+    'compressor',
     #'debug_toolbar_user_panel',
     #'memcache_toolbar',
 
     # Database migrations
     'south',
 
+    # Registration
+    'registration',
+    'registration_email',
+    'registration_touch',
+    
     # Transactions
     'paypal.standard.ipn',
+    'subscription',
 
     # Application base, containing global templates.
     'mycroft.base',
-
-    # Local apps, referenced via mycroft.appname
+    'gunicorn',
+    'django_extensions',
+    'djsupervisor',
 ]
 
 # Place bcrypt first in the list, so it will be the default password hashing
@@ -88,7 +92,7 @@ PASSWORD_HASHERS = (
 # Sessions
 #
 # By default, be at least somewhat secure with our session cookies.
-SESSION_COOKIE_HTTPONLY = True
+SESSION_COOKIE_HTTPONLY = False
 
 # Set this to true if you are using https
 SESSION_COOKIE_SECURE = False
@@ -145,10 +149,10 @@ MIDDLEWARE_CLASSES = [
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'session_csrf.CsrfMiddleware',  # Must be after auth middleware.
     'django.contrib.messages.middleware.MessageMiddleware',
-    'commonware.middleware.FrameOptionsHeader',
+    # 'commonware.middleware.FrameOptionsHeader',
     'debug_toolbar.middleware.DebugToolbarMiddleware',
+    'mycroft.base.disable.DisableCSRF', 
 ]
 
 TEMPLATE_CONTEXT_PROCESSORS = [
@@ -158,9 +162,7 @@ TEMPLATE_CONTEXT_PROCESSORS = [
     'django.core.context_processors.request',
     'django.core.context_processors.i18n',
     'django.core.context_processors.static',
-    'session_csrf.context_processor',
     'django.contrib.messages.context_processors.messages',
-    #'jingo_minify.helpers.build_ids',
 ]
 
 TEMPLATE_DIRS = (
@@ -173,20 +175,21 @@ TEMPLATE_DIRS = (
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
-    'jingo.Loader',
     'django.template.loaders.filesystem.Loader',
     'django.template.loaders.app_directories.Loader',
+)
+
+COMPRESS_PRECOMPILERS = (
+   ('text/less', 'lesscpy {infile} {outfile}'),
 )
 
 FIXTURE_DIRS = (
     os.path.join(PROJECT_ROOT, 'fixtures'),
 )
 
-
 def custom_show_toolbar(request):
     """ Only show the debug toolbar to users with the superuser flag. """
     return request.user.is_superuser
-
 
 DEBUG_TOOLBAR_CONFIG = {
     'INTERCEPT_REDIRECTS': False,
@@ -211,38 +214,45 @@ DEBUG_TOOLBAR_PANELS = (
     'debug_toolbar.panels.logger.LoggingPanel',
 )
 
-# Specify a model to use for user profiles, if desired.
-#AUTH_PROFILE_MODULE = 'mycroft.accounts.UserProfile'
-
 FILE_UPLOAD_PERMISSIONS = 0664
 
 INTERNAL_IPS = ('127.0.0.1',)
 
-JINGO_EXCLUDE_APPS = [
-    'admin',
-    # 'billing',
-    'paypal',
-    'registration',
-    'debug_toolbar',
-    'debug_toolbar_user_panel',
-    'memcache_toolbar',
-]
-
-JINJA2_EXTENSIONS = [
-    'compressor.contrib.jinja2ext.CompressorExtension',
-]
-
-JINJA2_ENVIRONMENT_OPTIONS = {
-    'autoescape': False,
- }
-
-COMPRESS_PRECOMPILERS = (
-   ('text/less', 'lesscpy {infile} {outfile}'),
-)
-
 SITE_NAME = 'http://mycroftlectures.dyndns-free.com'
 
 PAYPAL_RECEIVER_EMAIL = "andy_1354358238_biz@type.hk"
+
+SUBSCRIPTION_PAYPAL_SETTINGS = {
+        "business": PAYPAL_RECEIVER_EMAIL,
+        "notify_url": "%s%s" % (SITE_NAME, '/subscription/paypal/'),
+        "return_url": "%s%s" % (SITE_NAME, '/thanks/'),
+        "cancel_return": "%s%s" % (SITE_NAME, '/cancel/'),
+    }
+
+PAYPAL_TEST = True
+
+ACCOUNT_ACTIVATION_DAYS = 7
+
+AUTHENTICATION_BACKENDS = (
+    'registration_email.auth.EmailBackend',
+)
+
+LOGIN_REDIRECT_URL = '/'
+
+DEFAULT_FROM_EMAIL = 'Andrew Barker <andrew.barker@mycroft-online-lectures.com>'
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'andrew.barker@mycroft-online-lectures.com'
+EMAIL_HOST_PASSWORD = 'hisdarkmaterials'
+EMAIL_PORT = 587
+
+# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+ANON_ALWAYS = True
+
+DOWNLOAD_EXPIRATION_DAYS = 14
+
+USE_XSENDFILE = True
 
 # The WSGI Application to use for runserver
 WSGI_APPLICATION = 'mycroft.wsgi.application'
