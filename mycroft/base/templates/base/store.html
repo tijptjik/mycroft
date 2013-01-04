@@ -1,10 +1,209 @@
 {% extends "base.html" %}
+{% load url from future %}
+{% load i18n %}
 
-{% block page_class %}home-page{% endblock %}
+{% block page_class %}Store{% endblock %}
 {% block content %}
 
-{{ student }}
-{{ educator }}
-{{ institutional }}
+<div class="row">
+    <div class="span4 well">
+        <h2>Student Downloads</h2>
+        <h4>Mycroft Online Lectures</h4>
+        <div id="lectureList">
+            {%for lecture in lecture_list%}
+                <label class="checkbox">
+                  {{lecture.title}}
+                  <input class="lectureCheckbox" type="checkbox" data-title="{{lecture.title}}" data-id="{{lecture.id}}" value="{{lecture.title}}">
+                </label>
+            {% endfor %}
+        </div>
+
+        <h4>Deliver by E-mail to:</h4> 
+        <div class="row checkoutFooter">
+           <form id="bt_form2" action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post">
+                <input type="text" id="email" name="email" value="" placeholder="E-mail Address" validate="required|email">
+                <input type="hidden" id="address_override" name="address_override" value="1">
+                <input type="hidden" id="payer_email" name="payer_email" value="">
+                <input type="hidden" id="payer_id" name="payer_id" value="">
+                <input type="hidden" id="item_number" name="item_number" value="">
+                <input type="hidden" name="custom" value="0" id="custom_items">
+                <input type="hidden" name="discount_rate_cart" value="0" id="discount_rate_cart">
+                {{student}}
+                <input type="hidden" name="upload" value="1">
+            </form>
+                <div class="span1"><p><b>Total</b><br> $ <span id="totalPrice">0</span><p></div>
+                <div class="span1"><p><b>Discount</b><br> <span id="discountPercentage">0</span> %<p></div>
+                <div class="span2">
+                <input id="submitCart" type="submit" class="btn btn-danger" value="Select your Lectures" alt="Checkout with PayPal">
+        </div>
+    </div>
+    </div>
+
+{%for subscription in subscription_list %}
+    <div class="span3 well">
+        <h2>{{subscription.name}}</h2>
+        <p> {{subscription.description}}</p>
+        <p> $ {{subscription.price}}<a data-toggle="modal" data-id="{{subscription.id}}" data-product="{{subscription.name}}" data-toggle="modal" title="{{subscription.name}}" class="btn-modal btn btn-primary pull-right" href="#SubscriptionDialog">Sign-up</a>
+    </div>
+{% endfor %}
+</div>
+<div class="row">
+</div>
+
+
+
+<!-- Modal -->
+<div id="SubscriptionDialog" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="SubscribeLabel" aria-hidden="true">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h3 id="SubscribeLabel">Enter your subscription details</h3>
+    </div>
+    <div class="modal-body">
+<!-- Registration Form -->
+    <h2 id="productLabel">Product</h2>
+    <form id="subscriptionForm" method="post" action=".">{% csrf_token %}
+        <label for="id_email">Email:</label><input id="id_email" validate="required|email" type="text" name="email" maxlength="256">
+        <label for="password1">Password:</label> <input id="password1" type="password" class="required" name="password1">
+        <label for="password2">Password (repeat):</label> <input validate="required|custom_pass_eq" type="password" name="password2" id="password2">
+        <input type="hidden" name="id" value="0" id="subscriptionID">'
+    </form>
+    </div>  
+  <div class="modal-footer">
+    <button id="registerUserButton" class="btn btn-primary">{% trans 'Checkout with PayPal' %}</button>
+    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+  </div>
+{{ subscription1 }}
+{{ subscription2 }}
+</div>
 
 {% endblock %}
+
+{% block scripts %}
+    <script type="text/javascript">
+
+    var selectedLectures = [];
+    var discount = 0;
+    var target = '';
+
+    $(".btn-modal").on("click", function() {
+        var Sub = $(this)
+        $('#id_item_number').val(Sub.data('id'))
+        $('#id_item_name').val(Sub.data('product'))
+        $("#productLabel").text(Sub.data('product'));
+    });
+
+    function updatePrice (quantity, discount) {
+        $('#totalPrice').text(Math.round(quantity * 4.99 * ((100 - discount)/100)*100)/100);
+        $('#discountPercentage').text(discount);
+
+        if(quantity){
+            $('#submitCart').val('Checkout with PayPal').addClass('btn-primary').removeClass('btn-danger');
+        } else {
+            console.log('should!')
+            $('#submitCart').val('Select your Lectures').toggleClass('btn-danger');
+        }
+    }
+
+    function calculateDiscount (quantity) {
+        if(quantity == 0){
+            discount = 0;
+        } else if(0 < quantity && quantity < 7){
+            discount = quantity * 5 - 5;
+        } else if(quantity > 6){
+            discount = 30;
+        }
+        $('#discount_rate_cart').val(discount)
+        return discount;
+    }
+
+
+    function relabelItems(){
+        $('.cartItem').each(function(index) {
+            $(this).attr('name', "item_name_" + (index+1))
+        });
+
+        $('.itemAmount').each(function(index) {
+            $(this).attr('name', "amount_" + (index+1))
+        });
+  
+        $('.itemNumber').each(function(index) {
+            $(this).attr('name', "item_number" + (index+1))
+        });
+    }
+
+    $('#lectureList').on("click", ".lectureCheckbox", function () {
+        var lectureID = $(this).data('id');
+        var lectureTitle = $(this).data('title');
+        var quantity = $(':checked').length;
+        discount = calculateDiscount(quantity)
+
+        if(selectedLectures[lectureID]){
+            selectedLectures[lectureID] = false;
+            $("#item" + lectureID).remove();
+            $('#amount' + lectureID).remove();
+            $('#item_number' + lectureID).remove();
+            relabelItems();
+        } else {
+            selectedLectures[lectureID] = true;
+            $('#bt_form2').append('<input type="hidden" name="amount_' + quantity +'" value="4.99" id="amount' + lectureID + '" class="itemAmount">')
+            $('#bt_form2').append('<input type="hidden" name="item_name_'+ quantity +'" value="'+  lectureTitle + '" id="item' + lectureID + '" class="cartItem">')
+            $('#bt_form2').append('<input type="hidden" name="item_number_'+ quantity +'" value="' + lectureID + '" id="item_number' + lectureID + '" class="itemNumber">')
+        }
+        var selected = [];
+        $.each(selectedLectures, function(index, value) { 
+              if(value){
+                selected.push(index)
+                }});
+        $('#custom_items').val(selected.join());
+        updatePrice(quantity, discount);
+    });
+
+    $("#submitCart").click(function(event) {
+      event.preventDefault();
+      $.bt_validate.result = true;
+      $('#bt_form2').bt_validate()
+      if($.bt_validate.blocked){ 
+            return false };
+      
+      email = $('#email').serialize();
+      $(this).toggleClass('btn-loading').val('Loading...');
+
+      $.post("/api/client/student/json/", email, function(data) {
+              response = $.parseJSON( data );
+              $('#custom_items').val(response[0]['pk']);
+              $('#payer_email').val(response[0]['fields']['email']);
+              $('#bt_form2').submit();
+          });
+    })
+
+    $('#registerUserButton').click(function(){
+        event.preventDefault();
+        $.bt_validate.result = true;
+        $('#subscriptionForm').bt_validate()
+        if($.bt_validate.blocked){ 
+            return false };
+        
+        $(this).toggleClass('btn-loading').text('Loading...');
+        form = $('#subscriptionForm').serialize();
+
+        $.post("/api/client/educator/json/", form, function(data) {
+            response = $.parseJSON( data );
+            t = target + ' #id_custom';
+            $(t).val(response[0]['pk']);
+            $(target).submit();
+        });
+    });
+
+    $('.btn-modal').first().click(function(){
+        target = '#subscriptionForm1'
+        return true;
+    })
+    $('.btn-modal').last().click(function(){
+        target = '#subscriptionForm2'
+        return true;
+    })
+
+
+    </script>
+{% endblock scripts %}
+

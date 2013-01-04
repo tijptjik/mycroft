@@ -3,7 +3,7 @@ from paypal.standard.ipn.models import PayPalIPN
 from paypal.standard.ipn.admin import PayPalIPNAdmin
 from models import *
 
-for model in [Product, Video, Lecturer, Series, Poet, Poem, Testimonial, Preview]:
+for model in [Product, Video, Lecturer, Series, Poet, Poem, Testimonial, Preview, Access]:
     admin.site.register(model)
 
 
@@ -12,8 +12,14 @@ class LectureAdmin(admin.ModelAdmin):
 
 admin.site.register(Lecture, LectureAdmin)
 
-
 class CustomPayPalIPNAdmin(PayPalIPNAdmin):
+    def queryset(self, request):
+        """Limit Transactions to those that are actually payments"""
+        qs = super(CustomPayPalIPNAdmin, self).queryset(request)
+        if request.user.is_superuser:
+            return qs.filter(payment_type='instant')
+        return qs
+
     fieldsets = (
         (None, {
             "fields": [
@@ -44,7 +50,7 @@ class CustomPayPalIPNAdmin(PayPalIPNAdmin):
         }),
     )
     list_display = [
-        "invoice", "payment_status", "item_name","last_name", "first_name", "mc_gross","created_at"
+        "invoice", "payer_id", "payment_status", "item_name", "mc_gross", "created_at"
     ]
     search_fields = ["txn_id", "recurring_payment_id"]
 

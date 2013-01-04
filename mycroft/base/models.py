@@ -1,11 +1,18 @@
 from utils import unique_slugify
 
 from django.db import models
+from django.core.mail import send_mail, BadHeaderError
 from django.utils.timezone import now
 from django.contrib.auth.models import User
+from django.dispatch import receiver
 
 from datetime import datetime
-from paypal.standard.ipn.signals import payment_was_successful
+from paypal.standard.ipn.signals import payment_was_successful, payment_was_flagged
+
+from django.contrib.sites.models import RequestSite
+from django.contrib.sites.models import Site
+from django.template.loader import render_to_string
+
 
 class Product(models.Model):
     reference = models.CharField(max_length=10)
@@ -143,11 +150,60 @@ class Testimonial(models.Model):
     def __unicode__(self):
         return self.name
 
+class Access(models.Model):
+    user = models.ForeignKey(User)
+    lecture = models.ForeignKey(Lecture)
+    activation_date = models.DateTimeField(default=datetime.today)
+    active = models.BooleanField(default=True)
+
+    class Meta:
+        verbose_name = ('Access')
+        verbose_name_plural = ('Accesss')
+
+    def __unicode__(self):
+        return '%s:  %s' % (self.user.email, self.lecture)
+
 def show_me_the_money(sender, **kwargs):
     ipn_obj = sender
     # Undertake some action depending upon `ipn_obj`.
-    if ipn_obj.custom == "Upgrade all users!":
-        Users.objects.update(paid=True)
     print __file__,1, 'Payment Received!'        
 
-payment_was_successful.connect(show_me_the_money)
+def send_email(sender, user, userkey, site):
+    # ipn_obj = sender
+    # print ipn_obj
+    # message = ipn_obj.item_name, ipn_obj.item_number
+    lecture = "jell"
+
+    ctx_dict = {'lecture': lecture,
+                'userkey': userkey,
+                'expiration_days': settings.DOWNLOAD_EXPIRATION_DAYS,
+                'site' : site}
+
+    subject = render_to_string('purchase_email_subject.txt', ctx_dict)
+    # Email subject *must not* contain newlines
+    subject = ''.join(subject.splitlines())
+    
+    message = render_to_string('pruchase_email.txt', ctx_dict)
+    print 'to:', user.email
+    print message
+    
+    user.email_user(subject, message, settings.EMAIL_HOST_USER)
+
+
+@receiver(payment_was_successful)
+def confirm_admin_payment(sender, user, **kwargs):
+    print sender
+    print user
+    print 'SUCCESS: %s' % sender.payer_email
+    activation_key = RegistrationProfile.objects.get(user=sender.pk).activation_key
+    if Site._meta.installed:
+        site = Site.objects.get_current()
+    else:
+        site = RequestSite(request)
+
+    send_email(sender=sender, user=user, userkey=activation_key, site=site)
+
+@receiver(payment_was_flagged)
+def payment_flagged(sender, **kwargs):
+    print "FLAGGED: %s" % sender.payer_email
+

@@ -1,25 +1,68 @@
 {% extends "base.html" %}
 
+{% block videojs %}
+  <link href="{{ STATIC_URL }}js/libs/videojs/design/video-js.css" rel="stylesheet" type="text/css">
+  <script src="{{ STATIC_URL }}js/libs/videojs/src/core.js"></script>
+  <script src="{{ STATIC_URL }}js/libs/videojs/src/lib.js"></script>
+  <script src="{{ STATIC_URL }}js/libs/videojs/src/json.js"></script>
+
+  <script src="{{ STATIC_URL }}js/libs/videojs/src/component.js"></script>
+  <script src="{{ STATIC_URL }}js/libs/videojs/src/player.js"></script>
+  <script src="{{ STATIC_URL }}js/libs/videojs/src/tech.js"></script>
+  <script src="{{ STATIC_URL }}js/libs/videojs/src/controls.js"></script>
+  <script src="{{ STATIC_URL }}js/libs/videojs/src/events.js"></script>
+  <script src="{{ STATIC_URL }}js/libs/videojs/src/tracks.js"></script>
+
+  <script src="{{ STATIC_URL }}js/libs/videojs/tech/html5/html5.js"></script>
+  <script src="{{ STATIC_URL }}js/libs/videojs/tech/flash/flash.js"></script>
+
+  <script src="{{ STATIC_URL }}js/libs/videojs/tech/youtube/youtube.js"></script>
+  
+  <script src="{{ STATIC_URL }}js/libs/videojs/src/setup.js"></script>
+{% endblock %}
+{% block headscripts %}
+{% endblock %}
+
 {% block page_class %}home-page{% endblock %}
 {% block content %}
 
+<div class="hero-unit">
+  <!-- <h1>Hello there,</h1> -->
+    <div class="Videowrapper">
+      <video id="example_video_1" class="video-js vjs-default-skin h_iframe" width="980" height="550" data-setup='{"techOrder":["youtube","html5"],"ytcontrols":true}'
+        poster="http://video-js.zencoder.com/oceans-clip.png">
+        <source src="http://www.youtube.com/watch?v=aRuHAAmXDkY" type='video/youtube'>
+      </video>
+      <img class="ratio" src="{{ STATIC_URL }}img/landing.png"/>
+    </div>
+  <p class="pull-right">
+    Available for <a class="btn btn-primary btn-large"> Students </a> and 
+    <a class="btn btn-primary btn-large"> Institutions </a>
+  </p>
+</div>
 
-<ul class="nav nav-pills">
-  <li class="active"><a href="#">Poet Name</a></li>
-  <li><a href="#">Poem Title</a></li>
-  <li><a href="#">Year of Publication</a></li>
-</ul>
+<div class="well"> 
+  <h2>Available Lectures</h2>
+  <ul class="nav nav-pills">
+    <li class="active"><a href="#">Poet Name</a></li>
+    <li><a href="#">Poem Title</a></li>
+    <li><a href="#">Year of Publication</a></li>
+  </ul>
 
-<ul class="thumbnails">
+<ul class="thumbnails" class="span12">
     {% for lecture in lectures %}
-      <li class="span12">
-        <div class="thumbnail">
-          <a href="/lecture/{{ lecture.poem.poet.slug }}/{{ lecture.slug }}">
-          <img src="http://placehold.it/1170x250&text={{lecture.poem.title}}" alt="{{lecture.title}}"></a>
-{#           <h3>{{ lecture.poem.title }}</h3>
-          <p>{{ lecture.poem.poet }}</p>#}        
+      <li class="thumbnail">
+        <div>
+          <p><a class="placeholder" href="/lecture/{{ lecture.poem.poet.slug }}/{{ lecture.slug }}"><span>{{ lecture.poem.poet.first_name }} {{ lecture.poem.poet.last_name }}: </span>{{lecture.poem.title}}</a></p>
+          {% comment %}<img class= "poem-header" src="http://ima.gs/transparent/NONE/111/{{lecture.poem.title}}-1170x250.png" alt="{{lecture.title}}">
+          <h3>{{ lecture.poem.title }}</h3>
+          <p>{{ lecture.poem.poet }}</p> {% endcomment %}    
       </div>
       </li>
     {% endfor %}
 </ul>
 {% endblock %}
+</div>
+{% block scripts %}
+{% endblock %}
+

@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-  <title>{% block page_title %}{{ _("Your Site") }}{% endblock %}</title>
+  <title>{% block page_title %}Your Site{% endblock %}</title>
   <meta name="description" content="{% block meta_description %}{% endblock %}">
   <meta name="author" content="{% block meta_author %}{% endblock %}">
   <meta name="viewport" content="width=device-width">
@@ -23,6 +23,8 @@
   {% endif %}
 
   <script src="{{ STATIC_URL }}js/libs/modernizr-2.5.3-respond-1.1.0.min.js"></script>
+  {% block videojs %}{% endblock %}
+  {% block headscripts %}{% endblock %}
 </head>
 <body class="{% block body_class %}{% endblock %}">
 {% block body %}
@@ -31,7 +33,7 @@
   <!--[if lt IE 7]><p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
   <header>
 
-    <div class="navbar">
+    <div class="navbar navbar-fixed-top">
     <div class="navbar-inner">
     <div class="container">
  
@@ -43,18 +45,33 @@
       </a>
  
       <!-- Be sure to leave the brand out there if you want it shown -->
-      <a class="brand" href="{% url 'index' %}">MYCROFT</a>
+      <a class="brand" href="{% url index %}">MYCROFT</a>
  
       <!-- Everything you want hidden at 940px or less, place within here -->
       <div class="nav-collapse collapse">
         <!-- .nav, .navbar-search, .navbar-form, etc -->
         <ul class="nav">
-          <li><a href="{% url 'store' %}">Store</a></li>
-          <li><a href="{% url 'story' %}">Our Story</a></li>
-          <li><a href="{% url 'testimonials' %}">Testimonials</a></li>
-          <li><a href="{% url 'contact' %}">Contact</a></li>
+          <li><a href="{% url students %}">For Students</a></li>
+          <li><a href="{% url educators %}">For Educators</a></li>
+          <li><a href="{% url store %}">Store</a></li>
+          <li><a href="{% url story %}">Our Story</a></li>
+          <li><a href="{% url testimonials %}">Testimonials</a></li>
+          <li><a href="{% url contact %}">Contact</a></li>
+        </ul>
+       <ul class="nav pull-right">   
+        <li>
+          <div id="user_nav">
+            {% if user.is_authenticated %}            
+            <p>Signed in as {{user.first_name}}. Not you?
+              <a href="{% url auth_logout %}" class="btn btn-danger btn-mino">Sign out</a><p>
+            {% else %}
+              <a href="{% url auth_login %}" class="btn btn-info btn-mino">Sign in</a>
+            {% endif %}
+          </div>
+        </li> 
+      </ul>
       </div>
- 
+
     </div>
     </div>
     </div>
@@ -78,13 +95,17 @@
   <!-- scripts concatenated and minified via build script -->
   <script src="{{ STATIC_URL }}js/plugins.js"></script>
   <script src="{{ STATIC_URL }}js/script.js"></script>
-  <script src="{{ STATIC_URL }}js/libs/bootstrap/collapse.js"></script>
+  <script src="{{ STATIC_URL }}js/libs/bootstrap/bootstrap-transition.js"></script>
+  <script src="{{ STATIC_URL }}js/libs/bootstrap/bootstrap-collapse.js"></script>
+  <script src="{{ STATIC_URL }}js/libs/bootstrap/bootstrap-modal.js"></script>
+  <script src="{{ STATIC_URL }}js/libs/bootstrap/bootstrap-tooltip.js"></script>
+  <script src="{{ STATIC_URL }}js/libs/bootstrap/bootstrap-validate.js"></script>
+  <script src="{{ STATIC_URL }}js/libs/bootstrap/bootstrap-validate.en.js"></script>
+  {% block scripts %}{% endblock %}
+  
   <!-- end scripts -->
-
-  <!-- Asynchronous Google Analytics snippet. Change UA-XXXXX-X to be your site's ID.
-       mathiasbynens.be/notes/async-analytics-snippet -->
   <script>
-    var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
+    var _gaq=[['_setAccount','UA-35923323-1'],['_trackPageview']];
     (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
     g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
     s.parentNode.insertBefore(g,s)}(document,'script'));

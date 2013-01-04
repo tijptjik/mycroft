@@ -28,3 +28,99 @@ background: -o-linear-gradient(top, rgba(63,40,51,0) 50%,rgb(63,40,51) 100%), -o
 background: -ms-linear-gradient(top, rgba(63,40,51,0) 50%,rgb(63,40,51) 100%), -ms-radial-gradient(center, ellipse cover,  #babeab 0%,#3f7183 48%,#3f2731 97%);
 background: linear-gradient(to bottom, rgba(63,40,51,0) 50%,rgb(63,40,51) 100%), radial-gradient(ellipse at center,  #babeab 0%,#3f7183 48%,#3f2731 97%);
  }
+
+input[type="checkbox"] {
+  font-size: 100px !important;
+}
+
+.checkoutFooter{
+        margin-top: 10px;
+        text-align: center;
+    button { 
+        margin-top: 10px;
+    }
+}
+.Videowrapper{
+    max-width: 920px;
+    width:100%;
+    margin: auto;
+    margin-bottom: 10px;
+}
+.thumbnails {
+    width: 100%;
+}
+.thumbnail {
+    width: 100%;
+    background-color: #EEE;
+    p {
+        font-size: 32px;
+        color: #555;
+        text-transform: uppercase;
+        line-height: 108%;
+        text-shadow: #253E45 -1px 1px 0, #253E45 -2px 2px 0, #D45848 -3px 3px 0, #D45848 -4px 4px 0;
+        text-align: center !important;
+    }
+}
+.hero-unit{
+    padding-top: 0px;
+}
+
+body {
+    padding-top: 68px;
+}
+
+#bt_form{
+    display: inline;
+}
+
+#bt_form2{
+    display: block;
+    input {
+        display: block;
+        margin-left: 28px;
+    }
+}
+
+#submitCart{
+    width: 100%;
+}
+
+#registerUserButton{
+    width: 162px;
+}
+
+.btn-loading {
+    background-image: -webkit-gradient(linear, 0 0, 100% 100%,
+        color-stop(.25, rgba(0, 0, 0, .10)), 
+        color-stop(.25, transparent),
+        color-stop(.5, transparent), 
+        color-stop(.5, rgba(0, 0, 0, .10)),
+        color-stop(.75, rgba(0, 0, 0, .10)), 
+        color-stop(.75, transparent), 
+        to(transparent));
+    background-image: 
+        -moz-linear-gradient(-45deg, 
+            rgba(0, 0, 0, .10) 25%, 
+            transparent 25%,
+            transparent 50%, rgba(0, 0, 0, .10) 50%, 
+            rgba(0, 0, 0, .10) 75%, 
+            transparent 75%, transparent);
+    background-size: 50px 50px;
+    -moz-background-size: 50px 50px;
+    -webkit-background-size: 50px 50px;
+    -webkit-animation: animate-stripes 2s linear infinite;
+}
+
+@-webkit-keyframes animate-stripes {.mixi-frames;}
+@-moz-keyframes animate-stripes {.mixi-frames;}
+@-ms-keyframes animate-stripes {.mixi-frames;}
+@-o-keyframes animate-stripes {.mixi-frames;}
+@keyframes animate-stripes {.mixi-frames;}
+
+.mixi-frames() {
+    from {
+        background-position: 0 0;
+    } to {
+        background-position: -50px 0;
+    }
+}
