@@ -4,6 +4,8 @@ from django.conf import settings
 from django.conf.urls.defaults import url, patterns, include
 from session_csrf import anonymous_csrf
 from django.contrib import admin
+
+
 admin.autodiscover()
 
 # django-session-csrf monkeypatcher
@@ -22,10 +24,11 @@ urlpatterns = patterns('',
     (r'^admin/', include(admin.site.urls)),
     #url(r'^', include('debug_toolbar_user_panel.urls')),
     (r'^bad/$', bad),
+    (r'^accounts/', include('registration_email.backends.default.urls')),
 )
 
 urlpatterns += patterns('',
-    (r'^naughtynuthouse/', include('paypal.standard.ipn.urls')),
+    (r'^subscription/', include('subscription.urls')),
 )
 
 ## In DEBUG mode, serve media files through Django.
