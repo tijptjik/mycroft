@@ -12,9 +12,9 @@ class Migration(SchemaMigration):
         # db.delete_column('base_testimonial', 'published_worl_url')
 
         # Adding field 'Testimonial.published_work_url'
-        db.add_column('base_testimonial', 'published_work_url',
-                      self.gf('django.db.models.fields.URLField')(max_length=200, null=True),
-                      keep_default=False)
+        # db.add_column('base_testimonial', 'published_work_url',
+                      # self.gf('django.db.models.fields.URLField')(max_length=200, null=True),
+                      # keep_default=False)
 
 
         # Changing field 'Testimonial.published_work'
