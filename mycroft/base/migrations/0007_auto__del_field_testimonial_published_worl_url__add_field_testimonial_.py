@@ -9,7 +9,7 @@ class Migration(SchemaMigration):
 
     def forwards(self, orm):
         # Deleting field 'Testimonial.published_worl_url'
-        db.delete_column('base_testimonial', 'published_worl_url')
+        # db.delete_column('base_testimonial', 'published_worl_url')
 
         # Adding field 'Testimonial.published_work_url'
         db.add_column('base_testimonial', 'published_work_url',
@@ -23,9 +23,9 @@ class Migration(SchemaMigration):
     def backwards(self, orm):
 
         # User chose to not deal with backwards NULL issues for 'Testimonial.published_worl_url'
-        raise RuntimeError("Cannot reverse this migration. 'Testimonial.published_worl_url' and its values cannot be restored.")
+        # raise RuntimeError("Cannot reverse this migration. 'Testimonial.published_worl_url' and its values cannot be restored.")
         # Deleting field 'Testimonial.published_work_url'
-        db.delete_column('base_testimonial', 'published_work_url')
+        # db.delete_column('base_testimonial', 'published_work_url')
 
 
         # User chose to not deal with backwards NULL issues for 'Testimonial.published_work'
