@@ -1,0 +1,20 @@
+Hi,
+
+Thank you for regeristring with Mycroft Lectures.
+
+You can log into account with the following credentials
+
+Username: {{ user.email }}
+
+Password: {{ password }}
+
+-- Connect with Us --
+
+Facebook: https://www.facebook.com/MycroftOnlineLectures
+Twitter: https://twitter.com/mycroftlectures
+YouTube: http://www.youtube.com/user/mycroftlectures?feature=watch
+
+-- Contact Info --
+
+Phone: +852 9757 5447
+Email: andrew@mycroft-online-lectures.com

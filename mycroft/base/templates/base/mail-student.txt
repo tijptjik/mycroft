@@ -1,0 +1,26 @@
+Hi, {{user.first_name}} {{user.last_name}}
+
+Thank you for learning with Mycroft Lectures.
+
+The following lectures are available to stream or download. The links will remain active for the next two weeks. 
+
+Happy learning!
+
+{% for lecture in lectures %}
+{{ lecture.poem.poet }}: {{lecture.title }}
+http://mycroftlectures.dyndns-free.com/get/{{user.username}}/{{lecture.slug}}/
+
+{% endfor %}
+
+Link expiry date: {{ expiry }}
+
+-- Connect with Us --
+
+Facebook: https://www.facebook.com/MycroftOnlineLectures
+Twitter: https://twitter.com/mycroftlectures
+YouTube: http://www.youtube.com/user/mycroftlectures?feature=watch
+
+-- Contact Info --
+
+Phone: +852 9757 5447
+Email: andrew@mycroft-online-lectures.com

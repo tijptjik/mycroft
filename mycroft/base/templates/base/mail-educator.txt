@@ -1,0 +1,27 @@
+Hi, {{user.first_name}} {{user.last_name}}
+
+Thank you for obtaining a license to the full suite of Mycroft Lectures.
+
+All lectures are available for streaming and download by logging into the website with
+your registered credentials
+
+The following poetry lectures are currently on offer.</p>
+
+{% for lecture in lectures %}
+{{ lecture.poem.poet }}: {{lecture.title }}
+http://mycroftlectures.dyndns-free.com/lecture/{{ lecture.poem.poet.last_name|lower }}/{{lecture.slug}}
+
+{% endfor %}
+
+License expiry date: {{ expiry }}
+
+-- Connect with Us --
+
+Facebook: https://www.facebook.com/MycroftOnlineLectures
+Twitter: https://twitter.com/mycroftlectures
+YouTube: http://www.youtube.com/user/mycroftlectures?feature=watch
+
+-- Contact Info --
+
+Phone: +852 9757 5447
+Email: andrew@mycroft-online-lectures.com
