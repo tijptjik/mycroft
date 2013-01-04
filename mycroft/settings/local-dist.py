@@ -35,7 +35,7 @@ DATABASES = {
 
 # Recipients of traceback emails and other notifications.
 ADMINS = (
-    # ('Your Name', 'your_email@domain.com'),
+    ('Mart van de Ven', 'm@type.hk'),
 )
 MANAGERS = ADMINS
 
@@ -44,7 +44,7 @@ MANAGERS = ADMINS
 # although not all choices may be available on all operating systems.
 # If running in a Windows environment this must be set to the same as your
 # system time zone.
-TIME_ZONE = 'America/Los_Angeles'
+TIME_ZONE = 'Asia/Hong_Kong'
 
 # Debugging displays nice error messages, but leaks memory. Set this to False
 # on all server instances and True only for development.
@@ -57,18 +57,10 @@ DEV = True
 # Make this unique, and don't share it with anybody.  It cannot be blank.
 SECRET_KEY = 'y4njob79%5m!1=pqj155=k$a04fa5r=icnb#2(t7v$_(%6iv2('
 
-# Uncomment these to activate and customize Celery:
-# CELERY_ALWAYS_EAGER = False  # required to activate celeryd
-# BROKER_HOST = 'localhost'
-# BROKER_PORT = 5672
-# BROKER_USER = 'django'
-# BROKER_PASSWORD = 'django'
-# BROKER_VHOST = 'django'
-# CELERY_RESULT_BACKEND = 'amqp'
 
 ## Log settings
 
-LOG_LEVEL = logging.INFO
+LOG_LEVEL = logging.DEBUG
 HAS_SYSLOG = True
 SYSLOG_TAG = "http_app_mycroft"  # Make this unique to your project.
 # Remove this configuration variable to use your custom logging configuration
@@ -96,7 +88,3 @@ INTERNAL_IPS = ('127.0.0.1')
 
 # Set this to true if you use a proxy that sets X-Forwarded-Host
 #USE_X_FORWARDED_HOST = False
-
-SERVER_EMAIL = "webmaster@example.com"
-DEFAULT_FROM_EMAIL = "webmaster@example.com"
-SYSTEM_EMAIL_PREFIX = "[mycroft]"
