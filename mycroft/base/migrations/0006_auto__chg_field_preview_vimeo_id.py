@@ -10,7 +10,7 @@ class Migration(SchemaMigration):
     def forwards(self, orm):
 
         # Changing field 'Preview.vimeo_id'
-        db.alter_column('base_preview', 'vimeo_id', self.gf('django.db.models.fields.IntegerField')())
+        db.alter_column('base_preview', 'vimeo_id', self.gf('django.db.models.fields.CharField')(max_length=11))
 
     def backwards(self, orm):
 
@@ -89,7 +89,7 @@ class Migration(SchemaMigration):
             'Meta': {'object_name': 'Preview'},
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'title': ('django.db.models.fields.CharField', [], {'max_length': '100'}),
-            'vimeo_id': ('django.db.models.fields.IntegerField', [], {})
+            'vimeo_id': ('django.db.models.fields.CharField', [], {'max_length': '11'})
         },
         'base.product': {
             'Meta': {'object_name': 'Product'},

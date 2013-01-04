@@ -95,7 +95,7 @@ class Migration(SchemaMigration):
             'Meta': {'object_name': 'Preview'},
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'title': ('django.db.models.fields.CharField', [], {'max_length': '100'}),
-            'vimeo_id': ('django.db.models.fields.IntegerField', [], {})
+            'vimeo_id': ('django.db.models.fields.CharField', [], {'max_length': '11'})
         },
         'base.product': {
             'Meta': {'object_name': 'Product'},
