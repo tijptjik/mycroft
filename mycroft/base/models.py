@@ -40,7 +40,7 @@ class Video(models.Model):
 
 
 class Preview(models.Model):
-    vimeo_id = models.IntegerField()
+    vimeo_id = models.CharField(max_length=11)
     title = models.CharField(max_length=100)
 
     class Meta:

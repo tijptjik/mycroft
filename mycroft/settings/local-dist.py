@@ -9,10 +9,15 @@ import logging
 #from . import base
 #INSTALLED_APPS = base.INSTALLED_APPS + ['debug_toolbar']
 
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': 'db/development.sqlite3',
+        # 'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        # 'NAME': 'django_db',
+        # 'USER': 'django_login',
+        # 'PASSWORD': 'your_password',
         'USER': '',
         'PASSWORD': '',
         'HOST': '',
