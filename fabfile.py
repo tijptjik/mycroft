@@ -14,12 +14,12 @@ from fabric.operations import _prefix_commands, _prefix_env_vars
 #from fabric.context_managers import cd, lcd, settings, hide
 
 # CHANGEME
-env.hosts = ['user@mycroft.example.com']
+env.hosts = ['root@122.128.107.95:50']
 env.code_dir = '/srv/www/mycroft'
 env.project_dir = '/srv/www/mycroft/mycroft'
 env.static_root = '/srv/www/mycroft/static/'
-env.virtualenv = '/srv/www/mycroft/.virtualenv'
-env.code_repo = 'git@github.com:user/mycroft.git'
+env.virtualenv = '/root/.virtualenvs/mycroft'
+env.code_repo = 'git@github.com:tijptjik/mycroft.git'
 env.django_settings_module = 'mycroft.settings'
 
 # Python version
@@ -107,7 +107,7 @@ def webserver_stop():
     """
     Stop the webserver that is running the Django instance
     """
-    run("service apache2 stop")
+    run("service nginx stop")
 
 
 @task
@@ -115,7 +115,7 @@ def webserver_start():
     """
     Starts the webserver that is running the Django instance
     """
-    run("service apache2 start")
+    run("service nginx start")
 
 
 @task
