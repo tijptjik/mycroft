@@ -3,6 +3,7 @@
 
 # Django stuff
 Django>=1.4
+django_extensions
 
 # Templates 
 lesscpy
