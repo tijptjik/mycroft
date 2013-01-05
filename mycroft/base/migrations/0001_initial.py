@@ -12,7 +12,7 @@ class Migration(SchemaMigration):
         db.create_table('base_product', (
             ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
             ('reference', self.gf('django.db.models.fields.CharField')(max_length=10)),
-            ('price_in_dollars', self.gf('django.db.models.fields.DecimalField')(default=4.99, max_digits=5, decimal_places=2)),
+            ('price_in_dollars', self.gf('django.db.models.fields.DecimalField')(default=4.9900000000000002, max_digits=5, decimal_places=2)),
             ('sold', self.gf('django.db.models.fields.IntegerField')(default=0)),
         ))
         db.send_create_signal('base', ['Product'])
@@ -21,8 +21,7 @@ class Migration(SchemaMigration):
         db.create_table('base_video', (
             ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
             ('video', self.gf('django.db.models.fields.files.FileField')(max_length=100)),
-            ('duration', self.gf('django.db.models.fields.IntegerField')(blank=True)),
-            ('format', self.gf('django.db.models.fields.CharField')(default='MKV', max_length=20)),
+            ('duration', self.gf('django.db.models.fields.IntegerField')(default=3600)),
             ('subtitle', self.gf('django.db.models.fields.files.FileField')(max_length=100, blank=True)),
             ('subtitle_language', self.gf('django.db.models.fields.CharField')(default='English', max_length=20)),
         ))
@@ -31,7 +30,7 @@ class Migration(SchemaMigration):
         # Adding model 'Preview'
         db.create_table('base_preview', (
             ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('video', self.gf('django.db.models.fields.URLField')(max_length=200, blank=True)),
+            ('vimeo_id', self.gf('django.db.models.fields.CharField')(max_length=11)),
             ('title', self.gf('django.db.models.fields.CharField')(max_length=100)),
         ))
         db.send_create_signal('base', ['Preview'])
@@ -46,7 +45,7 @@ class Migration(SchemaMigration):
         # Adding model 'Series'
         db.create_table('base_series', (
             ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('name', self.gf('django.db.models.fields.CharField')(max_length=100)),
+            ('name', self.gf('django.db.models.fields.CharField')(default='Mycroft Online Lectures', max_length=100)),
         ))
         db.send_create_signal('base', ['Series'])
 
@@ -55,10 +54,10 @@ class Migration(SchemaMigration):
             ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
             ('first_name', self.gf('django.db.models.fields.CharField')(max_length=50)),
             ('last_name', self.gf('django.db.models.fields.CharField')(max_length=50)),
-            ('date_of_birth', self.gf('django.db.models.fields.DateTimeField')()),
-            ('date_of_death', self.gf('django.db.models.fields.DateTimeField')()),
-            ('birthplace', self.gf('django.db.models.fields.CharField')(max_length=100)),
-            ('nationality', self.gf('django.db.models.fields.CharField')(max_length=50)),
+            ('year_of_birth', self.gf('django.db.models.fields.IntegerField')(default=0)),
+            ('year_of_death', self.gf('django.db.models.fields.IntegerField')(default=0)),
+            ('nationality', self.gf('django.db.models.fields.CharField')(default='English', max_length=50)),
+            ('description', self.gf('django.db.models.fields.TextField')(default='This is the story of this particular poet')),
         ))
         db.send_create_signal('base', ['Poet'])
 
@@ -67,7 +66,7 @@ class Migration(SchemaMigration):
             ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
             ('poet', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['base.Poet'])),
             ('title', self.gf('django.db.models.fields.CharField')(max_length=200)),
-            ('pub_date', self.gf('django.db.models.fields.DateTimeField')(blank=True)),
+            ('pub_year', self.gf('django.db.models.fields.IntegerField')(default=1900)),
             ('text', self.gf('django.db.models.fields.TextField')(blank=True)),
             ('copyright', self.gf('django.db.models.fields.BooleanField')(default=True)),
         ))
@@ -82,8 +81,10 @@ class Migration(SchemaMigration):
             ('preview', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['base.Preview'])),
             ('product', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['base.Product'])),
             ('series', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['base.Series'])),
-            ('synopsis', self.gf('django.db.models.fields.TextField')()),
-            ('transcript', self.gf('django.db.models.fields.TextField')()),
+            ('synopsis', self.gf('django.db.models.fields.TextField')(blank=True)),
+            ('transcript', self.gf('django.db.models.fields.TextField')(blank=True)),
+            ('title', self.gf('django.db.models.fields.CharField')(unique=True, max_length=100)),
+            ('slug', self.gf('django.db.models.fields.SlugField')(default='', unique=True, max_length=40)),
         ))
         db.send_create_signal('base', ['Lecture'])
 
@@ -93,11 +94,21 @@ class Migration(SchemaMigration):
             ('profession', self.gf('django.db.models.fields.CharField')(default='T', max_length=1)),
             ('text', self.gf('django.db.models.fields.TextField')()),
             ('name', self.gf('django.db.models.fields.CharField')(max_length=75)),
-            ('published_work', self.gf('django.db.models.fields.CharField')(max_length=100)),
-            ('published_worl_url', self.gf('django.db.models.fields.URLField')(max_length=200)),
+            ('published_work', self.gf('django.db.models.fields.CharField')(max_length=100, blank=True)),
+            ('published_work_url', self.gf('django.db.models.fields.URLField')(max_length=200, blank=True)),
             ('credentials', self.gf('django.db.models.fields.TextField')()),
         ))
         db.send_create_signal('base', ['Testimonial'])
+
+        # Adding model 'Access'
+        db.create_table('base_access', (
+            ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
+            ('user', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['auth.User'])),
+            ('lecture', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['base.Lecture'])),
+            ('activation_date', self.gf('django.db.models.fields.DateTimeField')(default=datetime.datetime(2013, 1, 5, 0, 0))),
+            ('active', self.gf('django.db.models.fields.BooleanField')(default=True)),
+        ))
+        db.send_create_signal('base', ['Access'])
 
 
     def backwards(self, orm):
@@ -127,6 +138,9 @@ class Migration(SchemaMigration):
 
         # Deleting model 'Testimonial'
         db.delete_table('base_testimonial')
+
+        # Deleting model 'Access'
+        db.delete_table('base_access')
 
 
     models = {
@@ -159,6 +173,14 @@ class Migration(SchemaMigration):
             'user_permissions': ('django.db.models.fields.related.ManyToManyField', [], {'to': "orm['auth.Permission']", 'symmetrical': 'False', 'blank': 'True'}),
             'username': ('django.db.models.fields.CharField', [], {'unique': 'True', 'max_length': '30'})
         },
+        'base.access': {
+            'Meta': {'object_name': 'Access'},
+            'activation_date': ('django.db.models.fields.DateTimeField', [], {'default': 'datetime.datetime(2013, 1, 5, 0, 0)'}),
+            'active': ('django.db.models.fields.BooleanField', [], {'default': 'True'}),
+            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+            'lecture': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['base.Lecture']"}),
+            'user': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['auth.User']"})
+        },
         'base.lecture': {
             'Meta': {'object_name': 'Lecture'},
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
@@ -167,8 +189,10 @@ class Migration(SchemaMigration):
             'preview': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['base.Preview']"}),
             'product': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['base.Product']"}),
             'series': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['base.Series']"}),
-            'synopsis': ('django.db.models.fields.TextField', [], {}),
-            'transcript': ('django.db.models.fields.TextField', [], {}),
+            'slug': ('django.db.models.fields.SlugField', [], {'default': "''", 'unique': 'True', 'max_length': '40'}),
+            'synopsis': ('django.db.models.fields.TextField', [], {'blank': 'True'}),
+            'title': ('django.db.models.fields.CharField', [], {'unique': 'True', 'max_length': '100'}),
+            'transcript': ('django.db.models.fields.TextField', [], {'blank': 'True'}),
             'video': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['base.Video']"})
         },
         'base.lecturer': {
@@ -181,37 +205,37 @@ class Migration(SchemaMigration):
             'copyright': ('django.db.models.fields.BooleanField', [], {'default': 'True'}),
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'poet': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['base.Poet']"}),
-            'pub_date': ('django.db.models.fields.DateTimeField', [], {'blank': 'True'}),
+            'pub_year': ('django.db.models.fields.IntegerField', [], {'default': '1900'}),
             'text': ('django.db.models.fields.TextField', [], {'blank': 'True'}),
             'title': ('django.db.models.fields.CharField', [], {'max_length': '200'})
         },
         'base.poet': {
             'Meta': {'object_name': 'Poet'},
-            'birthplace': ('django.db.models.fields.CharField', [], {'max_length': '100'}),
-            'date_of_birth': ('django.db.models.fields.DateTimeField', [], {}),
-            'date_of_death': ('django.db.models.fields.DateTimeField', [], {}),
+            'description': ('django.db.models.fields.TextField', [], {'default': "'This is the story of this particular poet'"}),
             'first_name': ('django.db.models.fields.CharField', [], {'max_length': '50'}),
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'last_name': ('django.db.models.fields.CharField', [], {'max_length': '50'}),
-            'nationality': ('django.db.models.fields.CharField', [], {'max_length': '50'})
+            'nationality': ('django.db.models.fields.CharField', [], {'default': "'English'", 'max_length': '50'}),
+            'year_of_birth': ('django.db.models.fields.IntegerField', [], {'default': '0'}),
+            'year_of_death': ('django.db.models.fields.IntegerField', [], {'default': '0'})
         },
         'base.preview': {
             'Meta': {'object_name': 'Preview'},
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'title': ('django.db.models.fields.CharField', [], {'max_length': '100'}),
-            'video': ('django.db.models.fields.URLField', [], {'max_length': '200', 'blank': 'True'})
+            'vimeo_id': ('django.db.models.fields.CharField', [], {'max_length': '11'})
         },
         'base.product': {
             'Meta': {'object_name': 'Product'},
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'price_in_dollars': ('django.db.models.fields.DecimalField', [], {'default': '4.99', 'max_digits': '5', 'decimal_places': '2'}),
+            'price_in_dollars': ('django.db.models.fields.DecimalField', [], {'default': '4.9900000000000002', 'max_digits': '5', 'decimal_places': '2'}),
             'reference': ('django.db.models.fields.CharField', [], {'max_length': '10'}),
             'sold': ('django.db.models.fields.IntegerField', [], {'default': '0'})
         },
         'base.series': {
             'Meta': {'object_name': 'Series'},
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'name': ('django.db.models.fields.CharField', [], {'max_length': '100'})
+            'name': ('django.db.models.fields.CharField', [], {'default': "'Mycroft Online Lectures'", 'max_length': '100'})
         },
         'base.testimonial': {
             'Meta': {'object_name': 'Testimonial'},
@@ -219,14 +243,13 @@ class Migration(SchemaMigration):
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'name': ('django.db.models.fields.CharField', [], {'max_length': '75'}),
             'profession': ('django.db.models.fields.CharField', [], {'default': "'T'", 'max_length': '1'}),
-            'published_work': ('django.db.models.fields.CharField', [], {'max_length': '100'}),
-            'published_worl_url': ('django.db.models.fields.URLField', [], {'max_length': '200'}),
+            'published_work': ('django.db.models.fields.CharField', [], {'max_length': '100', 'blank': 'True'}),
+            'published_work_url': ('django.db.models.fields.URLField', [], {'max_length': '200', 'blank': 'True'}),
             'text': ('django.db.models.fields.TextField', [], {})
         },
         'base.video': {
             'Meta': {'object_name': 'Video'},
-            'duration': ('django.db.models.fields.IntegerField', [], {'blank': 'True'}),
-            'format': ('django.db.models.fields.CharField', [], {'default': "'MKV'", 'max_length': '20'}),
+            'duration': ('django.db.models.fields.IntegerField', [], {'default': '3600'}),
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'subtitle': ('django.db.models.fields.files.FileField', [], {'max_length': '100', 'blank': 'True'}),
             'subtitle_language': ('django.db.models.fields.CharField', [], {'default': "'English'", 'max_length': '20'}),
