@@ -11,8 +11,8 @@ Markdown
 django-compressor
 
 # Security
+django-session-csrf
 #bleach
-#django-session-csrf
 #cef
 
 # Logging
@@ -31,6 +31,7 @@ django-compressor
 
 # Admin
 gunicorn
+gevent
 supervisor
 -e git://github.com/rfk/django-supervisor.git#egg=djsupervisor
 django-debug-toolbar
