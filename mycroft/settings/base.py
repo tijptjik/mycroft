@@ -218,7 +218,7 @@ FILE_UPLOAD_PERMISSIONS = 0664
 
 INTERNAL_IPS = ('127.0.0.1',)
 
-SITE_NAME = 'http://mycroftlectures.dyndns-free.com'
+SITE_NAME = 'http://mycroftlectures.com'
 
 PAYPAL_RECEIVER_EMAIL = "andy_1354358238_biz@type.hk"
 

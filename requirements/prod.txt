@@ -1,6 +1,9 @@
 # Install everything that needs to be compiled
 -r compiled.txt
 
+# Python General
+pytz
+
 # Django stuff
 Django>=1.4
 django_extensions
