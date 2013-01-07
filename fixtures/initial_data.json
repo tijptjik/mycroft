@@ -973,5 +973,33 @@
       "published_work": "Ms. Militancy",
       "credentials": "India"
     }
+  },
+  {
+    "pk": 1,
+    "model": "subscription.subscription",
+    "fields": {
+      "description": "Access to all the Mycroft Poetry lectures for one semster. This license allows for viewings in a class-room context.\r\n\r\nIdeal for teaching staff.",
+      "group": 1,
+      "name": "Educator License",
+      "recurrence_unit": "M",
+      "price": "100",
+      "trial_unit": "",
+      "trial_period": null,
+      "recurrence_period": 6
+    }
+  },
+  {
+    "pk": 2,
+    "model": "subscription.subscription",
+    "fields": {
+      "description": "This license allows for school-wise distribution and viewing of all Mycroft Online Lectures for 1 year. This liecence also allows for teacher accounts to be created.\r\n\r\nIdeal for Schools.",
+      "group": 2,
+      "name": "Institutional Subscription",
+      "recurrence_unit": "Y",
+      "price": "500",
+      "trial_unit": "",
+      "trial_period": null,
+      "recurrence_period": 1
+    }
   }
 ]
