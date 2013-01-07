@@ -154,7 +154,13 @@ def client(request, method, format):
         elif request.method == 'POST':
             if method == 'student':
                 form_class = TouchRegistrationForm
-                touch_user = registerUser(request=request, backend=backend, form_class=form_class, deferred=True)
+                try:
+                    email = request.POST['email']
+                    User.objects.get(email=email)
+                    print 'Cannot generate new username. A user with this email already exists.'
+                    touch_user = User.objects.get(email=email)
+                except User.DoesNotExist:
+                    touch_user = registerUser(request=request, backend=backend, form_class=form_class, deferred=True)
                 data = serializers.serialize(format, [touch_user, ])
             elif method == 'educator':
                 form_class = EmailRegistrationForm
