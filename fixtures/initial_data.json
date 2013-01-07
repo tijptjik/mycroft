@@ -1001,5 +1001,21 @@
       "trial_period": null,
       "recurrence_period": 1
     }
-  }
+  },
+  {
+    "pk": 1,
+    "model": "auth.group",
+    "fields": {
+      "name": "Educators",
+      "permissions": []
+    }
+  },
+  {
+    "pk": 2,
+    "model": "auth.group",
+    "fields": {
+      "name": "Institution",
+      "permissions": []
+    }
+  },
 ]
