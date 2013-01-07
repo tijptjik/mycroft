@@ -54,7 +54,7 @@ PAYPAL_FORM = u"""
         </form>"""
 
 def index(request):
-    lectures = Lecture.objects.all()
+    lectures = Lecture.objects.all().order_by('poem__poet__last_name')
     for lecture in lectures:
         lecture.poem.poet.slug = lecture.poem.poet.last_name.lower()
     return render(request, 'base/index.html', {'lectures': lectures})
