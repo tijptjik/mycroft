@@ -8,7 +8,7 @@ Happy learning!
 
 {% for lecture in lectures %}
 {{ lecture.poem.poet }}: {{lecture.title }}
-http://mycroftlectures.dyndns-free.com/get/{{user.username}}/{{lecture.slug}}/
+http://{{ site }}/get/{{user.username}}/{{lecture.slug}}/
 
 {% endfor %}
 

@@ -31,7 +31,6 @@ django-session-csrf
 
 # Admin
 gunicorn
-gevent
 supervisor
 -e git://github.com/rfk/django-supervisor.git#egg=djsupervisor
 django-debug-toolbar
@@ -50,3 +49,6 @@ South
 # Registration
 -e git://github.com/tijptjik/django-registration.git#egg=django-registration
 django-registration-email
+
+# Misc
+pytz

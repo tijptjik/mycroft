@@ -27,8 +27,8 @@
 <div class="hero-unit">
 {% if user.is_authenticated %}            
   <video id="lectureVideo" class="video-js vjs-default-skin" controls preload="auto" data-setup="{}">
-      <source src="http://mycroftlectures.dyndns-free.com/media/lectures/digging.mp4" type="video/mp4" />
-      <track kind="subtitles" src="http://mycroftlectures.dyndns-free.com/media/lectures/digging.vtt" type="text/vtt" srclang="en" label="English Subtitles" />
+      <source src="{{ site }}/media/lectures/digging.mp4" type="video/mp4" />
+      <track kind="subtitles" src="{{ site }}/media/lectures/digging.vtt" type="text/vtt" srclang="en" label="English Subtitles" />
   </video>
 {% else %}            
     <div class="Videowrapper">

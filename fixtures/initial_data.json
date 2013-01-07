@@ -1,6 +1,30 @@
 [
   {
     "pk": 1,
+    "model": "sites.site",
+    "fields": {
+      "domain": "mycroftlectures.dyndns-free.com",
+      "name": "Mycroft DEV"
+    }
+  },
+  {
+    "pk": 2,
+    "model": "sites.site",
+    "fields": {
+      "domain": "localhost:8000",
+      "name": "Localhost"
+    }
+  },
+  {
+    "pk": 3,
+    "model": "sites.site",
+    "fields": {
+      "domain": "mycroftlectures.com",
+      "name": "Mycroft Lectures"
+    }
+  },
+  {
+    "pk": 1,
     "model": "base.product",
     "fields": {
       "sold": 0,

@@ -31,8 +31,6 @@ SUPPORTED_NONLOCALES = ['media', 'admin', 'static']
 # http://www.i18nguy.com/unicode/language-identifiers.html
 LANGUAGE_CODE = 'en-us'
 
-SITE_ID = 1
-
 # Defines the views served for root URLs.
 ROOT_URLCONF = 'mycroft.urls'
 
@@ -52,8 +50,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     # Third-party apps, patches, fixes
-    # 'commonware.response.cookies',
-    # 'session_csrf',
+    'session_csrf',
     'debug_toolbar',
     'compressor',
     #'debug_toolbar_user_panel',
@@ -217,19 +214,6 @@ DEBUG_TOOLBAR_PANELS = (
 FILE_UPLOAD_PERMISSIONS = 0664
 
 INTERNAL_IPS = ('127.0.0.1',)
-
-SITE_NAME = 'http://mycroftlectures.dyndns-free.com'
-
-PAYPAL_RECEIVER_EMAIL = "andy_1354358238_biz@type.hk"
-
-SUBSCRIPTION_PAYPAL_SETTINGS = {
-        "business": PAYPAL_RECEIVER_EMAIL,
-        "notify_url": "%s%s" % (SITE_NAME, '/subscription/paypal/'),
-        "return_url": "%s%s" % (SITE_NAME, '/thanks/'),
-        "cancel_return": "%s%s" % (SITE_NAME, '/cancel/'),
-    }
-
-PAYPAL_TEST = True
 
 ACCOUNT_ACTIVATION_DAYS = 7
 

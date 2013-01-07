@@ -9,7 +9,7 @@ The following poetry lectures are currently on offer.</p>
 
 {% for lecture in lectures %}
 {{ lecture.poem.poet }}: {{lecture.title }}
-http://mycroftlectures.dyndns-free.com/lecture/{{ lecture.poem.poet.last_name|lower }}/{{lecture.slug}}
+http://{{ site }}/lecture/{{ lecture.poem.poet.last_name|lower }}/{{lecture.slug}}
 
 {% endfor %}
 

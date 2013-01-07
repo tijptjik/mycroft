@@ -9,17 +9,14 @@ import logging
 #from . import base
 #INSTALLED_APPS = base.INSTALLED_APPS + ['debug_toolbar']
 
-
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': 'db/development.sqlite3',
-        # 'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        # 'NAME': 'django_db',
-        # 'USER': 'django_login',
-        # 'PASSWORD': 'your_password',
-        'USER': '',
-        'PASSWORD': '',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'django_db',
+        'USER': 'django_login',
+        'PASSWORD': 'fairview',
+        #'ENGINE': 'django.db.backends.sqlite3',
+        #'NAME': 'db/development.sqlite3',
         'HOST': '',
         'PORT': '',
         #'OPTIONS': {
@@ -35,9 +32,7 @@ DATABASES = {
     # },
 }
 
-# Use the Django Sites framework to distinguish between Development and Production
-SITE_ID = 1
-# Hardcoding needed for PayPal Links
+SITE_ID = 3
 SITE_NAME = 'http://mycroftlectures.com'
 
 # Uncomment this and set to all slave DBs in use on the site.
@@ -103,7 +98,7 @@ if PAYPAL_TEST:
     PAYPAL_RECEIVER_EMAIL = "andy_1354358238_biz@type.hk"
 else:
     PAYPAL_RECEIVER_EMAIL = "adbarker86@hotmail.com"
-    
+
 SUBSCRIPTION_PAYPAL_SETTINGS = {
         "business": PAYPAL_RECEIVER_EMAIL,
         "notify_url": "%s%s" % (SITE_NAME, '/subscription/paypal/'),
@@ -111,5 +106,5 @@ SUBSCRIPTION_PAYPAL_SETTINGS = {
         "cancel_return": "%s%s" % (SITE_NAME, '/cancel/'),
     }
 
-PAYPAL_TEST = True
+
 

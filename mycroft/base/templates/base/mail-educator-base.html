@@ -53,7 +53,7 @@
 						<!-- Callout Panel -->
 						{% for lecture in lectures %}
 						<p class="callout">
-							<b>{{ lecture.poem.poet }}: </b><a href="mycroftlectures.dyndns-free.com/lecture/{{ lecture.poem.poet.last_name|lower }}/{{lecture.slug}}/">{{lecture.title }}</a>
+							<b>{{ lecture.poem.poet }}: </b><a href="{{ site }}/lecture/{{ lecture.poem.poet.last_name|lower }}/{{lecture.slug}}/">{{lecture.title }}</a>
 						{% endfor %}
 						</p><!-- /Callout Panel -->					
 						<p class="callout">
@@ -85,7 +85,7 @@
 																			
 												<h5 class="">Contact Info:</h5>												
 												<p>Phone: <strong>+852 9757 5447</strong><br/>
-                Email: <strong><a href="emailto:andrew@mycroft-online-lectures.com">andrew@mycroft-online-lectures.com</a></strong></p>
+               									Email: <strong><a href="emailto:{{ email }}">{{ email }}</a></strong></p>
                 
 											</td>
 										</tr>
@@ -119,8 +119,8 @@
 				<tr>
 					<td align="center">
 						<p>
-							<a href="mycroftlectures.dyndns-free.com/about/">About</a> |
-							<a href="mycroftlectures.dyndns-free.com/terms/">Terms</a>
+							<a href="{{ site }}/about/">About</a> |
+							<a href="{{ site }}/terms/">Terms</a>
 						</p>
 					</td>
 				</tr>

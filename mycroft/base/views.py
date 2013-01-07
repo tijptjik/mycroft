@@ -25,6 +25,8 @@ from django.utils import simplejson
 from django.utils.safestring import mark_safe
 from django.views.static import serve
 
+
+
 from paypal.standard.forms import PayPalPaymentsForm
 from paypal.standard.conf import POSTBACK_ENDPOINT, SANDBOX_POSTBACK_ENDPOINT
 from paypal.standard.ipn.signals import touch_user
@@ -262,6 +264,8 @@ def mailUser(sender, **kwargs):
             period = period * 12;
         times = datetime.now(pytz.utc) + timedelta(days=period*30)
         payload = Context({
+            'site': Site.objects.get_current(),
+            'email': settings.EMAIL_HOST_USER,
             'user': user,
             'expiry': times.strftime("%A, %d %B %Y"),
             'license': license,
@@ -275,6 +279,8 @@ def mailUser(sender, **kwargs):
         subject = 'Mycroft Lectures purchase'
         times = datetime.now(pytz.utc) + timedelta(days=settings.DOWNLOAD_EXPIRATION_DAYS)
         payload = Context({
+            'site': Site.objects.get_current(),
+            'email': settings.EMAIL_HOST_USER,
             'user': user,
             'expiry': times.strftime("%A, %d %B %Y"),
             'lectures' : Lecture.objects.filter(access__user=user).all()
