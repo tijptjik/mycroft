@@ -177,7 +177,7 @@ TEMPLATE_LOADERS = (
 )
 
 COMPRESS_PRECOMPILERS = (
-   ('text/less', 'lesscpy {infile} {outfile}'),
+   ('text/less', 'lessc {infile} > {outfile}'),
 )
 
 FIXTURE_DIRS = (
