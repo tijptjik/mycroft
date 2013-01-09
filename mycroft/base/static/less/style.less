@@ -1,72 +1,51 @@
-/*!
- *   Name: Mycroft Lectures Theme
- * Author: Mart van de Ven
- *
- * Includes :
- *   - bootstrap main css
- *   - bootstrap responsive css
- *   - custom css
- *
- */
-
-//
-// Twitter Bootstrap framwork
-// --------------------------------------------------
-
 @import 'bootstrap.less';
 @import 'responsive.less';
 
-/*!
- * Custom css
- */
+//
+// Variables
+// --------------------------------------------------
 
+// Colours
+// -------------------------
+@my-indigo: rgba(122,27,112,1);
+@my-lime: #99cc66;
 
-body { width: 100%; padding: 90px 0 250px; background: #babeab;
-background: -moz-linear-gradient(top, rgba(63,40,51,0) 50%, rgb(63,40,51) 100%), -moz-radial-gradient(center, ellipse cover,  #babeab 0%, #3f7183 48%, #3f2731 97%);
-background:-webkit-linear-gradient(top, rgba(63,40,51,0) 50%,rgb(63,40,51) 100%), -webkit-radial-gradient(center, ellipse cover,  #babeab 0%,#3f7183 48%,#3f2731 97%);
-background: -o-linear-gradient(top, rgba(63,40,51,0) 50%,rgb(63,40,51) 100%), -o-radial-gradient(center, ellipse cover,  #babeab 0%,#3f7183 48%,#3f2731 97%);
-background: -ms-linear-gradient(top, rgba(63,40,51,0) 50%,rgb(63,40,51) 100%), -ms-radial-gradient(center, ellipse cover,  #babeab 0%,#3f7183 48%,#3f2731 97%);
-background: linear-gradient(to bottom, rgba(63,40,51,0) 50%,rgb(63,40,51) 100%), radial-gradient(ellipse at center,  #babeab 0%,#3f7183 48%,#3f2731 97%);
+// Colours overrides
+@wellBackground: @my-lime;
+
+//
+// Base settings
+// --------------------------------------------------
+
+body { 
+    padding-top: 68px;
+    width: 100%; padding: 90px 0 250px; background: #babeab;
+    // background: linear-gradient(to bottom, rgba(63,40,51,0) 50%,rgb(63,40,51) 100%), radial-gradient(ellipse at center,  #babeab 0%,#3f7183 48%,#3f2731 97%);
+    background-image:url('../img/background/grid.png');
+    background-repeat:repeat;
  }
+
 
 input[type="checkbox"] {
   font-size: 100px !important;
 }
 
-.checkoutFooter{
-        margin-top: 10px;
-        text-align: center;
-    button { 
-        margin-top: 10px;
-    }
-}
+//
+// Layout
+// --------------------------------------------------
+
 .Videowrapper{
     max-width: 920px;
     width:100%;
     margin: auto;
     margin-bottom: 10px;
 }
-.thumbnails {
-    width: 100%;
-}
-.thumbnail {
-    width: 100%;
-    background-color: #EEE;
-    p {
-        font-size: 32px;
-        color: #555;
-        text-transform: uppercase;
-        line-height: 108%;
-        text-shadow: #253E45 -1px 1px 0, #253E45 -2px 2px 0, #D45848 -3px 3px 0, #D45848 -4px 4px 0;
-        text-align: center !important;
+.checkoutFooter{
+        margin-top: 10px;
+        text-align: center;
+    button { 
+        margin-top: 10px;
     }
-}
-.hero-unit{
-    padding-top: 0px;
-}
-
-body {
-    padding-top: 68px;
 }
 
 #bt_form{
@@ -81,14 +60,21 @@ body {
     }
 }
 
+// 
+// Buttons
+// --------------------------------------------------
+
+// Submit Cart Button
 #submitCart{
     width: 100%;
 }
 
+// Register User Button
 #registerUserButton{
     width: 162px;
 }
 
+// Loading Button
 .btn-loading {
     background-image: -webkit-gradient(linear, 0 0, 100% 100%,
         color-stop(.25, rgba(0, 0, 0, .10)), 
@@ -124,3 +110,52 @@ body {
         background-position: -50px 0;
     }
 }
+
+//
+// Hero unit
+// --------------------------------------------------
+
+.hero-unit {
+  padding: 0;
+  margin-bottom: 80px;
+  font-size: 18px;
+  font-weight: 200;
+  line-height: @baseLineHeight * 1.5;
+  color: @heroUnitLeadColor;
+  background-color: @heroUnitBackground;
+  .border-radius(6px);
+  h1 {
+    margin-bottom: 0;
+    font-size: 60px;
+    line-height: 1;
+    color: @heroUnitHeadingColor;
+    letter-spacing: -1px;
+  }
+  li {
+    line-height: @baseLineHeight * 1.5; // Reset since we specify in type.less
+  }
+}
+
+//
+// Thumbnails
+// --------------------------------------------------
+
+.thumbnails {
+    width: 100%;
+}
+.thumbnail {
+    width: 100%;
+    background-color: #EEE;
+    p {
+        font-size: 32px;
+        color: #555;
+        text-transform: uppercase;
+        line-height: 108%;
+        text-shadow: #253E45 -1px 1px 0, #253E45 -2px 2px 0, #D45848 -3px 3px 0, #D45848 -4px 4px 0;
+        text-align: center !important;
+    }
+}
+
+
+
+
