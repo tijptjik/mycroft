@@ -162,14 +162,24 @@ class Access(models.Model):
     def __unicode__(self):
         return '%s:  %s' % (self.user.email, self.lecture)
 
+class InstitutionManager(models.Manager):
+    
+    def create_insitution(self, name, user):
+        institution = self.create(name=name, contact=user)
+        unique_slugify(institution, name)
+        return institution
+    
 class Institution(models.Model):
     name = models.CharField(max_length=75)
     contact = models.ForeignKey(User)
+    slug = models.SlugField(max_length=40, unique=True, default="")
+
 
     class Meta:
         verbose_name = ('Institution')
         verbose_name_plural = ('Institutions')
 
     def __unicode__(self):
-        pass
-    
+        return self.name
+
+    objects = InstitutionManager()
