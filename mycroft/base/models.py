@@ -163,37 +163,3 @@ class Access(models.Model):
     def __unicode__(self):
         return '%s:  %s' % (self.user.email, self.lecture)
 
-def send_email(sender, user, userkey, site):
-    # ipn_obj = sender
-    # print ipn_obj
-    # message = ipn_obj.item_name, ipn_obj.item_number
-    lecture = "jell"
-
-    ctx_dict = {'lecture': lecture,
-                'userkey': userkey,
-                'expiration_days': settings.DOWNLOAD_EXPIRATION_DAYS,
-                'site' : site}
-
-    subject = render_to_string('purchase_email_subject.txt', ctx_dict)
-    # Email subject *must not* contain newlines
-    subject = ''.join(subject.splitlines())
-    
-    message = render_to_string('pruchase_email.txt', ctx_dict)
-    
-    user.email_user(subject, message, settings.EMAIL_HOST_USER)
-
-
-@receiver(payment_was_successful)
-def confirm_admin_payment(sender, user, **kwargs):
-    activation_key = RegistrationProfile.objects.get(user=sender.pk).activation_key
-    if Site._meta.installed:
-        site = Site.objects.get_current()
-    else:
-        site = RequestSite(request)
-
-    send_email(sender=sender, user=user, userkey=activation_key, site=site)
-
-@receiver(payment_was_flagged)
-def payment_flagged(sender, **kwargs):
-    print "FLAGGED: %s" % sender.payer_email
-
