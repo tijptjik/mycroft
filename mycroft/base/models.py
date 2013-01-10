@@ -40,7 +40,7 @@ class Video(models.Model):
 
 
 class Preview(models.Model):
-    vimeo_id = models.CharField(max_length=11)
+    youtube_id = models.CharField(max_length=11)
     title = models.CharField(max_length=100)
 
     class Meta:
@@ -163,11 +163,6 @@ class Access(models.Model):
     def __unicode__(self):
         return '%s:  %s' % (self.user.email, self.lecture)
 
-def show_me_the_money(sender, **kwargs):
-    ipn_obj = sender
-    # Undertake some action depending upon `ipn_obj`.
-    print __file__,1, 'Payment Received!'        
-
 def send_email(sender, user, userkey, site):
     # ipn_obj = sender
     # print ipn_obj
@@ -184,17 +179,12 @@ def send_email(sender, user, userkey, site):
     subject = ''.join(subject.splitlines())
     
     message = render_to_string('pruchase_email.txt', ctx_dict)
-    print 'to:', user.email
-    print message
     
     user.email_user(subject, message, settings.EMAIL_HOST_USER)
 
 
 @receiver(payment_was_successful)
 def confirm_admin_payment(sender, user, **kwargs):
-    print sender
-    print user
-    print 'SUCCESS: %s' % sender.payer_email
     activation_key = RegistrationProfile.objects.get(user=sender.pk).activation_key
     if Site._meta.installed:
         site = Site.objects.get_current()
