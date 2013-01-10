@@ -30,7 +30,6 @@ class Product(models.Model):
 class Video(models.Model):
     video = models.FileField(upload_to='lectures')
     duration = models.IntegerField('duration in seconds', default=3600)
-    # format = models.CharField('file format', max_length=20, default='MKV')
     subtitle = models.FileField(upload_to='subtitles', blank=True)
     subtitle_language = models.CharField(max_length=20, default='English')
 
@@ -163,3 +162,14 @@ class Access(models.Model):
     def __unicode__(self):
         return '%s:  %s' % (self.user.email, self.lecture)
 
+class Institution(models.Model):
+    name = models.CharField(max_length=75)
+    contact = models.ForeignKey(User)
+
+    class Meta:
+        verbose_name = ('Institution')
+        verbose_name_plural = ('Institutions')
+
+    def __unicode__(self):
+        pass
+    
