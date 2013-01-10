@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load num_range %}
 
 {% block videojs %}
   <link href="{{ STATIC_URL }}js/libs/videojs/design/video-js.css" rel="stylesheet" type="text/css">
@@ -26,43 +27,85 @@
 {% block page_class %}home-page{% endblock %}
 {% block content %}
 
-<div class="hero-unit">
+
+
+<div class="container actionbar"></div>
+<div class="jumptron">
   <!-- <h1>Hello there,</h1> -->
-    <div class="Videowrapper">
-      <video id="example_video_1" class="video-js vjs-default-skin h_iframe" width="980" height="550" data-setup='{"techOrder":["youtube","html5"],"ytcontrols":true}'
-        poster="http://video-js.zencoder.com/oceans-clip.png">
-        <source src="http://www.youtube.com/watch?v=aRuHAAmXDkY" type='video/youtube'>
-      </video>
-      <img class="ratio" src="{{ STATIC_URL }}img/landing.png"/>
-    </div>
-  <p class="pull-right">
-    Available for <a class="btn btn-primary btn-large"> Students </a> and 
-    <a class="btn btn-primary btn-large"> Institutions </a>
-  </p>
+    <div class="container">
+      <div class="Videowrapper">
+        <img class="ratio" src="{{ STATIC_URL }}img/landing.jpg"/>
+      <!--   <video id="example_video_1" class="video-js vjs-default-skin h_iframe" width="980" height="550" data-setup='{"techOrder":["youtube","html5"],"ytcontrols":true}'
+          poster="http://video-js.zencoder.com/oceans-clip.png">
+          <source src="http://www.youtube.com/watch?v=aRuHAAmXDkY" type='video/youtube'>
+        </video>
+        <img class="ratio" src="{{ STATIC_URL }}img/landing.png"/> -->
+      </div>
+  </div>
 </div>
 
-<div class="well"> 
+<div class="panel-wide">
+  <div class="container actionbar bottom">
+  <p class="pull-right">
+        Available for <a href="#" class="my-btn btn-large"><i class="icon-dark icon-book"></i> Institutions</a> and <a href="#" class="my-btn btn-large"><i class="icon-dark icon-user"></i> Individuals</a>
+  </p>
+  </div>
+</div>
+
+<div class="panel-wide portalbar">
+ <div class="container">
+  <div class="section-header">
+    <h2>School Portals</h2>
+  </div>
+    <ul class="thumbnails">
+    {% num_range 4 as some_range %}
+      {% for i in some_range %}
+      <li class="span2">
+        <a href="#" class="thumbnail thumbnail-max"><img src="{{ STATIC_URL }}img/logos/school{{i}}.jpg" alt=""></a>
+      </li>
+      {% endfor %}  
+    </ul>
+  </div>
+</div>
+
+
+<div class="panel-wide lecturegrid">
+<div class="container">
+  <div class="section-header">
   <h2>Available Lectures</h2>
   <ul class="nav nav-pills lecture-sort">
     <li class="active"><a data-sort="poet" href="">Poet Name</a></li>
     <li><a data-sort="title" href="">Poem Title</a></li>
     <li><a data-sort="date" href="">Year of Publication</a></li>
   </ul>
-
-<ul class="thumbnails" class="span12">
-    {% for lecture in lectures %}
-      <li class="thumbnail">
-        <div class="lecture-block">
-          <p data-poet="{{ lecture.poem.poet.last_name }}" data-title="{{ lecture.poem.title }}:" data-date="{{lecture.poem.pub_year}}"><a class="placeholder" href="/lecture/{{ lecture.poem.poet.slug }}/{{ lecture.slug }}"><span>{{ lecture.poem.poet.first_name }} {{ lecture.poem.poet.last_name }}: </span>{{lecture.poem.title}}</a></p>
-          {% comment %}<img class= "poem-header" src="http://ima.gs/transparent/NONE/111/{{lecture.poem.title}}-1170x250.png" alt="{{lecture.title}}">
-          <h3>{{ lecture.poem.title }}</h3>
-          <p>{{ lecture.poem.poet }}</p> {% endcomment %}    
-      </div>
-      </li>
-    {% endfor %}
-</ul>
-{% endblock %}
+  </div>
+  <ul id="content" class="thumbnails" class="span12">
+      {% for lecture in lectures %}
+        <li class="span3" data-poet="{{ lecture.poem.poet.last_name }}" data-title="{{ lecture.poem.title }}:" data-date="{{lecture.poem.pub_year}}">
+          <div class="thumbnail lecture-block">
+            <a href="/lecture/{{ lecture.poem.poet.slug }}/{{ lecture.slug }}">
+            <img src="http://img.youtube.com/vi/{{lecture.preview.youtube_id}}/0.jpg">
+            <span class="author">{{ lecture.poem.poet.first_name }} {{ lecture.poem.poet.last_name }}:</span>
+            <span class="title">{{lecture.poem.title}}</span>
+            </a>
+        </div>
+        </li>
+      {% endfor %}
+  </ul>
 </div>
+
+<div class="container">
+  <footer class="footerbar">
+    <ul class="nav-pills">
+        <li>DESIGN</li>
+        <li>BY</li>
+        <li>TYPE</li>
+    </ul>
+  </footer>
+</div>
+{% endblock %}
+
+
 {% block scripts %}
   <script src="{{ STATIC_URL }}js/libs/jquery/sortElements.js" type="text/javascript" charset="utf-8"></script>
   <script type="text/javascript">
@@ -72,10 +115,11 @@
     $('.lecture-sort > li.active').toggleClass('active');
     $this.parent().toggleClass('active');
     q = $this.data('sort');
-    $('.lecture-block p').sortElements(function(a, b){
+    $('div.lecture-block').sortElements(function(a, b){
         return $(a).data(q) > $(b).data(q) ? 1 : -1;
-    });
+    })
   });
   </script>
+  
 {% endblock %}
 
