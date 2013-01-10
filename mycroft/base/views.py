@@ -86,7 +86,7 @@ def lecture(request, poet_last_name=None, poem_title=None):
     return render(request, 'base/lecture.html', context)
 
 def store(request, extra_context=None):
-    subscriptions = Subscription.objects.all()
+    subscriptions = Subscription.objects.get(id=1)
     form_class = EmailRegistrationForm
     form = form_class()
 
@@ -106,18 +106,15 @@ def store(request, extra_context=None):
 
     # Create the instances.
     student = PayPalPaymentsForm(initial=student_dict, button_class="pull-right btn-danger", button_text="Select your Lectures", button_type="bootstrap")
-    subscription1 = _paypal_form(get_object_or_404(Subscription, id=1), genericUser, upgrade_subscription=False, invoice=genInvoiceID('L'))
-    subscription2 = _paypal_form(get_object_or_404(Subscription, id=2), genericUser, upgrade_subscription=False, invoice=genInvoiceID('L'))
-    subscriptionForm1 = mark_safe(PAYPAL_FORM % ('1', endpoint, subscription1.as_p()))
-    subscriptionForm2 = mark_safe(PAYPAL_FORM % ('2', endpoint, subscription2.as_p()))
+    subscription = _paypal_form(get_object_or_404(Subscription, id=1), genericUser, upgrade_subscription=False, invoice=genInvoiceID('L'))
+    subscriptionForm = mark_safe(PAYPAL_FORM % ('1', endpoint, subscription.as_p()))
 
     context = dict(
         lecture_list=Lecture.objects.all(),
-        subscription_list=subscriptions,
+        subscription=subscriptions,
         student=student,
         form=form,
-        subscription1=subscriptionForm1,
-        subscription2=subscriptionForm2,
+        subscription_form=subscriptionForm,
     )
     
     if extra_context is None:

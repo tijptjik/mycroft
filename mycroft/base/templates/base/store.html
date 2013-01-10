@@ -6,7 +6,12 @@
 {% block content %}
 
 <div class="row">
-    <div class="span4 well">
+    <div class="span6 well">
+        <h2>{{subscription.name}}</h2>
+        <p> {{subscription.description}}</p>
+        <p> $ {{subscription.price}}<a data-toggle="modal" data-id="{{subscription.id}}" data-product="{{subscription.name}}" data-toggle="modal" title="{{subscription.name}}" class="btn-modal btn btn-primary pull-right" href="#SubscriptionDialog">Sign-up</a>
+    </div>
+    <div class="span6 well">
         <h2>Student Downloads</h2>
         <h4>Mycroft Online Lectures</h4>
         <div id="lectureList">
@@ -39,13 +44,6 @@
     </div>
     </div>
 
-{%for subscription in subscription_list %}
-    <div class="span3 well">
-        <h2>{{subscription.name}}</h2>
-        <p> {{subscription.description}}</p>
-        <p> $ {{subscription.price}}<a data-toggle="modal" data-id="{{subscription.id}}" data-product="{{subscription.name}}" data-toggle="modal" title="{{subscription.name}}" class="btn-modal btn btn-primary pull-right" href="#SubscriptionDialog">Sign-up</a>
-    </div>
-{% endfor %}
 </div>
 <div class="row">
 </div>
@@ -56,13 +54,16 @@
 <div id="SubscriptionDialog" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="SubscribeLabel" aria-hidden="true">
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-        <h3 id="SubscribeLabel">Enter your subscription details</h3>
+        <h3 id="SubscribeLabel">Enter your contact details</h3>
     </div>
     <div class="modal-body">
 <!-- Registration Form -->
     <h2 id="productLabel">Product</h2>
     <form id="subscriptionForm" method="post" action=".">{% csrf_token %}
-        <label for="id_email">Email:</label><input id="id_email" validate="required|email" type="text" name="email" maxlength="256">
+        <label for="id_school">School or Institution:</label><input id="id_school" validate="required" type="text" name="institution" maxlength="128">
+        <label for="id_first_name">First Name:</label><input id="id_first_name" validate="required" type="text" name="first_name" maxlength="64">
+        <label for="id_last_name">Last Name:</label><input id="id_last_name" validate="required" type="text" name="last_name" maxlength="64">
+        <label for="id_email">Contact Email:</label><input id="id_email" validate="required|email" type="text" name="email" maxlength="256">
         <label for="password1">Password:</label> <input id="password1" type="password" class="required" name="password1">
         <label for="password2">Password (repeat):</label> <input validate="required|custom_pass_eq" type="password" name="password2" id="password2">
         <input type="hidden" name="id" value="0" id="subscriptionID">'
@@ -72,8 +73,7 @@
     <button id="registerUserButton" class="btn btn-primary">{% trans 'Checkout with PayPal' %}</button>
     <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
   </div>
-{{ subscription1 }}
-{{ subscription2 }}
+{{ subscription_form }}
 </div>
 
 {% endblock %}
@@ -194,16 +194,10 @@
         });
     });
 
-    $('.btn-modal').first().click(function(){
-        target = '#subscriptionForm1'
+    $('.btn-modal').click(function(){
+        target = '#subscriptionForm'
         return true;
     })
-    $('.btn-modal').last().click(function(){
-        target = '#subscriptionForm2'
-        return true;
-    })
-
-
     </script>
 {% endblock scripts %}
 
