@@ -12,8 +12,8 @@
         <p> $ {{subscription.price}}<a data-toggle="modal" data-id="{{subscription.id}}" data-product="{{subscription.name}}" data-toggle="modal" title="{{subscription.name}}" class="btn-modal btn btn-primary pull-right" href="#SubscriptionDialog">Sign-up</a>
     </div>
     <div class="span6 well">
-        <h2>Student Downloads</h2>
-        <h4>Mycroft Online Lectures</h4>
+        <h2>Individual Downloads</h2>
+        <h4>Mycroft Lectures for personal viewing</h4>
         <div id="lectureList">
             {%for lecture in lecture_list%}
                 <label class="checkbox">
@@ -188,16 +188,11 @@
 
         $.post("/api/client/educator/json/", form, function(data) {
             response = $.parseJSON( data );
-            t = target + ' #id_custom';
-            $(t).val(response[0]['pk']);
-            $(target).submit();
+            console.log(data)
+            $('#subscriptionForm').submit();
         });
     });
 
-    $('.btn-modal').click(function(){
-        target = '#subscriptionForm'
-        return true;
-    })
     </script>
 {% endblock scripts %}
 

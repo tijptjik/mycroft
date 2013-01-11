@@ -1,0 +1,95 @@
+{% extends "base.html" %}
+
+{% block page_class %}Portal: {{institution.name}}{% endblock %}
+{% block content %}
+
+{% if user.is_authenticated %}
+  {% if expired %}
+    <div class="hero-unit">          
+    <div id="loginBox" class="container">
+    <div class="content">
+        <div class="row">
+          <div class="login-form">
+            <h1> Licence Expired</h1>
+            <p>Unfortunately, the license for {{institution.name}} has expired. If you would like to continue making use of Mycroft Lectures we suggest you ask your institution to renew their license.</p>
+          </div>
+        </div>
+      </div>
+      </div>
+  {% else %}  
+    <div class="panel-wide lecturegrid">
+    <div class="container">
+      <div class="section-header">
+      <h2>Lectures</h2>
+      <ul class="nav nav-pills lecture-sort">
+        <li class="active"><a data-sort="poet" href="">Poet Name</a></li>
+        <li><a data-sort="title" href="">Poem Title</a></li>
+        <li><a data-sort="date" href="">Year of Publication</a></li>
+      </ul>
+      </div>
+      <ul id="content" class="thumbnails" class="span12">
+          {% for lecture in lectures %}
+            <li class="span3" data-poet="{{ lecture.poem.poet.last_name }}" data-title="{{ lecture.poem.title }}:" data-date="{{lecture.poem.pub_year}}">
+              <div class="thumbnail lecture-block">
+                <a href="/portal/{{institution.slug}}/{{ lecture.slug }}">
+                <img src="http://img.youtube.com/vi/{{lecture.preview.youtube_id}}/0.jpg">
+                <span class="author">{{ lecture.poem.poet.first_name }} {{ lecture.poem.poet.last_name }}:</span>
+                <span class="title">{{lecture.poem.title}}</span>
+                </a>
+            </div>
+            </li>
+          {% endfor %}
+      </ul>
+    </div>
+
+    <div class="container">
+      <footer class="footerbar">
+        <ul class="nav-pills">
+            <li>DESIGN</li>
+            <li>BY</li>
+            <li>TYPE</li>
+        </ul>
+      </footer>
+    </div>
+  {% endif %}  
+ 
+{% else %}
+<div class="hero-unit">          
+  <div id="loginBox" class="container">
+  <div class="content">
+      <div class="row">
+        <div class="login-form">
+          <h1> {{institution.name}}</h1>
+          <form action="/accounts/login/" method="post">{% csrf_token %}
+            <fieldset>
+                <input type="hidden" name="" value="{{ institution.contact.email }}">
+              <div class="clearfix">
+                <input type="password" name="" value="" placeholder="Password">
+              </div>
+              <input type="submit" name="submit" value="Submit" class="my-btn btn-large">
+            </fieldset>
+          </form>
+        </div>
+      </div>
+    </div>
+    </div>
+{% endif %}  
+{% endblock %}
+
+{% block scripts %}
+  <script src="{{ STATIC_URL }}js/libs/jquery/sortElements.js" type="text/javascript" charset="utf-8"></script>
+  <script type="text/javascript">
+  $('.lecture-sort a').live('click', function(e){
+    $this = $(this);
+    e.preventDefault();
+    $('.lecture-sort > li.active').toggleClass('active');
+    $this.parent().toggleClass('active');
+    q = $this.data('sort');
+    $('div.lecture-block').sortElements(function(a, b){
+        return $(a).data(q) > $(b).data(q) ? 1 : -1;
+    })
+  });
+  </script>
+  
+{% endblock %}
+

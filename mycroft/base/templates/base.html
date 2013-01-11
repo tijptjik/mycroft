@@ -51,8 +51,8 @@
       <div class="nav-collapse collapse">
         <!-- .nav, .navbar-search, .navbar-form, etc -->
         <ul class="nav">
-          <li><a href="{% url students %}">For Students</a></li>
-          <li><a href="{% url educators %}">For Educators</a></li>
+          <li><a href="{% url license %}">For Institutions</a></li>
+          <li><a href="{% url download %}">For Individuals</a></li>
           <li><a href="{% url store %}">Store</a></li>
           <li><a href="{% url story %}">Our Story</a></li>
           <li><a href="{% url testimonials %}">Testimonials</a></li>
@@ -65,7 +65,7 @@
             <p>Signed in as {{user.first_name}}. Not you?
               <a href="{% url auth_logout %}" class="my-btn btn-danger btn-mino">Sign out</a><p>
             {% else %}
-              <a href="{% url auth_login %}" class="my-btn btn-info btn-mino">Sign in</a>
+            <a href="{% url django.contrib.auth.views.login %}?next={{request.path}}" class="my-btn btn-info btn-mino">Sign in</a>
             {% endif %}
           </div>
         </li> 

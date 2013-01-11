@@ -1,0 +1,110 @@
+{% extends "base.html" %}
+
+{% block videojs %}
+  <link href="{{ STATIC_URL }}js/libs/videojs/design/video-js.css" rel="stylesheet" type="text/css">
+  <script src="{{ STATIC_URL }}js/libs/videojs/src/core.js"></script>
+  <script src="{{ STATIC_URL }}js/libs/videojs/src/lib.js"></script>
+  <script src="{{ STATIC_URL }}js/libs/videojs/src/json.js"></script>
+
+  <script src="{{ STATIC_URL }}js/libs/videojs/src/component.js"></script>
+  <script src="{{ STATIC_URL }}js/libs/videojs/src/player.js"></script>
+  <script src="{{ STATIC_URL }}js/libs/videojs/src/tech.js"></script>
+  <script src="{{ STATIC_URL }}js/libs/videojs/src/controls.js"></script>
+  <script src="{{ STATIC_URL }}js/libs/videojs/src/events.js"></script>
+  <script src="{{ STATIC_URL }}js/libs/videojs/src/tracks.js"></script>
+
+  <script src="{{ STATIC_URL }}js/libs/videojs/tech/html5/html5.js"></script>
+  <script src="{{ STATIC_URL }}js/libs/videojs/tech/flash/flash.js"></script>
+
+  <script src="{{ STATIC_URL }}js/libs/videojs/tech/youtube/youtube.js"></script>
+  
+  <script src="{{ STATIC_URL }}js/libs/videojs/src/setup.js"></script>
+{% endblock %}
+
+{% block page_class %}home-page{% endblock %}
+{% block content %}
+
+{% if user.is_authenticated %}            
+<div class="hero-unit">
+  <video id="lectureVideo" class="video-js vjs-default-skin" controls preload="auto" data-setup="{}">
+      <source src="{{ site }}/media/lectures/digging.mp4" type="video/mp4" />
+      <track kind="subtitles" src="{{ site }}/media/lectures/digging.vtt" type="text/vtt" srclang="en" label="English Subtitles" />
+  </video>
+</div>          
+
+<div class="row"></div>
+<div class="row">
+  <div class="span7 well">
+  <pre>{{lecture.poem.text}}</pre>
+</div>
+<div class="span4">
+<h2>{{lecture.poem.poet}}</h2>
+<p>{{lecture.poem.poet.year_of_birth}} - {{lecture.poem.poet.year_of_death}}</p>
+<p>{{lecture.poem.poet.description}}</p>
+</div>
+</div>
+
+{% else %}
+<div class="hero-unit">          
+<div id="loginBox" class="container">
+  <div class="content">
+      <div class="row">
+        <div class="login-form">
+          <h1> {{institution.name}}</h1>
+          <form action="/accounts/login/" method="post">{% csrf_token %}
+            <fieldset>
+                <input type="hidden" name="" value="{{ institution.contact.email }}">
+              <div class="clearfix">
+                <input type="password" name="" value="" placeholder="Password">
+              </div>
+              <input type="submit" name="submit" value="Submit" class="my-btn btn-large">
+            </fieldset>
+          </form>
+        </div>
+      </div>
+    </div>
+</div>
+{% endif %}  
+
+{% endblock %}
+
+{% block scripts %}
+<script type="text/javascript">
+
+$('#submitSingle').click(function(){
+  $.bt_validate.result = true;
+  $('#bt_form').bt_validate()
+  if($.bt_validate.blocked){ 
+        return false };
+  
+  email = $('#id_email').serialize();
+  
+  $.post("/api/client/student/json/", email, function(data) {
+          response = $.parseJSON( data );
+          console.log(response[0]);
+          $('#custom').val(response[0]['pk']);
+          $('#payer_email').val(response[0]['fields']['email']);
+          $('#bt_form').submit()
+      });
+})
+
+  // Once the video is ready
+  _V_("lectureVideo").ready(function(){
+
+    var myPlayer = this;    // Store the video object
+    var aspectRatio = 9/16; // Make up an aspect ratio
+
+    function resizeVideoJS(){
+      // Get the parent element's actual width
+      var width = document.getElementById(myPlayer.id).parentElement.offsetWidth;
+      // Set width to fill parent element, Set height
+      myPlayer.width(width).height( width * aspectRatio );
+    }
+
+    resizeVideoJS(); // Initialize the function
+    window.onresize = resizeVideoJS; // Call the function on resize
+  });
+
+</script>
+{% endblock %}
+

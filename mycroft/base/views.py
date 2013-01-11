@@ -47,7 +47,7 @@ from subscription.views import _paypal_form
 USE_XSENDFILE = getattr(settings, 'USE_XSENDFILE', False)
 
 PAYPAL_FORM = u"""
-        <form id="subscriptionForm%s" action="%s" method="post" class="hidden">
+        <form id="subscriptionForm" action="%s" method="post" class="hidden">
             %s
             <input type="hidden" name="upload" value="1">
             <input id="checkoutSubscription" type="submit" class="btn pull-right btn-danger" value="Checkout with PayPal" alt="Checkout with PayPal" />
@@ -55,14 +55,15 @@ PAYPAL_FORM = u"""
 
 def index(request):
     lectures = Lecture.objects.all().order_by('poem__poet__last_name')
+    institutions = Institution.objects.all()
     for lecture in lectures:
         lecture.poem.poet.slug = lecture.poem.poet.last_name.lower()
-    return render(request, 'base/index.html', {'lectures': lectures})
+    return render(request, 'base/index.html', {'lectures': lectures, 'institutions':institutions})
 
-def students(request):
+def download(request):
     return render(request, 'base/story.html')
 
-def educators(request):
+def license(request):
     return render(request, 'base/story.html')
 
 def lecture(request, poet_last_name=None, poem_title=None):
@@ -107,7 +108,7 @@ def store(request, extra_context=None):
     # Create the instances.
     student = PayPalPaymentsForm(initial=student_dict, button_class="pull-right btn-danger", button_text="Select your Lectures", button_type="bootstrap")
     subscription = _paypal_form(get_object_or_404(Subscription, id=1), genericUser, upgrade_subscription=False, invoice=genInvoiceID('L'))
-    subscriptionForm = mark_safe(PAYPAL_FORM % ('1', endpoint, subscription.as_p()))
+    subscriptionForm = mark_safe(PAYPAL_FORM % (endpoint, subscription.as_p()))
 
     context = dict(
         lecture_list=Lecture.objects.all(),
@@ -138,7 +139,6 @@ def thanks(request):
     return render(request, 'base/thanks.html')
 
 def client(request, method, format):
-    backend = 'registration.backends.default.DefaultBackend'
 
     if format == 'xml':
         mimetype = 'application/xml'
@@ -150,6 +150,7 @@ def client(request, method, format):
             return HttpResponse('GET not supported')
         elif request.method == 'POST':
             if method == 'student':
+                backend = 'registration.backends.default.DefaultBackend'
                 form_class = TouchRegistrationForm
                 try:
                     email = request.POST['email']
@@ -160,6 +161,7 @@ def client(request, method, format):
                     touch_user = registerUser(request=request, backend=backend, form_class=form_class, deferred=True)
                 data = serializers.serialize(format, [touch_user, ])
             elif method == 'educator':
+                backend = 'registration.backends.institutional.InstitutionalBackend'
                 form_class = EmailRegistrationForm
                 new_user = registerUser(request=request, backend=backend, form_class=form_class, deferred=True)
                 text_template = 'base/mail-newuser.txt'
@@ -173,6 +175,38 @@ def client(request, method, format):
             return HttpResponse(data, content_type=mimetype)
     else:
         return HttpResponse('ERROR')
+
+def portal(request, institution):
+    institution = get_object_or_404(Institution, slug=institution)
+    lectures = Lecture.objects.all()
+    if not "instituion has valid account":
+        expired = True
+    else:
+        expired = False
+
+    context = {
+        'lectures': lectures,
+        'institution' : institution,
+        'expired': expired
+        }
+    return render(request, 'base/portal.html', context)
+
+def portal_item(request, institution, lecture):
+    institution = get_object_or_404(Institution, slug=institution)
+    if not "instituion has valid account":
+        expired = True
+        # render notice that account has expired
+    else:
+        expired = False
+        lecture = get_object_or_404(Lecture, slug=lecture)
+        if not lecture.poem.poet.year_of_death:
+            lecture.poem.poet.year_of_death = 'Current'
+
+    context = {
+        'lecture': lecture,
+        'institution' : institution,
+        'expired': expired}
+    return render(request, 'base/portal_item.html', context)
 
 def stream(request, username, slug):
     try:
@@ -313,4 +347,4 @@ def sendMail(to, subject, payload={}, text_template=None, html_template=None):
 def genInvoiceID(typer):
     invoices = len(PayPalIPN.objects.filter(payment_type__startswith="instant"))
     no = "%04d" % (invoices + 1)
-    return "MCRFT"+ str(no) + typer
+    return "MYCROFT"+ str(no) + typer

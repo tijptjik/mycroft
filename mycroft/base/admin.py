@@ -3,7 +3,7 @@ from paypal.standard.ipn.models import PayPalIPN
 from paypal.standard.ipn.admin import PayPalIPNAdmin
 from models import *
 
-for model in [Product, Video, Lecturer, Series, Poet, Poem, Testimonial, Preview, Access]:
+for model in [Product, Video, Lecturer, Series, Poet, Poem, Testimonial, Preview, Institution, Access]:
     admin.site.register(model)
 
 

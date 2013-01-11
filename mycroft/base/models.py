@@ -166,14 +166,12 @@ class InstitutionManager(models.Manager):
     
     def create_insitution(self, name, user):
         institution = self.create(name=name, contact=user)
-        unique_slugify(institution, name)
         return institution
     
 class Institution(models.Model):
     name = models.CharField(max_length=75)
     contact = models.ForeignKey(User)
-    slug = models.SlugField(max_length=40, unique=True, default="")
-
+    slug = models.SlugField(max_length=40, unique=False, default="")
 
     class Meta:
         verbose_name = ('Institution')
@@ -181,5 +179,11 @@ class Institution(models.Model):
 
     def __unicode__(self):
         return self.name
+
+    def save(self, *args, **kwargs):
+        if not self.id:
+            unique_slugify(self, self.name)
+
+        super(Institution, self).save(*args, **kwargs)
 
     objects = InstitutionManager()

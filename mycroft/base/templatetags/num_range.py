@@ -9,6 +9,10 @@ class RangeNode(Node):
         context[self.context_name] = range(int(self.num))
         return ""
         
+@register.filter
+def lookup(d, key):
+    return d[key]
+
 @register.tag
 def num_range(parser, token):
     """

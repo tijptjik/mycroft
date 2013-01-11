@@ -47,7 +47,7 @@
 <div class="panel-wide">
   <div class="container actionbar bottom">
   <p class="pull-right">
-        Available for <a href="#" class="my-btn btn-large"><i class="icon-dark icon-book"></i> Institutions</a> and <a href="#" class="my-btn btn-large"><i class="icon-dark icon-user"></i> Individuals</a>
+        Available for <a href="{% url license %}" class="my-btn btn-large"><i class="icon-dark icon-book"></i> Institutions</a> and <a href="{% url download %}" class="my-btn btn-large"><i class="icon-dark icon-user"></i> Individuals</a>
   </p>
   </div>
 </div>
@@ -61,7 +61,7 @@
     {% num_range 4 as some_range %}
       {% for i in some_range %}
       <li class="span2">
-        <a href="#" class="thumbnail thumbnail-max"><img src="{{ STATIC_URL }}img/logos/school{{i}}.jpg" alt=""></a>
+        <a href="/portal/st-subornation-college/" class="thumbnail thumbnail-max"><img src="{{ STATIC_URL }}img/logos/school{{i}}.jpg" alt=""></a>
       </li>
       {% endfor %}  
     </ul>
