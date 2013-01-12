@@ -1,3 +1,4 @@
+
 @import 'bootstrap.less';
 @import 'responsive.less';
 @import 'elements.less';
@@ -51,9 +52,6 @@ body {
     background-repeat:repeat;
  }
 
-input[type="checkbox"] {
-  font-size: 100px !important;
-}
 
 .Videowrapper {
     
@@ -83,9 +81,48 @@ input[type="checkbox"] {
         color: #9c6;
     }
 }
+
 //
-// Layout
+// Layout Components
 // --------------------------------------------------
+//
+
+.panelBox {
+    .box-model;
+    background-color: #fff;
+    padding: 20px;
+    margin: 0;
+    margin-top: 40px; 
+    margin-bottom: 0px; 
+    -webkit-border-radius: 10px 10px 10px 10px;
+       -moz-border-radius: 10px 10px 10px 10px;
+            border-radius: 10px 10px 10px 10px;
+    -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.15);
+       -moz-box-shadow: 0 1px 2px rgba(0,0,0,.15);
+            box-shadow: 0 1px 2px rgba(0,0,0,.15);
+}
+
+.box-model{
+    -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+    -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+    box-sizing: border-box;         /* Opera/IE 8+ */    
+}
+.signed {
+    margin: 24px;
+    .clearfix
+}
+
+.alpha{
+    margin-left: -20px; 
+}
+.omega{
+    margin-left: 20px; 
+}
+//
+// Layout Items
+// --------------------------------------------------
+//
+
 .jumptron {
     width: 100%;
     padding: 0;
@@ -171,22 +208,11 @@ input[type="checkbox"] {
         }
     }
     img { 
-        filter: grayscale(100%);
-        -webkit-filter: grayscale(100%);
-        -moz-filter: grayscale(100%);
-        -ms-filter: grayscale(100%);
-        -o-filter: grayscale(100%);
-        &:hover {
-            filter: none;
-            -webkit-filter: none;
-            -moz-filter: none;
-            -ms-filter: none;
-            -o-filter: none;
-            }
+        .blackwhite();
     }
 }
 
-.lecturegrid{
+.lecturegrid {
     text-align: center;
     .nav{
         margin-bottom: 0px;
@@ -243,7 +269,7 @@ input[type="checkbox"] {
     border-bottom: solid 1px @my-linnen;
 }
 
-.lecture-sort{
+.lecture-sort {
     padding-top: 12px;
     a {
         .rounded(0);
@@ -276,24 +302,49 @@ input[type="checkbox"] {
     }
 }
 
-
-.checkoutFooter{
-        margin-top: 10px;
-        text-align: center;
-    button { 
-        margin-top: 10px;
+.checkoutFooter {
+    margin-top: 10px;
+    text-align: center;
+    > #bt_form2 {
+        text-align: left;
+        input {
+            margin-left: 50px;
+            margin-top: 8px;
+            margin-bottom: -4px;
+        }
+    }
+    .my-btn,
+    .btn {
+        margin-top: 8px;
+        width: 90%;
     }
 }
 
-#bt_form{
-    display: inline;
+.profession {
+    color: @my-linnen;
 }
 
-#bt_form2{
-    display: block;
-    input {
-        display: block;
-        margin-left: 28px;
+.lecturelist{
+    img {
+        .blackwhite();    
+    }
+    .row {
+        border-bottom: solid 1px #ccc;
+    }
+}
+
+.thumbcol3{
+    margin-left:0;
+    margin-bottom:24px;
+}
+
+#checkoutBox {
+    position: absolute;
+    top: 90px;
+    left: 50%;
+    margin-left: 200px;
+    &.fixed {
+        position: fixed;
     }
 }
 
@@ -311,7 +362,11 @@ input[type="checkbox"] {
   font-size: 20px;
   font-weight: 200;
   text-shadow: 0 1px 0 @navbarBackgroundHighlight;
+  &.active{
+    color: @my-blue-dk;
+  }
 }
+
 // 
 // Buttons
 // --------------------------------------------------
@@ -343,12 +398,12 @@ input[type="checkbox"] {
 }
 
 // Submit Cart Button
-#submitCart{
-    width: 100%;
+#submitCart {
+    
 }
 
 // Register User Button
-#registerUserButton{
+#registerUserButton {
     width: 162px;
 }
 
@@ -389,12 +444,103 @@ input[type="checkbox"] {
     }
 }
 
-//
+// 
+// Images
+// --------------------------------------------------
+
+.frame-16x9 {
+    overflow: hidden;
+    height: 10.2em;
+    img {
+        margin-top: -11%;
+    }
+}
+
+// 
+// Form Styles
+// --------------------------------------------------
+
+input[type="checkbox"], input[type="radio"]{
+  position: absolute; 
+  overflow: hidden; 
+  clip: rect(0 0 0 0); 
+  width: 1px; height:1px;
+  margin: -1px; padding: 0; border: 0; 
+}
+
+
+input[type="checkbox"] + label, input[type="radio"] + label{
+   vertical-align: middle;
+   display: inline-block;
+   margin-top: 8px;
+   width: auto;
+   min-width: 200px;
+    &:before{
+      
+      content: "\A";
+      color: #ccc;
+      font-size: 42px;
+      line-height: 24px;
+      text-align: center;
+      display: inline-block;
+      vertical-align: middle;
+      position:relative;
+      border-radius:0;
+      background: #EEE;
+      height:42px;
+      width: 42px;
+      text-shadow: 0px 0px 1px @my-black-lt;
+      box-shadow: 0px 0px 1px #333 inset, 0px 0px 48px #FFF inset;
+  }
+}
+
+input[type="checkbox"] + label > span {
+    height: 42px;
+    overflow:hidden;
+    line-height: 42px;
+    vertical-align: middle;
+    padding-left: 12px;
+    display: inline-block;
+    width:182px;
+    float:right;
+    > span {
+
+    }
+}
+
+input[type="radio"] + label{
+  &:before{
+   content: "●";
+   color: #666;
+   border-radius: 22px;
+  }
+}
+
+input[type="checkbox"]:checked + label, input[type="radio"]:checked + label{
+  color: @my-black-dk;
+  font-weight: 700;
+  &:before{
+   content: "✔";
+    color: @my-lime-lt !important;
+    font-size: 42px;
+    line-height: 42px;
+    
+  }
+}
+
+input[type="radio"]:checked + label{
+  &:before{
+    content: "●";
+    color: @my-black-lt !important;
+    text-shadow: 0px 0px 13px #00c4ff;
+  }
+}
+
 // Login Page
 // --------------------------------------------------
 // 
 
-#loginBox{
+#loginBox {
     width: 450px;
     > .content {
         background-color: #fff;
@@ -411,15 +557,21 @@ input[type="checkbox"] {
         margin-left: 65px;
     }
     h1{
+        text-align: center;
         margin-bottom: 32px;
+        margin-right: auto;
+        margin-left: auto;
+        position: relative;
+        right: 24px;
     }
+    textarea,
     input[type='text'],
     input[type='password']{
         width: 350px;
         height:32px;
-        font-size: 26px;
+        font-size: 22px;
         vertical-align: bottom;
-        line-height: 32px;
+        line-height: 26px;
         padding-left: 16px;
     }
     input[type='submit']{
@@ -433,7 +585,11 @@ input[type="checkbox"] {
         font-weight: bold;
         color: #404040;
     }
+    textarea{
+        height: 200px;
+    }
 }
+
 
 //
 // Thumbnails
@@ -464,6 +620,10 @@ input[type="checkbox"] {
     }
 }
 
-
+.band {
+    width: 100%;
+    background-color: @heroUnitBackground;
+    padding-bottom: 60px;
+}
 
 

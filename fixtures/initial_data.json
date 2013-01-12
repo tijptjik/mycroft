@@ -974,16 +974,16 @@
       "credentials": "India"
     }
   },
-  {
+   {
     "pk": 1,
     "model": "subscription.subscription",
     "fields": {
-      "description": "This license allows for school-wise distribution and viewing of all Mycroft Online Lectures for 1 year. This liecence also allows for teacher accounts to be created.\r\n\r\nIdeal for Schools.",
+      "description": "<p>Schools and other educational institutions may take a year-long license to all Mycroft Lectures content. The lectures cover classic  poems part of many English literary curricula.</p>\r\n<p>The institutional license includes:</p>\r\n<ul>\r\n<li>Unlimited license for 1 year.</li>\r\n<li>Streaming access to all lectures.</li>\r\n<li>Institutional portal for student access.</li>\r\n<li>Use of lectures in lessons.</li>\r\n<li>Teacher notes for each lecture.</li>\r\n</ul>\r\n\r\nPayment is completed via paypal and is renewable on a yearly basis.",
       "group": 1,
-      "name": "Institutional Subscription",
+      "name": "Institutional License",
       "recurrence_unit": "Y",
       "price": "500",
-      "trial_unit": "",
+      "trial_unit": null,
       "trial_period": null,
       "recurrence_period": 1
     }

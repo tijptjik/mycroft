@@ -2,35 +2,46 @@
 
 {% block page_class %}home-page{% endblock %}
 {% block content %}
-<h1>TESTIMONIALS</h1>
-    <h2>From Teachers</h2>
-    {% for testimonial in testimonials%}
-        {% if testimonial.profession == 'T'%}
-            <blockquote>
-            {{ testimonial.text }}
-            <small>
-            {{ testimonial.name }}<br>
-            {% if testimonial.published_work %}<br>
-                Author of <a href="{{ testimonial.published_work_url }}">{{ testimonial.published_work }}</a><br>
-            {% endif %}
-            {{ testimonial.credentials|urlize }}
-            </small>
-            </blockquote>
-        {% endif %}
-    {% endfor %}
-    <h2>From Poets</h2>
-    {% for testimonial in testimonials%}
-        {% if testimonial.profession == 'P'%}
-            <blockquote>
-            {{ testimonial.text }}
-            <small>
-            {{ testimonial.name }}<br>
-            {% if testimonial.published_work %}
-                Author of <a href="{{ testimonial.published_work_url }}">{{ testimonial.published_work }}</a><br>
-            {% endif %}
-            {{ testimonial.credentials|urlize }}<br>
-            </small>
-            </blockquote>
-        {% endif %}
-    {% endfor %}
+<div class="band">
+<div class="container">
+    <div id="container">       
+        {% for testimonial in testimonials%}
+            <div class="panelBox span4 pull-left testimonial">
+                    <h4>{{ testimonial.name }}<span class="pull-right profession">
+                {% if testimonial.profession == 'T'%}
+                    TEACHER
+                {% else %}
+                    POET
+                {% endif %}
+                    </span></h4>
+                <blockquote>
+                {{ testimonial.text }}
+                </blockquote>
+                {% if testimonial.published_work %}
+                <b>Author of</b> <a href="{{ testimonial.published_work_url }}">{{ testimonial.published_work }}</a><br><br>
+                {% endif %}
+                {{ testimonial.credentials|urlize }}
+            </div>
+        {% endfor %}
+    </div>
+</div>
+</div>
 {% endblock %}
+
+{% block scripts %}
+<script src="{{ STATIC_URL }}js/libs/jquery/masonry.js" type="text/javascript" charset="utf-8"></script>
+
+<script type="text/javascript" charset="utf-8">
+$(function(){
+  $('#container').masonry({
+    itemSelector : '.testimonial',
+    columnWidth : 360,
+    gutterWidth: 40
+  });
+
+
+});
+</script>
+{% endblock %}
+
+

@@ -173,3 +173,18 @@
   -webkit-background-clip: @argument;
   background-clip: @argument;
 }
+
+.blackwhite(@desurate:100%){
+    filter: grayscale(@desurate);
+    -webkit-filter: grayscale(@desurate);
+    -moz-filter: grayscale(@desurate);
+    -ms-filter: grayscale(@desurate);
+    -o-filter: grayscale(@desurate);
+    &:hover {
+        filter: none;
+        -webkit-filter: none;
+        -moz-filter: none;
+        -ms-filter: none;
+        -o-filter: none;
+        }
+}

@@ -73,6 +73,8 @@ INSTALLED_APPS = [
     'gunicorn',
     'django_extensions',
     'djsupervisor',
+    'contact_form',
+
 ]
 
 # Place bcrypt first in the list, so it will be the default password hashing

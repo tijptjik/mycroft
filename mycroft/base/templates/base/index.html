@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load num_range %}
+{% load tags %}
 
 {% block videojs %}
   <link href="{{ STATIC_URL }}js/libs/videojs/design/video-js.css" rel="stylesheet" type="text/css">
@@ -47,7 +47,7 @@
 <div class="panel-wide">
   <div class="container actionbar bottom">
   <p class="pull-right">
-        Available for <a href="{% url license %}" class="my-btn btn-large"><i class="icon-dark icon-book"></i> Institutions</a> and <a href="{% url download %}" class="my-btn btn-large"><i class="icon-dark icon-user"></i> Individuals</a>
+        Available for <a href="{% url license %}" class="my-btn btn-large"><i class="icon-dark icon-book"></i> Institutions</a> and <a href="{% url alacarte %}" class="my-btn btn-large"><i class="icon-dark icon-user"></i> Individuals</a>
   </p>
   </div>
 </div>

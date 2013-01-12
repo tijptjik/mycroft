@@ -5,32 +5,45 @@
 {% block page_class %}Store{% endblock %}
 {% block content %}
 
+
 <div class="band">
 <div class="row">
     <div class="container">
-        <div class="span5 alpha">
-            <div class="panelBox">
-                <h2>{{subscription.name}}</h2>
-                {% autoescape off %}
-
-                <p> {{subscription.description}}</p>
-                {% endautoescape %}
-                <div class="row checkoutFooter">
-                <div class="span2"><p><b>License Fee</b><br> $ <span id="licenseFee">{{subscription.price}}</span><p></div>            
-                <div class="span2"> 
-                    <a data-toggle="modal" data-id="{{subscription.id}}" data-product="{{subscription.name}}" data-toggle="modal" title="{{subscription.name}}" class="btn-modal btn btn-primary pull-right" href="#SubscriptionDialog">Checkout with PayPal</a>
-                </div>
-                </div>
+        <div class="span8">
+            <div class="panelBox span8 section-header alpha">
+                <h2>Mycroft Lectures for Individuals</h2>
+                <p>If you are not member of a Mycroft Lectures licensee, we still want you to be able to benefit from our lectures. You can cherry-pick the lectures and just pay for those you want. Links to the purchased lectures are delivered by e-mail and will be live for week.</p>
+                <p>If you are not member of a Mycroft Lectures licensee, we still want you to be able to benefit from our lectures. You can cherry-pick the lectures and just pay for those you want. Links to the purchased lectures are delivered by e-mail and will be live for week.</p>
+                <b class="signed">Andrew Barker</b>
+                <br>
+            </div>
+            <div class="panelBox span8 alpha">
+                <h4>Previews</h4>
+                <p>Click the thumbnails to see an excerpt of the lecture, or the text-link for a more detailed description of what is covered in the lecture</p>
+                <ul id="content" class="lecturelist">
+                {% for lecture in lecture_list %}
+            
+                <div class="box-model row">
+                    <div class="thumbcol3 frame-16x9 span4 box-model">
+                        <img src="http://img.youtube.com/vi/{{lecture.preview.youtube_id}}/0.jpg">
+                    </div>
+                    <div class="span3 box-model">
+                        <h3><a href="/lecture/{{ lecture.poem.poet.slug }}/{{ lecture.slug }}">
+                        <span class="author">{{ lecture.poem.poet.first_name }} {{ lecture.poem.poet.last_name }}:</span>
+                        <span class="title">{{lecture.poem.title}}</span></a></h3>
+                    </div>    
+                  </div>
+            
+                {% endfor %}
+                </ul>
             </div>
         </div>
-        <div class="panelBox omega span7">
-            <h2>Private Access</h2>
-            <p>If you are not member of a Mycroft Lectures licensee, we still want you to be able to benefit from our lectures. You can cherry-pick the lectures and just pay for those you want. Links to the purchased lectures are delivered by e-mail and will be live for week.</p>
-            <h4>Mycroft Lectures for personal viewing</h4>
+        <div id="checkoutBox" class="panelBox span4">
+            <h2>Select for Checkout</h2>
                 <div class="row">
                     <div id="lectureList">
                     {%for lecture in lecture_list%}
-                        <div class="box-model span3">
+                        <div class="span3">
                             <input id="lecture{{lecture.id}}" class="lectureCheckbox" type="checkbox" data-title="{{lecture.title}}" data-id="{{lecture.id}}" value="{{lecture.title}}">
                             <label class="checkbox" for="lecture{{lecture.id}}"><span><b>{{lecture.poem.poet.last_name}}: </b>{{lecture.title}}</span></label>
                         </div>
@@ -202,7 +215,17 @@
             $('#subscriptionForm').submit();
         });
     });
-
+    
+    $(function () {
+        var top = $('#box').offset().top;
+        $(window).scroll(function (event) {
+        var y = $(this).scrollTop();
+        if (y >= top) { 
+            $('#checkoutBox').addClass('fixed'); 
+        } else { 
+            $('#checkoutBox').removeClass('fixed');
+        }});
+    });
     </script>
 {% endblock scripts %}
 

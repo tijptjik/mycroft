@@ -60,11 +60,56 @@ def index(request):
         lecture.poem.poet.slug = lecture.poem.poet.last_name.lower()
     return render(request, 'base/index.html', {'lectures': lectures, 'institutions':institutions})
 
-def download(request):
-    return render(request, 'base/story.html')
-
 def license(request):
-    return render(request, 'base/story.html')
+    subscriptions = Subscription.objects.get(id=1)
+    form_class = EmailRegistrationForm
+    form = form_class()
+
+    genericUser = get_object_or_404(User, id=1)
+    endpoint = (SANDBOX_POSTBACK_ENDPOINT if settings.PAYPAL_TEST else POSTBACK_ENDPOINT)
+
+    # Create the instances.
+    subscription = _paypal_form(get_object_or_404(Subscription, id=1), genericUser, upgrade_subscription=False, invoice=genInvoiceID('L'))
+    subscriptionForm = mark_safe(PAYPAL_FORM % (endpoint, subscription.as_p()))
+
+    context = dict(
+        lecture_list=Lecture.objects.all(),
+        subscription=subscriptions,
+        form=form,
+        subscription_form=subscriptionForm,
+    )
+    
+    return render(request, 'base/license.html', context)
+
+def alacarte(request):
+    form_class = EmailRegistrationForm
+    form = form_class()
+
+    genericUser = get_object_or_404(User, id=1)
+    endpoint = (SANDBOX_POSTBACK_ENDPOINT if settings.PAYPAL_TEST else POSTBACK_ENDPOINT)
+
+    student_dict = {
+        'cmd': '_cart',
+        "business": settings.PAYPAL_RECEIVER_EMAIL,
+        "discount_rate_cart": '0',
+        "invoice": genInvoiceID('C'),
+        "payer_email": '',
+        "notify_url": "%s%s" % (settings.SITE_NAME, reverse('paypal-ipn')),
+        "return_url": "%s%s" % (settings.SITE_NAME, '/thanks/'),
+        "cancel_return": "%s%s" % (settings.SITE_NAME, '/cancel/'),
+    }
+
+    # Create the instances.
+    student = PayPalPaymentsForm(initial=student_dict, button_class="pull-right btn-danger", button_text="Select your Lectures", button_type="bootstrap")
+    
+    context = dict(
+        lecture_list=Lecture.objects.all(),
+        student=student,
+        form=form,
+    )
+    
+    return render(request, 'base/alacarte.html', context)
+
 
 def lecture(request, poet_last_name=None, poem_title=None):
     lecture = get_object_or_404(Lecture, slug=poem_title)

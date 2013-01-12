@@ -29,6 +29,7 @@ urlpatterns = patterns('',
 
 urlpatterns += patterns('',
     (r'^subscription/', include('subscription.urls')),
+    (r'^contact/', include("contact_form.urls",)),
 )
 
 ## In DEBUG mode, serve media files through Django.

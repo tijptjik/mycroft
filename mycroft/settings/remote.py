@@ -105,6 +105,3 @@ SUBSCRIPTION_PAYPAL_SETTINGS = {
         "return_url": "%s%s" % (SITE_NAME, '/thanks/'),
         "cancel_return": "%s%s" % (SITE_NAME, '/cancel/'),
     }
-
-
-

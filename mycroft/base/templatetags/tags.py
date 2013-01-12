@@ -13,6 +13,13 @@ class RangeNode(Node):
 def lookup(d, key):
     return d[key]
 
+@register.simple_tag
+def active(request, pattern):
+    import re
+    if re.search(pattern, request.path):
+        return 'active'
+    return ''
+
 @register.tag
 def num_range(parser, token):
     """

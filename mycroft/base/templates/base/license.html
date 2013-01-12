@@ -1,0 +1,191 @@
+{% extends "base.html" %}
+{% load url from future %}
+{% load i18n %}
+
+{% block page_class %}Store{% endblock %}
+{% block content %}
+<div class="band">
+    <div class="row">
+    <div class="container">
+        <div class="panelBox alpha span7">
+            <h1>Institutional</h1>
+            {% autoescape off %}<p>{{subscription.description}}</p><p>{{subscription.description}}</p>{% endautoescape %}
+            <b class="signed">Andrew Barker</b>
+        </div>
+        <div class="panelBox omega span5">
+            <div>  
+            <h2 id="productLabel">Sign up</h2>
+            <form id="subscriptionForm" method="post" action=".">{% csrf_token %}
+                <label for="id_school">School or Institution:</label><input id="id_school" validate="required" type="text" name="institution" maxlength="128">
+                <label for="id_first_name">First Name:</label><input id="id_first_name" validate="required" type="text" name="first_name" maxlength="64">
+                <label for="id_last_name">Last Name:</label><input id="id_last_name" validate="required" type="text" name="last_name" maxlength="64">
+                <label for="id_email">Contact Email:</label><input id="id_email" validate="required|email" type="text" name="email" maxlength="256">
+                <label for="password1">Password:</label> <input id="password1" type="password" class="required" name="password1">
+                <label for="password2">Password (repeat):</label> <input validate="required|custom_pass_eq" type="password" name="password2" id="password2">
+                <input type="hidden" name="id" value="0" id="subscriptionID">'
+            </form>
+            </div>  
+            <div class="modal-footer">
+                <button id="registerUserButton" class="btn btn-primary">{% trans 'Checkout with PayPal' %}</button>
+            </div>
+            {{ subscription_form }}
+        </div>
+    </div>
+    </div>
+</div>
+
+<div class="band">
+    <div class="row">
+    <div class="container">
+    <div class="panelBox alpha span12">
+        <div class="section-header">
+            <h2>Available Lectures</h2>
+            <ul class="nav nav-pills lecture-sort">
+                <li class="active"><a data-sort="poet" href="">Poet Name</a></li>
+                <li><a data-sort="title" href="">Poem Title</a></li>
+                <li><a data-sort="date" href="">Year of Publication</a></li>
+            </ul>
+        </div>
+    
+    <ul id="content" class="lecturelist span12">
+        {% for lecture in lecture_list %}
+    
+        <div class="row">
+            <div class="thumbcol3 frame-16x9 span4">
+                <img src="http://img.youtube.com/vi/{{lecture.preview.youtube_id}}/0.jpg">
+            </div>
+            <div class="span8">
+                <h3><a href="/lecture/{{ lecture.poem.poet.slug }}/{{ lecture.slug }}">
+                <span class="author">{{ lecture.poem.poet.first_name }} {{ lecture.poem.poet.last_name }}:</span>
+                <span class="title">{{lecture.poem.title}}</span></a></h3>
+                <p>{{lecture.synopsis}}</p>
+            </div>    
+          </div>
+    
+        {% endfor %}
+    </ul>
+    </div>
+    </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+    <script type="text/javascript">
+
+    var selectedLectures = [];
+    var discount = 0;
+    var target = '';
+
+    $(".btn-modal").on("click", function() {
+        var Sub = $(this)
+        $('#id_item_number').val(Sub.data('id'))
+        $('#id_item_name').val(Sub.data('product'))
+        $("#productLabel").text(Sub.data('product'));
+    });
+
+    function updatePrice (quantity, discount) {
+        $('#totalPrice').text(Math.round(quantity * 4.99 * ((100 - discount)/100)*100)/100);
+        $('#discountPercentage').text(discount);
+
+        if(quantity){
+            $('#submitCart').val('Checkout with PayPal').addClass('btn-primary').removeClass('btn-danger');
+        } else {
+            console.log('should!')
+            $('#submitCart').val('Select your Lectures').toggleClass('btn-danger');
+        }
+    }
+
+    function calculateDiscount (quantity) {
+        if(quantity == 0){
+            discount = 0;
+        } else if(0 < quantity && quantity < 7){
+            discount = quantity * 5 - 5;
+        } else if(quantity > 6){
+            discount = 30;
+        }
+        $('#discount_rate_cart').val(discount)
+        return discount;
+    }
+
+
+    function relabelItems(){
+        $('.cartItem').each(function(index) {
+            $(this).attr('name', "item_name_" + (index+1))
+        });
+
+        $('.itemAmount').each(function(index) {
+            $(this).attr('name', "amount_" + (index+1))
+        });
+  
+        $('.itemNumber').each(function(index) {
+            $(this).attr('name', "item_number" + (index+1))
+        });
+    }
+
+    $('#lectureList').on("click", ".lectureCheckbox", function () {
+        var lectureID = $(this).data('id');
+        var lectureTitle = $(this).data('title');
+        var quantity = $(':checked').length;
+        discount = calculateDiscount(quantity)
+
+        if(selectedLectures[lectureID]){
+            selectedLectures[lectureID] = false;
+            $("#item" + lectureID).remove();
+            $('#amount' + lectureID).remove();
+            $('#item_number' + lectureID).remove();
+            relabelItems();
+        } else {
+            selectedLectures[lectureID] = true;
+            $('#bt_form2').append('<input type="hidden" name="amount_' + quantity +'" value="4.99" id="amount' + lectureID + '" class="itemAmount">')
+            $('#bt_form2').append('<input type="hidden" name="item_name_'+ quantity +'" value="'+  lectureTitle + '" id="item' + lectureID + '" class="cartItem">')
+            $('#bt_form2').append('<input type="hidden" name="item_number_'+ quantity +'" value="' + lectureID + '" id="item_number' + lectureID + '" class="itemNumber">')
+        }
+        var selected = [];
+        $.each(selectedLectures, function(index, value) { 
+              if(value){
+                selected.push(index)
+                }});
+        $('#custom_items').val(selected.join());
+        updatePrice(quantity, discount);
+    });
+
+    $("#submitCart").click(function(event) {
+      event.preventDefault();
+      $.bt_validate.result = true;
+      $('#bt_form2').bt_validate()
+      if($.bt_validate.blocked){ 
+            return false };
+      
+      email = $('#email').serialize();
+      $(this).toggleClass('btn-loading').val('Loading...');
+
+      $.post("/api/client/student/json/", email, function(data) {
+              response = $.parseJSON( data );
+              $('#custom_items').val(response[0]['pk']);
+              $('#payer_email').val(response[0]['fields']['email']);
+              $('#bt_form2').submit();
+          });
+    })
+
+    $('#registerUserButton').click(function(){
+        event.preventDefault();
+        $.bt_validate.result = true;
+        $('#subscriptionForm').bt_validate()
+        if($.bt_validate.blocked){ 
+            return false };
+        
+        $(this).toggleClass('btn-loading').text('Loading...');
+        form = $('#subscriptionForm').serialize();
+
+        $.post("/api/client/educator/json/", form, function(data) {
+            response = $.parseJSON( data );
+            console.log(data)
+            $('#subscriptionForm').submit();
+        });
+    });
+
+    </script>
+{% endblock scripts %}
+
