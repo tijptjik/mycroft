@@ -9,22 +9,32 @@
 <div class="row">
     <div class="container">
         <div class="span5 alpha">
-            <div class="panelBox">
+            <div class="panelBox">            
+                <div class="section-header">
                 <h2>{{subscription.name}}</h2>
+                </div>
+                <div class="innerPage">
                 {% autoescape off %}
 
                 <p> {{subscription.description}}</p>
                 {% endautoescape %}
+                </div>
                 <div class="row checkoutFooter">
+                <div class="span4 modal-footer">
                 <div class="span2"><p><b>License Fee</b><br> $ <span id="licenseFee">{{subscription.price}}</span><p></div>            
                 <div class="span2"> 
                     <a data-toggle="modal" data-id="{{subscription.id}}" data-product="{{subscription.name}}" data-toggle="modal" title="{{subscription.name}}" class="btn-modal btn btn-primary pull-right" href="#SubscriptionDialog">Checkout with PayPal</a>
                 </div>
                 </div>
+                </div>
             </div>
         </div>
         <div class="panelBox omega span7">
+            <div class="section-header">
             <h2>Private Access</h2>
+            </div>
+            <div class="innerPage">
+
             <p>If you are not member of a Mycroft Lectures licensee, we still want you to be able to benefit from our lectures. You can cherry-pick the lectures and just pay for those you want. Links to the purchased lectures are delivered by e-mail and will be live for week.</p>
             <h4>Mycroft Lectures for personal viewing</h4>
                 <div class="row">
@@ -50,11 +60,15 @@
                     {{student}}
                     <input type="hidden" name="upload" value="1">
                 </form>
+                </div>
+                </div>
+                <div class="modal-footer">
                     <div class="span1"><p><b>Total</b><br> $ <span id="totalPrice">0</span><p></div>
                     <div class="span2"><p><b>Discount</b><br> <span id="discountPercentage">0</span> %<p></div>
                     <div class="span3">
                     <input id="submitCart" type="submit" class="btn btn-danger" value="Select your Lectures" alt="Checkout with PayPal">
                     </div>
+                </div>
         </div>
     </div>
 </div>

@@ -18,9 +18,9 @@
                 {{ testimonial.text }}
                 </blockquote>
                 {% if testimonial.published_work %}
-                <b>Author of</b> <a href="{{ testimonial.published_work_url }}">{{ testimonial.published_work }}</a><br><br>
+                <p><b>Author of</b> <a href="{{ testimonial.published_work_url }}">{{ testimonial.published_work }}</a><br><br>
                 {% endif %}
-                {{ testimonial.credentials|urlize }}
+                {{ testimonial.credentials|urlize }}</p>
             </div>
         {% endfor %}
     </div>

@@ -21,14 +21,13 @@
   
   <script src="{{ STATIC_URL }}js/libs/videojs/src/setup.js"></script>
 {% endblock %}
+
 {% block headscripts %}
 {% endblock %}
 
-{% block page_class %}home-page{% endblock %}
+{% block page_class %}Home{% endblock %}
+
 {% block content %}
-
-
-
 <div class="container actionbar"></div>
 <div class="jumptron">
   <!-- <h1>Hello there,</h1> -->
@@ -46,7 +45,8 @@
 
 <div class="panel-wide">
   <div class="container actionbar bottom">
-  <p class="pull-right">
+    <p class="pull-left"> Mycroft Poetry Analysis Lectures</p>
+    <p class="pull-right">
         Available for <a href="{% url license %}" class="my-btn btn-large"><i class="icon-dark icon-book"></i> Institutions</a> and <a href="{% url alacarte %}" class="my-btn btn-large"><i class="icon-dark icon-user"></i> Individuals</a>
   </p>
   </div>
@@ -81,12 +81,12 @@
   </div>
   <ul id="content" class="thumbnails" class="span12">
       {% for lecture in lectures %}
-        <li class="span3" data-poet="{{ lecture.poem.poet.last_name }}" data-title="{{ lecture.poem.title }}:" data-date="{{lecture.poem.pub_year}}">
+        <li class="span3" data-poet="{{ lecture.poem.poet.last_name}}" data-title="{{ lecture.poem.title }}" data-date="{{lecture.poem.pub_year}}">
           <div class="thumbnail lecture-block">
             <a href="/lecture/{{ lecture.poem.poet.slug }}/{{ lecture.slug }}">
-            <img src="http://img.youtube.com/vi/{{lecture.preview.youtube_id}}/0.jpg">
-            <span class="author">{{ lecture.poem.poet.first_name }} {{ lecture.poem.poet.last_name }}:</span>
+            <div class="frame-16x9"><img src="http://img.youtube.com/vi/{{lecture.preview.youtube_id}}/0.jpg"></div>
             <span class="title">{{lecture.poem.title}}</span>
+            <span class="author">{{ lecture.poem.poet.first_name }} {{ lecture.poem.poet.last_name }}</span>
             </a>
         </div>
         </li>
@@ -97,12 +97,13 @@
 <div class="container">
   <footer class="footerbar">
     <ul class="nav-pills">
-        <li>DESIGN</li>
-        <li>BY</li>
-        <li>TYPE</li>
+        <li>MYCROFT</li>
+        <li>©</li>
+        <li>LECTURES</li>
     </ul>
   </footer>
 </div>
+<div class="final"></div>
 {% endblock %}
 
 

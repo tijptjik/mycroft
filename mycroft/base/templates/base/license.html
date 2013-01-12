@@ -8,13 +8,20 @@
     <div class="row">
     <div class="container">
         <div class="panelBox alpha span7">
-            <h1>Institutional</h1>
+            <div class="section-header">
+                <h1>Institutional</h1>
+            </div>
+            <div class="innerPage">
             {% autoescape off %}<p>{{subscription.description}}</p><p>{{subscription.description}}</p>{% endautoescape %}
             <b class="signed">Andrew Barker</b>
+            </div>
         </div>
         <div class="panelBox omega span5">
             <div>  
-            <h2 id="productLabel">Sign up</h2>
+            <div class="section-header">
+            <h1 id="productLabel">Sign up</h1>
+            </div>  
+            <div class="innerPage">
             <form id="subscriptionForm" method="post" action=".">{% csrf_token %}
                 <label for="id_school">School or Institution:</label><input id="id_school" validate="required" type="text" name="institution" maxlength="128">
                 <label for="id_first_name">First Name:</label><input id="id_first_name" validate="required" type="text" name="first_name" maxlength="64">
@@ -24,7 +31,8 @@
                 <label for="password2">Password (repeat):</label> <input validate="required|custom_pass_eq" type="password" name="password2" id="password2">
                 <input type="hidden" name="id" value="0" id="subscriptionID">'
             </form>
-            </div>  
+            </div>
+            </div>
             <div class="modal-footer">
                 <button id="registerUserButton" class="btn btn-primary">{% trans 'Checkout with PayPal' %}</button>
             </div>
@@ -37,7 +45,7 @@
 <div class="band">
     <div class="row">
     <div class="container">
-    <div class="panelBox alpha span12">
+    <div class="lecture-list-wide panelBox alpha span12">
         <div class="section-header">
             <h2>Available Lectures</h2>
             <ul class="nav nav-pills lecture-sort">
@@ -47,23 +55,23 @@
             </ul>
         </div>
     
-    <ul id="content" class="lecturelist span12">
-        {% for lecture in lecture_list %}
-    
-        <div class="row">
-            <div class="thumbcol3 frame-16x9 span4">
-                <img src="http://img.youtube.com/vi/{{lecture.preview.youtube_id}}/0.jpg">
-            </div>
-            <div class="span8">
-                <h3><a href="/lecture/{{ lecture.poem.poet.slug }}/{{ lecture.slug }}">
-                <span class="author">{{ lecture.poem.poet.first_name }} {{ lecture.poem.poet.last_name }}:</span>
-                <span class="title">{{lecture.poem.title}}</span></a></h3>
-                <p>{{lecture.synopsis}}</p>
-            </div>    
-          </div>
-    
-        {% endfor %}
-    </ul>
+        <ul id="content" class="lecturelist span12">
+            {% for lecture in lecture_list %}
+        
+            <div class="row">
+                <div class="frame-16x9 span4">
+                    <img src="http://img.youtube.com/vi/{{lecture.preview.youtube_id}}/0.jpg">
+                </div>
+                <div class="span8">
+                    <h3><a href="/lecture/{{ lecture.poem.poet.slug }}/{{ lecture.slug }}">
+                    <span class="author">{{ lecture.poem.poet.first_name }} {{ lecture.poem.poet.last_name }}:</span>
+                    <span class="title">{{lecture.poem.title}}</span></a></h3>
+                    <p>{{lecture.synopsis}}</p>
+                </div>    
+              </div>
+        
+            {% endfor %}
+        </ul>
     </div>
     </div>
     </div>

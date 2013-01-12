@@ -24,51 +24,62 @@
 {% block page_class %}home-page{% endblock %}
 {% block content %}
 
-<div class="hero-unit">
-{% if user.is_authenticated %}            
-  <video id="lectureVideo" class="video-js vjs-default-skin" controls preload="auto" data-setup="{}">
-      <source src="{{ site }}/media/lectures/digging.mp4" type="video/mp4" />
-      <track kind="subtitles" src="{{ site }}/media/lectures/digging.vtt" type="text/vtt" srclang="en" label="English Subtitles" />
-  </video>
-{% else %}            
-    <div class="Videowrapper">
-      <video id="example_video_1" class="video-js vjs-default-skin h_iframe" data-setup='{"techOrder":["youtube","html5"],"ytcontrols":true}'>
-        <source src="http://www.youtube.com/watch?v=jlhIkrfWAgI" type='video/youtube'>
-      </video>
-      <img class="ratio" src="{{ STATIC_URL }}img/landing.png"/>
-    </div>
-{% endif %}  
-{% if user.is_authenticated %}            
-{% else %}            
+<div class="band">
   <div class="row">
-  <div class="span7">
-  <h1>'{{lecture.preview.title}}'<small>Excerpt from: {{lecture.poem.title}}</small></h1>
-  <p>{{lecture.synopsis}}</p>
-  </div>
-  <div class="purchase span3">
-   <footer class="purchase">
-    <p>Full Lecture <span class="lecture-price">${{lecture.product.price_in_dollars}}<span> Checkout with Paypal and receive the lecture instantly by e-mail.</p>
-    <form id="bt_form" action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post">Deliver to <input type="text" name="email" placeholder="E-mail Address" id="id_email" validate="required|email">
-      <input type="hidden" id="payer_email" name="payer_email" value="">
-      <input type="hidden" id="custom" name="custom" value=""> {{ form }} 
-      <input type="hidden" name="upload" value="1">
-    </form>
-      <p><button id="submitSingle" class="btn btn-primary" value="BUY" alt="Checkout with PayPal" title="Buy">Buy</button> or get up to 30% off on all lecture in the <a class="btn btn-primary" href="{% url store %}">Store</a></p> 
-  </div>
-  </div>
-{% endif %}
+    <div class="container">
+      <div class="videopanel panelBox">            
+
+      {% if user.is_authenticated %}            
+        <video id="lectureVideo" class="video-js vjs-default-skin" controls preload="auto" data-setup="{}">
+            <source src="{{ site }}/media/lectures/digging.mp4" type="video/mp4" />
+            <track kind="subtitles" src="{{ site }}/media/lectures/digging.vtt" type="text/vtt" srclang="en" label="English Subtitles" />
+        </video>
+      {% else %}            
+          <div class="Videowrapper">
+            <video id="example_video_1" class="video-js vjs-default-skin h_iframe" data-setup='{"techOrder":["youtube","html5"],"ytcontrols":true}'>
+              <source src="http://www.youtube.com/watch?v=jlhIkrfWAgI" type='video/youtube'>
+            </video>
+            <img class="ratio" src="{{ STATIC_URL }}img/landing.png"/>
+          </div>
+      {% endif %}
+  {% if user.is_authenticated %}            
+  {% else %}            
+    <div class="row">
+      <div class="span7">
+        <h1>'{{lecture.preview.title}}'<small>Excerpt from: {{lecture.poem.title}}</small></h1>
+        <p>{{lecture.synopsis}}</p>
+      </div>
+      <div class="purchase span4">
+        <div class="innerPage"
+         <footer class="purchase">
+          <p>Full Lecture <span class="lecture-price">${{lecture.product.price_in_dollars}}<span> Checkout with Paypal and receive the lecture instantly by e-mail.</p>
+          <form id="bt_form" action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post">Deliver to <input type="text" name="email" placeholder="E-mail Address" id="id_email" validate="required|email">
+            <input type="hidden" id="payer_email" name="payer_email" value="">
+            <input type="hidden" id="custom" name="custom" value=""> {{ form }} 
+            <input type="hidden" name="upload" value="1">
+            <button id="submitSingle" class="btn btn-primary" value="BUY" alt="Checkout with PayPal" title="Buy">Buy</button>
+          </form>
+            
+        </div>
+      </div>
+    </div>
+  {% endif %}
+      </div>  
+    </div>  
+  </div>  
 </div>          
 
-<div class="row"></div>
 <div class="row">
-  <div class="span7 well">
-  <pre>{{lecture.poem.text}}</pre>
-</div>
-<div class="span4">
-<h2>{{lecture.poem.poet}}</h2>
-<p>{{lecture.poem.poet.year_of_birth}} - {{lecture.poem.poet.year_of_death}}</p>
-<p>{{lecture.poem.poet.description}}</p>
-</div>
+  <div class="container">
+    <div class="span7 well">
+      <pre>{{lecture.poem.text}}</pre>
+    </div>
+    <div class="span4">
+      <h2>{{lecture.poem.poet}}</h2>
+      <p>{{lecture.poem.poet.year_of_birth}} - {{lecture.poem.poet.year_of_death}}</p>
+      <p>{{lecture.poem.poet.description}}</p>
+    </div>
+  </div>
 </div>
 
 

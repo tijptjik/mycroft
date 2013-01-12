@@ -11,15 +11,22 @@
     <div class="container">
         <div class="span8">
             <div class="panelBox span8 section-header alpha">
-                <h2>Mycroft Lectures for Individuals</h2>
+                <div class="section-header">
+                    <h1>Mycroft Lectures for Individuals</h1>
+                </div>
+                <div class="innerPage">
                 <p>If you are not member of a Mycroft Lectures licensee, we still want you to be able to benefit from our lectures. You can cherry-pick the lectures and just pay for those you want. Links to the purchased lectures are delivered by e-mail and will be live for week.</p>
                 <p>If you are not member of a Mycroft Lectures licensee, we still want you to be able to benefit from our lectures. You can cherry-pick the lectures and just pay for those you want. Links to the purchased lectures are delivered by e-mail and will be live for week.</p>
                 <b class="signed">Andrew Barker</b>
-                <br>
+                </div>
             </div>
             <div class="panelBox span8 alpha">
-                <h4>Previews</h4>
+                <div class="section-header">
+                <h2>Previews</h2>
+                </div>
+                <div class="innerPage">
                 <p>Click the thumbnails to see an excerpt of the lecture, or the text-link for a more detailed description of what is covered in the lecture</p>
+                </div>
                 <ul id="content" class="lecturelist">
                 {% for lecture in lecture_list %}
             
@@ -39,8 +46,10 @@
             </div>
         </div>
         <div id="checkoutBox" class="panelBox span4">
+            <div class="section-header">
             <h2>Select for Checkout</h2>
-                <div class="row">
+            </div>
+                <div class="innerPage">
                     <div id="lectureList">
                     {%for lecture in lecture_list%}
                         <div class="span3">
@@ -50,8 +59,10 @@
                     {% endfor %}
                     </div>
                 </div>
+            <div class="innerPage">
             <h4>Deliver by E-mail to:</h4> 
             <div class="row checkoutFooter">
+
                <form id="bt_form2" action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post">
                     <input type="text" id="email" name="email" value="" placeholder="E-mail Address" validate="required|email">
                     <input type="hidden" id="address_override" name="address_override" value="1">
@@ -63,11 +74,11 @@
                     {{student}}
                     <input type="hidden" name="upload" value="1">
                 </form>
-                    <div class="span1"><p><b>Total</b><br> $ <span id="totalPrice">0</span><p></div>
-                    <div class="span2"><p><b>Discount</b><br> <span id="discountPercentage">0</span> %<p></div>
-                    <div class="span3">
+                </div>
+                <div class="span4 modal-footer alacarte-checkout">
+                    <div class="span1 pull-left"><p><b>Total</b><br> $ <span id="totalPrice">0</span><p></div>
                     <input id="submitCart" type="submit" class="btn btn-danger" value="Select your Lectures" alt="Checkout with PayPal">
-                    </div>
+                </div>
         </div>
     </div>
 </div>
