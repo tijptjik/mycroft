@@ -5,10 +5,9 @@
 <meta name="viewport" content="width=device-width" />
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>Mycroft Lectures Subscriber Signup</title>
+<title>Welcome to Mycroft Lectures</title>
 	
 <style type="text/css">
-
 </style>
 
 </head>
@@ -16,15 +15,15 @@
 <body bgcolor="#FFFFFF">
 
 <!-- HEADER -->
-<table class="head-wrap" bgcolor="#999999">
+<table class="head-wrap" bgcolor="#242732">
 	<tr>
 		<td></td>
 		<td class="header container" >
 				
 				<div class="content">
-				<table bgcolor="#999999">
+				<table bgcolor="#242732">
 					<tr>
-						<td><img src="http://placehold.it/200x50&text=Mycroft" /></td>
+						<td><h4>MYCROFT</h4></td>
 						<td align="right"><h6 class="collapse">New Subscriber</h6></td>
 					</tr>
 				</table>
@@ -40,19 +39,25 @@
 <table class="body-wrap">
 	<tr>
 		<td></td>
-		<td class="container" bgcolor="#FFFFFF">
+		<td class="container" bgcolor="#646777">
 
 			<div class="content">
 			<table>
 				<tr>
 					<td>
-						<h3>Hi,</h3>
-						<p class="lead">Thank you for regeristring with Mycroft Lectures.</p>
-						<p>You can <a href="{% url auth_login %}">log into</a> account with the following credentials</p>
+						<h3>Hi, {{user.first_name}} {{user.last_name}}</h3>
+						<p class="lead common">Thank you for regeristring with us.</p>
+						<p class="common">You now have an institutional account with Mycroft Lectures which you can <a href="{% url auth_login %}">log into</a> with the following credentials</p>
 						<!-- Callout Panel -->
 						<p class="callout">
-							<b>Username: </b>{{ user.email }}</a>
-							<b>Password: </b>{{ password }}</a>
+							<b>Username: </b>{{ user.email }}
+						</p>
+						<p class="callout">
+							<b>Password: </b>{{ password }}
+						</p>
+						<p class="common">Once your payment is processed, your account will be automatically activated and we will send you an e-mail with the details on your institutional portal.</p>
+						<p class="common">Warm regards,</p>
+						<p class="common signed">Andrew Barker</p>
 						<!-- social & contact -->
 						<table class="social" width="100%">
 							<tr>
@@ -75,7 +80,6 @@
 									<table align="left" class="column">
 										<tr>
 											<td>				
-																			
 												<h5 class="">Contact Info:</h5>												
 												<p>Phone: <strong>+852 9757 5447</strong><br/>
                 								Email: <strong><a href="emailto:{{ email }}"> {{ email }}</a></strong></p>
@@ -127,3 +131,4 @@
 
 </body>
 </html>
+

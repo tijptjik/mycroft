@@ -11,6 +11,7 @@ from models import *
 
 from django.conf import settings
 from django.contrib.auth.models import User
+from django.contrib.auth.models import check_password
 from django.contrib.sites.models import Site
 from django.core import serializers
 from django.core.exceptions import ObjectDoesNotExist
@@ -24,7 +25,6 @@ from django.template.loader import render_to_string, get_template
 from django.utils import simplejson 
 from django.utils.safestring import mark_safe
 from django.views.static import serve
-
 
 
 from paypal.standard.forms import PayPalPaymentsForm
@@ -72,8 +72,12 @@ def license(request):
     subscription = _paypal_form(get_object_or_404(Subscription, id=1), genericUser, upgrade_subscription=False, invoice=genInvoiceID('L'))
     subscriptionForm = mark_safe(PAYPAL_FORM % (endpoint, subscription.as_p()))
 
+    lectures = Lecture.objects.all().order_by('poem__poet__last_name')
+    for lecture in lectures:
+        lecture.poem.poet.slug = lecture.poem.poet.last_name.lower()
+
     context = dict(
-        lecture_list=Lecture.objects.all(),
+        lecture_list=lectures,
         subscription=subscriptions,
         form=form,
         subscription_form=subscriptionForm,
@@ -102,8 +106,13 @@ def alacarte(request):
     # Create the instances.
     student = PayPalPaymentsForm(initial=student_dict, button_class="pull-right btn-danger", button_text="Select your Lectures", button_type="bootstrap")
     
+
+    lectures = Lecture.objects.all().order_by('poem__poet__last_name')
+    for lecture in lectures:
+        lecture.poem.poet.slug = lecture.poem.poet.last_name.lower()
+
     context = dict(
-        lecture_list=Lecture.objects.all(),
+        lecture_list=lectures,
         student=student,
         form=form,
     )
@@ -183,6 +192,27 @@ def contact(request):
 def thanks(request):
     return render(request, 'base/thanks.html')
 
+def mylogin(request):
+    print 'received'
+    if request.is_ajax():
+        if request.method == 'GET':
+            return HttpResponse('GET not supported')
+        elif request.method == 'POST': 
+            userpass = request.POST['password']
+            print userpass
+            userid = int(request.POST['userid'])
+            print userid
+            user = User.objects.get(id=userid)
+            print user
+            result = check_password(userpass,user.password)
+            print result
+
+            data = {'match':result}
+            return HttpResponse(simplejson.dumps(data), content_type='application/javascript; charset=utf8')
+
+    else:
+        return HttpResponse('ERROR')
+
 def client(request, method, format):
 
     if format == 'xml':
@@ -206,6 +236,7 @@ def client(request, method, format):
                     touch_user = registerUser(request=request, backend=backend, form_class=form_class, deferred=True)
                 data = serializers.serialize(format, [touch_user, ])
             elif method == 'educator':
+                print 'REGISTERED USER MAIL'
                 backend = 'registration.backends.institutional.InstitutionalBackend'
                 form_class = EmailRegistrationForm
                 new_user = registerUser(request=request, backend=backend, form_class=form_class, deferred=True)
@@ -213,7 +244,7 @@ def client(request, method, format):
                 html_template = 'base/mail-newuser.html'
                 sendMail(to=request.POST['email'],
                     subject="Welcome to Mycroft Lectures",
-                    payload=Context({'user':new_user, 'password': request.POST['password1']}),
+                    payload=Context({'user':new_user, 'email': settings.EMAIL_HOST_USER, 'password': request.POST['password1']}),
                     text_template=text_template,
                     html_template=html_template)
                 data = serializers.serialize(format, [new_user, ])
@@ -224,7 +255,7 @@ def client(request, method, format):
 def portal(request, institution):
     institution = get_object_or_404(Institution, slug=institution)
     lectures = Lecture.objects.all()
-    if not "instituion has valid account":
+    if not "institution has valid account":
         expired = True
     else:
         expired = False
@@ -238,9 +269,8 @@ def portal(request, institution):
 
 def portal_item(request, institution, lecture):
     institution = get_object_or_404(Institution, slug=institution)
-    if not "instituion has valid account":
+    if not "institution has valid account":
         expired = True
-        # render notice that account has expired
     else:
         expired = False
         lecture = get_object_or_404(Lecture, slug=lecture)
@@ -324,7 +354,8 @@ def xsendfileserve(request, path, document_root=None):
 @receiver(license_user)
 @receiver(touch_user)
 def mailUser(sender, **kwargs):
-    print sender.get('txn_type')
+    print 'SIGNAL RECEIVED'
+    print 'Active User:', sender.get('txn_type')
     
     pid = sender['payer_id']
     
@@ -333,12 +364,15 @@ def mailUser(sender, **kwargs):
     
     user = User.objects.get(id=pid)
     to = User.objects.get(id=pid).email
+    print 'To:', to
     
     if sender.get('txn_type') in ['subscr_signup']:
+        print 'SUBCRIBER SIGNUP'
         itemid = sender['item_number']
         if type(itemid) == list:
             itemid = itemid[0]
         
+        institution = Institution.objects.get(contact=user)
         license = Subscription.objects.get(id=int(itemid))
         subject = 'Mycroft Lectures License'
         period = int(license.recurrence_period)
@@ -348,16 +382,20 @@ def mailUser(sender, **kwargs):
         payload = Context({
             'site': Site.objects.get_current(),
             'email': settings.EMAIL_HOST_USER,
+            'institution':institution,
             'user': user,
             'expiry': times.strftime("%A, %d %B %Y"),
             'license': license,
             'lectures' : Lecture.objects.all()
             })
+        print 'Payload: '
+        print payload
         text_template = 'base/mail-educator.txt'
         html_template = 'base/mail-educator.html'
     elif sender.get('txn_type') in ['subscr_payment']:
         pass
     else:
+        print 'INDIVIDUAL PURCHASE'
         subject = 'Mycroft Lectures purchase'
         times = datetime.now(pytz.utc) + timedelta(days=settings.DOWNLOAD_EXPIRATION_DAYS)
         payload = Context({
@@ -375,12 +413,10 @@ def mailUser(sender, **kwargs):
 
 def sendMail(to, subject, payload={}, text_template=None, html_template=None):
     from_email = settings.DEFAULT_FROM_EMAIL
-    print payload
     plaintext = get_template(text_template)
     htmly     = get_template(html_template)
    
     text_content = plaintext.render(payload)
-    print text_content
     html_content = htmly.render(payload)
     
     msg = EmailMultiAlternatives(subject, text_content, from_email, [to,])

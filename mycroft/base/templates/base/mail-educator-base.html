@@ -8,6 +8,7 @@
 <title>Mycroft Lectures License</title>
 	
 <style type="text/css">
+
 </style>
 
 </head>
@@ -15,16 +16,16 @@
 <body bgcolor="#FFFFFF">
 
 <!-- HEADER -->
-<table class="head-wrap" bgcolor="#999999">
+<table class="head-wrap" bgcolor="#242732">
 	<tr>
 		<td></td>
 		<td class="header container" >
 				
 				<div class="content">
-				<table bgcolor="#999999">
+				<table bgcolor="#242732">
 					<tr>
-						<td><img src="http://placehold.it/200x50&text=Mycroft" /></td>
-						<td align="right"><h6 class="collapse">Educator License</h6></td>
+						<td><h4>MYCROFT</h4></td>
+						<td align="right"><h6 class="collapse">Institutional License</h6></td>
 					</tr>
 				</table>
 				</div>
@@ -39,27 +40,37 @@
 <table class="body-wrap">
 	<tr>
 		<td></td>
-		<td class="container" bgcolor="#FFFFFF">
+		<td class="container" bgcolor="#646777">
 
 			<div class="content">
 			<table>
 				<tr>
 					<td>
 						<h3>Hi, {{user.first_name}} {{user.last_name}}</h3>
-						<p class="lead">Thank you for obtaining a license to the full suite of Mycroft Lectures.</p>
-						<p>All lectures are available for streaming and download by logging into the website with
-							your registered credentials</p>
-						<p>The following poetry lectures are currently on offer.</p>
+						<p class="lead common">Thank you for obtaining a license to the full suite of Mycroft Lectures.</p>
+						<p class="common">All lectures are available for streaming and download by logging into the website with
+							your registere credentials</p>
+						<!-- Callout Panel -->
+						<p class="callout">
+							<b>Portal: </b><a href="{{ site }}/portal/{{ institution.slug }}/">{{institution.name }}</a>
+						</p>
+						<p class="common">To provide access for your institution's members, you can either distrubute the portal link or provide one of the following direct links the lecture for an individual poem. Both options require the members to authenticate with the password you have previously recevied. </p>
+						<p class="common">The following poetry lectures are currently on offer.</p>
+
 						<!-- Callout Panel -->
 						{% for lecture in lectures %}
 						<p class="callout">
-							<b>{{ lecture.poem.poet }}: </b><a href="{{ site }}/lecture/{{ lecture.poem.poet.last_name|lower }}/{{lecture.slug}}/">{{lecture.title }}</a>
-						{% endfor %}
+							<b class="inline-header">{{ lecture.poem.poet }}: </b><a href="{{ site }}/portal/{{ institution.slug }}/{{lecture.slug}}/">{{lecture.title }}</a>
 						</p><!-- /Callout Panel -->					
-						<p class="callout">
+						{% endfor %}
+						<p class="common">The license is set to automatically renew each year, however we will send you notice in advance of the license period's end.</p>
+						<p class="callout callout-center">
 							<b>License expiry date: <span class="expiry">{{ expiry }}</span></b>
 						</p><!-- /Callout Panel -->
-
+						<p class="common">Thank you for learning with us.</p>
+						<p class="common">Warm regards,</p>
+						<p class="common signed">Andrew Barker</p>
+						
 						<!-- social & contact -->
 						<table class="social" width="100%">
 							<tr>
@@ -85,7 +96,7 @@
 																			
 												<h5 class="">Contact Info:</h5>												
 												<p>Phone: <strong>+852 9757 5447</strong><br/>
-               									Email: <strong><a href="emailto:{{ email }}">{{ email }}</a></strong></p>
+                								Email: <strong><a href="emailto:{{ email }}"> {{ email }}</a></strong></p>
                 
 											</td>
 										</tr>

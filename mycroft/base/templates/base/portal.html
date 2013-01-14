@@ -5,6 +5,8 @@
 
 {% if user.is_authenticated %}
   {% if expired %}
+ 
+
     <div class="hero-unit">          
     <div id="loginBox" class="container">
     <div class="content">
@@ -16,7 +18,11 @@
         </div>
       </div>
       </div>
+ 
+
+
   {% else %}  
+    <h1 class="institutionHeader"> {{ institution }} </h1>
     <div class="panel-wide lecturegrid">
     <div class="container">
       <div class="section-header">
@@ -27,19 +33,19 @@
         <li><a data-sort="date" href="">Year of Publication</a></li>
       </ul>
       </div>
-      <ul id="content" class="thumbnails" class="span12">
-          {% for lecture in lectures %}
-            <li class="span3" data-poet="{{ lecture.poem.poet.last_name }}" data-title="{{ lecture.poem.title }}:" data-date="{{lecture.poem.pub_year}}">
-              <div class="thumbnail lecture-block">
-                <a href="/portal/{{institution.slug}}/{{ lecture.slug }}">
-                <img src="http://img.youtube.com/vi/{{lecture.preview.youtube_id}}/0.jpg">
-                <span class="author">{{ lecture.poem.poet.first_name }} {{ lecture.poem.poet.last_name }}:</span>
-                <span class="title">{{lecture.poem.title}}</span>
-                </a>
-            </div>
-            </li>
-          {% endfor %}
-      </ul>
+       <ul id="content" class="thumbnails" class="span12">
+      {% for lecture in lectures %}
+        <li class="span3 lecture-panel" data-poet="{{ lecture.poem.poet.last_name}}" data-title="{{ lecture.poem.title }}" data-date="{{lecture.poem.pub_year}}">
+          <div class="thumbnail lecture-block">
+            <a href="/portal/{{institution.slug}}/{{ lecture.slug }}">
+            <div class="frame-16x9"><img src="http://img.youtube.com/vi/{{lecture.preview.youtube_id}}/0.jpg"></div>
+            <span class="title">{{lecture.poem.title}}</span>
+            <span class="author">{{ lecture.poem.poet.first_name }} {{ lecture.poem.poet.last_name }}</span>
+            </a>
+        </div>
+        </li>
+      {% endfor %}
+  </ul>
     </div>
 
     <div class="container">
@@ -54,19 +60,26 @@
   {% endif %}  
  
 {% else %}
+
+
 <div class="hero-unit">          
   <div id="loginBox" class="container">
   <div class="content">
       <div class="row">
         <div class="login-form">
           <h1> {{institution.name}}</h1>
-          <form action="/accounts/login/" method="post">{% csrf_token %}
+          <form id='authentication-form' action="/accounts/login/" method="post">{% csrf_token %}
             <fieldset>
-                <input type="hidden" name="" value="{{ institution.contact.email }}">
+                <input type="hidden" name="next" value="/portal/{{institution.slug}}/" />
+                <input type="hidden" name="userid" value="{{ institution.contact.id }}">
+                <input type="hidden" name="username" value="{{ institution.contact.email }}">
               <div class="clearfix">
-                <input type="password" name="" value="" placeholder="Password">
+                <input type="password" name="password" value="" placeholder="Password">
               </div>
-              <input type="submit" name="submit" value="Submit" class="my-btn btn-large">
+          <div style="display:none;" class="alert alert-error">
+            <strong>Snap!</strong> Incorrect password. Please try again.
+          </div>
+              <input type="submit" name="" value="Submit" class="authenticate my-btn btn-large">
             </fieldset>
           </form>
         </div>
@@ -85,10 +98,33 @@
     $('.lecture-sort > li.active').toggleClass('active');
     $this.parent().toggleClass('active');
     q = $this.data('sort');
-    $('div.lecture-block').sortElements(function(a, b){
+    $('li.lecture-panel').sortElements(function(a, b){
         return $(a).data(q) > $(b).data(q) ? 1 : -1;
     })
   });
+
+   $('.authenticate').click(function(){
+        event.preventDefault();
+        $(this).toggleClass('btn-loading').val('Authenticating...');
+        form = $('#authentication-form').serialize();
+        $.ajax({
+          type: "POST",
+          async: true,
+          url: "/api/login/",
+          data:  form,
+          dataType: "json",
+          contentType: "application/json; charset=utf-8",
+          success: function (data){
+            if (data['match']) {
+              $('#authentication-form').submit();
+              console.log('true');
+            } else {
+              $('.authenticate').toggleClass('btn-loading');
+              $(".alert").slideDown();
+            }},
+          error: function (err){alert(err.responseText)}
+      });
+    });
   </script>
   
 {% endblock %}

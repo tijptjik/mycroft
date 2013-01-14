@@ -31,8 +31,10 @@
                 {% for lecture in lecture_list %}
             
                 <div class="box-model row">
-                    <div class="thumbcol3 frame-16x9 span4 box-model">
-                        <img src="http://img.youtube.com/vi/{{lecture.preview.youtube_id}}/0.jpg">
+                    <div class="frame-16x9 span4 box-model">
+                        <a href="/lecture/{{ lecture.poem.poet.slug }}/{{ lecture.slug }}">
+                            <img src="http://img.youtube.com/vi/{{lecture.preview.youtube_id}}/0.jpg">
+                        </a>
                     </div>
                     <div class="span3 box-model">
                         <h3><a href="/lecture/{{ lecture.poem.poet.slug }}/{{ lecture.slug }}">
@@ -133,7 +135,6 @@
         if(quantity){
             $('#submitCart').val('Checkout with PayPal').addClass('btn-primary').removeClass('btn-danger');
         } else {
-            console.log('should!')
             $('#submitCart').val('Select your Lectures').toggleClass('btn-danger');
         }
     }
@@ -204,29 +205,13 @@
 
       $.post("/api/client/student/json/", email, function(data) {
               response = $.parseJSON( data );
-              $('#custom_items').val(response[0]['pk']);
+              $('#id_custom').val(response[0]['pk']);
               $('#payer_email').val(response[0]['fields']['email']);
               $('#bt_form2').submit();
           });
     })
 
-    $('#registerUserButton').click(function(){
-        event.preventDefault();
-        $.bt_validate.result = true;
-        $('#subscriptionForm').bt_validate()
-        if($.bt_validate.blocked){ 
-            return false };
-        
-        $(this).toggleClass('btn-loading').text('Loading...');
-        form = $('#subscriptionForm').serialize();
-
-        $.post("/api/client/educator/json/", form, function(data) {
-            response = $.parseJSON( data );
-            console.log(data)
-            $('#subscriptionForm').submit();
-        });
-    });
-    
+   
     $(function () {
         var top = $('#box').offset().top;
         $(window).scroll(function (event) {
@@ -237,6 +222,6 @@
             $('#checkoutBox').removeClass('fixed');
         }});
     });
-    </script>
+  </script>
 {% endblock scripts %}
 

@@ -81,7 +81,7 @@
   </div>
   <ul id="content" class="thumbnails" class="span12">
       {% for lecture in lectures %}
-        <li class="span3" data-poet="{{ lecture.poem.poet.last_name}}" data-title="{{ lecture.poem.title }}" data-date="{{lecture.poem.pub_year}}">
+        <li class="span3 lecture-panel" data-poet="{{ lecture.poem.poet.last_name}}" data-title="{{ lecture.poem.title }}" data-date="{{lecture.poem.pub_year}}">
           <div class="thumbnail lecture-block">
             <a href="/lecture/{{ lecture.poem.poet.slug }}/{{ lecture.slug }}">
             <div class="frame-16x9"><img src="http://img.youtube.com/vi/{{lecture.preview.youtube_id}}/0.jpg"></div>
@@ -116,7 +116,8 @@
     $('.lecture-sort > li.active').toggleClass('active');
     $this.parent().toggleClass('active');
     q = $this.data('sort');
-    $('div.lecture-block').sortElements(function(a, b){
+    console.log(q)
+    $('li.lecture-panel').sortElements(function(a, b){
         return $(a).data(q) > $(b).data(q) ? 1 : -1;
     })
   });

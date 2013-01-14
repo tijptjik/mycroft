@@ -58,7 +58,7 @@
         <ul id="content" class="lecturelist span12">
             {% for lecture in lecture_list %}
         
-            <div class="row">
+            <div class="row lecture-panel" data-poet="{{ lecture.poem.poet.last_name}}" data-title="{{ lecture.poem.title }}" data-date="{{lecture.poem.pub_year}}">
                 <div class="frame-16x9 span4">
                     <img src="http://img.youtube.com/vi/{{lecture.preview.youtube_id}}/0.jpg">
                 </div>
@@ -80,102 +80,8 @@
 {% endblock %}
 
 {% block scripts %}
+    <script src="{{ STATIC_URL }}js/libs/jquery/sortElements.js" type="text/javascript" charset="utf-8"></script>
     <script type="text/javascript">
-
-    var selectedLectures = [];
-    var discount = 0;
-    var target = '';
-
-    $(".btn-modal").on("click", function() {
-        var Sub = $(this)
-        $('#id_item_number').val(Sub.data('id'))
-        $('#id_item_name').val(Sub.data('product'))
-        $("#productLabel").text(Sub.data('product'));
-    });
-
-    function updatePrice (quantity, discount) {
-        $('#totalPrice').text(Math.round(quantity * 4.99 * ((100 - discount)/100)*100)/100);
-        $('#discountPercentage').text(discount);
-
-        if(quantity){
-            $('#submitCart').val('Checkout with PayPal').addClass('btn-primary').removeClass('btn-danger');
-        } else {
-            console.log('should!')
-            $('#submitCart').val('Select your Lectures').toggleClass('btn-danger');
-        }
-    }
-
-    function calculateDiscount (quantity) {
-        if(quantity == 0){
-            discount = 0;
-        } else if(0 < quantity && quantity < 7){
-            discount = quantity * 5 - 5;
-        } else if(quantity > 6){
-            discount = 30;
-        }
-        $('#discount_rate_cart').val(discount)
-        return discount;
-    }
-
-
-    function relabelItems(){
-        $('.cartItem').each(function(index) {
-            $(this).attr('name', "item_name_" + (index+1))
-        });
-
-        $('.itemAmount').each(function(index) {
-            $(this).attr('name', "amount_" + (index+1))
-        });
-  
-        $('.itemNumber').each(function(index) {
-            $(this).attr('name', "item_number" + (index+1))
-        });
-    }
-
-    $('#lectureList').on("click", ".lectureCheckbox", function () {
-        var lectureID = $(this).data('id');
-        var lectureTitle = $(this).data('title');
-        var quantity = $(':checked').length;
-        discount = calculateDiscount(quantity)
-
-        if(selectedLectures[lectureID]){
-            selectedLectures[lectureID] = false;
-            $("#item" + lectureID).remove();
-            $('#amount' + lectureID).remove();
-            $('#item_number' + lectureID).remove();
-            relabelItems();
-        } else {
-            selectedLectures[lectureID] = true;
-            $('#bt_form2').append('<input type="hidden" name="amount_' + quantity +'" value="4.99" id="amount' + lectureID + '" class="itemAmount">')
-            $('#bt_form2').append('<input type="hidden" name="item_name_'+ quantity +'" value="'+  lectureTitle + '" id="item' + lectureID + '" class="cartItem">')
-            $('#bt_form2').append('<input type="hidden" name="item_number_'+ quantity +'" value="' + lectureID + '" id="item_number' + lectureID + '" class="itemNumber">')
-        }
-        var selected = [];
-        $.each(selectedLectures, function(index, value) { 
-              if(value){
-                selected.push(index)
-                }});
-        $('#custom_items').val(selected.join());
-        updatePrice(quantity, discount);
-    });
-
-    $("#submitCart").click(function(event) {
-      event.preventDefault();
-      $.bt_validate.result = true;
-      $('#bt_form2').bt_validate()
-      if($.bt_validate.blocked){ 
-            return false };
-      
-      email = $('#email').serialize();
-      $(this).toggleClass('btn-loading').val('Loading...');
-
-      $.post("/api/client/student/json/", email, function(data) {
-              response = $.parseJSON( data );
-              $('#custom_items').val(response[0]['pk']);
-              $('#payer_email').val(response[0]['fields']['email']);
-              $('#bt_form2').submit();
-          });
-    })
 
     $('#registerUserButton').click(function(){
         event.preventDefault();
@@ -189,11 +95,21 @@
 
         $.post("/api/client/educator/json/", form, function(data) {
             response = $.parseJSON( data );
-            console.log(data)
+            $('#id_custom').val(response[0]['pk']);
             $('#subscriptionForm').submit();
         });
     });
 
-    </script>
+  $('.lecture-sort a').live('click', function(e){
+    $this = $(this);
+    e.preventDefault();
+    $('.lecture-sort > li.active').toggleClass('active');
+    $this.parent().toggleClass('active');
+    q = $this.data('sort');
+    $('div.lecture-panel').sortElements(function(a, b){
+        return $(a).data(q) > $(b).data(q) ? 1 : -1;
+    })
+  });
+  </script>
 {% endblock scripts %}
 

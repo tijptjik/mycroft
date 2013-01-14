@@ -123,7 +123,6 @@
         if(quantity){
             $('#submitCart').val('Checkout with PayPal').addClass('btn-primary').removeClass('btn-danger');
         } else {
-            console.log('should!')
             $('#submitCart').val('Select your Lectures').toggleClass('btn-danger');
         }
     }
@@ -212,7 +211,7 @@
 
         $.post("/api/client/educator/json/", form, function(data) {
             response = $.parseJSON( data );
-            console.log(data)
+            $('#id_custom').val(response[0]['pk']);
             $('#subscriptionForm').submit();
         });
     });

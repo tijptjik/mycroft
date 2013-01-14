@@ -99,7 +99,6 @@ $('#submitSingle').click(function(){
   
   $.post("/api/client/student/json/", email, function(data) {
           response = $.parseJSON( data );
-          console.log(response[0]);
           $('#custom').val(response[0]['pk']);
           $('#payer_email').val(response[0]['fields']['email']);
           $('#bt_form').submit()

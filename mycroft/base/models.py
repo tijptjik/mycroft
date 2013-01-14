@@ -112,6 +112,7 @@ class Lecture(models.Model):
     series = models.ForeignKey(Series)
     synopsis = models.TextField(blank=True)
     transcript = models.TextField(blank=True)
+    notes = models.TextField(blank=True)
     title = models.CharField(max_length=100, unique=True)
     slug = models.SlugField(max_length=40, unique=True, default="")
 
