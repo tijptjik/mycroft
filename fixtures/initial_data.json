@@ -814,7 +814,7 @@
       "slug": "the-soldier"
     }
   },
-  {
+ {
     "pk": 10,
     "model": "base.lecture",
     "fields": {
@@ -823,6 +823,7 @@
       "product": 10,
       "title": "Toads",
       "series": 1,
+      "notes": "<ol>\r\n<li>The lecture begins by looking Philip Larkin’s character, who he was and what he was trying to do in his poetry.</li>\r\n<li>The poem is read through. </li>\r\n<li>The metaphor of the Toad is explained.</li>\r\n<li>The poem is parsed, paraphrased, explained line by line in simpler English. </li>\r\n<li>Various complications noted, or areas of interest raised and questioned, are:</li>\r\n<ul>\r\n<li>Larkin’s dislike of the lecturer poet. </li>\r\n<li>The class element in what Larkin writes.</li>\r\n<li>How Larkin expects us to view the persona who narrates the poem in the way he addresses the working classes.</li>\r\n<li>The self-awareness of the persona in analysing his own motivation.</li>\r\n<li>The metaphor of the second toad.</li>\r\n</ul>\r\n<li>A summary of the poem is then given.</li>\r\n<li>Larkin’s achievement in the writing of the poem is assessed.</li>\r\n<li>From the Lecture: “Larkin may not get the fame, the girl, or the money, but he gets the poem.”</li>\r\n<li>The lecture concludes with a final read through of the poem.</li>\r\n</ol>",
       "synopsis": "This amazing piece of poetry exlained in an equally amazing way",
       "video": 10,
       "preview": 10,
@@ -974,11 +975,11 @@
       "credentials": "India"
     }
   },
-   {
+  {
     "pk": 1,
     "model": "subscription.subscription",
     "fields": {
-      "description": "<p>Schools and other educational institutions may take a year-long license to all Mycroft Lectures content. The lectures cover classic  poems part of many English literary curricula.</p>\r\n<p>The institutional license includes:</p>\r\n<ul>\r\n<li>Unlimited license for 1 year.</li>\r\n<li>Streaming access to all lectures.</li>\r\n<li>Institutional portal for student access.</li>\r\n<li>Use of lectures in lessons.</li>\r\n<li>Teacher notes for each lecture.</li>\r\n</ul>\r\n\r\nPayment is completed via paypal and is renewable on a yearly basis.",
+      "description": "<p>Licensing Mycroft for a semester will mean that all staff and all students will have access to all lectures for the duration of that semester.</p>\r\nSchools are free to build courses around the lectures or to use them to augment existing courses. \r\nTeachers can set the lectures for homework, and follow up on them for classroom discussion.\r\nShould teachers be absent, substitute teachers need only sit in on a room where a lecture is shown, for the class teacher to follow up on the issues raised in that lecture later.</p>\r\nThe lectures are timed to be the appropriate length to be shown as a school, college or university lecture.</p>\r\n<p>All poems on Mycroft are on syllabi and provide specific information needed for the passing of examinations. Should the poem lectured on not be on the syllabus your school is addressing the analysis within the lecture will still provide invaluable ‘tools’ for examination of poems within the syllabus. To this end, teachers may select not to show a full lecture but to select section they feel address areas they wish to cover in class.</p>\r\n<p>The lectures are designed to appeal to and be useful to a wide section of students. Some students will find them easier than others and disagreement about the most interesting interpretation of a poem for discussion among students is encouraged within the lectures themselves.</p>\r\n<p>Finally, though we have been very careful to ensure the lectures are easy to understand and cover explanations of the poems, these lectures contain very little “fat.” Each lecture contains a lot of information. Students at school or college level will be able to understand the poems after watching the lectures. Students at university level will find new points for consideration and analysis.</p>\r\n<p>Remember, once you have listened Mycroft for a semester all the lectures can be viewed as many times as you wish for all staff and all students.</p>",
       "group": 1,
       "name": "Institutional License",
       "recurrence_unit": "Y",
