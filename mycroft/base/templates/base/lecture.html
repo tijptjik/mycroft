@@ -37,7 +37,7 @@
       {% else %}            
           <div class="Videowrapper">
             <video id="example_video_1" class="video-js vjs-default-skin h_iframe" data-setup='{"techOrder":["youtube","html5"],"ytcontrols":true}'>
-              <source src="http://www.youtube.com/watch?v=jlhIkrfWAgI" type='video/youtube'>
+              <source src="http://www.youtube.com/watch?v={{ lecture.preview.youtube_id }}" type='video/youtube'>
             </video>
             <img class="ratio" src="{{ STATIC_URL }}img/landing.png"/>
           </div>
@@ -72,17 +72,29 @@
 <div class="row">
   <div class="container">
     <div class="span7 well">
-      <pre>{{lecture.poem.text}}</pre>
-    </div>
+      <div class="tabbable"> <!-- Only required for left/right tabs -->
+        <ul class="nav nav-tabs">
+          <li class="active"><a href="#tab1" data-toggle="tab">Poem</a></li>
+          <li><a href="#tab2" data-toggle="tab">Lecture Notes</a></li>
+        </ul>
+        <div class="tab-content">
+          <div class="tab-pane active" id="tab1">
+            <pre>{{lecture.poem.text}}</pre>
+          </div>
+          <div class="tab-pane" id="tab2">
+            <p>Mycroft lectures always provide sentence by sentence parsing, paraphrasing and explanation of the each poem. However, each lecture provides extra information that will enhance appreciation and understanding of the poem under discussion. This lecture includes the following areas of analysis:</p>
+            <pre>{% autoescape off %}{{lecture.notes}}{% endautoescape %}</pre>
+          </div>
+        </div>
+      </div>       
+    </div>       
     <div class="span4">
-      <h2>{{lecture.poem.poet}}</h2>
+      <h2>{{lecture.poem.poet.first_name}} {{lecture.poem.poet.last_name}}</h2>
       <p>{{lecture.poem.poet.year_of_birth}} - {{lecture.poem.poet.year_of_death}}</p>
       <p>{{lecture.poem.poet.description}}</p>
     </div>
   </div>
 </div>
-
-
 
 {% endblock %}
 
