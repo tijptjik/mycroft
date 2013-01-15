@@ -57,29 +57,32 @@ body {
     background-repeat:repeat;
  }
 
-// 
-// Navbar
+//
+// Custom Styles
 // --------------------------------------------------
+//
 
-.navbar-inner {
-    #gradient > .vertical(@navbarBackgroundHighlight, @navbarBackground);    
-}
-
-.navbar .nav > li > a {
-  padding: ((@navbarHeight - @baseLineHeight) / 2) 20px ((@navbarHeight - @baseLineHeight) / 2);
-  margin-left: -20px; // negative indent to left-align the text down the page
-  font-size: 20px;
-  font-weight: 200;
-  text-shadow: 0 1px 0 @navbarBackgroundHighlight;
-  &.active{
-    color: @my-blue-dk;
-  }
+.combolabel{
+    overflow: hidden;
+    height: 48px;
+    b{
+        padding-left: 10px;
+    }
+    label{
+        padding-left:0;
+        padding-right:10px;
+        background-color: @my-black-lt;
+    }
+    label.checkbox{
+        width:100%;
+    }
 }
 
 //
 // Layout Components
 // --------------------------------------------------
 //
+
 
 .band {
     width: 100%;
@@ -90,10 +93,11 @@ body {
 
 .panelBox {
     .box-model;
+    overflow: auto;
     background-color: @my-black-lt;
     color: @my-yellow-lt;
     padding: 20px;
-    margin: 0;
+    margin: 10;
     margin-top: 40px; 
     margin-bottom: 0px; 
     -webkit-border-radius: 10px 10px 10px 10px;
@@ -123,17 +127,62 @@ body {
     border-bottom: solid 1px @my-linnen;
     h2{ float:left;}
     li{ float:left;}
-    margin-bottom: 0;
     .nav{
         margin-bottom: 0px;
     }
 }
 
-.alpha{
-    margin-left: -20px; 
+.innerPage{
+    .box-model;
+    .border-bottom-left-radius(5px);
+    .border-bottom-right-radius(5px);
+    padding:12px;
+    padding-top: 0;
+    background-image:url('../img/background/absurdidad.png');
+    color: @my-linnen;
+    li {
+        display: list-item;
+        float:none;
+    }
+    h3:first-child,
+    h4:first-child,
+    p:first-child{
+        margin-top: 0px;
+    }
+    form:first-child,
+    h4:first-child,
+    p:first-child{
+        padding-top: 16px;
+    }
+    span:first-child{
+        margin-bottom: 8px;
+    }
 }
-.omega{
-    margin-left: 20px; 
+
+// Navbar
+// --------------------------------------------------
+
+.navbar-inner {
+    #gradient > .vertical(@navbarBackgroundHighlight, @navbarBackground);    
+}
+
+.navbar .nav > li > a {
+  padding: ((@navbarHeight - @baseLineHeight) / 2) 20px ((@navbarHeight - @baseLineHeight) / 2);
+  margin-left: -20px; // negative indent to left-align the text down the page
+  font-size: 20px;
+  font-weight: 200;
+  text-shadow: 0 1px 0 @navbarBackgroundHighlight;
+  &.active{
+    color: @my-blue-dk;
+  }
+}
+
+#user_nav{
+    a {
+        border: solid 1px lighten(@my-red-lt, 25%);
+        border-bottom: solid 0px @my-red-lt;
+        border-top: 0;
+    }
 }
 
 //
@@ -172,11 +221,28 @@ body {
         border-right: dotted 25px @my-dotted-border;
         max-width: 1120px;
         width:100%;
-        height:520px;
+        height:498px;
         padding: auto;
         margin:auto;
         overflow:auto;
+        a{
+            overflow: auto;
+        }
+        img{
+            .blackwhite();
+        }
     }
+}
+#lectureVideo{
+    width: 800px !important;
+    height: 450px !important;
+    margin: 0 auto;
+    background-color: black;
+}
+.hostedWrapper{
+    .Videowrapper;
+    overflow: auto;
+    height: auto;
 }
 
 .actionbar {
@@ -196,7 +262,8 @@ body {
         vertical-align: center;
         line-height: 42px;
     }
-} 
+}
+
 .lecture-sort,
 .portalbar {
     a {
@@ -233,7 +300,6 @@ body {
         }
     }
     ul {
-        // height: 100px;
         li{
             margin-bottom: 0;
         }
@@ -330,7 +396,7 @@ body {
         font-size: 32px;
         text-transform: uppercase;
         line-height: 108%;
-        text-align: center !important;
+        text-align: center;
     }
 }
 
@@ -345,6 +411,7 @@ body {
         &:hover {
             color: @my-black-lt;
             background-color: @my-yellow-lt !important; 
+            .transition(all .1s linear);
         }
     }
     .active a{
@@ -384,137 +451,270 @@ body {
 
 // Lectures
 // --------------------------------------------------
+
 .Videowrapper{
-    margin-top:-100px;
-    height:640px;
+    height:440px;
+    overflow: hidden;
 }
 
-.videopanel{
-    overflow: auto;
+.lecture-description{
+    .box-model;
+    h2{
+        font-size: 1.75em;
+        color: @my-linnen;
+        color:@my-yellow-lt;
+        text-align: center;
+        border-bottom: solid 1px @my-yellow-lt;
+        margin: 0px;
+    }
+    h3{
+        vertical-align: top;
+        line-height: 12px;
+        margin-top: 0px;
+        margin-bottom: 8px;
+        text-align: center;
+        font-size: 1.5em;
+        color: @my-cream;
+    }
+    h4{
+        color: @my-cream;
+        font-weight: 400;
+        padding: 0
+        margin: 0;
+    }
+    .span4 .innerPage {
+        p {
+        color: @my-cream;
+        font-size: 16px;
+        font-weight: 700;
+        }
+        #bt_form {
+            padding-top:0;
+            input {
+                height: 32px;
+                margin: 0;
+            }
+        }
+        button{
+            margin-top: -1px;
+            width: 100px;
+            margin-left: -22px;
+        }
+    }
 }
+
+.badge {
+    margin-top: 0px;
+    line-height: 20px;
+    font-size: 16px;
+    vertical-align: top;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom-left-radius: 14px;
+    height: 20px;
+    padding-top: 4px;
+    float: right;
+    background-color: @my-yellow-lt;
+    color: @my-black-lt;
+}
+
+.poem-box p{
+        .rounded(5px);
+        color:@my-cream;
+        padding: 12px;
+        background-image:url('../img/background/absurdidad.png');
+        margin-bottom: 0;
+}
+
+.poet-box{
+    h2{
+        margin: 0;
+    }
+}
+.tabs-left > .nav-tabs{
+    color: @my-yellow-lt;
+    text-align: center;
+    font-weight: 700;
+    border-right: 0px;
+    li{
+        margin-bottom:8px;
+    }
+}
+
+li.active a {
+    background-color: @my-yellow-lt;
+    color: @my-black-lt;
+    }
+
+.tabs-left > .nav-tabs a:hover {
+    color: @my-cream;
+}
+
+.nav-tabs > li > a{
+    border-top-left-radius: 5px !important;
+    border-top-right-radius: 5px !important;
+    border-bottom-left-radius: 5px !important;
+    border-bottom-right-radius: 5px !important;
+    background-color: lighten(@my-blue-lt,15%);
+    margin-bottom:0px !important;
+    color: @my-blue-dk;
+    &:hover{
+        background-color: @my-blue-lt;
+        color: @my-cream;
+    }
+}
+.nav-tabs > li.active > a{
+    background-color: @my-blue-lt;
+    color: @my-cream;
+    &:hover{
+        background-color: @my-blue-lt;
+        color: @my-cream;
+   }  
+}
+
 
 // License & Individual 
 // --------------------------------------------------
 
-#subscriptionForm{
-    input{
-        background-color: @my-cream;
-    }
-}
-.modal-footer {
-    color: @my-black-lt;
-    background-color: @my-cream;
-    .border-bottom-left-radius(5px);
-    .border-bottom-right-radius(5px);
-}
-.checkoutFooter .modal-footer {
-    text-align: left;
-    margin-top:-10px;
-    width: 87%;
-}
-
 .lecturelist{
-    margin-top:24px;
-    color:@my-linnen;
-    img {
-        .blackwhite();
+    color:@my-black-lt;
+    margin-top:0;
+    .row{
+        margin-left: 20px;
+    }
+    .single-grid-item{
+        margin-left: -25px;
+        .description{
+            display: none;
+            position: relative;
+            top: -10px;
+            color:@my-cream;
+            background-color: lighten(@my-black-lt, 20%);
+            border:solid 2px @my-black-dk;
+            border-top:0;
+            // margin-top: -10px;
+            // margin-bottom: 10px;
+            overflow: auto;
+            p {
+                display: block;
+                vertical-align: bottom;
+                line-height: 28px;
+                padding:12px;
+                margin-bottom: 0px;
+                border-bottom: solid 1px @my-black-lt;
+            }
+            a {
+                margin-top: 6px;
+                margin-right: 32px;
+                margin-bottom: 6px;
+                padding: 0 12px;
+                float: right;
+            }
+
+        }
+    }
+    .double-grid-item{
+        padding: 0 10px;
+        padding-right: -10px;
+        margin-left: 0px;
+        .box-model;
     }
     .frame-16x9 {
         overflow: hidden;
         height: 11.2em;
-        margin-left:0;
-        margin-bottom:24px;
+        width: 100%;
+        background-color: @my-black-lt;
         img {
-            margin-top: -9%;
+            .blackwhite();
+            width: 100%;
+            display: block;
+            margin: 0 auto;
+            margin-top: -15%;
         }
     }
+    h3 {
+        background-image:url('../img/background/absurdidad.png');
+        background-color: @my-black-dk;
+        font-size:1.3em;
+        width:100%;
+        display: block;
+        vertical-align: top;
+        margin-top: -4px;
+        padding-top: 0;
+    }
     a {
-       background-image:url('../img/background/absurdidad.png');
-       &:hover{
+        &:hover{
             color:@my-black-lt;
             background-color: @my-yellow-lt;
             text-decoration: none;
             border-bottom: solid 0px @my-yellow-lt;
-
+            span.title{
+                color:@my-black-lt;
+            }
        }
         span.author{
             color:@my-yellow-lt;
             background-color: @my-black-dk;
             text-transform: uppercase;
-            padding: 0 8px;
+            padding: 0 4px;
+            font-size:1.2em;
         }
         span.title{
             padding-right: 8px;
             color:@my-cream;
        }
     }
-    h3 {
-        padding-top: 0;
-        margin-top: -5px;
-        margin-left: -30px;
+    p {
+        padding: 8px;
+        padding-bottom: 16px;
+        text-transform: none;
+        font-size: 14pt;
+        font-weight: 500;
+        min-height: 32px;
+        text-align: left;
     }
 }
 
 
-#bt_form{
-    line-height: 24px;
-    vertical-align: middle;
+#lectureList{
+    text-align: left;
+    color: @my-cream;
 }
 
-.innerPage{
-    .box-model;
-    .border-bottom-left-radius(5px);
-    .border-bottom-right-radius(5px);
-    padding:12px;
-    background-image:url('../img/background/absurdidad.png');
-    color: @my-linnen;
-    li{
-        display: list-item;
-        float:none;
+.combobox{
+    .combolabel;
+    width:100%;
+    input[type="checkbox"] {
+        float: left;
     }
-}
-
-.alacarte-checkout{
-    color: @my-black-lt;
-    margin-left: -10px;
-    width: 300px;
-    height: 34px;    
 }
 
 // Store
 // --------------------------------------------------
 
-.checkoutFooter {
-    margin-top: 10px;
-    text-align: center;
-    > #bt_form2 {
-        text-align: left;
-        input {
-            margin-left: 50px;
-            margin-top: 8px;
-            margin-bottom: -4px;
-        }
+#SubscriptionDialog {
+    h2{
+        margin:0;
     }
-    .my-btn,
-    .btn {
-        margin-top: 8px;
-        width: 90%;
+    .close {
+        color: @my-cream;
     }
 }
 
-#checkoutBox {
-    position: absolute;
-    top: 90px;
-    left: 50%;
-    margin-left: 200px;
-    &.fixed {
-        position: fixed;
+.modal-footer{
+        padding-bottom: 0px;
+        min-height: 48px;
     }
+
+#lectureList{
+    margin-left: 20px;
 }
 
 // Testimonials
 // --------------------------------------------------
-
+#container{
+    margin-left: -30px;
+}
 .testimonial {
     blockquote{
     border-left:0;
@@ -565,6 +765,7 @@ body {
     textarea,
     input[type='text'],
     input[type='password']{
+        border-top-right-radius: 0px;
         width: 350px;
         height:32px;
         font-size: 22px;
@@ -625,21 +826,19 @@ body {
     text-decoration: none;
     .buttonBackground(@my-red-lt, @my-red-lt, @white, 0px 0px 3px rgba(255,255,255,.80));
     background-position: 0 -5px;
-
+    border: 1px solid darken(@btnBorder, 10%);
+    border-bottom-color: darken(@btnBorder, 20%);
     // transition is only when going to hover, otherwise the background
     // behind the gradient (there for IE<=9 fallback) gets mismatched
     .transition(all .1s linear);
   }
 }
 
-// Submit Cart Button
-#submitCart {
+.my-btn-paypal {
+    .my-btn;
+    .buttonBackground(darken(@my-blue-lt,20%), darken(@my-blue-dk,20%), @my-linnen, 1px -1px 1px rgba(255,255,255,.40));
 }
 
-// Register User Button
-#registerUserButton {
-    width: 162px;
-}
 
 // Loading Button
 .btn-loading {
@@ -685,6 +884,78 @@ body {
 // 
 // Form Styles
 // --------------------------------------------------
+
+.formBox {
+    h3, h4 {
+        color: @my-yellow-lt;
+    }
+    h4 {
+        font-size: 32px;
+        padding: 12px 8px;
+    }
+    textarea,
+    input[type='text'],
+    input[type='password']{
+        background-color: @my-cream;
+        border-top-right-radius: 0px;
+        width: 90%;
+        height:28px;
+        font-size: 21px;
+        vertical-align: bottom;
+        line-height: 26px;
+        margin: 8px 16px;
+    }
+    input[type='checkbox']{
+        padding:0;
+    }
+    .formFatFooter{
+        margin-top: 10px;
+        text-align: center;
+        h4{
+            margin-bottom: 0;
+        }
+        input{
+            margin-left: 10px;
+        }
+    }
+    .formFooter{
+        .row-fluid{
+            text-align: center;
+            min-height: 40px;
+            overflow: auto;
+        }
+        padding: 16px 0;
+        text-align: center;
+        text-align: left;
+        color: @my-black-lt;
+        background-color: @my-cream;
+        .border-bottom-left-radius(5px);
+        .border-bottom-right-radius(5px);
+        overflow: auto;
+        button {
+            display: block;
+            margin: 0 auto;
+            width: 80%;
+        }
+        a.my-btn,
+        input {
+            min-width: 220px;
+        }
+    }
+}
+
+form {
+    margin-bottom:0;
+}
+
+// 
+// Custom Input Elements
+// --------------------------------------------------
+
+
+input{
+    background-color: @my-cream;
+}
 
 input[type="checkbox"], input[type="radio"]{
   position: absolute; 
@@ -762,3 +1033,110 @@ input[type="radio"]:checked + label{
   }
 }
 
+
+// 
+// Poem Styles
+// --------------------------------------------------
+
+
+h5.poem-footer,
+h5.poem-title{
+    background-color: @my-cream;
+    padding-top: 6px;
+    padding-right: 16px;
+    padding-bottom: 6px;
+    padding-left: 16px;
+    .rounded(5px);
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    display: block;
+    margin: 0; 
+    color: @my-black-lt;
+    margin: 1px;
+    margin-bottom: -1px;
+}
+h5.poem-footer{
+    height: 60px;
+    .rounded(5px);
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    margin-top: -1px;
+    text-align: right;
+    padding-right: 15%;
+    vertical-align: bottom;
+    color: lighten(@my-black-lt,70%);
+}
+pre.blockcode {
+    border-top-right-radius: 0;
+    width: auto;
+    padding: 0;
+    overflow-x: auto;
+    background-color: @my-cream;
+    margin-bottom: 0;
+    code {
+        display: block;
+        font-size: 16px;
+        color: @my-black-lt;
+        span.line::before {
+            content: counter(code-line);
+            display: inline-block;
+            color: @my-indigo-lt;
+            text-align: right;
+            width: 2em;
+            padding-right: 0.5em;
+            border-right: 1px solid lightcoral;
+            margin-right: 1em;
+        }
+        span.line {
+            counter-increment: code-line;
+            display: inline-block;
+            width: 100%;
+            border-top: 1px solid @my-blue-lt;
+            border-bottom: 1px solid @my-blue-lt;
+            margin-top: -1px;
+        }
+    }
+}
+
+div.notes {
+    border-top-right-radius: 0;
+    width: auto;
+    padding: 12px;
+    overflow-x: auto;
+    background-color: @my-cream;
+    margin-bottom: 0;
+    color: @my-black-dk;
+    font-weight: 500;
+    background-image:url('../img/background/absurdidad.png');
+    * {
+        line-height: 1.75em;
+    }
+    code {
+        display: block;
+        font-size: 14px;
+        padding:16px;
+        span.line::before {
+            content: counter(code-line);
+            display: inline-block;
+            color: @my-indigo-lt;
+            text-align: right;
+            width: 2em;
+            padding-right: 0.5em;
+            border-right: 1px solid lightcoral;
+            margin-right: 1em;
+        }
+        span.line {
+            counter-increment: code-line;
+            display: inline-block;
+            width: 100%;
+            border-top: 1px solid @my-blue-lt;
+            border-bottom: 1px solid @my-blue-lt;
+            margin-top: -1px;
+        }
+    }
+}
+
+div.notes + h5.poem-footer {
+    margin-left: 0;
+    margin-right: 0;
+}

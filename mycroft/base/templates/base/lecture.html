@@ -21,78 +21,97 @@
   <script src="{{ STATIC_URL }}js/libs/videojs/src/setup.js"></script>
 {% endblock %}
 
-{% block page_class %}home-page{% endblock %}
+{% block page_class %} Mycroft Lectures: {{lecture.poem.title}} {% endblock %}
 {% block content %}
 
 <div class="band">
-  <div class="row">
     <div class="container">
-      <div class="videopanel panelBox">            
-
-      {% if user.is_authenticated %}            
+      <div class="panelBox formBox">            
+        {% if user.is_authenticated %}            
+  
+        <div class="lecture-description row-fluid">
+          <div class="span12" >
+            <h2>{{lecture.poem.title}} /<span>/ {{lecture.poem.poet.first_name}} {{lecture.poem.poet.last_name}}</span></h2>
+          </div>
+        </div>
+        <div class="hostedWrapper">        
         <video id="lectureVideo" class="video-js vjs-default-skin" controls preload="auto" data-setup="{}">
-            <source src="{{ site }}/media/lectures/digging.mp4" type="video/mp4" />
-            <track kind="subtitles" src="{{ site }}/media/lectures/digging.vtt" type="text/vtt" srclang="en" label="English Subtitles" />
+            <source src="{{ site }}/media/{{ lecture.video.video }}" type="video/mp4" />
+            <track kind="subtitles" src="{{ site }}/media/{{ lecture.video.subtitle }}" type="text/vtt" srclang="en" label="English Subtitles" />
         </video>
-      {% else %}            
+        </div>
+
+        {% else %}            
           <div class="Videowrapper">
             <video id="example_video_1" class="video-js vjs-default-skin h_iframe" data-setup='{"techOrder":["youtube","html5"],"ytcontrols":true}'>
               <source src="http://www.youtube.com/watch?v={{ lecture.preview.youtube_id }}" type='video/youtube'>
             </video>
-            <img class="ratio" src="{{ STATIC_URL }}img/landing.png"/>
           </div>
+
       {% endif %}
-  {% if user.is_authenticated %}            
-  {% else %}            
-    <div class="row">
-      <div class="span7">
-        <h1>'{{lecture.preview.title}}'<small>Excerpt from: {{lecture.poem.title}}</small></h1>
-        <p>{{lecture.synopsis}}</p>
-      </div>
-      <div class="purchase span4">
-        <div class="innerPage"
-         <footer class="purchase">
-          <p>Full Lecture <span class="lecture-price">${{lecture.product.price_in_dollars}}<span> Checkout with Paypal and receive the lecture instantly by e-mail.</p>
-          <form id="bt_form" action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post">Deliver to <input type="text" name="email" placeholder="E-mail Address" id="id_email" validate="required|email">
-            <input type="hidden" id="payer_email" name="payer_email" value="">
-            <input type="hidden" id="custom" name="custom" value=""> {{ form }} 
-            <input type="hidden" name="upload" value="1">
-            <button id="submitSingle" class="btn btn-primary" value="BUY" alt="Checkout with PayPal" title="Buy">Buy</button>
-          </form>
-            
+      {% if user.is_authenticated %}
+      
+      {% else %}            
+      <div class="lecture-description row-fluid">
+        <div class="span8" >
+          <h2>{{lecture.poem.title}} /<span>/ {{lecture.poem.poet.first_name}} {{lecture.poem.poet.last_name}}</span></h2>
+          <div class="innerPage">
+          <p>{{lecture.synopsis}}<p>
+          </div>
+        </div>
+        <div class="span4">
+          <h2>'{{lecture.preview.title}}' <span class="badge lecture-price">${{lecture.product.price_in_dollars}}</span></h2>
+          <div class="innerPage">
+            <p>Checkout with Paypal and receive the full lecture instantly by e-mail.</p>
+            <div class="row-fluid">
+             <div class="span9">
+                <form id="bt_form" action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post">
+                  <input type="text" name="email" placeholder="Email lectures to:" id="id_email" validate="required|email">
+                  <input type="hidden" id="payer_email" name="payer_email" value="">
+                  <input type="hidden" id="custom" name="custom" value=""> {{ form }} 
+                  <input type="hidden" name="upload" value="1">
+                </form>
+             </div> 
+             <div class="span3"><button id="submitSingle" class="my-btn-paypal" value="BUY" alt="Checkout with PayPal" title="Buy">Buy</button></div> 
+          </div>
         </div>
       </div>
-    </div>
-  {% endif %}
-      </div>  
+      {% endif %}
     </div>  
   </div>  
 </div>          
 
-<div class="row">
+
   <div class="container">
-    <div class="span7 well">
-      <div class="tabbable"> <!-- Only required for left/right tabs -->
-        <ul class="nav nav-tabs">
-          <li class="active"><a href="#tab1" data-toggle="tab">Poem</a></li>
-          <li><a href="#tab2" data-toggle="tab">Lecture Notes</a></li>
-        </ul>
-        <div class="tab-content">
-          <div class="tab-pane active" id="tab1">
-            <pre>{{lecture.poem.text}}</pre>
+    <div class="row">
+      <div class="span8 panelBox poem-box">
+        <div class="tabbable tabs-left"> <!-- Only required for left/right tabs -->
+          <ul class="nav nav-tabs">
+            <li class="active"><a href="#tab1" data-toggle="tab">Poem</a></li>
+            <li><a href="#tab2" data-toggle="tab">Lecture Notes</a></li>
+          </ul>
+          <div class="tab-content">
+            <div class="tab-pane active" id="tab1">
+              <h5 class="poem-title">{{lecture.poem.title}}</h5>
+              <pre class="blockcode"><code>{{lecture.poem.text}}</code></pre>
+              <h5 class="poem-footer"><br>MYCROFT LECTURES</h5>
+            </div>
+            <div class="tab-pane" id="tab2">
+              <p>Mycroft lectures always provide sentence by sentence parsing, paraphrasing and explanation of the each poem. However, each lecture provides extra information that will enhance appreciation and understanding of the poem under discussion. This lecture includes the following areas of analysis:</p>
+              <div class="notes">{% autoescape off %}{{lecture.notes}}{% endautoescape %}</div>
+              <h5 class="poem-footer"><br>MYCROFT LECTURES</h5>
+            </div>
           </div>
-          <div class="tab-pane" id="tab2">
-            <p>Mycroft lectures always provide sentence by sentence parsing, paraphrasing and explanation of the each poem. However, each lecture provides extra information that will enhance appreciation and understanding of the poem under discussion. This lecture includes the following areas of analysis:</p>
-            <pre>{% autoescape off %}{{lecture.notes}}{% endautoescape %}</pre>
-          </div>
-        </div>
+        </div>       
       </div>       
-    </div>       
-    <div class="span4">
-      <h2>{{lecture.poem.poet.first_name}} {{lecture.poem.poet.last_name}}</h2>
-      <p>{{lecture.poem.poet.year_of_birth}} - {{lecture.poem.poet.year_of_death}}</p>
-      <p>{{lecture.poem.poet.description}}</p>
-    </div>
+      <div class="span4 poet-box panelBox">
+        <div class="section-header">
+        <h2>{{lecture.poem.poet.first_name}} {{lecture.poem.poet.last_name}}</h2>
+      </div>
+        <div class="innerPage">
+        <p><b>{{lecture.poem.poet.year_of_birth}} - {{lecture.poem.poet.year_of_death}}</p></b>
+        <p>{{lecture.poem.poet.description}}</p>
+      </div>
   </div>
 </div>
 
@@ -100,6 +119,21 @@
 
 {% block scripts %}
 <script type="text/javascript">
+
+ var pres = document.getElementsByClassName('blockcode'), pre, code, lines, pl, cl;
+        for (pl = pres.length, p = 0; p < pl; p++) {
+            pre  = pres[p];
+            code = pre.children[0];
+            
+            code.innerHTML = code.innerHTML.split("\n").map(function(line) {
+                return '<span class="line">' + line + '</span>';
+            }).join("\n");
+            
+            lines = code.getElementsByClassName('line');
+            for (cl = lines.length, l = 0; l < cl; l++) {
+                lines[l].style.width = pre.scrollWidth + 'px';
+            }
+        }
 
 $('#submitSingle').click(function(){
   $.bt_validate.result = true;

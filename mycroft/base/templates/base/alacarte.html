@@ -2,15 +2,15 @@
 {% load url from future %}
 {% load i18n %}
 
-{% block page_class %}Store{% endblock %}
+{% block page_class %}Mycroft Lectures: Individual Purchases{% endblock %}
 {% block content %}
 
 
 <div class="band">
-<div class="row">
-    <div class="container">
+<div class="container">
+    <div class="row">
         <div class="span8">
-            <div class="panelBox span8 section-header alpha">
+            <div class="panelBox">
                 <div class="section-header">
                     <h1>Mycroft Lectures for Individuals</h1>
                 </div>
@@ -29,7 +29,7 @@
                 <b class="signed">Andrew Barker</b>
                 </div>
             </div>
-            <div class="panelBox span8 alpha">
+            <div class="panelBox">
                 <div class="section-header">
                 <h2>Previews</h2>
                 </div>
@@ -38,17 +38,17 @@
                 </div>
                 <ul id="content" class="lecturelist">
                 {% for lecture in lecture_list %}
-            
-                <div class="box-model row">
-                    <div class="frame-16x9 span4 box-model">
+                <div class="single-grid-item">
+                    <div class="frame-16x9">
                         <a href="/lecture/{{ lecture.poem.poet.slug }}/{{ lecture.slug }}">
                             <img src="http://img.youtube.com/vi/{{lecture.preview.youtube_id}}/0.jpg">
                         </a>
                     </div>
-                    <div class="span3 box-model">
-                        <h3><a href="/lecture/{{ lecture.poem.poet.slug }}/{{ lecture.slug }}">
+                    <div class="">
+                        <h3><a class="dropdown" href"#">
                         <span class="author">{{ lecture.poem.poet.first_name }} {{ lecture.poem.poet.last_name }}:</span>
                         <span class="title">{{lecture.poem.title}}</span></a></h3>
+                        <div class="description"><p>{{lecture.synopsis}}</p><a href="/lecture/{{ lecture.poem.poet.slug }}/{{ lecture.slug }}" class="my-btn inline">Watch Preview</a></div>
                     </div>    
                   </div>
             
@@ -56,25 +56,26 @@
                 </ul>
             </div>
         </div>
-        <div id="checkoutBox" class="panelBox span4">
-            <div class="section-header">
-            <h2>Select for Checkout</h2>
-            </div>
+        <div class="span4">
+            <div id="checkoutBox" class="panelBox formBox">
+                <div class="section-header">
+                    <h2>Select for Checkout</h2>
+                </div>
                 <div class="innerPage">
+                    <h3>Lectures <span class="badge">US$ 4.99 each</span></h3>
                     <div id="lectureList">
                     {%for lecture in lecture_list%}
-                        <div class="span3">
+                        <div class="combobox">
                             <input id="lecture{{lecture.id}}" class="lectureCheckbox" type="checkbox" data-title="{{lecture.title}}" data-id="{{lecture.id}}" value="{{lecture.title}}">
-                            <label class="checkbox" for="lecture{{lecture.id}}"><span><b>{{lecture.poem.poet.last_name}}: </b>{{lecture.title}}</span></label>
+                            <label class="checkbox" for="lecture{{lecture.id}}"><b>{{lecture.poem.poet.last_name}}: </b>{{lecture.title}}</label>
                         </div>
                     {% endfor %}
                     </div>
                 </div>
+            <div class="formFatFooter">
             <div class="innerPage">
-            <h4>Deliver by E-mail to:</h4> 
-            <div class="row checkoutFooter">
-
-               <form id="bt_form2" action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post">
+                <h4>Deliver to:</h4> 
+                <form id="bt_form2" action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post">
                     <input type="text" id="email" name="email" value="" placeholder="E-mail Address" validate="required|email">
                     <input type="hidden" id="address_override" name="address_override" value="1">
                     <input type="hidden" id="payer_email" name="payer_email" value="">
@@ -85,42 +86,20 @@
                     {{student}}
                     <input type="hidden" name="upload" value="1">
                 </form>
+            </div>
+            </div>
+                <div class="formFooter">
+                    <div class="row-fluid">
+                    <div class="span3"><b>Total</b><br> US$ <span id="totalPrice">0</span></div>
+                    <div class="span9">
+                    <input id="submitCart" type="submit" class="my-btn-paypal btn-danger" value="Select your Lectures" alt="Checkout with PayPal">
+                    </div>
                 </div>
-                <div class="span4 modal-footer alacarte-checkout">
-                    <div class="span1 pull-left"><p><b>Total</b><br> $ <span id="totalPrice">0</span><p></div>
-                    <input id="submitCart" type="submit" class="btn btn-danger" value="Select your Lectures" alt="Checkout with PayPal">
-                </div>
+        </div>
         </div>
     </div>
 </div>
 </div>
-
-<!-- Modal -->
-<div id="SubscriptionDialog" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="SubscribeLabel" aria-hidden="true">
-    <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-        <h3 id="SubscribeLabel">Enter your contact details</h3>
-    </div>
-    <div class="modal-body">
-<!-- Registration Form -->
-    <h2 id="productLabel">Product</h2>
-    <form id="subscriptionForm" method="post" action=".">{% csrf_token %}
-        <label for="id_school">School or Institution:</label><input id="id_school" validate="required" type="text" name="institution" maxlength="128">
-        <label for="id_first_name">First Name:</label><input id="id_first_name" validate="required" type="text" name="first_name" maxlength="64">
-        <label for="id_last_name">Last Name:</label><input id="id_last_name" validate="required" type="text" name="last_name" maxlength="64">
-        <label for="id_email">Contact Email:</label><input id="id_email" validate="required|email" type="text" name="email" maxlength="256">
-        <label for="password1">Password:</label> <input id="password1" type="password" class="required" name="password1">
-        <label for="password2">Password (repeat):</label> <input validate="required|custom_pass_eq" type="password" name="password2" id="password2">
-        <input type="hidden" name="id" value="0" id="subscriptionID">'
-    </form>
-    </div>  
-  <div class="modal-footer">
-    <button id="registerUserButton" class="btn btn-primary">{% trans 'Checkout with PayPal' %}</button>
-    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
-  </div>
-{{ subscription_form }}
-</div>
-
 {% endblock %}
 
 {% block scripts %}
@@ -152,9 +131,9 @@
         if(quantity == 0){
             discount = 0;
         } else if(0 < quantity && quantity < 7){
-            discount = quantity * 5 - 5;
+            discount = 0;
         } else if(quantity > 6){
-            discount = 30;
+            discount = 0;
         }
         $('#discount_rate_cart').val(discount)
         return discount;
@@ -220,6 +199,12 @@
           });
     })
 
+    $('.description').each(function() { $('.description', this).width( $(this).width() ); });
+
+    e = $('.single-grid-item a.dropdown').click(function(e){
+        e.preventDefault();
+        $(this).parent().parent().find('.description').slideToggle();
+    })
    
     $(function () {
         var top = $('#box').offset().top;

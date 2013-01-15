@@ -2,102 +2,102 @@
 {% load url from future %}
 {% load i18n %}
 
-{% block page_class %}Store{% endblock %}
+{% block page_class %}Mycroft Lectures: Store{% endblock %}
 {% block content %}
 
 <div class="band">
-<div class="row">
-    <div class="container">
-        <div class="span5 alpha">
-            <div class="panelBox">            
+<div class="container">
+    <div class="row">
+        <div class="span5">
+            <div class="panelBox formBox">            
                 <div class="section-header">
-                <h2>{{subscription.name}}</h2>
+                    <h2>{{subscription.name}}</h2>
                 </div>
                 <div class="innerPage">
                 {% autoescape off %}
-
-                <p> {{subscription.description}}</p>
+                {{subscription.description}}
                 {% endautoescape %}
                 </div>
-                <div class="row checkoutFooter">
-                <div class="span4 modal-footer">
-                <div class="span2"><p><b>License Fee</b><br> $ <span id="licenseFee">{{subscription.price}}</span><p></div>            
-                <div class="span2"> 
-                    <a data-toggle="modal" data-id="{{subscription.id}}" data-product="{{subscription.name}}" data-toggle="modal" title="{{subscription.name}}" class="btn-modal btn btn-primary pull-right" href="#SubscriptionDialog">Checkout with PayPal</a>
-                </div>
-                </div>
+                <div class="formFooter">
+                    <div class="row-fluid">
+                        <div class="span4"><b>License Fee</b><br> US$ <span id="licenseFee">{{subscription.price}}</span></div>            
+                        <div class="span8"> 
+                            <input data-toggle="modal" data-id="{{subscription.id}}" data-product="{{subscription.name}}" data-toggle="modal" title="{{subscription.name}}" value="Checkout with PayPal" class="btn-modal my-btn btn-primary" href="#SubscriptionDialog">
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="panelBox omega span7">
+        <div class="panelBox formBox span7">
             <div class="section-header">
-            <h2>Private Access</h2>
+                <h2>À la carte for individuals</h2>
             </div>
             <div class="innerPage">
-
-            <p>If you are not member of a Mycroft Lectures licensee, we still want you to be able to benefit from our lectures. You can cherry-pick the lectures and just pay for those you want. Links to the purchased lectures are delivered by e-mail and will be live for week.</p>
-            <h4>Mycroft Lectures for personal viewing</h4>
-                <div class="row">
+                <p>If you are not member of a Mycroft Lectures licensee, we still want you to be able to benefit from our lectures. You can cherry-pick the lectures and just pay for those you want. Links to the purchased lectures are delivered by e-mail and will be live for week.</p>
+                <h4>Mycroft Lectures for personal viewing</h4>
                     <div id="lectureList">
-                    {%for lecture in lecture_list%}
-                        <div class="box-model span3">
-                            <input id="lecture{{lecture.id}}" class="lectureCheckbox" type="checkbox" data-title="{{lecture.title}}" data-id="{{lecture.id}}" value="{{lecture.title}}">
-                            <label class="checkbox" for="lecture{{lecture.id}}"><span><b>{{lecture.poem.poet.last_name}}: </b>{{lecture.title}}</span></label>
+                        <div class="row">
+                        {%for lecture in lecture_list%}
+                            <div class="combolabel span3">
+                                <input id="lecture{{lecture.id}}" class="lectureCheckbox" type="checkbox" data-title="{{lecture.title}}" data-id="{{lecture.id}}" value="{{lecture.title}}">
+                                <label class="checkbox" for="lecture{{lecture.id}}"><b>{{lecture.poem.poet.last_name}}: </b>{{lecture.title}}</label>
+                            </div>
+                        {% endfor %}
                         </div>
-                    {% endfor %}
                     </div>
+            </div>
+            <div class="formFatFooter">
+                <div class="innerPage">
+                    <h4>Deliver to:</h4> 
+                       <form id="bt_form2" action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post">
+                            <input type="text" id="email" name="email" value="" placeholder="E-mail Address" validate="required|email">
+                            <input type="hidden" id="address_override" name="address_override" value="1">
+                            <input type="hidden" id="payer_email" name="payer_email" value="">
+                            <input type="hidden" id="payer_id" name="payer_id" value="">
+                            <input type="hidden" id="item_number" name="item_number" value="">
+                            <input type="hidden" name="custom" value="0" id="custom_items">
+                            <input type="hidden" name="discount_rate_cart" value="0" id="discount_rate_cart">
+                            {{student}}
+                            <input type="hidden" name="upload" value="1">
+                        </form>
+                        </div>
+                        </div>
+                    <div class="formFooter">
+                    <div class="row-fluid">
+                            <div class="span3"><b>Total</b><br> US$ <span id="totalPrice">0</span></div>
+                            <div class="span5 offset4">
+                            <input id="submitCart" type="submit" class="my-btn-paypal btn-danger" value="Select your Lectures" alt="Checkout with PayPal">
+                            </div>
+                        </div>
                 </div>
-            <h4>Deliver by E-mail to:</h4> 
-            <div class="row checkoutFooter">
-               <form id="bt_form2" action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post">
-                    <input type="text" id="email" name="email" value="" placeholder="E-mail Address" validate="required|email">
-                    <input type="hidden" id="address_override" name="address_override" value="1">
-                    <input type="hidden" id="payer_email" name="payer_email" value="">
-                    <input type="hidden" id="payer_id" name="payer_id" value="">
-                    <input type="hidden" id="item_number" name="item_number" value="">
-                    <input type="hidden" name="custom" value="0" id="custom_items">
-                    <input type="hidden" name="discount_rate_cart" value="0" id="discount_rate_cart">
-                    {{student}}
-                    <input type="hidden" name="upload" value="1">
-                </form>
-                </div>
-                </div>
-                <div class="modal-footer">
-                    <div class="span1"><p><b>Total</b><br> $ <span id="totalPrice">0</span><p></div>
-                    <div class="span2"><p><b>Discount</b><br> <span id="discountPercentage">0</span> %<p></div>
-                    <div class="span3">
-                    <input id="submitCart" type="submit" class="btn btn-danger" value="Select your Lectures" alt="Checkout with PayPal">
-                    </div>
-                </div>
-        </div>
-    </div>
+            </div>
 </div>
 </div>
 
 <!-- Modal -->
-<div id="SubscriptionDialog" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="SubscribeLabel" aria-hidden="true">
-    <div class="modal-header">
+<div id="SubscriptionDialog" class="modal panelBox formBox hide fade" tabindex="-1" role="dialog" aria-labelledby="SubscribeLabel" aria-hidden="true">
+    <div class="section-header">
+        <h2>{{subscription.name}}</h2>
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-        <h3 id="SubscribeLabel">Enter your contact details</h3>
     </div>
-    <div class="modal-body">
-<!-- Registration Form -->
-    <h2 id="productLabel">Product</h2>
-    <form id="subscriptionForm" method="post" action=".">{% csrf_token %}
-        <label for="id_school">School or Institution:</label><input id="id_school" validate="required" type="text" name="institution" maxlength="128">
-        <label for="id_first_name">First Name:</label><input id="id_first_name" validate="required" type="text" name="first_name" maxlength="64">
-        <label for="id_last_name">Last Name:</label><input id="id_last_name" validate="required" type="text" name="last_name" maxlength="64">
-        <label for="id_email">Contact Email:</label><input id="id_email" validate="required|email" type="text" name="email" maxlength="256">
-        <label for="password1">Password:</label> <input id="password1" type="password" class="required" name="password1">
-        <label for="password2">Password (repeat):</label> <input validate="required|custom_pass_eq" type="password" name="password2" id="password2">
-        <input type="hidden" name="id" value="0" id="subscriptionID">'
-    </form>
-    </div>  
-  <div class="modal-footer">
-    <button id="registerUserButton" class="btn btn-primary">{% trans 'Checkout with PayPal' %}</button>
-    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
-  </div>
-{{ subscription_form }}
+    <div class="innerPage">
+        <span class="badge">US$ 500 </span>
+
+    <!-- Registration Form -->
+        <form id="subscriptionForm" method="post" action=".">{% csrf_token %}
+                <label for="id_school"></label><input id="id_school" validate="required" type="text" name="institution" placeholder="School or Institution" maxlength="128">
+                <label for="id_first_name"></label><input id="id_first_name" validate="required" type="text" placeholder="First Name" name="first_name" maxlength="64">
+                <label for="id_last_name"></label><input id="id_last_name" validate="required" type="text" name="last_name" placeholder="Last Name" maxlength="64">
+                <label for="id_email"></label><input id="id_email" validate="required|email" type="text" name="email" placeholder="Contact Email" maxlength="256">
+                <label for="password1"></label> <input id="password1" type="password" class="required" placeholder="Institutional Password" name="password1">
+                <label for="password2"></label> <input validate="required|custom_pass_eq" type="password" placeholder="Institutional Password (repeat)" name="password2" id="password2">
+                <input type="hidden" name="id" value="0" id="subscriptionID">
+        </form>
+    </div>
+    <div class="formFooter">
+        <button id="registerUserButton" class="my-btn-paypal btn-primary">{% trans 'Checkout with PayPal' %}</button>
+    </div>
+    {{ subscription_form }}
 </div>
 
 {% endblock %}
@@ -131,9 +131,9 @@
         if(quantity == 0){
             discount = 0;
         } else if(0 < quantity && quantity < 7){
-            discount = quantity * 5 - 5;
+            discount = 0;
         } else if(quantity > 6){
-            discount = 30;
+            discount = 0;
         }
         $('#discount_rate_cart').val(discount)
         return discount;
