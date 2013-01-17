@@ -29,17 +29,17 @@
       <div class="panelBox formBox">            
         {% if user.is_authenticated %}            
   
-        <div class="lecture-description row-fluid">
-          <div class="span12" >
-            <h2>{{lecture.poem.title}} /<span>/ {{lecture.poem.poet.first_name}} {{lecture.poem.poet.last_name}}</span></h2>
+          <div class="lecture-description row-fluid">
+            <div class="span12" >
+              <h2>{{lecture.poem.title}} /<span>/ {{lecture.poem.poet.first_name}} {{lecture.poem.poet.last_name}}</span></h2>
+            </div>
           </div>
-        </div>
-        <div class="hostedWrapper">        
-        <video id="lectureVideo" class="video-js vjs-default-skin" controls preload="auto" data-setup="{}">
-            <source src="{{ site }}/media/{{ lecture.video.video }}" type="video/mp4" />
-            <track kind="subtitles" src="{{ site }}/media/{{ lecture.video.subtitle }}" type="text/vtt" srclang="en" label="English Subtitles" />
-        </video>
-        </div>
+          <div class="hostedWrapper">        
+          <video id="lectureVideo" class="video-js vjs-default-skin" controls preload="auto" data-setup="{}">
+              <source src="{{ site }}/media/{{ lecture.video.video }}" type="video/mp4" />
+              <track kind="subtitles" src="{{ site }}/media/{{ lecture.video.subtitle }}" type="text/vtt" srclang="en" label="English Subtitles" />
+          </video>
+          </div>
 
         {% else %}            
           <div class="Videowrapper">
@@ -47,40 +47,36 @@
               <source src="http://www.youtube.com/watch?v={{ lecture.preview.youtube_id }}" type='video/youtube'>
             </video>
           </div>
-
-      {% endif %}
-      {% if user.is_authenticated %}
-      
-      {% else %}            
-      <div class="lecture-description row-fluid">
-        <div class="span8" >
-          <h2>{{lecture.poem.title}} /<span>/ {{lecture.poem.poet.first_name}} {{lecture.poem.poet.last_name}}</span></h2>
-          <div class="innerPage">
-          <p>{{lecture.synopsis}}<p>
+        
+          <div class="lecture-description row-fluid">
+            <div class="span8" >
+              <h2>{{lecture.poem.title}} /<span>/ {{lecture.poem.poet.first_name}} {{lecture.poem.poet.last_name}}</span></h2>
+              <div class="innerPage">
+                <p>{{lecture.synopsis}}<p>
+              </div>
+            </div>
+            <div class="span4">
+              <h2>'{{lecture.preview.title}}' <span class="badge lecture-price">${{lecture.product.price_in_dollars}}</span></h2>
+              <div class="innerPage">
+                <p>Checkout with Paypal and receive the full lecture instantly by e-mail.</p>
+                <div class="row-fluid">
+                  <div class="span9">
+                    <form id="bt_form" action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post">
+                      <input type="text" name="email" placeholder="Email lectures to:" id="id_email" validate="required|email">
+                      <input type="hidden" id="payer_email" name="payer_email" value="">
+                      <input type="hidden" id="custom" name="custom" value=""> {{ form }} 
+                      <input type="hidden" name="upload" value="1">
+                    </form>
+                  </div> 
+                  <div class="span3"><button id="submitSingle" class="my-btn-paypal" value="BUY" alt="Checkout with PayPal" title="Buy">Buy</button></div> 
+                </div>
+              </div>
+            </div>
           </div>
-        </div>
-        <div class="span4">
-          <h2>'{{lecture.preview.title}}' <span class="badge lecture-price">${{lecture.product.price_in_dollars}}</span></h2>
-          <div class="innerPage">
-            <p>Checkout with Paypal and receive the full lecture instantly by e-mail.</p>
-            <div class="row-fluid">
-             <div class="span9">
-                <form id="bt_form" action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post">
-                  <input type="text" name="email" placeholder="Email lectures to:" id="id_email" validate="required|email">
-                  <input type="hidden" id="payer_email" name="payer_email" value="">
-                  <input type="hidden" id="custom" name="custom" value=""> {{ form }} 
-                  <input type="hidden" name="upload" value="1">
-                </form>
-             </div> 
-             <div class="span3"><button id="submitSingle" class="my-btn-paypal" value="BUY" alt="Checkout with PayPal" title="Buy">Buy</button></div> 
-          </div>
-        </div>
-      </div>
-      {% endif %}
+        {% endif %}
     </div>  
   </div>  
 </div>          
-
 
   <div class="container">
     <div class="row">
