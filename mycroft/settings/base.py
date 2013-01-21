@@ -74,6 +74,7 @@ INSTALLED_APPS = [
     'django_extensions',
     'djsupervisor',
     'contact_form',
+    'facebook_comments',
 
 ]
 

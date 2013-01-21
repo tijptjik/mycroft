@@ -23,6 +23,7 @@
 
 {% block page_class %} Mycroft Lectures: {{lecture.poem.title}} {% endblock %}
 {% block content %}
+{% load fb_comments %}
 
 <div class="band">
     <div class="container">
@@ -41,7 +42,12 @@
           </video>
           </div>
 
-        {% else %}            
+        {% else %}    
+        <div class="lecture-description row-fluid">
+            <div class="span12" >
+              <h2>Excerpt: '{{lecture.preview.title}}'</h2>
+            </div>
+            </div>
           <div class="Videowrapper">
             <video id="example_video_1" class="video-js vjs-default-skin h_iframe" data-setup='{"techOrder":["youtube","html5"],"ytcontrols":true}'>
               <source src="http://www.youtube.com/watch?v={{ lecture.preview.youtube_id }}" type='video/youtube'>
@@ -56,7 +62,7 @@
               </div>
             </div>
             <div class="span4">
-              <h2>'{{lecture.preview.title}}' <span class="badge lecture-price">${{lecture.product.price_in_dollars}}</span></h2>
+              <h2>Checkout<span class="badge lecture-price">${{lecture.product.price_in_dollars}}</span></h2>
               <div class="innerPage">
                 <p>Checkout with Paypal and receive the full lecture instantly by e-mail.</p>
                 <div class="row-fluid">
@@ -85,28 +91,32 @@
           <ul class="nav nav-tabs">
             <li class="active"><a href="#tab1" data-toggle="tab">Poem</a></li>
             <li><a href="#tab2" data-toggle="tab">Lecture Notes</a></li>
+            <li><a href="#tab3" data-toggle="tab">Comments</a></li>
           </ul>
           <div class="tab-content">
             <div class="tab-pane active" id="tab1">
               <h5 class="poem-title">{{lecture.poem.title}}</h5>
               <pre class="blockcode"><code>{{lecture.poem.text}}</code></pre>
-              <h5 class="poem-footer"><br>MYCROFT LECTURES</h5>
+              <h5 class="poem-footer"><br>{{lecture.poem.poet.first_name}} {{lecture.poem.poet.last_name}}</h5>
             </div>
             <div class="tab-pane" id="tab2">
               <p>Mycroft lectures always provide sentence by sentence parsing, paraphrasing and explanation of the each poem. However, each lecture provides extra information that will enhance appreciation and understanding of the poem under discussion. This lecture includes the following areas of analysis:</p>
               <div class="notes">{% autoescape off %}{{lecture.notes}}{% endautoescape %}</div>
               <h5 class="poem-footer"><br>MYCROFT LECTURES</h5>
             </div>
+            <div class="tab-pane" id="tab3">
+              {% fb_comments width="590" colorscheme="dark" include_cached_comments %}
+            </div>
           </div>
         </div>       
       </div>       
       <div class="span4 poet-box panelBox">
         <div class="section-header">
-        <h2>{{lecture.poem.poet.first_name}} {{lecture.poem.poet.last_name}}</h2>
-      </div>
+          <h2>{{lecture.poem.poet.first_name}} {{lecture.poem.poet.last_name}}</h2>
+        </div>
         <div class="innerPage">
-        <p><b>{{lecture.poem.poet.year_of_birth}} - {{lecture.poem.poet.year_of_death}}</p></b>
-        <p>{{lecture.poem.poet.description}}</p>
+          <p><b>{{lecture.poem.poet.year_of_birth}} - {{lecture.poem.poet.year_of_death}}</p></b>
+          <p>{{lecture.poem.poet.description}}</p>
       </div>
   </div>
 </div>

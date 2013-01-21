@@ -53,3 +53,6 @@ South
 -e git://github.com/tijptjik/django-registration.git#egg=django-registration
 django-registration-email
 django-contact-form
+
+# Comments
+django-facebook-comments
