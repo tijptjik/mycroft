@@ -27,19 +27,6 @@
 {% block content %}
 {% load fb_comments %}
 
-<video autoplay controls tabindex="0">
-  <source src="{{ site }}/media/lectures/oceans.mp4" type="video/mp4">
-</video>
-
-<video id="my_video_1" class="video-js vjs-default-skin" controls
-  preload="auto" width="640" height="264" poster="http://video-js.zencoder.com/oceans-clip.jpg"
-  data-setup="{}">
-  <source src="{{ site }}/media/{{ lecture.video.video }}" type='video/mp4'>
-  <source src="my_video.webm" type='video/webm'>
-</video>
-
-
-
 <div class="band">
     <div class="container">
       <div class="panelBox formBox">            
@@ -51,7 +38,7 @@
           <div class="hostedWrapper">        
           <video id="lectureVideo" class="video-js vjs-default-skin" controls preload="auto" data-setup="{}">
               <source src="{{ site }}/media/{{ lecture.video.video }}" type="video/mp4" />
-              <track kind="subtitles" src="{{ site }}/media/{{ lecture.video.subtitle }}" type="text/vtt" srclang="en" label="English Subtitles" />
+              <track kind="subtitles" src="{{ site }}/media/{{ lecture.video.subtitle }}" srclang="en" label="English">
           </video>
           </div>
     </div>  

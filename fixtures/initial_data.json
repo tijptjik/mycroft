@@ -154,7 +154,7 @@
     "model": "base.video",
     "fields": {
       "duration": 1560,
-      "subtitle": "subtitles/digging.srt",
+      "subtitle": "lectures/digging.vtt",
       "video": "lectures/digging.mp4",
       "subtitle_language": "English"
     }
@@ -164,7 +164,7 @@
     "model": "base.video",
     "fields": {
       "duration": 1560,
-      "subtitle": "subtitles/do_not_go.srt",
+      "subtitle": "lectures/do_not_go.vtt",
       "video": "lectures/do_not_go.mp4",
       "subtitle_language": "English"
     }
@@ -174,7 +174,7 @@
     "model": "base.video",
     "fields": {
       "duration": 1560,
-      "subtitle": "subtitles/dulce_et_decorum.srt",
+      "subtitle": "lectures/dulce_et_decorum.vtt",
       "video": "lectures/dulce_et_decorum.mp4",
       "subtitle_language": "English"
     }
@@ -184,7 +184,7 @@
     "model": "base.video",
     "fields": {
       "duration": 1560,
-      "subtitle": "subtitles/mid_term_break.srt",
+      "subtitle": "lectures/mid_term_break.vtt",
       "video": "lectures/mid_term_break.mp4",
       "subtitle_language": "English"
     }
@@ -194,7 +194,7 @@
     "model": "base.video",
     "fields": {
       "duration": 1560,
-      "subtitle": "subtitles/my_last_duchess.srt",
+      "subtitle": "lectures/my_last_duchess.vtt",
       "video": "lectures/my_last_duchess.mp4",
       "subtitle_language": "English"
     }
@@ -204,7 +204,7 @@
     "model": "base.video",
     "fields": {
       "duration": 1560,
-      "subtitle": "subtitles/no_second_troy.srt",
+      "subtitle": "lectures/no_second_troy.vtt",
       "video": "lectures/no_second_troy.mp4",
       "subtitle_language": "English"
     }
@@ -214,7 +214,7 @@
     "model": "base.video",
     "fields": {
       "duration": 1560,
-      "subtitle": "subtitles/refugee_mother_and_her_child.srt",
+      "subtitle": "lectures/refugee_mother_and_her_child.vtt",
       "video": "lectures/refugee_mother_and_her_child.mp4",
       "subtitle_language": "English"
     }
@@ -224,7 +224,7 @@
     "model": "base.video",
     "fields": {
       "duration": 1560,
-      "subtitle": "subtitles/the_good_morrow.srt",
+      "subtitle": "lectures/the_good_morrow.vtt",
       "video": "lectures/the_good_morrow.mp4",
       "subtitle_language": "English"
     }
@@ -234,7 +234,7 @@
     "model": "base.video",
     "fields": {
       "duration": 1560,
-      "subtitle": "subtitles/the_soldier.srt",
+      "subtitle": "lectures/the_soldier.vtt",
       "video": "lectures/the_soldier.mp4",
       "subtitle_language": "English"
     }
@@ -244,7 +244,7 @@
     "model": "base.video",
     "fields": {
       "duration": 1560,
-      "subtitle": "subtitles/toads.srt",
+      "subtitle": "lectures/toads.vtt",
       "video": "lectures/toads.mkv",
       "subtitle_language": "English"
     }
@@ -254,7 +254,7 @@
     "model": "base.video",
     "fields": {
       "duration": 1560,
-      "subtitle": "subtitles/toads_revisited.srt",
+      "subtitle": "lectures/toads_revisited.vtt",
       "video": "lectures/toads_revisited.mp4",
       "subtitle_language": "English"
     }
@@ -264,7 +264,7 @@
     "model": "base.video",
     "fields": {
       "duration": 1560,
-      "subtitle": "subtitles/to_his_coy_mistress.srt",
+      "subtitle": "lectures/to_his_coy_mistress.vtt",
       "video": "lectures/to_his_coy_mistress.mp4",
       "subtitle_language": "English"
     }
@@ -274,7 +274,7 @@
     "model": "base.video",
     "fields": {
       "duration": 1560,
-      "subtitle": "subtitles/westminster_bridge.srt",
+      "subtitle": "lectures/westminster_bridge.vtt",
       "video": "lectures/westminster_bridge.mp4",
       "subtitle_language": "English"
     }

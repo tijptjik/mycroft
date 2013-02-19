@@ -380,10 +380,11 @@ body {
     background-color:@my-black-lt;
     background-image:url('../img/background/grid.png');
     margin-top:24px;
+    padding: 12px 0;
     border-top: 0;
-    height:36px;
     border-bottom: solid 12px @my-black-lt;
     width: 100%;
+    text-align: center;
     ul {
         list-style: none;
         width:150px;
@@ -1122,7 +1123,7 @@ pre.blockcode {
         font-size: 16px;
         color: @my-black-lt;
         span.line::before {
-            content: counter(code-line);
+            content: ' ';
             display: inline-block;
             color: @my-indigo-lt;
             text-align: right;
@@ -1132,7 +1133,6 @@ pre.blockcode {
             margin-right: 1em;
         }
         span.line {
-            counter-increment: code-line;
             display: inline-block;
             width: 100%;
             border-top: 1px solid @my-blue-lt;
@@ -1194,24 +1194,20 @@ div.notes + h5.poem-footer {
 
 @media (min-width: 1200px) {
    
+    .row-fluid ul.thumbnails {
+        margin-left: 35px;
+    }
+
     .jumptron .Videowrapper {
         width:1120px;
     }
 
-    .frame-16x9 {
-        // height: auto;
-        img {
-            // width:auto;
-            // margin-top: -9%;
+    .row-fluid ul.thumbnails li .thumbnail a {
+        span.title {
+            width: 60%;
         }
-    }
-
-   .row-fluid ul.thumbnails{
-        li {
-            // margin-left: 10px;
-            // margin-right: 10px;
-            // min-height: 320px;
-            // overflow: auto;
+        span.author{
+            width: 40%;
         }
     }
 }
@@ -1330,7 +1326,194 @@ div.notes + h5.poem-footer {
 // Responsive: Landscape phone to desktop/tablet (767px)
 // --------------------------------------------------
 
-@media (max-width: 767px) {}
+@media (max-width: 767px) {
+
+    .navbar .container{
+        width: 92%;
+    }
+    .container {
+        width: 95%;
+    }
+
+    .fb-comments iframe{
+        width: auto !important;
+    }
+
+    .jumptron .Videowrapper {
+        width: auto;
+    }
+
+    .container.actionbar.bottom {
+        overflow: auto;
+        p {
+        height: auto;
+        }
+    }
+
+    .thumbnails img {
+        margin: 0 auto;
+        max-width: 120px;
+    }
+
+    .portalbar li {
+        margin-left: 3%;
+        width: 94%;
+    }
+
+    .portalbar a {
+        margin-left: 0px;
+        .rounded(5px);
+        padding-top: 6px;
+        padding-bottom: 6px;
+        img {
+        }
+    }
+
+    .image-frame {
+            display: none;
+    }
+
+    .thumbnail > a > div {
+        margin-right: 30px;
+    }
+
+    .row-fluid ul.thumbnails li {
+        margin-left: 0px;
+        .thumbnail a span.author,
+        .thumbnail a span.title {
+            .rounded(5px);
+            width: 100%;
+        }
+    }
+
+    .row-fluid ul.thumbnails li .thumbnail a span{
+        display: block;
+        padding-top: 12px;
+        padding-bottom: 12px;
+        height: inherit;
+
+    }
+
+// Lectures 
+    
+    .formBox,
+    .institutionalDescriptionBox,
+    .studentDescriptionBox{
+        width: auto;
+    }
+
+    #submitSingle{
+        float: right;
+        margin-top: 12px;        
+    }
+
+    .hostedWrapper {
+        width: auto;
+    }
+    .Videowrapper {
+        height: 240px;
+    }
+    .poet-box{
+        display: none;
+    }
+    .lectureMeta{
+        width: 97%;
+    }
+
+// Institutional License
+
+    .lecturelist .row-fluid {
+        margin-left: 0px;
+    }
+
+    .thumbnails img {
+        max-width: 720px;
+    }
+
+    #subscriptionForm > input{
+        margin-left: 4px;
+    }
+    .lecturelist .even,
+    .lecturelist .odd {
+        margin-left: 2% !important;
+        width: 97% !important;
+    }
+
+// Student License
+
+    #checkoutBox #submitCart{
+        margin-left: 0px;
+    }
+
+    .previewBox{
+        display: none;
+    }
+
+// Store
+    
+    .formFooter .span8 input.my-btn {
+        margin-left: 0;
+        margin-right: 0;
+    }
+    .section-header {
+        font-size: 30px;
+    }
+    .formFooter #submitCart{
+        margin-left: 0;
+        margin-right: 0;
+     }
+    .combolabel {
+        width: 100%;
+        label.checkbox{
+            width: inherit;
+        }
+    }
+    .actionbar p:first-child{
+        display: none;
+    }
+
+    .actionbar.bottom{
+        // height: 54px;
+    }
+
+    .section-header h3,
+    .section-header h2{
+        font-size: 32px;
+    }
+
+    .frame-16x9 {
+        height: auto;
+        img {
+            width:auto;
+            margin-top: -9%;
+        }
+    }
+
+// Testimonials
+    #container {
+        margin-left: 5px;
+    }
+
+// Login Page
+    #loginBox {
+        width: auto;
+        .login-form {
+            h1{
+                right:0;
+                width: 90%;
+            }
+            margin-left: 4%;
+            textarea, input[type='text'], input[type='password'] {
+                width: 90%;
+            }
+            input[type="submit"]{
+                width: 220px;
+                margin: 0 auto;
+                right:0;
+            }
+        }
+    }
+}
 
 // TABLETS AND BELOW
 // -----------------
