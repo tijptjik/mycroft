@@ -62,18 +62,18 @@ body {
 // --------------------------------------------------
 //
 
-.combolabel{
+.combolabel {
     overflow: hidden;
     height: 48px;
-    b{
+    b {
         padding-left: 10px;
     }
-    label{
+    label {
         padding-left:0;
         padding-right:10px;
         background-color: @my-black-lt;
     }
-    label.checkbox{
+    label.checkbox {
         width:100%;
     }
 }
@@ -82,7 +82,6 @@ body {
 // Layout Components
 // --------------------------------------------------
 //
-
 
 .band {
     width: 100%;
@@ -120,7 +119,7 @@ body {
     .clearfix
 }
 
-.section-header{
+.section-header {
     .clearfix;
     margin-bottom: 0;
     padding-bottom: 8px;
@@ -132,7 +131,37 @@ body {
     }
 }
 
-.innerPage{
+.front-page-block {
+    margin: 24px auto;
+    background-color: @my-cream;
+    background-image:url('../img/background/absurdidad.png');
+        -webkit-box-shadow: 0 0px 25px rgba(33,33,33,.15);
+           -moz-box-shadow: 0 0px 25px rgba(33,33,33,.15);
+                box-shadow: 0 0px 25px rgba(33,33,33,.15);
+    > .container{
+        background-color: @my-black-lt;
+        -webkit-box-shadow: 0 0px 50px rgba(33,33,33,.5);
+   -moz-box-shadow: 0 0px 50px rgba(33,33,33,.5);
+        box-shadow: 0 0px 50px rgba(33,33,33,.5);
+        h2 {
+            color: @my-yellow-lt;
+            padding:8px;
+            padding-left:25px;
+            padding-bottom:0;
+            margin:0;
+        }
+    }
+    ul {
+        li {
+            margin-bottom: 0;
+        }
+    }
+    img { 
+    .blackwhite();
+    }
+}
+
+.innerPage {
     .box-model;
     .border-bottom-left-radius(5px);
     .border-bottom-right-radius(5px);
@@ -199,55 +228,27 @@ body {
     font-size: 18px;
     font-weight: 200;
     line-height: @baseLineHeight * 1.5;
-    color: @heroUnitLeadColor;
+    color: @heroUnitHeadingColor;
     background-color: @my-band;
     background-image:url('../img/background/absurdidad.png');
-    h1 {
-        margin-bottom: 0;
-        font-size: 60px;
-        line-height: 1;
-        color: @heroUnitHeadingColor;
-        letter-spacing: -1px;
-    }
-    p {
-        color: @heroUnitHeadingColor;
-    }
     li {
         line-height: @baseLineHeight * 1.5; // Reset since we specify in type.less
     }
     .Videowrapper {
         background: @my-black-lt;
-        border-left: dotted 25px @my-dotted-border;
-        border-right: dotted 25px @my-dotted-border;
-        max-width: 1120px;
-        width:100%;
-        height:498px;
-        padding: auto;
-        margin:auto;
-        overflow:auto;
-        a{
-            overflow: auto;
-        }
-        img{
+        border: dotted 25px @my-dotted-border;
+        border-top: none;
+        border-bottom: none;
+        width:890px;
+        height:inherit;
+        img {
             .blackwhite();
         }
     }
 }
-#lectureVideo{
-    width: 800px !important;
-    height: 450px !important;
-    margin: 0 auto;
-    background-color: black;
-}
-.hostedWrapper{
-    .Videowrapper;
-    overflow: auto;
-    height: auto;
-}
 
 .actionbar {
     background-color: @my-dotted-border;
-    z-index: 100;
     border-top: dotted 25px @my-black-lt;
     &.bottom {
         background-color:@my-black-lt;
@@ -264,150 +265,42 @@ body {
     }
 }
 
-.lecture-sort,
+// --------------------------------------------------
+
 .portalbar {
+    .front-page-block;
     a {
+        width: 100%;
         padding: 0;
-        border: solid 1px #CCC;
         margin: 21px;
-    }
-    img:hover{
-        .scale(0.99);
-    }
-}
-
-.lecturegrid,
-.portalbar {
-    margin: 24px auto;
-    background-color: @my-cream;
-    background-image:url('../img/background/absurdidad.png');
-        -webkit-box-shadow: 0 0px 25px rgba(33,33,33,.15);
-           -moz-box-shadow: 0 0px 25px rgba(33,33,33,.15);
-                box-shadow: 0 0px 25px rgba(33,33,33,.15);
-
-    > .container{
-        background-color: @my-black-lt;
-        -webkit-box-shadow: 0 0px 50px rgba(33,33,33,.5);
-   -moz-box-shadow: 0 0px 50px rgba(33,33,33,.5);
-        box-shadow: 0 0px 50px rgba(33,33,33,.5);
-
-        h2 {
-            color: @my-yellow-lt;
-            padding:8px;
-            padding-left:25px;
-            padding-bottom:0;
-            margin:0;
-        }
-    }
-    ul {
-        li{
-            margin-bottom: 0;
-        }
-    }
-    img { 
-    .blackwhite();
+        border: solid 1px #CCC;
+        background-color: @white;
+        img:hover{
+            padding: 0;
+            .scale(0.99);
+        }   
     }
 }
+
+
+// --------------------------------------------------
 
 .lecturegrid {
-    text-align: center;
-    ul.thumbnails{
-        margin-left: 8px;
-        li {
-            margin-left: 10px;
-            margin-right: 10px;
-        }
-    }
-    .lecture-block{
-        min-height: 240px;
-        max-height: 300px;
-        display: block;
-        width:auto;
-        img {
-            display: block;
-            height: 195px;
-        }
-        a {
-            position:relative;
-            display: block;
-            color: @my-red-lt;
-            span{
-                width: 100%;
-                display: table-cell; 
-                vertical-align: middle;
-                margin:0;
-                font-size: @fontSizeLarge;
-                text-decoration: none;
-                &.author{
-                    color:@my-yellow-lt;
-                    background-color: @my-black-dk;
-                    text-transform: uppercase;
-                    height: 72px;
-                    width:200px;
-                    padding: 2px 0;
-                    padding-top: 6px;
-                    padding-bottom: 6px;
-                }
-                &.title{
-                    width:340px;
-                    color:@my-black-lt;
-                    height: 72px;
-                    line-height: 16px;
-                    padding: 2px 0;
-                    padding-top: 6px;
-                }
-            }
-            &:hover{
-                color: @my-black-dk;
-            }
-        }
-    }
-
-    .frame-16x9 {
-        overflow: hidden;
-        height: 11.2em;
-        img {
-            width:270px;
-            margin-top: -9%;
-        }
-    }
-}
-
-.thumbnails {
-    width: 100%;
-    width: 1200px;
-    > li {
-        padding-left: 0;
-    }
-}
-
-.thumbnail {
-    margin-top: 25px;
-    border:0;
-    padding:0;
-    background-color: @my-red-lt;
-    background-image:url('../img/background/grid.png');
-    &.thumbnail-max{
-        width: 100%;
-    }
-    
-    p {
-        overflow: hidden;
-        font-size: 32px;
-        text-transform: uppercase;
-        line-height: 108%;
-        text-align: center;
-    }
+    .front-page-block;
 }
 
 .lecture-sort {
     padding-top: 12px;
+    padding-right: 12px;
+    color: @my-linnen; 
     a {
-        .rounded(0);
-        @headingsFontWeight;
-        background-color: @my-black-lt;
+        padding: 0;
+        margin: 21px;
         border: 1px solid @my-yellow-lt;
-        color: @my-linnen;   
+        .rounded(0);
+        color: @my-linnen; 
+        background-color: @my-black-lt;
+        @headingsFontWeight;
         &:hover {
             color: @my-black-lt;
             background-color: @my-yellow-lt !important; 
@@ -420,7 +313,70 @@ body {
     }
 }
 
-.footerbar{
+// --------------------------------------------------
+
+.row-fluid ul.thumbnails{
+    text-align: center;
+    margin-left: 14px;
+    li {
+        margin: 12px 8px 0px;
+        overflow: auto;
+        .thumbnail {
+            border:0;
+            padding: 0px;
+            a {
+                overflow: auto;
+                position:relative;
+                text-align: center;
+                &:hover{
+                   text-decoration: none;
+                } 
+                span {
+                    font-size: 15px;
+                    line-height: 16px;
+                    display: table-cell;
+                    background-color: @my-black-dk;
+                    padding: 6px 4px;
+                    height: 64px;
+                    vertical-align: middle;
+                    font-weight: 700;
+                    &.title{
+                        background-image:url('../img/background/grid.png');
+                        width: 55%;
+                        color:@my-black-lt;
+                        &:hover{
+                           text-decoration: underline !important;
+                        }
+                    }
+                    &.author {
+                        width: 45%;
+                        color:@my-yellow-lt;
+                        text-transform: uppercase;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.image-frame {
+    overflow: hidden;
+    height: 9.4em;
+    img {
+        margin-top: -9%;
+    }
+}
+
+.row-fluid .thumbnails .span3:nth-child(4n+1),
+.row-fluid .thumbnails .span3:first-child + li + li + li + li,
+.row-fluid .thumbnails .span3:first-child + li + li + li + li + li + li + li + li,
+.row-fluid .thumbnails .span3:first-child + li + li + li + li + li + li + li + li + li + li + li + li {
+    margin-left: 0px;
+}
+
+// --------------------------------------------------
+
+.footerbar {
     background-color:@my-black-lt;
     background-image:url('../img/background/grid.png');
     margin-top:24px;
@@ -440,14 +396,35 @@ body {
         }
     }
 }
+
 .final {
     background-color: @my-band;
     background-image:url('../img/background/absurdidad.png');
     height:100px;
 }
 
+
 // Lectures
 // --------------------------------------------------
+
+#lectureVideo{
+    width: 800px;
+    height: 450px;
+    margin: 0 auto;
+    background-color: black;
+}
+
+.videoHeader{
+    margin-top: -12px !important;
+    padding-bottom: 6px;
+}
+
+.hostedWrapper{
+    .Videowrapper;
+    background-color: black;
+    overflow: auto;
+    height: auto;
+}
 
 .Videowrapper{
     height:440px;
@@ -488,31 +465,45 @@ body {
         #bt_form {
             padding-top:0;
             input {
-                height: 32px;
+                height: 24px;
                 margin: 0;
             }
         }
         button{
             margin-top: -1px;
             width: 100px;
-            margin-left: -22px;
+            margin-left: -34px;
         }
     }
 }
 
 .badge {
+    height: 20px;
     margin-top: 0px;
+    padding-top: 4px;
+    margin-right: 0px;
     line-height: 20px;
     font-size: 16px;
     vertical-align: top;
     border-top-left-radius: 0;
     border-top-right-radius: 0;
     border-bottom-left-radius: 14px;
-    height: 20px;
-    padding-top: 4px;
     float: right;
     background-color: @my-yellow-lt;
     color: @my-black-lt;
+}
+
+.badge-wide{
+    margin-right: -12px;
+}
+
+.lectureMeta {
+    .nav {
+        margin-bottom:0px;
+    }
+    > div > div > p {
+        padding: 12px;
+    }
 }
 
 .poem-box p{
@@ -547,74 +538,142 @@ li.active a {
     color: @my-cream;
 }
 
-.nav-tabs > li > a{
-    border-top-left-radius: 5px !important;
-    border-top-right-radius: 5px !important;
-    border-bottom-left-radius: 5px !important;
-    border-bottom-right-radius: 5px !important;
-    background-color: lighten(@my-blue-lt,15%);
-    margin-bottom:0px !important;
-    color: @my-blue-dk;
+.nav-tabs > li > a {
+    color: @my-cream;
+    font-weight: 700;
+    background-color: @my-black-dk;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
     &:hover{
-        background-color: @my-blue-lt;
-        color: @my-cream;
+    background-color: @my-cream;
+    color: @my-red-lt;
     }
 }
-.nav-tabs > li.active > a{
-    background-color: @my-blue-lt;
-    color: @my-cream;
+.nav-tabs > li.active > a {
+    color: darken(@my-blue-dk,15%);
+    background-color: @my-cream;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    font-weight: 700;
     &:hover{
-        background-color: @my-blue-lt;
-        color: @my-cream;
+        color: darken(@my-blue-dk,15%);
    }  
 }
 
+.tab-pane {
+    background-color: @my-cream;
+    > p {
+        color: @my-black-lt;
+    }
+}
+
+#fb-root{
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
 
 // License & Individual 
 // --------------------------------------------------
 
 .lecturelist{
-    color:@my-black-lt;
-    margin-top:0;
-    .row{
+    color:@my-cream;
+    margin-top: 0;
+    .row-fluid {
         margin-left: 20px;
+    }
+    li {
+        .box-model;
+        width: 440px !important;
+        margin-top: 20px;
+        margin-left: 20px;
+        padding-bottom: 10px;
+        background-color: @my-black-dk;
+    }
+    h3 {
+        background-image:url('../img/background/absurdidad.png');
+        font-size:1.2em;
+        width:100%;
+        display: block;
+        vertical-align: top;
+        margin-top: 0;
+        margin-bottom: 0;
+        padding-top: 0;
+    }
+    a {
+        width: 100%;
+        display: block;
+        &:hover{
+            color:@my-black-lt;
+            background-color: @my-yellow-lt;
+            text-decoration: none;
+            border-bottom: solid 0px @my-yellow-lt;
+            span.title{
+                color:@my-black-lt;
+                background-color: @my-yellow-lt;
+            }
+       }
+        span.author{
+            display: inline-block;
+            color:@my-yellow-lt;
+            background-color: @my-black-dk;
+            text-transform: uppercase;
+            font-size:1em;
+            padding-right: 6px;
+            padding-left: 10px;
+        }
+        span.title{
+            display: inline-block;
+            color:@my-cream;
+            padding-left: 10px;
+            margin-left: -5px;
+            padding-right: 10px;
+       }
+    }
+    p {
+        background-image:url('../img/background/grid.png');
+        background-color: lighten(@white, 10%);
+        color: @my-black-lt;
+        margin: 0 12px;
+        padding: 8px;
+        padding-bottom: 16px;
+        text-transform: none;
+        font-size: 12pt;
+        font-weight: 400;
+        text-align: left;
+    }
+    .thumbnail{
+        border: 0;
+        padding:0;
+        background-color: @my-black-dk;
     }
     .single-grid-item{
         margin-left: -25px;
+        margin-bottom: 20px;
+        h3 {
+            vertical-align: bottom;
+        }
         .description{
             display: none;
             position: relative;
-            top: -10px;
             color:@my-cream;
-            background-color: lighten(@my-black-lt, 20%);
-            border:solid 2px @my-black-dk;
+            background-color: @my-black-dk;
+            border:solid 10px @my-black-dk;
             border-top:0;
-            // margin-top: -10px;
-            // margin-bottom: 10px;
             overflow: auto;
             p {
                 display: block;
                 vertical-align: bottom;
                 line-height: 28px;
-                padding:12px;
-                margin-bottom: 0px;
+                padding:10px;
+                margin: 0;
                 border-bottom: solid 1px @my-black-lt;
             }
             a {
-                margin-top: 6px;
-                margin-right: 32px;
-                margin-bottom: 6px;
+                width: 200px;
+                margin: 6px auto;
                 padding: 0 12px;
-                float: right;
             }
-
         }
-    }
-    .double-grid-item{
-        padding: 0 10px;
-        padding-right: -10px;
-        margin-left: 0px;
-        .box-model;
     }
     .frame-16x9 {
         overflow: hidden;
@@ -629,49 +688,7 @@ li.active a {
             margin-top: -15%;
         }
     }
-    h3 {
-        background-image:url('../img/background/absurdidad.png');
-        background-color: @my-black-dk;
-        font-size:1.3em;
-        width:100%;
-        display: block;
-        vertical-align: top;
-        margin-top: -4px;
-        padding-top: 0;
-    }
-    a {
-        &:hover{
-            color:@my-black-lt;
-            background-color: @my-yellow-lt;
-            text-decoration: none;
-            border-bottom: solid 0px @my-yellow-lt;
-            span.title{
-                color:@my-black-lt;
-            }
-       }
-        span.author{
-            color:@my-yellow-lt;
-            background-color: @my-black-dk;
-            text-transform: uppercase;
-            padding: 0 4px;
-            font-size:1.2em;
-        }
-        span.title{
-            padding-right: 8px;
-            color:@my-cream;
-       }
-    }
-    p {
-        padding: 8px;
-        padding-bottom: 16px;
-        text-transform: none;
-        font-size: 14pt;
-        font-weight: 500;
-        min-height: 32px;
-        text-align: left;
-    }
 }
-
 
 #lectureList{
     text-align: left;
@@ -686,8 +703,28 @@ li.active a {
     }
 }
 
+#submitCart {
+    min-width: 168px;
+    height: 36px;
+    padding: 0;
+    margin: 0;
+    font-size: 16px;
+    margin-top: 2px;
+}
+
 // Store
 // --------------------------------------------------
+
+.formFooter .span8 input.my-btn {
+    min-width: 0px;
+    width: 200px;
+    height: 36px;
+    padding: 0;
+    margin: 0;
+    margin-top: 2px;
+    margin-right: 32px;
+    font-size: 16px;
+}
 
 #SubscriptionDialog {
     h2{
@@ -703,14 +740,10 @@ li.active a {
         min-height: 48px;
     }
 
-#lectureList{
-    margin-left: 20px;
-}
-
-// Testimonials
+// Testimials
 // --------------------------------------------------
 #container{
-    margin-left: -30px;
+    margin-left: -20px;
 }
 .testimonial {
     blockquote{
@@ -807,7 +840,7 @@ li.active a {
 .my-btn {
     .btn;
     .rounded(0);
-    padding: 6px 18px;
+    padding: 2px 16px;
     margin-bottom: 0; // For input.btn
     font-size: @fontSizeLarge;
     line-height: @inputHeight;
@@ -887,7 +920,7 @@ li.active a {
         color: @my-yellow-lt;
     }
     h4 {
-        font-size: 32px;
+        font-size: 28px;
         padding: 12px 8px;
     }
     textarea,
@@ -897,7 +930,7 @@ li.active a {
         border-top-right-radius: 0px;
         width: 90%;
         height:28px;
-        font-size: 21px;
+        font-size: 16px;
         vertical-align: bottom;
         line-height: 26px;
         margin: 8px 16px;
@@ -1052,12 +1085,22 @@ h5.poem-title{
     margin: 1px;
     margin-bottom: -1px;
 }
+h5.poem-title{
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+    margin-right: 0px;
+    margin-left: 0px;
+}
 h5.poem-footer{
     height: 60px;
     .rounded(5px);
     border-top-left-radius: 0;
     border-top-right-radius: 0;
     margin-top: -1px;
+    margin-right: 0px;
+    margin-left: 0px;
+    border-left: 0;
+    border-right: 0;
     text-align: right;
     padding-right: 15%;
     vertical-align: bottom;
@@ -1069,7 +1112,11 @@ pre.blockcode {
     padding: 0;
     overflow-x: auto;
     background-color: @my-cream;
+    margin-right: 0px;
+    margin-left: 0px;
     margin-bottom: 0;
+    border-left: 0;
+    border-right: 0;
     code {
         display: block;
         font-size: 16px;
@@ -1136,4 +1183,159 @@ div.notes {
 div.notes + h5.poem-footer {
     margin-left: 0;
     margin-right: 0;
+}
+
+
+// Default: (980px - 1199px)
+
+//
+// Responsive: Large desktop and up (1200px)
+// --------------------------------------------------
+
+@media (min-width: 1200px) {
+   
+    .jumptron .Videowrapper {
+        width:1120px;
+    }
+
+    .frame-16x9 {
+        // height: auto;
+        img {
+            // width:auto;
+            // margin-top: -9%;
+        }
+    }
+
+   .row-fluid ul.thumbnails{
+        li {
+            // margin-left: 10px;
+            // margin-right: 10px;
+            // min-height: 320px;
+            // overflow: auto;
+        }
+    }
+}
+
+//
+// Responsive: Tablet to desktop (768px - 979px)
+// --------------------------------------------------
+
+@media (min-width: 768px) and (max-width: 979px) {
+
+    .jumptron .Videowrapper {
+        width: 674px;
+    }
+
+    .image-frame {
+        overflow: hidden;
+        height: 6.8em;
+        img {
+            margin-top: -9%;
+        }
+    }
+
+    .lecture-description .span4 .innerPage button {
+        width: 60px;
+        margin-left: -10px;
+    }
+
+    .my-btn-paypal {
+        padding: 2px;
+    }
+
+// Lectures 
+    
+    .Videowrapper {
+        height: 410px;
+    }
+    .poet-box{
+        display: none;
+    }
+    .lectureMeta{
+        width: 724px;
+    }
+
+// Institutional License
+
+    #subscriptionForm > input{
+        margin-left: 4px;
+    }
+    .lecturelist .even,
+    .lecturelist .odd {
+        margin-left: 84px !important;
+        width: 500px !important;
+    }
+
+// Student License
+
+    .formBox,
+    .institutionalDescriptionBox,
+    .studentDescriptionBox{
+        width: 724px;
+    }
+    .previewBox{
+        display: none;
+    }
+
+    #checkoutBox #submitCart{
+        margin-left: 230px;
+        padding: 2px 20px;
+    }
+
+// Store
+    
+ .section-header{
+        font-size: 30px;
+    }
+    .formFooter .span8 {
+        input.my-btn{
+            margin-left: 200px;
+        }
+    }
+    .formFooter #submitCart{
+            margin-left: 10px;
+        }
+
+    .combolabel {
+        width: 312px;
+        label.checkbox{
+            width: inherit;
+        }
+    }
+
+
+    .actionbar p:first-child{
+        display: none;
+    }
+
+    .actionbar.bottom{
+        // height: 54px;
+    }
+
+    .section-header h3,
+    .section-header h2{
+        font-size: 32px;
+    }
+
+    .frame-16x9 {
+        height: auto;
+        img {
+            width:auto;
+            margin-top: -9%;
+        }
+    }
+}
+
+//
+// Responsive: Landscape phone to desktop/tablet (767px)
+// --------------------------------------------------
+
+@media (max-width: 767px) {}
+
+// TABLETS AND BELOW
+// -----------------
+@media (max-width: @navbarCollapseWidth) {
+    body {
+        padding-top: 0;
+    }
 }

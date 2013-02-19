@@ -32,7 +32,7 @@
   
           <div class="lecture-description row-fluid">
             <div class="span12" >
-              <h2>{{lecture.poem.title}} /<span>/ {{lecture.poem.poet.first_name}} {{lecture.poem.poet.last_name}}</span></h2>
+              <h2 class="videoHeader">{{lecture.poem.title}} // {{lecture.poem.poet.first_name}} {{lecture.poem.poet.last_name}}</h2>
             </div>
           </div>
           <div class="hostedWrapper">        
@@ -45,7 +45,7 @@
         {% else %}    
         <div class="lecture-description row-fluid">
             <div class="span12" >
-              <h2>Excerpt: '{{lecture.preview.title}}'</h2>
+              <h2 class="videoHeader">Excerpt: '{{lecture.preview.title}}'</h2>
             </div>
             </div>
           <div class="Videowrapper">
@@ -86,29 +86,27 @@
 
   <div class="container">
     <div class="row">
-      <div class="span8 panelBox poem-box">
-        <div class="tabbable tabs-left"> <!-- Only required for left/right tabs -->
-          <ul class="nav nav-tabs">
-            <li class="active"><a href="#tab1" data-toggle="tab">Poem</a></li>
-            <li><a href="#tab2" data-toggle="tab">Lecture Notes</a></li>
-            <li><a href="#tab3" data-toggle="tab">Comments</a></li>
-          </ul>
-          <div class="tab-content">
-            <div class="tab-pane active" id="tab1">
-              <h5 class="poem-title">{{lecture.poem.title}}</h5>
-              <pre class="blockcode"><code>{{lecture.poem.text}}</code></pre>
-              <h5 class="poem-footer"><br>{{lecture.poem.poet.first_name}} {{lecture.poem.poet.last_name}}</h5>
-            </div>
-            <div class="tab-pane" id="tab2">
-              <p>Mycroft lectures always provide sentence by sentence parsing, paraphrasing and explanation of the each poem. However, each lecture provides extra information that will enhance appreciation and understanding of the poem under discussion. This lecture includes the following areas of analysis:</p>
-              <div class="notes">{% autoescape off %}{{lecture.notes}}{% endautoescape %}</div>
-              <h5 class="poem-footer"><br>MYCROFT LECTURES</h5>
-            </div>
-            <div class="tab-pane" id="tab3">
-              {% fb_comments width="590" colorscheme="dark" include_cached_comments %}
-            </div>
+      <div class="span8 panelBox lectureMeta">
+        <ul class="nav nav-tabs">
+          <li class="active"><a href="#tab1" data-toggle="tab">Poem</a></li>
+          <li><a href="#tab2" data-toggle="tab">Comments</a></li>
+          <li><a href="#tab3" data-toggle="tab">Lecture Notes</a></li>
+        </ul>
+        <div class="tab-content">
+          <div class="tab-pane active" id="tab1">
+            <h5 class="poem-title">{{lecture.poem.title}}</h5>
+            <pre class="blockcode"><code>{{lecture.poem.text}}</code></pre>
+            <h5 class="poem-footer"><br>{{lecture.poem.poet.first_name}} {{lecture.poem.poet.last_name}}</h5>
           </div>
-        </div>       
+          <div class="tab-pane" id="tab2">
+            {% fb_comments width="580" num_posts="5" colorscheme="light" include_cached_comments %}
+          </div>
+          <div class="tab-pane" id="tab3">
+            <p>Mycroft lectures always provide sentence by sentence parsing, paraphrasing and explanation of the each poem. However, each lecture provides extra information that will enhance appreciation and understanding of the poem under discussion. This lecture includes the following areas of analysis:</p>
+            <div class="notes">{% autoescape off %}{{lecture.notes}}{% endautoescape %}</div>
+            <h5 class="poem-footer"><br>MYCROFT LECTURES</h5>
+          </div>
+        </div>
       </div>       
       <div class="span4 poet-box panelBox">
         <div class="section-header">
@@ -118,7 +116,7 @@
           <p><b>{{lecture.poem.poet.year_of_birth}} - {{lecture.poem.poet.year_of_death}}</p></b>
           <p>{{lecture.poem.poet.description}}</p>
       </div>
-  </div>
+    </div>       
 </div>
 
 {% endblock %}

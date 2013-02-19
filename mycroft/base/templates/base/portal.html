@@ -19,34 +19,33 @@
       </div>
       </div>
  
-
-
-  {% else %}  
-    <h1 class="institutionHeader"> {{ institution }} </h1>
-    <div class="panel-wide lecturegrid">
-    <div class="container">
-      <div class="section-header">
-      <h2>Lectures</h2>
-      <ul class="nav nav-pills lecture-sort">
-        <li class="active"><a data-sort="poet" href="">Poet Name</a></li>
-        <li><a data-sort="title" href="">Poem Title</a></li>
-        <li><a data-sort="date" href="">Year of Publication</a></li>
-      </ul>
-      </div>
-       <ul id="content" class="thumbnails" class="span12">
+{% else %}  
+<h1 class="institutionHeader"> {{ institution }} </h1>
+<div class="lecturegrid">
+  <div class="container">
+    <div class="section-header">
+    <h2> Lectures</h2>
+    </div> 
+  <div class="row-fluid">
+    <ul id="content" class="thumbnails">
       {% for lecture in lectures %}
-        <li class="span3 lecture-panel" data-poet="{{ lecture.poem.poet.last_name}}" data-title="{{ lecture.poem.title }}" data-date="{{lecture.poem.pub_year}}">
-          <div class="thumbnail lecture-block">
+        <li class="span3" data-poet="{{ lecture.poem.poet.last_name}}" data-title="{{ lecture.poem.title }}" data-date="{{lecture.poem.pub_year}}">
+          <div class="thumbnail">
             <a href="/portal/{{institution.slug}}/{{ lecture.slug }}">
-            <div class="frame-16x9"><img src="http://img.youtube.com/vi/{{lecture.preview.youtube_id}}/0.jpg"></div>
-            <span class="title">{{lecture.poem.title}}</span>
-            <span class="author">{{ lecture.poem.poet.first_name }} {{ lecture.poem.poet.last_name }}</span>
+              <div class="image-frame">
+                <img src="http://img.youtube.com/vi/{{lecture.preview.youtube_id}}/0.jpg">
+              </div>
+              <div class="">                  
+                <span class="title">{{lecture.poem.title}}</span>
+                <span class="author">{{ lecture.poem.poet.first_name }} {{ lecture.poem.poet.last_name }}</span>
+              </div>
             </a>
-        </div>
+          </div>
         </li>
       {% endfor %}
-  </ul>
-    </div>
+    </ul>
+  </div>
+</div>
 
     <div class="container">
       <footer class="footerbar">

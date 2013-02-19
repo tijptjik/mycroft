@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block videojs %}
-  <link href="{{ STATIC_URL }}js/libs/videojs/design/video-js.css" rel="stylesheet" type="text/css">
+  <!-- <link href="{{ STATIC_URL }}js/libs/videojs/design/video-js.css" rel="stylesheet" type="text/css">
   <script src="{{ STATIC_URL }}js/libs/videojs/src/core.js"></script>
   <script src="{{ STATIC_URL }}js/libs/videojs/src/lib.js"></script>
   <script src="{{ STATIC_URL }}js/libs/videojs/src/json.js"></script>
@@ -18,58 +18,100 @@
 
   <script src="{{ STATIC_URL }}js/libs/videojs/tech/youtube/youtube.js"></script>
   
-  <script src="{{ STATIC_URL }}js/libs/videojs/src/setup.js"></script>
+  <script src="{{ STATIC_URL }}js/libs/videojs/src/setup.js"></script> -->
+  <link href="http://vjs.zencdn.net/c/video-js.css" rel="stylesheet">
+  <script src="http://vjs.zencdn.net/c/video.js"></script>
 {% endblock %}
 
-{% block page_class %}home-page{% endblock %}
+{% block page_class %} Mycroft Lectures: {{lecture.poem.title}} {% endblock %}
 {% block content %}
+{% load fb_comments %}
 
-{% if user.is_authenticated %}            
-<div class="hero-unit">
-  <video id="lectureVideo" class="video-js vjs-default-skin" controls preload="auto" data-setup="{}">
-      <source src="{{ site }}/media/lectures/digging.mp4" type="video/mp4" />
-      <track kind="subtitles" src="{{ site }}/media/lectures/digging.vtt" type="text/vtt" srclang="en" label="English Subtitles" />
-  </video>
+<video autoplay controls tabindex="0">
+  <source src="{{ site }}/media/lectures/oceans.mp4" type="video/mp4">
+</video>
+
+<video id="my_video_1" class="video-js vjs-default-skin" controls
+  preload="auto" width="640" height="264" poster="http://video-js.zencoder.com/oceans-clip.jpg"
+  data-setup="{}">
+  <source src="{{ site }}/media/{{ lecture.video.video }}" type='video/mp4'>
+  <source src="my_video.webm" type='video/webm'>
+</video>
+
+
+
+<div class="band">
+    <div class="container">
+      <div class="panelBox formBox">            
+          <div class="lecture-description row-fluid">
+            <div class="span12">
+              <h2 class="videoHeader">{{lecture.poem.title}} // {{lecture.poem.poet.first_name}} {{lecture.poem.poet.last_name}}</span></h2>
+            </div>
+          </div>
+          <div class="hostedWrapper">        
+          <video id="lectureVideo" class="video-js vjs-default-skin" controls preload="auto" data-setup="{}">
+              <source src="{{ site }}/media/{{ lecture.video.video }}" type="video/mp4" />
+              <track kind="subtitles" src="{{ site }}/media/{{ lecture.video.subtitle }}" type="text/vtt" srclang="en" label="English Subtitles" />
+          </video>
+          </div>
+    </div>  
+  </div>  
 </div>          
 
-<div class="row"></div>
-<div class="row">
-  <div class="span7 well">
-  <pre>{{lecture.poem.text}}</pre>
-</div>
-<div class="span4">
-<h2>{{lecture.poem.poet}}</h2>
-<p>{{lecture.poem.poet.year_of_birth}} - {{lecture.poem.poet.year_of_death}}</p>
-<p>{{lecture.poem.poet.description}}</p>
-</div>
-</div>
-
-{% else %}
-<div class="hero-unit">          
-<div id="loginBox" class="container">
-  <div class="content">
-      <div class="row">
-        <div class="login-form">
-          <h1> {{institution.name}}</h1>
-          <form action="/accounts/login/" method="post">{% csrf_token %}
-            <fieldset>
-                <input type="hidden" name="" value="{{ institution.contact.email }}">
-              <div class="clearfix">
-                <input type="password" name="" value="" placeholder="Password">
-              </div>
-              <input type="submit" name="submit" value="Submit" class="my-btn btn-large">
-            </fieldset>
-          </form>
+  <div class="container">
+    <div class="row">
+      <div class="span8 panelBox lectureMeta">
+        <ul class="nav nav-tabs">
+          <li class="active"><a href="#tab1" data-toggle="tab">Poem</a></li>
+          <li><a href="#tab2" data-toggle="tab">Comments</a></li>
+          <li><a href="#tab3" data-toggle="tab">Lecture Notes</a></li>
+        </ul>
+        <div class="tab-content">
+          <div class="tab-pane active" id="tab1">
+            <h5 class="poem-title">{{lecture.poem.title}}</h5>
+            <pre class="blockcode"><code>{{lecture.poem.text}}</code></pre>
+            <h5 class="poem-footer"><br>{{lecture.poem.poet.first_name}} {{lecture.poem.poet.last_name}}</h5>
+          </div>
+          <div class="tab-pane" id="tab2">
+            {% fb_comments width="580" num_posts="5" colorscheme="light" include_cached_comments %}
+          </div>
+          <div class="tab-pane" id="tab3">
+            <p>Mycroft lectures always provide sentence by sentence parsing, paraphrasing and explanation of the each poem. However, each lecture provides extra information that will enhance appreciation and understanding of the poem under discussion. This lecture includes the following areas of analysis:</p>
+            <div class="notes">{% autoescape off %}{{lecture.notes}}{% endautoescape %}</div>
+            <h5 class="poem-footer"><br>MYCROFT LECTURES</h5>
+          </div>
         </div>
+      </div>       
+      <div class="span4 poet-box panelBox">
+        <div class="section-header">
+          <h2>{{lecture.poem.poet.first_name}} {{lecture.poem.poet.last_name}}</h2>
+        </div>
+        <div class="innerPage">
+          <p><b>{{lecture.poem.poet.year_of_birth}} - {{lecture.poem.poet.year_of_death}}</p></b>
+          <p>{{lecture.poem.poet.description}}</p>
       </div>
-    </div>
+    </div>       
 </div>
-{% endif %}  
 
 {% endblock %}
 
 {% block scripts %}
 <script type="text/javascript">
+
+ var pres = document.getElementsByClassName('blockcode'), pre, code, lines, pl, cl;
+        for (pl = pres.length, p = 0; p < pl; p++) {
+            pre  = pres[p];
+            code = pre.children[0];
+            
+            code.innerHTML = code.innerHTML.split("\n").map(function(line) {
+                return '<span class="line">' + line + '</span>';
+            }).join("\n");
+            
+            lines = code.getElementsByClassName('line');
+            for (cl = lines.length, l = 0; l < cl; l++) {
+                lines[l].style.width = pre.scrollWidth + 'px';
+            }
+        }
 
 $('#submitSingle').click(function(){
   $.bt_validate.result = true;

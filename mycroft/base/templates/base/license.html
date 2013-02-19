@@ -7,7 +7,7 @@
 <div class="band">
     <div class="container">
     <div class="row">
-        <div class="panelBox span7">
+        <div class="panelBox institutionalDescriptionBox span7">
             <div class="section-header">
                 <h1>Institutional License</h1>
             </div>
@@ -43,30 +43,29 @@
 
     <div class="container">
     <div class="row">
-    <div class="lecture-list-wide panelBox span12">
+    <div class="panelBox span12">
         <div class="section-header">
             <h2>Available Lectures</h2>
-            <ul class="nav nav-pills lecture-sort">
-                <li class="active"><a data-sort="poet" href="">Poet Name</a></li>
-                <li><a data-sort="title" href="">Poem Title</a></li>
-                <li><a data-sort="date" href="">Year of Publication</a></li>
-            </ul>
         </div>
         <ul id="content" class="lecturelist thumbnails">
             {% for lecture in lecture_list %}
-            {% if forloop.counter|divisibleby:2 %}{% else %}<div class="row">{% endif %}
-            <li class="double-grid-item span6 {% if forloop.counter|divisibleby:2 %}even{% else %}odd{% endif %}" data-poet="{{ lecture.poem.poet.last_name}}" data-title="{{ lecture.poem.title }}" data-date="{{lecture.poem.pub_year}}">
+            {% if forloop.counter|divisibleby:2 %}{% else %}<div class="row-fluid">{% endif %}
+            <li class="span6 {% if forloop.counter|divisibleby:2 %}even{% else %}odd{% endif %}" data-poet="{{ lecture.poem.poet.last_name}}" data-title="{{ lecture.poem.title }}" data-date="{{lecture.poem.pub_year}}">
                 <div class="thumbnail">
-                <a href="/lecture/{{ lecture.poem.poet.slug }}/{{ lecture.slug }}">
-                <div class="frame-16x9">
-                    <img src="http://img.youtube.com/vi/{{lecture.preview.youtube_id}}/0.jpg">
-                </div></a>
-                <div class="footer">
-                    <h3><a href="/lecture/{{ lecture.poem.poet.slug }}/{{ lecture.slug }}">
-                    <span class="author">{{ lecture.poem.poet.first_name }} {{ lecture.poem.poet.last_name }}:</span>
-                    <span class="title">{{lecture.poem.title}}</span></a></h3>
-                    <p>{{lecture.synopsis}}</p>
-                </div>    
+                    <a href="/lecture/{{ lecture.poem.poet.slug }}/{{ lecture.slug }}">
+                        <div class="frame-16x9">
+                            <img src="http://img.youtube.com/vi/{{lecture.preview.youtube_id}}/0.jpg">
+                        </div>
+                    </a>
+                    <div class="footer">
+                        <h3>
+                            <a href="/lecture/{{ lecture.poem.poet.slug }}/{{ lecture.slug }}">
+                                <span class="author">{{ lecture.poem.poet.first_name }} {{ lecture.poem.poet.last_name }}:</span>
+                                <span class="title">{{lecture.poem.title}}</span>
+                            </a>
+                        </h3>
+                        <p>{{lecture.synopsis}}</p>
+                    </div>    
                 </div>    
             {% if forloop.counter|divisibleby:2 %}</div>{% endif %}
               </li>

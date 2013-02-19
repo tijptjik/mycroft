@@ -32,15 +32,37 @@
 <script src="{{ STATIC_URL }}js/libs/jquery/masonry.js" type="text/javascript" charset="utf-8"></script>
 
 <script type="text/javascript" charset="utf-8">
-$(function(){
-  $('#container').masonry({
-    itemSelector : '.testimonial',
-    columnWidth : 360,
-    gutterWidth: 40
-  });
 
-
+$(window).load(function(){
+    responsiveMasonry()
 });
+
+$(window).resize(function(){
+    responsiveMasonry()
+});
+
+function responsiveMasonry(){
+    $wd = $('#container').width();
+    if ($wd < 746){
+        adaptTestimonials(30, 744, 2)
+    } else if ($wd == 960){
+        adaptTestimonials(20, 960, 3)
+    } else if ($wd == 1190){
+        adaptTestimonials(20, 1200, 3)
+    } else {
+        adaptTestimonials(20, 520, 1)
+    }
+}
+
+function adaptTestimonials(gt, wd, col){
+    $('#container').masonry({
+        itemSelector : '.testimonial',
+        columnWidth : ((wd - (col*gt)) / col),
+        gutterWidth: gt
+        });
+    $('.testimonial').removeClass('span12 span6 span4').addClass('span' + (12 / col));
+}
+
 </script>
 {% endblock %}
 
