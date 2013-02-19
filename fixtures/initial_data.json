@@ -1069,21 +1069,21 @@
       }
   },
   {
-    "pk": 4,
-    "model": "auth.user",
-    "fields": {
-      "username": "c75bd840079ed4179447e886a2704f",
-      "first_name": "Michelle",
-      "last_name": "Obama",
-      "is_active": true,
-      "is_superuser": false,
-      "is_staff": false,
-      "last_login": "2013-02-18T18:30:29.905Z",
-      "groups": [],
-      "user_permissions": [],
-      "password": "bcrypt$$2a$12$J9u3T3VuxfBMBBKJM40HFOm9mf22N2rqd.qpMZpuQPdr5ZhMtUlm6",
-      "email": "obama@type.hk",
-      "date_joined": "2013-01-11T01:07:57.855Z"
-    }
-  },
+      "pk": 4,
+      "model": "auth.user",
+      "fields": {
+          "username": "c75bd840079ed4179447e886a2704f",
+          "first_name": "Michelle",
+          "last_name": "Obama",
+          "is_active": true,
+          "is_superuser": false,
+          "is_staff": false,
+          "last_login": "2013-02-18T18:30:29.905Z",
+          "groups": [],
+          "user_permissions": [],
+          "password": "bcrypt$$2a$12$J9u3T3VuxfBMBBKJM40HFOm9mf22N2rqd.qpMZpuQPdr5ZhMtUlm6",
+          "email": "obama@type.hk",
+          "date_joined": "2013-01-11T01:07:57.855Z"
+      }
+  }
 ]
