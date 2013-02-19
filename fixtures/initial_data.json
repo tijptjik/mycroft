@@ -25,6 +25,15 @@
   },
   {
     "pk": 1,
+    "model": "base.institution",
+    "fields": {
+      "contact": 14,
+      "name": "St Subornation College",
+      "slug": "st-subornation-college"
+    }
+  },
+  {
+    "pk": 1,
     "model": "base.product",
     "fields": {
       "sold": 0,
