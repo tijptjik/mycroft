@@ -1,9 +1,10 @@
-/**
+ /**
  * Bootstrap validate
  * English lang module
  */
 
 $.bt_validate.fn = {
+  'require' : function(value) { return (value  != null) && (value != '')},
   'required' : function(value) { return (value  != null) && (value != '')},
   'email' : function(value) { return /^[a-z0-9-_\.]+@[a-z0-9-_\.]+\.[a-z]{2,4}$/.test(value) },
   'www' : function(value) { return /^(http:\/\/)|(https:\/\/)[a-z0-9\/\.-_]+\.[a-z]{2,4}$/.test(value) },
@@ -23,6 +24,7 @@ $.bt_validate.fn = {
 }
 
 $.bt_validate.text = {
+  'require' : 'Enter your e-mail address to receive the lectures',
   'required' : 'The value can not be empty',
   'email' : 'The value is not valid email',
   'www' : 'The value is not valid http string',
