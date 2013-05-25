@@ -5,7 +5,7 @@
 pytz
 
 # Django stuff
-Django>=1.4
+Django==1.4.3
 django_extensions
 
 # Templates 
