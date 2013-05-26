@@ -58,23 +58,16 @@
             <div class="span8" >
               <h2>{{lecture.poem.title}} /<span>/ {{lecture.poem.poet.first_name}} {{lecture.poem.poet.last_name}}</span></h2>
               <div class="innerPage">
-                <p>{{lecture.synopsis}}<p>
+                <p>{{lecture.nationality}}</p>
+                <p><b>{{lecture.poem.poet.year_of_birth}} - {{lecture.poem.poet.year_of_death}}</p></b>                <p><p>
               </div>
             </div>
             <div class="span4">
-              <h2>Checkout<span class="badge lecture-price">${{lecture.product.price_in_dollars}}</span></h2>
+              <h2>Buy Full Lecture<span class="badge lecture-price">${{lecture.product.price_in_dollars}}</span></h2>
               <div class="innerPage">
-                <p>Checkout with Paypal and receive the full lecture instantly by e-mail.</p>
+                <p>Pay with Credit Card or Paypal and receive the full {{ duration }} min lecture instantly by e-mail.</p>
                 <div class="row-fluid">
-                  <div class="span9">
-                    <form id="bt_form" action="https://www.paypal.com/cgi-bin/webscr" method="post">
-                      <input type="text" name="email" placeholder="Email lectures to:" id="id_email" validate="require|email">
-                      <input type="hidden" id="payer_email" name="payer_email" value="">
-                      <input type="hidden" id="custom" name="custom" value=""> {{ form }} 
-                      <input type="hidden" name="upload" value="1">
-                    </form>
-                  </div> 
-                  <div class="span3"><button id="submitSingle" class="my-btn-paypal" value="BUY" alt="Checkout with PayPal" title="Buy">Buy</button></div> 
+                  <input id="submitCart" type="submit" class="my-btn-paypal btn-danger" value="Buy" alt="Checkout with PayPal">
                 </div>
               </div>
             </div>
@@ -88,17 +81,17 @@
     <div class="row">
       <div class="span8 panelBox lectureMeta">
         <ul class="nav nav-tabs">
-          <li class="active"><a href="#tab1" data-toggle="tab">Poem</a></li>
-          <li><a href="#tab2" data-toggle="tab">Comments</a></li>
+          <li><a href="#tab1" data-toggle="tab">Poem</a></li>
+          <li class="active"><a href="#tab2" data-toggle="tab">Comments</a></li>
           <li><a href="#tab3" data-toggle="tab">Lecture Notes</a></li>
         </ul>
         <div class="tab-content">
-          <div class="tab-pane active" id="tab1">
+          <div class="tab-pane" id="tab1">
             <h5 class="poem-title">{{lecture.poem.title}}</h5>
             <pre class="blockcode"><code>{{lecture.poem.text}}</code></pre>
             <h5 class="poem-footer"><br>{{lecture.poem.poet.first_name}} {{lecture.poem.poet.last_name}}</h5>
           </div>
-          <div class="tab-pane" id="tab2">
+          <div class="tab-pane active" id="tab2">
             {% fb_comments width="580" num_posts="5" colorscheme="light" include_cached_comments %}
           </div>
           <div class="tab-pane" id="tab3">
@@ -114,9 +107,29 @@
         </div>
         <div class="innerPage">
           <p><b>{{lecture.poem.poet.year_of_birth}} - {{lecture.poem.poet.year_of_death}}</p></b>
-          <p>{{lecture.poem.poet.description}}</p>
+          <p>{{lecture.poem.poet.nationality}}</p>
       </div>
     </div>       
+</div>
+
+<div id="full-width" class="modal container hide fade" tabindex="-1">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3>Delivery by E-mail</h3>
+  </div>
+  <div class="modal-body">
+    <p>Purchase the lecture and a link will be delivered to your email address. Click on the link to download the lecture. The link will be valid for two weeks and can be downloaded as many times as you wish.</p>
+    <form id="bt_form" action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post">
+      <input type="text" name="email" placeholder="Email lectures to:" id="id_email" validate="require|email">
+      <input type="hidden" id="payer_email" name="payer_email" value="">
+      <input type="hidden" id="custom" name="custom" value=""> {{ form }} 
+      <input type="hidden" name="upload" value="1">
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button class="my-btn-paypal paypal-button btn-primary">Pay with Credit Card</button>
+    <button class="my-btn-paypal paypal-button btn-primary">Pay with PayPal</button>
+  </div>
 </div>
 
 {% endblock %}
@@ -139,21 +152,28 @@
             }
         }
 
-$('#submitSingle').click(function(){
+$('#submitCart').click(function(event){
+    event.preventDefault();
+    $('#full-width').modal();
+})
+
+$('.paypal-button').click(function(event){
+  $("input[type=submit]").attr("disabled", "disabled");  
   $.bt_validate.result = true;
   $('#bt_form').bt_validate()
   if($.bt_validate.blocked){ 
-        return false };
-  
-  email = $('#id_email').serialize();
-  
-  $.post("/api/client/student/json/", email, function(data) {
-          response = $.parseJSON( data );
-          $('#custom').val(response[0]['pk']);
-          $('#payer_email').val(response[0]['fields']['email']);
-          $('#bt_form').submit()
-      });
+    return false;
+  } else {
+    email = $('#id_email').serialize();
+    $.post("/api/client/student/json/", email, function(data) {
+      response = $.parseJSON( data );
+      $('#custom').val(response[0]['pk']);
+      $('#payer_email').val(response[0]['fields']['email']);
+      $('#bt_form').submit()
+    });
+    };
 })
+
 
   // Once the video is ready
   _V_("lectureVideo").ready(function(){

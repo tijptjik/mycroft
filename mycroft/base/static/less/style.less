@@ -1,5 +1,6 @@
 
 @import 'bootstrap.less';
+@import 'modals.less';
 @import 'responsive.less';
 @import 'elements.less';
 
@@ -187,6 +188,10 @@ body {
         margin-bottom: 8px;
     }
 }
+
+// Modal
+// --------------------------------------------------
+
 
 // Navbar
 // --------------------------------------------------
@@ -1151,7 +1156,11 @@ h5.poem-footer{
     text-align: right;
     padding-right: 15%;
     vertical-align: bottom;
-    color: lighten(@my-black-lt,70%);
+    color: @my-black-lt;
+    font-family: "Times New Roman";
+}
+.tab-content {
+    overflow: hidden;
 }
 pre.blockcode {
     border-top-right-radius: 0;
@@ -1168,6 +1177,7 @@ pre.blockcode {
         display: block;
         font-size: 16px;
         color: @my-black-lt;
+        overflow: hidden;
         span.line::before {
             content: ' ';
             display: inline-block;
@@ -1175,15 +1185,15 @@ pre.blockcode {
             text-align: right;
             width: 2em;
             padding-right: 0.5em;
-            border-right: 1px solid lightcoral;
+            // border-right: 1px solid lightcoral;
             margin-right: 1em;
         }
         span.line {
             display: inline-block;
-            width: 100%;
-            border-top: 1px solid @my-blue-lt;
-            border-bottom: 1px solid @my-blue-lt;
-            margin-top: -1px;
+            width: 100% !important;
+            // border-top: 1px solid @my-blue-lt;
+            // border-bottom: 1px solid @my-blue-lt;
+            // margin-top: -1px;
         }
     }
 }
@@ -1205,6 +1215,7 @@ div.notes {
         display: block;
         font-size: 14px;
         padding:16px;
+        overflow: hidden;   
         span.line::before {
             content: counter(code-line);
             display: inline-block;
@@ -1212,15 +1223,15 @@ div.notes {
             text-align: right;
             width: 2em;
             padding-right: 0.5em;
-            border-right: 1px solid lightcoral;
+            // border-right: 1px solid lightcoral;
             margin-right: 1em;
         }
         span.line {
             counter-increment: code-line;
             display: inline-block;
             width: 100%;
-            border-top: 1px solid @my-blue-lt;
-            border-bottom: 1px solid @my-blue-lt;
+            // border-top: 1px solid @my-blue-lt;
+            // border-bottom: 1px solid @my-blue-lt;
             margin-top: -1px;
         }
     }

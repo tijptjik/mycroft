@@ -19,7 +19,7 @@
         </div>
         <div class="panelBox formBox span5">
             <div class="section-header">
-                    <h1 id="productLabel">Get a License<span class="badge">US$ 500 </span></h1>
+                    <h1 id="productLabel">Get a License<span class="badge">US$ 399 </span></h1>
             </div>  
             <div class="innerPage">
                 <form id="subscriptionForm" method="post" action=".">{% csrf_token %}
@@ -33,7 +33,7 @@
                 </form>
             </div>
             <div class="formFooter">
-                <button id="registerUserButton" class="my-btn-paypal btn-primary">{% trans 'Checkout with PayPal' %}</button>
+                <button id="buy-button" class="my-btn-paypal btn-primary" type="button">Buy</button>
             </div>
             {{ subscription_form }}
         </div>
@@ -75,28 +75,47 @@
     </div>
     </div>
 
+<div id="full-width" class="modal container hide fade" tabindex="-1">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3>Institutional License</h3>
+  </div>
+  <div class="modal-body">
+    <p>Checkout Details Checkout Details Checkout Details Checkout Details Checkout Details Checkout Details Checkout Details Checkout Details Checkout Details Checkout Details Checkout Details Checkout Details Checkout Details Terms & Conditions Terms & Conditions Terms & Conditions Terms & Conditions Terms & Conditions Terms & Conditions Terms & Conditions Terms & Conditions Terms & Conditions Terms & Conditions Terms & Conditions Terms & Conditions Terms & Conditions Terms & Conditions Terms & Conditions </p>
+  </div>
+  <div class="modal-footer">
+    <button class="my-btn-paypal paypal-button btn-primary">{% trans 'Pay with Credit Card' %}</button>
+    <button class="my-btn-paypal paypal-button btn-primary">{% trans 'Pay with PayPal' %}</button>
+  </div>
+</div>
+
 {% endblock %}
 
 {% block scripts %}
     <script src="{{ STATIC_URL }}js/libs/jquery/sortElements.js" type="text/javascript" charset="utf-8"></script>
     <script type="text/javascript">
 
-    $('#registerUserButton').click(function(){
+    $('#buy-button').click(function(event){
         event.preventDefault();
         $.bt_validate.result = true;
         $('#subscriptionForm').bt_validate()
         if($.bt_validate.blocked){ 
-            return false };
-        
-        $(this).toggleClass('btn-loading').text('Loading...');
-        form = $('#subscriptionForm').serialize();
-
-        $.post("/api/client/educator/json/", form, function(data) {
-            response = $.parseJSON( data );
-            $('#id_custom').val(response[0]['pk']);
-            $('#subscriptionForm').submit();
-        });
+            return false } else {
+                $(this).toggleClass('btn-loading').text('Processing...');
+                form = $('#subscriptionForm').serialize();
+                $.post("/api/client/educator/json/", form, function(data) {
+                    response = $.parseJSON( data );
+                    console.log(response);
+                    $('#id_custom').val(response[0]['pk']);
+                    $('#full-width').modal();
+                });   
+            }        
     });
+
+$('.paypal-button').click(function(event){
+    event.preventDefault();
+    $('#subscriptionForm').submit();
+})
 
   $('.lecture-sort a').live('click', function(e){
     $this = $(this);

@@ -103,6 +103,8 @@ def alacarte(request):
         "cancel_return": "%s%s" % (settings.SITE_NAME, '/cancel/'),
     }
 
+    print 'STUDENT DICT:'
+    print student_dict
     # Create the instances.
     student = PayPalPaymentsForm(initial=student_dict, button_class="pull-right btn-danger", button_text="Select your Lectures", button_type="bootstrap")
     
@@ -125,6 +127,8 @@ def lecture(request, poet_last_name=None, poem_title=None):
     if not lecture.poem.poet.year_of_death:
         lecture.poem.poet.year_of_death = 'Current'
 
+    duration = lecture.video.duration / 60
+
     paypal_dict = {
         "business": settings.PAYPAL_RECEIVER_EMAIL,
         "amount": lecture.product.price_in_dollars,
@@ -137,7 +141,7 @@ def lecture(request, poet_last_name=None, poem_title=None):
     }
 
     form = PayPalPaymentsForm(initial=paypal_dict, button_class="btn-primary", button_text="BUY", button_type="bootstrap")
-    context = {'lecture': lecture, "form": form}
+    context = {'lecture': lecture, "form": form, "duration": duration}
     return render(request, 'base/lecture.html', context)
 
 def store(request, extra_context=None):
@@ -229,6 +233,7 @@ def client(request, method, format):
         elif request.method == 'POST':
             if method == 'student':
                 backend = 'registration.backends.default.DefaultBackend'
+                print request.POST
                 form_class = TouchRegistrationForm
                 try:
                     email = request.POST['email']
@@ -237,20 +242,38 @@ def client(request, method, format):
                     touch_user = User.objects.get(email=email)
                 except User.DoesNotExist:
                     touch_user = registerUser(request=request, backend=backend, form_class=form_class, deferred=True)
+                    print 'NEW USER CREATED:'
+                    print touch_user
                 data = serializers.serialize(format, [touch_user, ])
+                print data
             elif method == 'educator':
                 print 'REGISTERED USER MAIL'
                 backend = 'registration.backends.institutional.InstitutionalBackend'
+                print backend
+                print
                 form_class = EmailRegistrationForm
+                print form_class
+                print
+                
                 new_user = registerUser(request=request, backend=backend, form_class=form_class, deferred=True)
+                print new_user
+                print
                 text_template = 'base/mail-newuser.txt'
+                print text_template
+                print
                 html_template = 'base/mail-newuser.html'
+                print html_template
+                print
                 sendMail(to=request.POST['email'],
                     subject="Welcome to Mycroft Lectures",
                     payload=Context({'user':new_user, 'email': settings.EMAIL_HOST_USER, 'password': request.POST['password1']}),
                     text_template=text_template,
                     html_template=html_template)
+                print sendMail
+                print 
                 data = serializers.serialize(format, [new_user, ])
+                print data
+                print
             return HttpResponse(data, content_type=mimetype)
     else:
         return HttpResponse('ERROR')
@@ -431,4 +454,4 @@ def sendMail(to, subject, payload={}, text_template=None, html_template=None):
 def genInvoiceID(typer):
     invoices = len(PayPalIPN.objects.filter(payment_type__startswith="instant"))
     no = "%04d" % (invoices + 1)
-    return "MYCROFT"+ str(no) + typer
+    return "MYCORFT"+ str(no) + typer + datetime.now().strftime("%d%H%M%S")

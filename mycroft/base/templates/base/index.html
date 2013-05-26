@@ -46,30 +46,10 @@
     </p>
 </div>
 
-<div class="portalbar">
- <div class="container">
-  <div class="section-header">
-    <h2>School Portals</h2>
-  </div>
-    <ul class="thumbnails">
-    {% num_range 4 as some_range %}
-      {% for i in some_range %}
-      <li class="span2">
-        <a href="/portal/st-subornation-college/" class="thumbnail sample-image">
-          <img src="{{ STATIC_URL }}img/logos/school{{i}}.jpg" alt="">
-          <p class="sample">SAMPLE</p>
-        </a>
-      </li>
-      {% endfor %}  
-    </ul>
-  </div>
-</div>
-
-
 <div class="lecturegrid">
   <div class="container">
     <div class="section-header">
-    <h2>Available Lectures</h2>
+    <h2>Click or Touch for Samples of Available Lectures.</h2>
 <!--    <ul class="nav nav-pills pull-right lecture-sort">
       <li><p>Ordered by:</p></li>
       <li class="active"><a data-sort="poet" href="">Poet Name</a></li>
@@ -95,6 +75,25 @@
           </div>
         </li>
       {% endfor %}
+    </ul>
+  </div>
+</div>
+
+<div class="portalbar">
+ <div class="container">
+  <div class="section-header">
+    <h2>School Portals</h2>
+  </div>
+    <ul class="thumbnails">
+    {% num_range 4 as some_range %}
+      {% for i in some_range %}
+      <li class="span2">
+        <a href="/portal/st-subornation-college/" class="thumbnail sample-image">
+          <img src="{{ STATIC_URL }}img/logos/school{{i}}.jpg" alt="">
+          <p class="sample">SAMPLE</p>
+        </a>
+      </li>
+      {% endfor %}  
     </ul>
   </div>
 </div>

@@ -13,6 +13,7 @@
   <meta name="viewport" content="width=device-width">
   <meta name="google-site-verification" content="9hKeOpveHlEWK-4qFLw9fgkQsZJIZs0R_SY_yLe-0Ac" />
   <meta property="fb:app_id" content="432087086856176"/>
+  <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet">
   {% load compress %}
   {% if debug %}
     <link rel="stylesheet/less" type="text/css" media="all" href="{{ STATIC_URL }}less/style.less" />
@@ -28,6 +29,7 @@
   {% block headscripts %}{% endblock %}
 </head>
 <body class="{% block body_class %}{% endblock %}">
+
 {% block body %}
   <!-- Prompt IE 6 users to install Chrome Frame. Remove this if you support IE 6.
        chromium.org/developers/how-tos/chrome-frame-getting-started -->
@@ -53,9 +55,8 @@
         <!-- .nav, .navbar-search, .navbar-form, etc -->
         <ul class="nav">
           {% load tags %}
-          <li><a class="{% active request "^/license" %}" href="{% url license %}">For Educators</a></li>
+          <li><a class="{% active request "^/license" %}" href="{% url license %}">For Institutions</a></li>
           <li><a class="{% active request "^/alacarte" %}" href="{% url alacarte %}">For Individuals</a></li>
-          <li><a class="{% active request "^/store" %}" href="{% url store %}">Store</a></li>
           <li><a class="{% active request "^/testimonials" %}" href="{% url testimonials %}">Testimonials</a></li>
           <li><a class="{% active request "^/about" %}" href="{% url about %}">About Dr Barker</a></li>
           <li><a class="{% active request "^/contact" %}" href="{% url contact_form %}">Contact</a></li>
@@ -67,7 +68,7 @@
             {# <p>Signed in as {{user.first_name}}. Not you? #}
               <a href="{% url auth_logout %}" class="my-btn btn-danger btn-mino">Sign out</a><p>
             {% else %}
-            <a href="{% url django.contrib.auth.views.login %}?next={{request.path}}" class="my-btn btn-info btn-mino">Sign in</a>
+            <a href="{% url django.contrib.auth.views.login %}?next={{request.path}}" class="my-btn btn-info btn-mino">Admin Sign in</a>
             {% endif %}
           </div>
         </li> 
@@ -98,13 +99,16 @@
   <!-- scripts concatenated and minified via build script -->
   <script src="{{ STATIC_URL }}js/plugins.js"></script>
   <script src="{{ STATIC_URL }}js/script.js"></script>
+  <script src="http://twitter.github.io/bootstrap/assets/js/bootstrap.js"></script>
   <script src="{{ STATIC_URL }}js/libs/bootstrap/bootstrap-transition.js"></script>
+  <script src="{{ STATIC_URL }}js/libs/bootstrap/bootstrap-modalmanager.js"></script>
+  <script src="{{ STATIC_URL }}js/libs/bootstrap/bootstrap-modal.js"></script>
   <script src="{{ STATIC_URL }}js/libs/bootstrap/bootstrap-tab.js"></script>
   <script src="{{ STATIC_URL }}js/libs/bootstrap/bootstrap-collapse.js"></script>
-  <script src="{{ STATIC_URL }}js/libs/bootstrap/bootstrap-modal.js"></script>
   <script src="{{ STATIC_URL }}js/libs/bootstrap/bootstrap-tooltip.js"></script>
   <script src="{{ STATIC_URL }}js/libs/bootstrap/bootstrap-validate.js"></script>
   <script src="{{ STATIC_URL }}js/libs/bootstrap/bootstrap-validate.en.js"></script>
+
   {% block scripts %}{% endblock %}
   
   <!-- end scripts -->

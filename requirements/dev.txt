@@ -9,6 +9,9 @@ Fabric
 # Documentation
 #Sphinx
 
+# Printing
+awesome-print
+
 # Testing
 #nose
 #mock

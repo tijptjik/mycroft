@@ -15,17 +15,16 @@
                     <h2>Mycroft Lectures for Individuals</h2>
                 </div>
                 <div class="innerPage">
-                <p>If you are not member of a Mycroft Lectures licensee, we still want you to be able to benefit from our lectures. You can cherry-pick the lectures and just pay for those you want.</p>
-                <p>Downloading a Mycroft lecture will allow you to watch university level lecture without going to a university. It will enable to understand a poem without you reading a book. Many of us absorb information better when it is explained to us verbally, than we do when we read it. For many of us, seeing a person in the room go over those things we want to learn helps us take in what they have to say. If you are one of those people then Mycroft Lectures are for you.</p>
+                <p>Purchasing a Mycroft lecture will allow you to watch a university level lecture without going to a university. It will enable you to understand a poem without reading a book on that poem. Many of us absorb information better when it is explained to us verbally than we do when we read it. For many of us, seeing a person in the room go over those things we want to learn helps us take in what they have to say. If you are one of those people then Mycroft Lectures are for you.</p>
                 <ul>
-                    <li>If you need to understand one of these poems for your examinations.</li>
-                    <li>If you have to do a presentation on one of these poems.</li>
-                    <li>If you are interested in poetry in general.</li>
+                <li>If you need to understand one of these poems for your examinations.</li>
+                <li>If you have to do a presentation on one of these poems.</li>
+                <li>If you are interested in poetry in general.</li>
                 </ul>
-                <p>Purchase the lecture and the download link(s) will be delivered to by e-mail.</p>
-                <p>Though we have been very careful to ensure the lectures are easy to understand and cover explanations of the poems, these lectures contain very little “fat.” Each lecture provides a lot of information. Students at school or college level will be able to understand the poems after watching the lectures. Students at university level will find new points for consideration and analysis.</p> 
-                <p>The makers have taught at universities for over fifteen years and testify to the worth of these lectures at all levels.</p> 
-                <p>Select your lectures for checkout, or preview any of the available lectures in the preview galalery below</p>
+                <p>Purchase the lecture and a link will be delivered to your email address. Click on the link to download the lecture. The link will be valid for two weeks and can be downloaded as many times as you wish.</p>
+                <p>Though we have been very careful to ensure the lectures are easy to understand and cover explanations of the poems, these lectures contain very little “fat.” Each lecture provides a lot of information. Students at school or college level will be able to understand the poems after watching the lectures. Students at university level will find new points for consideration and analysis.</p>
+                <p>The makers have taught at universities for over fifteen years and testify to the worth of these lectures at all levels.</p>
+                <p>Select your lectures for checkout, or preview any of the available lectures in the preview gallery below.</p>
                 <b class="signed">Andrew Barker</b>
                 </div>
             </div>
@@ -75,7 +74,7 @@
             <div class="formFatFooter">
             <div class="innerPage">
                 <h4>Deliver to:</h4> 
-                <form id="bt_form2" action="https://www.paypal.com/cgi-bin/webscr" method="post">
+                <form id="bt_form2" action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post">
                     <input type="text" id="email" name="email" value="" placeholder="E-mail Address" validate="require|email">
                     <input type="hidden" id="address_override" name="address_override" value="1">
                     <input type="hidden" id="payer_email" name="payer_email" value="">
@@ -100,6 +99,21 @@
     </div>
 </div>
 </div>
+
+<div id="full-width" class="modal container hide fade" tabindex="-1">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3>Delivery by E-mail</h3>
+  </div>
+  <div class="modal-body">
+    <p>Purchase the lecture and a link will be delivered to your email address. Click on the link to download the lecture. The link will be valid for two weeks and can be downloaded as many times as you wish.</p>
+  </div>
+  <div class="modal-footer">
+    <button class="my-btn-paypal paypal-button btn-primary">{% trans 'Pay with Credit Card' %}</button>
+    <button class="my-btn-paypal paypal-button btn-primary">{% trans 'Pay with PayPal' %}</button>
+  </div>
+</div>
+
 {% endblock %}
 
 {% block scripts %}
@@ -121,7 +135,7 @@
         $('#discountPercentage').text(discount);
 
         if(quantity){
-            $('#submitCart').val('Checkout with PayPal').addClass('btn-primary').removeClass('btn-danger');
+            $('#submitCart').val('Buy').addClass('btn-primary').removeClass('btn-danger');
         } else {
             $('#submitCart').val('Select your Lectures').toggleClass('btn-danger');
         }
@@ -186,17 +200,23 @@
       $.bt_validate.result = true;
       $('#bt_form2').bt_validate()
       if($.bt_validate.blocked){ 
-            return false };
-      
-      email = $('#email').serialize();
-      $(this).toggleClass('btn-loading').val('Loading...');
+            return false;
+        } else {
+              email = $('#email').serialize();
+              $(this).toggleClass('btn-loading').val('Processing...');
 
-      $.post("/api/client/student/json/", email, function(data) {
-              response = $.parseJSON( data );
-              $('#id_custom').val(response[0]['pk']);
-              $('#payer_email').val(response[0]['fields']['email']);
-              $('#bt_form2').submit();
-          });
+              $.post("/api/client/student/json/", email, function(data) {
+                      response = $.parseJSON( data );
+                      $('#id_custom').val(response[0]['pk']);
+                      $('#payer_email').val(response[0]['fields']['email']);
+                    $('#full-width').modal();
+                  });
+            }
+    })
+
+    $('.paypal-button').click(function(event){
+        event.preventDefault();
+        $('#bt_form2').submit();
     })
 
     $('.description').each(function() { $('.description', this).width( $(this).width() ); });
@@ -205,17 +225,6 @@
         e.preventDefault();
         $(this).parent().parent().find('.description').slideToggle();
     })
-   
-    $(function () {
-        var top = $('#box').offset().top;
-        $(window).scroll(function (event) {
-        var y = $(this).scrollTop();
-        if (y >= top) { 
-            $('#checkoutBox').addClass('fixed'); 
-        } else { 
-            $('#checkoutBox').removeClass('fixed');
-        }});
-    });
   </script>
 {% endblock scripts %}
 
