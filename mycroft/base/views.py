@@ -199,6 +199,12 @@ def about(request):
 def thanks(request):
     return render(request, 'base/thanks.html')
 
+def done(request):
+    return render(request, 'base/congratulations.html')
+
+def cancel(request):
+    return render(request, 'base/cancel.html')
+
 def mylogin(request):
     print 'received'
     if request.is_ajax():

@@ -26,7 +26,7 @@
 
 ### <del>Testimonials</del>
 ### <del>About Doctor Barker.</del>
-### Contacts.
+### <del>Contacts</del>.
 
 1. <del>Make sure I know how to access these comments.</del>
 
@@ -42,11 +42,11 @@
     
         [Moderate](https://developers.facebook.com/tools/comments/?id=432087086856176&view=recent_comments) comments there, or moderate them on the individual pages by clicking on 'moderator view'
 
-1. Insert all lecture notes previously sent. Make sure these are the proof read ones. Contact me if there is any ambiguity here.
+1. <del>Insert all lecture notes previously sent. Make sure these are the proof read ones. Contact me if there is any ambiguity here.</del>
 1. <del>Make the poems read on plain not lined paper.</del>
 1. <del>Put the author of the poem at the end on the bottom right hand corner in bold. Times New Roman font.</del>
-1. <del>Put Toads Before Toads Revisited.</del>del>
-1. For the poets’ descriptions: Remove everything apart from the poet’s name, dates and country of birth. They are all English apart from Heaney and Yeats who are Irish. Dylan Thomas who is Welsh and Achebe who is Nigerian.
+1. <del>Put Toads Before Toads Revisited.</del>
+1. <del>For the poets’ descriptions: Remove everything apart from the poet’s name, dates and country of birth. They are all English apart from Heaney and Yeats who are Irish. Dylan Thomas who is Welsh and Achebe who is Nigerian.</del>
 
 ### Specific Lectures 
 1. <del>&**Refugee Mother and her Child**: Insert Achebe. Died in 2013.</del>
@@ -81,8 +81,8 @@ Of disappointed shells that dropped behind. Should read Of tired, outstripped Fi
 
 ### PayPal
 
-1. Add template for /subscription/done/
-1. Add template for /subscription/cancel/
+1. <del>Add template for /subscription/done/</del>
+1. <del>Add template for /subscription/cancel/</del>
 1. Fix auto-email for individuals
 
 ### Cross-Platform Tests
