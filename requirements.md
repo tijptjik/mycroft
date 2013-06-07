@@ -77,19 +77,36 @@ Of disappointed shells that dropped behind. Should read Of tired, outstripped Fi
 
 ### E-mail
 
-1. Fix relative links
+1. <del>Fix relative links</del>
 
 ### PayPal
 
 1. <del>Add template for /subscription/done/</del>
 1. <del>Add template for /subscription/cancel/</del>
-1. Fix auto-email for individuals
+1. Fix auto-email for Multiple purchases
 
 ### Cross-Platform Tests
 
+### Functionality 
+
+1. Chrome : Institution | Single | Multiple | IntroVid |X| | YouTube | Lectures | Facebook 
+1. Firefox : Institution | Single | Multiple | IntroVid |X| | YouTube | Lectures |X| Facebook
+1. Safari : Institution  | Single | Multiple | IntroVid |X| | YouTube | Lectures | Facebook
+1. IE8 : Institution  |x| Single |x| Multiple |x| IntroVid |X| | YouTube |X| Lectures |X| Facebook
+1. IE9 : Institution  |x| Single |x| Multiple |x| IntroVid |X| | YouTube | Lectures |X| Facebook
+    --> Note: Check the JSON callback, it's not properly initilasing the <modal class=""></modal>
+    --> Offer Download link instead of embedded video.
+1. IE10 : Institution | Single | Multiple | IntroVid |X| | YouTube | Lectures |X| Facebook
+    --> Offer Download link instead of embedded video.
+1. iPad | Institution | Single | Multiple | IntroVid |X| | YouTube | Lectures | Facebook 
+1. iPhone
+1. Android : Institution | Single | Multiple | IntroVid |X| | YouTube | Lectures | Facebook 
+
+### Visually
+
 1. Larger (1920x1080) Screen Chrome
 1. Larger (1920x1080) Screen Firefox
-1. Larger (1920x1080) Screen Safari
+1. Larger (1920x1080) Screen Safari 
 1. Larger (1920x1080) Screen IE8
 1. Larger (1920x1080) Screen IE9
 1. Larger (1920x1080) Screen IE10
